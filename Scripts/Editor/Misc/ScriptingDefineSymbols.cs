@@ -7,6 +7,7 @@
 
 using System.Collections.Generic;
 using UnityEditor;
+using UnityEditor.Build;
 
 namespace UnityGameFramework.Editor
 {
@@ -15,29 +16,28 @@ namespace UnityGameFramework.Editor
     /// </summary>
     public static class ScriptingDefineSymbols
     {
-        private static readonly BuildTargetGroup[] BuildTargetGroups = new BuildTargetGroup[]
-        {
-            BuildTargetGroup.Standalone,
-            BuildTargetGroup.iOS,
-            BuildTargetGroup.Android,
-            BuildTargetGroup.WSA,
-            BuildTargetGroup.WebGL
+        private static readonly NamedBuildTarget[] NamedBuildTargets = {
+            NamedBuildTarget.Standalone,
+            NamedBuildTarget.iOS,
+            NamedBuildTarget.Android,
+            NamedBuildTarget.WindowsStoreApps,
+            NamedBuildTarget.WebGL
         };
 
         /// <summary>
         /// 检查指定平台是否存在指定的脚本宏定义。
         /// </summary>
-        /// <param name="buildTargetGroup">要检查脚本宏定义的平台。</param>
+        /// <param name="buildTarget">要检查脚本宏定义的平台。</param>
         /// <param name="scriptingDefineSymbol">要检查的脚本宏定义。</param>
         /// <returns>指定平台是否存在指定的脚本宏定义。</returns>
-        public static bool HasScriptingDefineSymbol(BuildTargetGroup buildTargetGroup, string scriptingDefineSymbol)
+        public static bool HasScriptingDefineSymbol(NamedBuildTarget buildTarget, string scriptingDefineSymbol)
         {
             if (string.IsNullOrEmpty(scriptingDefineSymbol))
             {
                 return false;
             }
 
-            string[] scriptingDefineSymbols = GetScriptingDefineSymbols(buildTargetGroup);
+            string[] scriptingDefineSymbols = GetScriptingDefineSymbols(buildTarget);
             foreach (string i in scriptingDefineSymbols)
             {
                 if (i == scriptingDefineSymbol)
@@ -52,52 +52,52 @@ namespace UnityGameFramework.Editor
         /// <summary>
         /// 为指定平台增加指定的脚本宏定义。
         /// </summary>
-        /// <param name="buildTargetGroup">要增加脚本宏定义的平台。</param>
+        /// <param name="buildTarget">要增加脚本宏定义的平台。</param>
         /// <param name="scriptingDefineSymbol">要增加的脚本宏定义。</param>
-        public static void AddScriptingDefineSymbol(BuildTargetGroup buildTargetGroup, string scriptingDefineSymbol)
+        public static void AddScriptingDefineSymbol(NamedBuildTarget buildTarget, string scriptingDefineSymbol)
         {
             if (string.IsNullOrEmpty(scriptingDefineSymbol))
             {
                 return;
             }
 
-            if (HasScriptingDefineSymbol(buildTargetGroup, scriptingDefineSymbol))
+            if (HasScriptingDefineSymbol(buildTarget, scriptingDefineSymbol))
             {
                 return;
             }
 
-            List<string> scriptingDefineSymbols = new List<string>(GetScriptingDefineSymbols(buildTargetGroup))
+            List<string> scriptingDefineSymbols = new List<string>(GetScriptingDefineSymbols(buildTarget))
             {
                 scriptingDefineSymbol
             };
 
-            SetScriptingDefineSymbols(buildTargetGroup, scriptingDefineSymbols.ToArray());
+            SetScriptingDefineSymbols(buildTarget, scriptingDefineSymbols.ToArray());
         }
 
         /// <summary>
         /// 为指定平台移除指定的脚本宏定义。
         /// </summary>
-        /// <param name="buildTargetGroup">要移除脚本宏定义的平台。</param>
+        /// <param name="buildTarget">要移除脚本宏定义的平台。</param>
         /// <param name="scriptingDefineSymbol">要移除的脚本宏定义。</param>
-        public static void RemoveScriptingDefineSymbol(BuildTargetGroup buildTargetGroup, string scriptingDefineSymbol)
+        public static void RemoveScriptingDefineSymbol(NamedBuildTarget buildTarget, string scriptingDefineSymbol)
         {
             if (string.IsNullOrEmpty(scriptingDefineSymbol))
             {
                 return;
             }
 
-            if (!HasScriptingDefineSymbol(buildTargetGroup, scriptingDefineSymbol))
+            if (!HasScriptingDefineSymbol(buildTarget, scriptingDefineSymbol))
             {
                 return;
             }
 
-            List<string> scriptingDefineSymbols = new List<string>(GetScriptingDefineSymbols(buildTargetGroup));
+            List<string> scriptingDefineSymbols = new List<string>(GetScriptingDefineSymbols(buildTarget));
             while (scriptingDefineSymbols.Contains(scriptingDefineSymbol))
             {
                 scriptingDefineSymbols.Remove(scriptingDefineSymbol);
             }
 
-            SetScriptingDefineSymbols(buildTargetGroup, scriptingDefineSymbols.ToArray());
+            SetScriptingDefineSymbols(buildTarget, scriptingDefineSymbols.ToArray());
         }
 
         /// <summary>
@@ -111,9 +111,9 @@ namespace UnityGameFramework.Editor
                 return;
             }
 
-            foreach (BuildTargetGroup buildTargetGroup in BuildTargetGroups)
+            foreach (NamedBuildTarget buildTarget in NamedBuildTargets)
             {
-                AddScriptingDefineSymbol(buildTargetGroup, scriptingDefineSymbol);
+                AddScriptingDefineSymbol(buildTarget, scriptingDefineSymbol);
             }
         }
 
@@ -128,30 +128,30 @@ namespace UnityGameFramework.Editor
                 return;
             }
 
-            foreach (BuildTargetGroup buildTargetGroup in BuildTargetGroups)
+            foreach (NamedBuildTarget buildTarget in NamedBuildTargets)
             {
-                RemoveScriptingDefineSymbol(buildTargetGroup, scriptingDefineSymbol);
+                RemoveScriptingDefineSymbol(buildTarget, scriptingDefineSymbol);
             }
         }
 
         /// <summary>
         /// 获取指定平台的脚本宏定义。
         /// </summary>
-        /// <param name="buildTargetGroup">要获取脚本宏定义的平台。</param>
+        /// <param name="buildTarget">要获取脚本宏定义的平台。</param>
         /// <returns>平台的脚本宏定义。</returns>
-        public static string[] GetScriptingDefineSymbols(BuildTargetGroup buildTargetGroup)
+        public static string[] GetScriptingDefineSymbols(NamedBuildTarget buildTarget)
         {
-            return PlayerSettings.GetScriptingDefineSymbolsForGroup(buildTargetGroup).Split(';');
+            return PlayerSettings.GetScriptingDefineSymbols(buildTarget).Split(';');
         }
 
         /// <summary>
         /// 设置指定平台的脚本宏定义。
         /// </summary>
-        /// <param name="buildTargetGroup">要设置脚本宏定义的平台。</param>
+        /// <param name="buildTarget">要设置脚本宏定义的平台。</param>
         /// <param name="scriptingDefineSymbols">要设置的脚本宏定义。</param>
-        public static void SetScriptingDefineSymbols(BuildTargetGroup buildTargetGroup, string[] scriptingDefineSymbols)
+        public static void SetScriptingDefineSymbols(NamedBuildTarget buildTarget, string[] scriptingDefineSymbols)
         {
-            PlayerSettings.SetScriptingDefineSymbolsForGroup(buildTargetGroup, string.Join(";", scriptingDefineSymbols));
+            PlayerSettings.SetScriptingDefineSymbols(buildTarget, string.Join(";", scriptingDefineSymbols));
         }
     }
 }
