@@ -2,7 +2,8 @@
     "name": "UnityGameFramework.Runtime",
     "rootNamespace": "",
     "references": [
-        "GameFramework"
+        "GameFramework",
+        "ICSharpCode.SharpZipLib"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
