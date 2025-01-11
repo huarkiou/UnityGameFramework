@@ -1,5 +1,5 @@
 {
-  "name": "com.jiangyin.gameframework",
+  "name": "com.huarkiou.gameframework",
   "displayName": "Game Framework",
   "category": "Game Framework",
   "description": "This is literally a game framework, based on Unity game engine. It encapsulates commonly used game modules during development, and, to a large degree, standardises the process, enhances the development speed and ensures the product quality.",
@@ -24,7 +24,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:huarkiou/UnityGameFramework.git",
-    "revision": "9e04764c9098106a83b5110923d4acf1b1a13344"
+    "url": "git@github.com:huarkiou/UnityGameFramework.git"
   }
 }
