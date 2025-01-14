@@ -15,9 +15,6 @@ namespace GameFramework.Network
         /// <summary>
         /// 获取网络消息包长度。
         /// </summary>
-        int PacketLength
-        {
-            get;
-        }
+        int PacketLength { get; }
     }
 }

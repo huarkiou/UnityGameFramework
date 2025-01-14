@@ -39,7 +39,8 @@ namespace GameFramework.Procedure
         /// <param name="procedureOwner">流程持有者。</param>
         /// <param name="elapseSeconds">逻辑流逝时间，以秒为单位。</param>
         /// <param name="realElapseSeconds">真实流逝时间，以秒为单位。</param>
-        protected internal override void OnUpdate(ProcedureOwner procedureOwner, float elapseSeconds, float realElapseSeconds)
+        protected internal override void OnUpdate(ProcedureOwner procedureOwner, float elapseSeconds,
+            float realElapseSeconds)
         {
             base.OnUpdate(procedureOwner, elapseSeconds, realElapseSeconds);
         }

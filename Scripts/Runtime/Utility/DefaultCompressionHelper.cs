@@ -5,10 +5,10 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameFramework;
-using ICSharpCode.SharpZipLib.GZip;
 using System;
 using System.IO;
+using GameFramework;
+using ICSharpCode.SharpZipLib.GZip;
 
 namespace UnityGameFramework.Runtime
 {

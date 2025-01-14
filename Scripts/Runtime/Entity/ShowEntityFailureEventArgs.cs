@@ -5,9 +5,9 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
+using System;
 using GameFramework;
 using GameFramework.Event;
-using System;
 
 namespace UnityGameFramework.Runtime
 {
@@ -37,67 +37,37 @@ namespace UnityGameFramework.Runtime
         /// <summary>
         /// 获取显示实体失败事件编号。
         /// </summary>
-        public override int Id
-        {
-            get
-            {
-                return EventId;
-            }
-        }
+        public override int Id => EventId;
 
         /// <summary>
         /// 获取实体编号。
         /// </summary>
-        public int EntityId
-        {
-            get;
-            private set;
-        }
+        public int EntityId { get; private set; }
 
         /// <summary>
         /// 获取实体逻辑类型。
         /// </summary>
-        public Type EntityLogicType
-        {
-            get;
-            private set;
-        }
+        public Type EntityLogicType { get; private set; }
 
         /// <summary>
         /// 获取实体资源名称。
         /// </summary>
-        public string EntityAssetName
-        {
-            get;
-            private set;
-        }
+        public string EntityAssetName { get; private set; }
 
         /// <summary>
         /// 获取实体组名称。
         /// </summary>
-        public string EntityGroupName
-        {
-            get;
-            private set;
-        }
+        public string EntityGroupName { get; private set; }
 
         /// <summary>
         /// 获取错误信息。
         /// </summary>
-        public string ErrorMessage
-        {
-            get;
-            private set;
-        }
+        public string ErrorMessage { get; private set; }
 
         /// <summary>
         /// 获取用户自定义数据。
         /// </summary>
-        public object UserData
-        {
-            get;
-            private set;
-        }
+        public object UserData { get; private set; }
 
         /// <summary>
         /// 创建显示实体失败事件。

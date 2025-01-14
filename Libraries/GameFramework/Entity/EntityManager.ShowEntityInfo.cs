@@ -24,37 +24,13 @@ namespace GameFramework.Entity
                 m_UserData = null;
             }
 
-            public int SerialId
-            {
-                get
-                {
-                    return m_SerialId;
-                }
-            }
+            public int SerialId => m_SerialId;
 
-            public int EntityId
-            {
-                get
-                {
-                    return m_EntityId;
-                }
-            }
+            public int EntityId => m_EntityId;
 
-            public EntityGroup EntityGroup
-            {
-                get
-                {
-                    return m_EntityGroup;
-                }
-            }
+            public EntityGroup EntityGroup => m_EntityGroup;
 
-            public object UserData
-            {
-                get
-                {
-                    return m_UserData;
-                }
-            }
+            public object UserData => m_UserData;
 
             public static ShowEntityInfo Create(int serialId, int entityId, EntityGroup entityGroup, object userData)
             {

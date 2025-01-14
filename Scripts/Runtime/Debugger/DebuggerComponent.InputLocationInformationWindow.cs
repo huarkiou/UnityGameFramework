@@ -24,6 +24,7 @@ namespace UnityGameFramework.Runtime
                         {
                             Input.location.Start();
                         }
+
                         if (GUILayout.Button("Disable", GUILayout.Height(30f)))
                         {
                             Input.location.Stop();

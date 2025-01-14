@@ -28,27 +28,15 @@ namespace GameFramework
         /// <summary>
         /// 获取变量类型。
         /// </summary>
-        public override Type Type
-        {
-            get
-            {
-                return typeof(T);
-            }
-        }
+        public override Type Type => typeof(T);
 
         /// <summary>
         /// 获取或设置变量值。
         /// </summary>
         public T Value
         {
-            get
-            {
-                return m_Value;
-            }
-            set
-            {
-                m_Value = value;
-            }
+            get => m_Value;
+            set => m_Value = value;
         }
 
         /// <summary>

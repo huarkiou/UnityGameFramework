@@ -5,9 +5,9 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameFramework.Procedure;
 using System.Collections.Generic;
 using System.Linq;
+using GameFramework.Procedure;
 using UnityEditor;
 using UnityEngine;
 using UnityGameFramework.Runtime;
@@ -38,7 +38,8 @@ namespace UnityGameFramework.Editor
             }
             else if (EditorApplication.isPlaying)
             {
-                EditorGUILayout.LabelField("Current Procedure", t.CurrentProcedure == null ? "None" : t.CurrentProcedure.GetType().ToString());
+                EditorGUILayout.LabelField("Current Procedure",
+                    t.CurrentProcedure == null ? "None" : t.CurrentProcedure.GetType().ToString());
             }
 
             EditorGUI.BeginDisabledGroup(EditorApplication.isPlayingOrWillChangePlaymode);
@@ -77,7 +78,8 @@ namespace UnityGameFramework.Editor
                 {
                     EditorGUILayout.Separator();
 
-                    int selectedIndex = EditorGUILayout.Popup("Entrance Procedure", m_EntranceProcedureIndex, m_CurrentAvailableProcedureTypeNames.ToArray());
+                    int selectedIndex = EditorGUILayout.Popup("Entrance Procedure", m_EntranceProcedureIndex,
+                        m_CurrentAvailableProcedureTypeNames.ToArray());
                     if (selectedIndex != m_EntranceProcedureIndex)
                     {
                         m_EntranceProcedureIndex = selectedIndex;
@@ -116,14 +118,16 @@ namespace UnityGameFramework.Editor
             m_ProcedureTypeNames = Type.GetRuntimeTypeNames(typeof(ProcedureBase));
             ReadAvailableProcedureTypeNames();
             int oldCount = m_CurrentAvailableProcedureTypeNames.Count;
-            m_CurrentAvailableProcedureTypeNames = m_CurrentAvailableProcedureTypeNames.Where(x => m_ProcedureTypeNames.Contains(x)).ToList();
+            m_CurrentAvailableProcedureTypeNames = m_CurrentAvailableProcedureTypeNames
+                .Where(x => m_ProcedureTypeNames.Contains(x)).ToList();
             if (m_CurrentAvailableProcedureTypeNames.Count != oldCount)
             {
                 WriteAvailableProcedureTypeNames();
             }
             else if (!string.IsNullOrEmpty(m_EntranceProcedureTypeName.stringValue))
             {
-                m_EntranceProcedureIndex = m_CurrentAvailableProcedureTypeNames.IndexOf(m_EntranceProcedureTypeName.stringValue);
+                m_EntranceProcedureIndex =
+                    m_CurrentAvailableProcedureTypeNames.IndexOf(m_EntranceProcedureTypeName.stringValue);
                 if (m_EntranceProcedureIndex < 0)
                 {
                     m_EntranceProcedureTypeName.stringValue = null;
@@ -139,7 +143,8 @@ namespace UnityGameFramework.Editor
             int count = m_AvailableProcedureTypeNames.arraySize;
             for (int i = 0; i < count; i++)
             {
-                m_CurrentAvailableProcedureTypeNames.Add(m_AvailableProcedureTypeNames.GetArrayElementAtIndex(i).stringValue);
+                m_CurrentAvailableProcedureTypeNames.Add(m_AvailableProcedureTypeNames.GetArrayElementAtIndex(i)
+                    .stringValue);
             }
         }
 
@@ -156,12 +161,14 @@ namespace UnityGameFramework.Editor
             for (int i = 0; i < count; i++)
             {
                 m_AvailableProcedureTypeNames.InsertArrayElementAtIndex(i);
-                m_AvailableProcedureTypeNames.GetArrayElementAtIndex(i).stringValue = m_CurrentAvailableProcedureTypeNames[i];
+                m_AvailableProcedureTypeNames.GetArrayElementAtIndex(i).stringValue =
+                    m_CurrentAvailableProcedureTypeNames[i];
             }
 
             if (!string.IsNullOrEmpty(m_EntranceProcedureTypeName.stringValue))
             {
-                m_EntranceProcedureIndex = m_CurrentAvailableProcedureTypeNames.IndexOf(m_EntranceProcedureTypeName.stringValue);
+                m_EntranceProcedureIndex =
+                    m_CurrentAvailableProcedureTypeNames.IndexOf(m_EntranceProcedureTypeName.stringValue);
                 if (m_EntranceProcedureIndex < 0)
                 {
                     m_EntranceProcedureTypeName.stringValue = null;

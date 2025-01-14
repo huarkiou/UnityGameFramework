@@ -15,10 +15,7 @@ namespace GameFramework.Network
         /// <summary>
         /// 获取网络消息包协议编号。
         /// </summary>
-        int Id
-        {
-            get;
-        }
+        int Id { get; }
 
         /// <summary>
         /// 网络消息包处理函数。

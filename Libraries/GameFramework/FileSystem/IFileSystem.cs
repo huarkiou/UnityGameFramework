@@ -18,34 +18,22 @@ namespace GameFramework.FileSystem
         /// <summary>
         /// 获取文件系统完整路径。
         /// </summary>
-        string FullPath
-        {
-            get;
-        }
+        string FullPath { get; }
 
         /// <summary>
         /// 获取文件系统访问方式。
         /// </summary>
-        FileSystemAccess Access
-        {
-            get;
-        }
+        FileSystemAccess Access { get; }
 
         /// <summary>
         /// 获取文件数量。
         /// </summary>
-        int FileCount
-        {
-            get;
-        }
+        int FileCount { get; }
 
         /// <summary>
         /// 获取最大文件数量。
         /// </summary>
-        int MaxFileCount
-        {
-            get;
-        }
+        int MaxFileCount { get; }
 
         /// <summary>
         /// 获取文件信息。

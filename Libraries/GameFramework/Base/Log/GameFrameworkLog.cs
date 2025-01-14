@@ -167,14 +167,16 @@ namespace GameFramework
         /// <param name="arg4">日志参数 4。</param>
         /// <param name="arg5">日志参数 5。</param>
         /// <param name="arg6">日志参数 6。</param>
-        public static void Debug<T1, T2, T3, T4, T5, T6>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6)
+        public static void Debug<T1, T2, T3, T4, T5, T6>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5,
+            T6 arg6)
         {
             if (s_LogHelper == null)
             {
                 return;
             }
 
-            s_LogHelper.Log(GameFrameworkLogLevel.Debug, Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6));
+            s_LogHelper.Log(GameFrameworkLogLevel.Debug,
+                Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6));
         }
 
         /// <summary>
@@ -195,14 +197,16 @@ namespace GameFramework
         /// <param name="arg5">日志参数 5。</param>
         /// <param name="arg6">日志参数 6。</param>
         /// <param name="arg7">日志参数 7。</param>
-        public static void Debug<T1, T2, T3, T4, T5, T6, T7>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7)
+        public static void Debug<T1, T2, T3, T4, T5, T6, T7>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5,
+            T6 arg6, T7 arg7)
         {
             if (s_LogHelper == null)
             {
                 return;
             }
 
-            s_LogHelper.Log(GameFrameworkLogLevel.Debug, Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7));
+            s_LogHelper.Log(GameFrameworkLogLevel.Debug,
+                Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7));
         }
 
         /// <summary>
@@ -225,14 +229,16 @@ namespace GameFramework
         /// <param name="arg6">日志参数 6。</param>
         /// <param name="arg7">日志参数 7。</param>
         /// <param name="arg8">日志参数 8。</param>
-        public static void Debug<T1, T2, T3, T4, T5, T6, T7, T8>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8)
+        public static void Debug<T1, T2, T3, T4, T5, T6, T7, T8>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4,
+            T5 arg5, T6 arg6, T7 arg7, T8 arg8)
         {
             if (s_LogHelper == null)
             {
                 return;
             }
 
-            s_LogHelper.Log(GameFrameworkLogLevel.Debug, Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8));
+            s_LogHelper.Log(GameFrameworkLogLevel.Debug,
+                Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8));
         }
 
         /// <summary>
@@ -257,14 +263,16 @@ namespace GameFramework
         /// <param name="arg7">日志参数 7。</param>
         /// <param name="arg8">日志参数 8。</param>
         /// <param name="arg9">日志参数 9。</param>
-        public static void Debug<T1, T2, T3, T4, T5, T6, T7, T8, T9>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9)
+        public static void Debug<T1, T2, T3, T4, T5, T6, T7, T8, T9>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4,
+            T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9)
         {
             if (s_LogHelper == null)
             {
                 return;
             }
 
-            s_LogHelper.Log(GameFrameworkLogLevel.Debug, Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9));
+            s_LogHelper.Log(GameFrameworkLogLevel.Debug,
+                Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9));
         }
 
         /// <summary>
@@ -291,14 +299,16 @@ namespace GameFramework
         /// <param name="arg8">日志参数 8。</param>
         /// <param name="arg9">日志参数 9。</param>
         /// <param name="arg10">日志参数 10。</param>
-        public static void Debug<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10)
+        public static void Debug<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>(string format, T1 arg1, T2 arg2, T3 arg3,
+            T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10)
         {
             if (s_LogHelper == null)
             {
                 return;
             }
 
-            s_LogHelper.Log(GameFrameworkLogLevel.Debug, Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10));
+            s_LogHelper.Log(GameFrameworkLogLevel.Debug,
+                Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10));
         }
 
         /// <summary>
@@ -327,14 +337,16 @@ namespace GameFramework
         /// <param name="arg9">日志参数 9。</param>
         /// <param name="arg10">日志参数 10。</param>
         /// <param name="arg11">日志参数 11。</param>
-        public static void Debug<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11)
+        public static void Debug<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>(string format, T1 arg1, T2 arg2, T3 arg3,
+            T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11)
         {
             if (s_LogHelper == null)
             {
                 return;
             }
 
-            s_LogHelper.Log(GameFrameworkLogLevel.Debug, Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11));
+            s_LogHelper.Log(GameFrameworkLogLevel.Debug,
+                Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11));
         }
 
         /// <summary>
@@ -365,14 +377,16 @@ namespace GameFramework
         /// <param name="arg10">日志参数 10。</param>
         /// <param name="arg11">日志参数 11。</param>
         /// <param name="arg12">日志参数 12。</param>
-        public static void Debug<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11, T12 arg12)
+        public static void Debug<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>(string format, T1 arg1, T2 arg2,
+            T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11, T12 arg12)
         {
             if (s_LogHelper == null)
             {
                 return;
             }
 
-            s_LogHelper.Log(GameFrameworkLogLevel.Debug, Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12));
+            s_LogHelper.Log(GameFrameworkLogLevel.Debug,
+                Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12));
         }
 
         /// <summary>
@@ -405,14 +419,18 @@ namespace GameFramework
         /// <param name="arg11">日志参数 11。</param>
         /// <param name="arg12">日志参数 12。</param>
         /// <param name="arg13">日志参数 13。</param>
-        public static void Debug<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11, T12 arg12, T13 arg13)
+        public static void Debug<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>(string format, T1 arg1,
+            T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11, T12 arg12,
+            T13 arg13)
         {
             if (s_LogHelper == null)
             {
                 return;
             }
 
-            s_LogHelper.Log(GameFrameworkLogLevel.Debug, Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12, arg13));
+            s_LogHelper.Log(GameFrameworkLogLevel.Debug,
+                Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12,
+                    arg13));
         }
 
         /// <summary>
@@ -447,14 +465,18 @@ namespace GameFramework
         /// <param name="arg12">日志参数 12。</param>
         /// <param name="arg13">日志参数 13。</param>
         /// <param name="arg14">日志参数 14。</param>
-        public static void Debug<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11, T12 arg12, T13 arg13, T14 arg14)
+        public static void Debug<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>(string format, T1 arg1,
+            T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11, T12 arg12,
+            T13 arg13, T14 arg14)
         {
             if (s_LogHelper == null)
             {
                 return;
             }
 
-            s_LogHelper.Log(GameFrameworkLogLevel.Debug, Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12, arg13, arg14));
+            s_LogHelper.Log(GameFrameworkLogLevel.Debug,
+                Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12,
+                    arg13, arg14));
         }
 
         /// <summary>
@@ -491,14 +513,18 @@ namespace GameFramework
         /// <param name="arg13">日志参数 13。</param>
         /// <param name="arg14">日志参数 14。</param>
         /// <param name="arg15">日志参数 15。</param>
-        public static void Debug<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11, T12 arg12, T13 arg13, T14 arg14, T15 arg15)
+        public static void Debug<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>(string format,
+            T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11,
+            T12 arg12, T13 arg13, T14 arg14, T15 arg15)
         {
             if (s_LogHelper == null)
             {
                 return;
             }
 
-            s_LogHelper.Log(GameFrameworkLogLevel.Debug, Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12, arg13, arg14, arg15));
+            s_LogHelper.Log(GameFrameworkLogLevel.Debug,
+                Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12,
+                    arg13, arg14, arg15));
         }
 
         /// <summary>
@@ -537,14 +563,18 @@ namespace GameFramework
         /// <param name="arg14">日志参数 14。</param>
         /// <param name="arg15">日志参数 15。</param>
         /// <param name="arg16">日志参数 16。</param>
-        public static void Debug<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11, T12 arg12, T13 arg13, T14 arg14, T15 arg15, T16 arg16)
+        public static void Debug<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(string format,
+            T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11,
+            T12 arg12, T13 arg13, T14 arg14, T15 arg15, T16 arg16)
         {
             if (s_LogHelper == null)
             {
                 return;
             }
 
-            s_LogHelper.Log(GameFrameworkLogLevel.Debug, Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12, arg13, arg14, arg15, arg16));
+            s_LogHelper.Log(GameFrameworkLogLevel.Debug,
+                Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12,
+                    arg13, arg14, arg15, arg16));
         }
 
         /// <summary>
@@ -691,14 +721,16 @@ namespace GameFramework
         /// <param name="arg4">日志参数 4。</param>
         /// <param name="arg5">日志参数 5。</param>
         /// <param name="arg6">日志参数 6。</param>
-        public static void Info<T1, T2, T3, T4, T5, T6>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6)
+        public static void Info<T1, T2, T3, T4, T5, T6>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5,
+            T6 arg6)
         {
             if (s_LogHelper == null)
             {
                 return;
             }
 
-            s_LogHelper.Log(GameFrameworkLogLevel.Info, Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6));
+            s_LogHelper.Log(GameFrameworkLogLevel.Info,
+                Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6));
         }
 
         /// <summary>
@@ -719,14 +751,16 @@ namespace GameFramework
         /// <param name="arg5">日志参数 5。</param>
         /// <param name="arg6">日志参数 6。</param>
         /// <param name="arg7">日志参数 7。</param>
-        public static void Info<T1, T2, T3, T4, T5, T6, T7>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7)
+        public static void Info<T1, T2, T3, T4, T5, T6, T7>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5,
+            T6 arg6, T7 arg7)
         {
             if (s_LogHelper == null)
             {
                 return;
             }
 
-            s_LogHelper.Log(GameFrameworkLogLevel.Info, Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7));
+            s_LogHelper.Log(GameFrameworkLogLevel.Info,
+                Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7));
         }
 
         /// <summary>
@@ -749,14 +783,16 @@ namespace GameFramework
         /// <param name="arg6">日志参数 6。</param>
         /// <param name="arg7">日志参数 7。</param>
         /// <param name="arg8">日志参数 8。</param>
-        public static void Info<T1, T2, T3, T4, T5, T6, T7, T8>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8)
+        public static void Info<T1, T2, T3, T4, T5, T6, T7, T8>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4,
+            T5 arg5, T6 arg6, T7 arg7, T8 arg8)
         {
             if (s_LogHelper == null)
             {
                 return;
             }
 
-            s_LogHelper.Log(GameFrameworkLogLevel.Info, Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8));
+            s_LogHelper.Log(GameFrameworkLogLevel.Info,
+                Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8));
         }
 
         /// <summary>
@@ -781,14 +817,16 @@ namespace GameFramework
         /// <param name="arg7">日志参数 7。</param>
         /// <param name="arg8">日志参数 8。</param>
         /// <param name="arg9">日志参数 9。</param>
-        public static void Info<T1, T2, T3, T4, T5, T6, T7, T8, T9>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9)
+        public static void Info<T1, T2, T3, T4, T5, T6, T7, T8, T9>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4,
+            T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9)
         {
             if (s_LogHelper == null)
             {
                 return;
             }
 
-            s_LogHelper.Log(GameFrameworkLogLevel.Info, Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9));
+            s_LogHelper.Log(GameFrameworkLogLevel.Info,
+                Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9));
         }
 
         /// <summary>
@@ -815,14 +853,16 @@ namespace GameFramework
         /// <param name="arg8">日志参数 8。</param>
         /// <param name="arg9">日志参数 9。</param>
         /// <param name="arg10">日志参数 10。</param>
-        public static void Info<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10)
+        public static void Info<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>(string format, T1 arg1, T2 arg2, T3 arg3,
+            T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10)
         {
             if (s_LogHelper == null)
             {
                 return;
             }
 
-            s_LogHelper.Log(GameFrameworkLogLevel.Info, Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10));
+            s_LogHelper.Log(GameFrameworkLogLevel.Info,
+                Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10));
         }
 
         /// <summary>
@@ -851,14 +891,16 @@ namespace GameFramework
         /// <param name="arg9">日志参数 9。</param>
         /// <param name="arg10">日志参数 10。</param>
         /// <param name="arg11">日志参数 11。</param>
-        public static void Info<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11)
+        public static void Info<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>(string format, T1 arg1, T2 arg2, T3 arg3,
+            T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11)
         {
             if (s_LogHelper == null)
             {
                 return;
             }
 
-            s_LogHelper.Log(GameFrameworkLogLevel.Info, Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11));
+            s_LogHelper.Log(GameFrameworkLogLevel.Info,
+                Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11));
         }
 
         /// <summary>
@@ -889,14 +931,16 @@ namespace GameFramework
         /// <param name="arg10">日志参数 10。</param>
         /// <param name="arg11">日志参数 11。</param>
         /// <param name="arg12">日志参数 12。</param>
-        public static void Info<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11, T12 arg12)
+        public static void Info<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>(string format, T1 arg1, T2 arg2,
+            T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11, T12 arg12)
         {
             if (s_LogHelper == null)
             {
                 return;
             }
 
-            s_LogHelper.Log(GameFrameworkLogLevel.Info, Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12));
+            s_LogHelper.Log(GameFrameworkLogLevel.Info,
+                Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12));
         }
 
         /// <summary>
@@ -929,14 +973,17 @@ namespace GameFramework
         /// <param name="arg11">日志参数 11。</param>
         /// <param name="arg12">日志参数 12。</param>
         /// <param name="arg13">日志参数 13。</param>
-        public static void Info<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11, T12 arg12, T13 arg13)
+        public static void Info<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>(string format, T1 arg1, T2 arg2,
+            T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11, T12 arg12, T13 arg13)
         {
             if (s_LogHelper == null)
             {
                 return;
             }
 
-            s_LogHelper.Log(GameFrameworkLogLevel.Info, Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12, arg13));
+            s_LogHelper.Log(GameFrameworkLogLevel.Info,
+                Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12,
+                    arg13));
         }
 
         /// <summary>
@@ -971,14 +1018,18 @@ namespace GameFramework
         /// <param name="arg12">日志参数 12。</param>
         /// <param name="arg13">日志参数 13。</param>
         /// <param name="arg14">日志参数 14。</param>
-        public static void Info<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11, T12 arg12, T13 arg13, T14 arg14)
+        public static void Info<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>(string format, T1 arg1,
+            T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11, T12 arg12,
+            T13 arg13, T14 arg14)
         {
             if (s_LogHelper == null)
             {
                 return;
             }
 
-            s_LogHelper.Log(GameFrameworkLogLevel.Info, Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12, arg13, arg14));
+            s_LogHelper.Log(GameFrameworkLogLevel.Info,
+                Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12,
+                    arg13, arg14));
         }
 
         /// <summary>
@@ -1015,14 +1066,18 @@ namespace GameFramework
         /// <param name="arg13">日志参数 13。</param>
         /// <param name="arg14">日志参数 14。</param>
         /// <param name="arg15">日志参数 15。</param>
-        public static void Info<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11, T12 arg12, T13 arg13, T14 arg14, T15 arg15)
+        public static void Info<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>(string format,
+            T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11,
+            T12 arg12, T13 arg13, T14 arg14, T15 arg15)
         {
             if (s_LogHelper == null)
             {
                 return;
             }
 
-            s_LogHelper.Log(GameFrameworkLogLevel.Info, Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12, arg13, arg14, arg15));
+            s_LogHelper.Log(GameFrameworkLogLevel.Info,
+                Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12,
+                    arg13, arg14, arg15));
         }
 
         /// <summary>
@@ -1061,14 +1116,18 @@ namespace GameFramework
         /// <param name="arg14">日志参数 14。</param>
         /// <param name="arg15">日志参数 15。</param>
         /// <param name="arg16">日志参数 16。</param>
-        public static void Info<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11, T12 arg12, T13 arg13, T14 arg14, T15 arg15, T16 arg16)
+        public static void Info<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(string format,
+            T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11,
+            T12 arg12, T13 arg13, T14 arg14, T15 arg15, T16 arg16)
         {
             if (s_LogHelper == null)
             {
                 return;
             }
 
-            s_LogHelper.Log(GameFrameworkLogLevel.Info, Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12, arg13, arg14, arg15, arg16));
+            s_LogHelper.Log(GameFrameworkLogLevel.Info,
+                Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12,
+                    arg13, arg14, arg15, arg16));
         }
 
         /// <summary>
@@ -1215,14 +1274,16 @@ namespace GameFramework
         /// <param name="arg4">日志参数 4。</param>
         /// <param name="arg5">日志参数 5。</param>
         /// <param name="arg6">日志参数 6。</param>
-        public static void Warning<T1, T2, T3, T4, T5, T6>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6)
+        public static void Warning<T1, T2, T3, T4, T5, T6>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5,
+            T6 arg6)
         {
             if (s_LogHelper == null)
             {
                 return;
             }
 
-            s_LogHelper.Log(GameFrameworkLogLevel.Warning, Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6));
+            s_LogHelper.Log(GameFrameworkLogLevel.Warning,
+                Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6));
         }
 
         /// <summary>
@@ -1243,14 +1304,16 @@ namespace GameFramework
         /// <param name="arg5">日志参数 5。</param>
         /// <param name="arg6">日志参数 6。</param>
         /// <param name="arg7">日志参数 7。</param>
-        public static void Warning<T1, T2, T3, T4, T5, T6, T7>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7)
+        public static void Warning<T1, T2, T3, T4, T5, T6, T7>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4,
+            T5 arg5, T6 arg6, T7 arg7)
         {
             if (s_LogHelper == null)
             {
                 return;
             }
 
-            s_LogHelper.Log(GameFrameworkLogLevel.Warning, Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7));
+            s_LogHelper.Log(GameFrameworkLogLevel.Warning,
+                Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7));
         }
 
         /// <summary>
@@ -1273,14 +1336,16 @@ namespace GameFramework
         /// <param name="arg6">日志参数 6。</param>
         /// <param name="arg7">日志参数 7。</param>
         /// <param name="arg8">日志参数 8。</param>
-        public static void Warning<T1, T2, T3, T4, T5, T6, T7, T8>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8)
+        public static void Warning<T1, T2, T3, T4, T5, T6, T7, T8>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4,
+            T5 arg5, T6 arg6, T7 arg7, T8 arg8)
         {
             if (s_LogHelper == null)
             {
                 return;
             }
 
-            s_LogHelper.Log(GameFrameworkLogLevel.Warning, Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8));
+            s_LogHelper.Log(GameFrameworkLogLevel.Warning,
+                Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8));
         }
 
         /// <summary>
@@ -1305,14 +1370,16 @@ namespace GameFramework
         /// <param name="arg7">日志参数 7。</param>
         /// <param name="arg8">日志参数 8。</param>
         /// <param name="arg9">日志参数 9。</param>
-        public static void Warning<T1, T2, T3, T4, T5, T6, T7, T8, T9>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9)
+        public static void Warning<T1, T2, T3, T4, T5, T6, T7, T8, T9>(string format, T1 arg1, T2 arg2, T3 arg3,
+            T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9)
         {
             if (s_LogHelper == null)
             {
                 return;
             }
 
-            s_LogHelper.Log(GameFrameworkLogLevel.Warning, Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9));
+            s_LogHelper.Log(GameFrameworkLogLevel.Warning,
+                Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9));
         }
 
         /// <summary>
@@ -1339,14 +1406,16 @@ namespace GameFramework
         /// <param name="arg8">日志参数 8。</param>
         /// <param name="arg9">日志参数 9。</param>
         /// <param name="arg10">日志参数 10。</param>
-        public static void Warning<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10)
+        public static void Warning<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>(string format, T1 arg1, T2 arg2, T3 arg3,
+            T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10)
         {
             if (s_LogHelper == null)
             {
                 return;
             }
 
-            s_LogHelper.Log(GameFrameworkLogLevel.Warning, Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10));
+            s_LogHelper.Log(GameFrameworkLogLevel.Warning,
+                Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10));
         }
 
         /// <summary>
@@ -1375,14 +1444,16 @@ namespace GameFramework
         /// <param name="arg9">日志参数 9。</param>
         /// <param name="arg10">日志参数 10。</param>
         /// <param name="arg11">日志参数 11。</param>
-        public static void Warning<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11)
+        public static void Warning<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>(string format, T1 arg1, T2 arg2,
+            T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11)
         {
             if (s_LogHelper == null)
             {
                 return;
             }
 
-            s_LogHelper.Log(GameFrameworkLogLevel.Warning, Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11));
+            s_LogHelper.Log(GameFrameworkLogLevel.Warning,
+                Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11));
         }
 
         /// <summary>
@@ -1413,14 +1484,16 @@ namespace GameFramework
         /// <param name="arg10">日志参数 10。</param>
         /// <param name="arg11">日志参数 11。</param>
         /// <param name="arg12">日志参数 12。</param>
-        public static void Warning<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11, T12 arg12)
+        public static void Warning<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>(string format, T1 arg1, T2 arg2,
+            T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11, T12 arg12)
         {
             if (s_LogHelper == null)
             {
                 return;
             }
 
-            s_LogHelper.Log(GameFrameworkLogLevel.Warning, Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12));
+            s_LogHelper.Log(GameFrameworkLogLevel.Warning,
+                Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12));
         }
 
         /// <summary>
@@ -1453,14 +1526,18 @@ namespace GameFramework
         /// <param name="arg11">日志参数 11。</param>
         /// <param name="arg12">日志参数 12。</param>
         /// <param name="arg13">日志参数 13。</param>
-        public static void Warning<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11, T12 arg12, T13 arg13)
+        public static void Warning<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>(string format, T1 arg1,
+            T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11, T12 arg12,
+            T13 arg13)
         {
             if (s_LogHelper == null)
             {
                 return;
             }
 
-            s_LogHelper.Log(GameFrameworkLogLevel.Warning, Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12, arg13));
+            s_LogHelper.Log(GameFrameworkLogLevel.Warning,
+                Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12,
+                    arg13));
         }
 
         /// <summary>
@@ -1495,14 +1572,18 @@ namespace GameFramework
         /// <param name="arg12">日志参数 12。</param>
         /// <param name="arg13">日志参数 13。</param>
         /// <param name="arg14">日志参数 14。</param>
-        public static void Warning<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11, T12 arg12, T13 arg13, T14 arg14)
+        public static void Warning<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>(string format, T1 arg1,
+            T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11, T12 arg12,
+            T13 arg13, T14 arg14)
         {
             if (s_LogHelper == null)
             {
                 return;
             }
 
-            s_LogHelper.Log(GameFrameworkLogLevel.Warning, Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12, arg13, arg14));
+            s_LogHelper.Log(GameFrameworkLogLevel.Warning,
+                Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12,
+                    arg13, arg14));
         }
 
         /// <summary>
@@ -1539,14 +1620,18 @@ namespace GameFramework
         /// <param name="arg13">日志参数 13。</param>
         /// <param name="arg14">日志参数 14。</param>
         /// <param name="arg15">日志参数 15。</param>
-        public static void Warning<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11, T12 arg12, T13 arg13, T14 arg14, T15 arg15)
+        public static void Warning<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>(string format,
+            T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11,
+            T12 arg12, T13 arg13, T14 arg14, T15 arg15)
         {
             if (s_LogHelper == null)
             {
                 return;
             }
 
-            s_LogHelper.Log(GameFrameworkLogLevel.Warning, Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12, arg13, arg14, arg15));
+            s_LogHelper.Log(GameFrameworkLogLevel.Warning,
+                Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12,
+                    arg13, arg14, arg15));
         }
 
         /// <summary>
@@ -1585,14 +1670,18 @@ namespace GameFramework
         /// <param name="arg14">日志参数 14。</param>
         /// <param name="arg15">日志参数 15。</param>
         /// <param name="arg16">日志参数 16。</param>
-        public static void Warning<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11, T12 arg12, T13 arg13, T14 arg14, T15 arg15, T16 arg16)
+        public static void Warning<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(string format,
+            T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11,
+            T12 arg12, T13 arg13, T14 arg14, T15 arg15, T16 arg16)
         {
             if (s_LogHelper == null)
             {
                 return;
             }
 
-            s_LogHelper.Log(GameFrameworkLogLevel.Warning, Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12, arg13, arg14, arg15, arg16));
+            s_LogHelper.Log(GameFrameworkLogLevel.Warning,
+                Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12,
+                    arg13, arg14, arg15, arg16));
         }
 
         /// <summary>
@@ -1739,14 +1828,16 @@ namespace GameFramework
         /// <param name="arg4">日志参数 4。</param>
         /// <param name="arg5">日志参数 5。</param>
         /// <param name="arg6">日志参数 6。</param>
-        public static void Error<T1, T2, T3, T4, T5, T6>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6)
+        public static void Error<T1, T2, T3, T4, T5, T6>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5,
+            T6 arg6)
         {
             if (s_LogHelper == null)
             {
                 return;
             }
 
-            s_LogHelper.Log(GameFrameworkLogLevel.Error, Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6));
+            s_LogHelper.Log(GameFrameworkLogLevel.Error,
+                Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6));
         }
 
         /// <summary>
@@ -1767,14 +1858,16 @@ namespace GameFramework
         /// <param name="arg5">日志参数 5。</param>
         /// <param name="arg6">日志参数 6。</param>
         /// <param name="arg7">日志参数 7。</param>
-        public static void Error<T1, T2, T3, T4, T5, T6, T7>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7)
+        public static void Error<T1, T2, T3, T4, T5, T6, T7>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5,
+            T6 arg6, T7 arg7)
         {
             if (s_LogHelper == null)
             {
                 return;
             }
 
-            s_LogHelper.Log(GameFrameworkLogLevel.Error, Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7));
+            s_LogHelper.Log(GameFrameworkLogLevel.Error,
+                Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7));
         }
 
         /// <summary>
@@ -1797,14 +1890,16 @@ namespace GameFramework
         /// <param name="arg6">日志参数 6。</param>
         /// <param name="arg7">日志参数 7。</param>
         /// <param name="arg8">日志参数 8。</param>
-        public static void Error<T1, T2, T3, T4, T5, T6, T7, T8>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8)
+        public static void Error<T1, T2, T3, T4, T5, T6, T7, T8>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4,
+            T5 arg5, T6 arg6, T7 arg7, T8 arg8)
         {
             if (s_LogHelper == null)
             {
                 return;
             }
 
-            s_LogHelper.Log(GameFrameworkLogLevel.Error, Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8));
+            s_LogHelper.Log(GameFrameworkLogLevel.Error,
+                Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8));
         }
 
         /// <summary>
@@ -1829,14 +1924,16 @@ namespace GameFramework
         /// <param name="arg7">日志参数 7。</param>
         /// <param name="arg8">日志参数 8。</param>
         /// <param name="arg9">日志参数 9。</param>
-        public static void Error<T1, T2, T3, T4, T5, T6, T7, T8, T9>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9)
+        public static void Error<T1, T2, T3, T4, T5, T6, T7, T8, T9>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4,
+            T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9)
         {
             if (s_LogHelper == null)
             {
                 return;
             }
 
-            s_LogHelper.Log(GameFrameworkLogLevel.Error, Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9));
+            s_LogHelper.Log(GameFrameworkLogLevel.Error,
+                Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9));
         }
 
         /// <summary>
@@ -1863,14 +1960,16 @@ namespace GameFramework
         /// <param name="arg8">日志参数 8。</param>
         /// <param name="arg9">日志参数 9。</param>
         /// <param name="arg10">日志参数 10。</param>
-        public static void Error<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10)
+        public static void Error<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>(string format, T1 arg1, T2 arg2, T3 arg3,
+            T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10)
         {
             if (s_LogHelper == null)
             {
                 return;
             }
 
-            s_LogHelper.Log(GameFrameworkLogLevel.Error, Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10));
+            s_LogHelper.Log(GameFrameworkLogLevel.Error,
+                Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10));
         }
 
         /// <summary>
@@ -1899,14 +1998,16 @@ namespace GameFramework
         /// <param name="arg9">日志参数 9。</param>
         /// <param name="arg10">日志参数 10。</param>
         /// <param name="arg11">日志参数 11。</param>
-        public static void Error<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11)
+        public static void Error<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>(string format, T1 arg1, T2 arg2, T3 arg3,
+            T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11)
         {
             if (s_LogHelper == null)
             {
                 return;
             }
 
-            s_LogHelper.Log(GameFrameworkLogLevel.Error, Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11));
+            s_LogHelper.Log(GameFrameworkLogLevel.Error,
+                Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11));
         }
 
         /// <summary>
@@ -1937,14 +2038,16 @@ namespace GameFramework
         /// <param name="arg10">日志参数 10。</param>
         /// <param name="arg11">日志参数 11。</param>
         /// <param name="arg12">日志参数 12。</param>
-        public static void Error<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11, T12 arg12)
+        public static void Error<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>(string format, T1 arg1, T2 arg2,
+            T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11, T12 arg12)
         {
             if (s_LogHelper == null)
             {
                 return;
             }
 
-            s_LogHelper.Log(GameFrameworkLogLevel.Error, Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12));
+            s_LogHelper.Log(GameFrameworkLogLevel.Error,
+                Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12));
         }
 
         /// <summary>
@@ -1977,14 +2080,18 @@ namespace GameFramework
         /// <param name="arg11">日志参数 11。</param>
         /// <param name="arg12">日志参数 12。</param>
         /// <param name="arg13">日志参数 13。</param>
-        public static void Error<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11, T12 arg12, T13 arg13)
+        public static void Error<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>(string format, T1 arg1,
+            T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11, T12 arg12,
+            T13 arg13)
         {
             if (s_LogHelper == null)
             {
                 return;
             }
 
-            s_LogHelper.Log(GameFrameworkLogLevel.Error, Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12, arg13));
+            s_LogHelper.Log(GameFrameworkLogLevel.Error,
+                Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12,
+                    arg13));
         }
 
         /// <summary>
@@ -2019,14 +2126,18 @@ namespace GameFramework
         /// <param name="arg12">日志参数 12。</param>
         /// <param name="arg13">日志参数 13。</param>
         /// <param name="arg14">日志参数 14。</param>
-        public static void Error<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11, T12 arg12, T13 arg13, T14 arg14)
+        public static void Error<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>(string format, T1 arg1,
+            T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11, T12 arg12,
+            T13 arg13, T14 arg14)
         {
             if (s_LogHelper == null)
             {
                 return;
             }
 
-            s_LogHelper.Log(GameFrameworkLogLevel.Error, Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12, arg13, arg14));
+            s_LogHelper.Log(GameFrameworkLogLevel.Error,
+                Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12,
+                    arg13, arg14));
         }
 
         /// <summary>
@@ -2063,14 +2174,18 @@ namespace GameFramework
         /// <param name="arg13">日志参数 13。</param>
         /// <param name="arg14">日志参数 14。</param>
         /// <param name="arg15">日志参数 15。</param>
-        public static void Error<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11, T12 arg12, T13 arg13, T14 arg14, T15 arg15)
+        public static void Error<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>(string format,
+            T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11,
+            T12 arg12, T13 arg13, T14 arg14, T15 arg15)
         {
             if (s_LogHelper == null)
             {
                 return;
             }
 
-            s_LogHelper.Log(GameFrameworkLogLevel.Error, Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12, arg13, arg14, arg15));
+            s_LogHelper.Log(GameFrameworkLogLevel.Error,
+                Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12,
+                    arg13, arg14, arg15));
         }
 
         /// <summary>
@@ -2109,14 +2224,18 @@ namespace GameFramework
         /// <param name="arg14">日志参数 14。</param>
         /// <param name="arg15">日志参数 15。</param>
         /// <param name="arg16">日志参数 16。</param>
-        public static void Error<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11, T12 arg12, T13 arg13, T14 arg14, T15 arg15, T16 arg16)
+        public static void Error<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(string format,
+            T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11,
+            T12 arg12, T13 arg13, T14 arg14, T15 arg15, T16 arg16)
         {
             if (s_LogHelper == null)
             {
                 return;
             }
 
-            s_LogHelper.Log(GameFrameworkLogLevel.Error, Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12, arg13, arg14, arg15, arg16));
+            s_LogHelper.Log(GameFrameworkLogLevel.Error,
+                Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12,
+                    arg13, arg14, arg15, arg16));
         }
 
         /// <summary>
@@ -2263,14 +2382,16 @@ namespace GameFramework
         /// <param name="arg4">日志参数 4。</param>
         /// <param name="arg5">日志参数 5。</param>
         /// <param name="arg6">日志参数 6。</param>
-        public static void Fatal<T1, T2, T3, T4, T5, T6>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6)
+        public static void Fatal<T1, T2, T3, T4, T5, T6>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5,
+            T6 arg6)
         {
             if (s_LogHelper == null)
             {
                 return;
             }
 
-            s_LogHelper.Log(GameFrameworkLogLevel.Fatal, Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6));
+            s_LogHelper.Log(GameFrameworkLogLevel.Fatal,
+                Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6));
         }
 
         /// <summary>
@@ -2291,14 +2412,16 @@ namespace GameFramework
         /// <param name="arg5">日志参数 5。</param>
         /// <param name="arg6">日志参数 6。</param>
         /// <param name="arg7">日志参数 7。</param>
-        public static void Fatal<T1, T2, T3, T4, T5, T6, T7>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7)
+        public static void Fatal<T1, T2, T3, T4, T5, T6, T7>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5,
+            T6 arg6, T7 arg7)
         {
             if (s_LogHelper == null)
             {
                 return;
             }
 
-            s_LogHelper.Log(GameFrameworkLogLevel.Fatal, Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7));
+            s_LogHelper.Log(GameFrameworkLogLevel.Fatal,
+                Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7));
         }
 
         /// <summary>
@@ -2321,14 +2444,16 @@ namespace GameFramework
         /// <param name="arg6">日志参数 6。</param>
         /// <param name="arg7">日志参数 7。</param>
         /// <param name="arg8">日志参数 8。</param>
-        public static void Fatal<T1, T2, T3, T4, T5, T6, T7, T8>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8)
+        public static void Fatal<T1, T2, T3, T4, T5, T6, T7, T8>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4,
+            T5 arg5, T6 arg6, T7 arg7, T8 arg8)
         {
             if (s_LogHelper == null)
             {
                 return;
             }
 
-            s_LogHelper.Log(GameFrameworkLogLevel.Fatal, Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8));
+            s_LogHelper.Log(GameFrameworkLogLevel.Fatal,
+                Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8));
         }
 
         /// <summary>
@@ -2353,14 +2478,16 @@ namespace GameFramework
         /// <param name="arg7">日志参数 7。</param>
         /// <param name="arg8">日志参数 8。</param>
         /// <param name="arg9">日志参数 9。</param>
-        public static void Fatal<T1, T2, T3, T4, T5, T6, T7, T8, T9>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9)
+        public static void Fatal<T1, T2, T3, T4, T5, T6, T7, T8, T9>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4,
+            T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9)
         {
             if (s_LogHelper == null)
             {
                 return;
             }
 
-            s_LogHelper.Log(GameFrameworkLogLevel.Fatal, Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9));
+            s_LogHelper.Log(GameFrameworkLogLevel.Fatal,
+                Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9));
         }
 
         /// <summary>
@@ -2387,14 +2514,16 @@ namespace GameFramework
         /// <param name="arg8">日志参数 8。</param>
         /// <param name="arg9">日志参数 9。</param>
         /// <param name="arg10">日志参数 10。</param>
-        public static void Fatal<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10)
+        public static void Fatal<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>(string format, T1 arg1, T2 arg2, T3 arg3,
+            T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10)
         {
             if (s_LogHelper == null)
             {
                 return;
             }
 
-            s_LogHelper.Log(GameFrameworkLogLevel.Fatal, Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10));
+            s_LogHelper.Log(GameFrameworkLogLevel.Fatal,
+                Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10));
         }
 
         /// <summary>
@@ -2423,14 +2552,16 @@ namespace GameFramework
         /// <param name="arg9">日志参数 9。</param>
         /// <param name="arg10">日志参数 10。</param>
         /// <param name="arg11">日志参数 11。</param>
-        public static void Fatal<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11)
+        public static void Fatal<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11>(string format, T1 arg1, T2 arg2, T3 arg3,
+            T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11)
         {
             if (s_LogHelper == null)
             {
                 return;
             }
 
-            s_LogHelper.Log(GameFrameworkLogLevel.Fatal, Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11));
+            s_LogHelper.Log(GameFrameworkLogLevel.Fatal,
+                Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11));
         }
 
         /// <summary>
@@ -2461,14 +2592,16 @@ namespace GameFramework
         /// <param name="arg10">日志参数 10。</param>
         /// <param name="arg11">日志参数 11。</param>
         /// <param name="arg12">日志参数 12。</param>
-        public static void Fatal<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11, T12 arg12)
+        public static void Fatal<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12>(string format, T1 arg1, T2 arg2,
+            T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11, T12 arg12)
         {
             if (s_LogHelper == null)
             {
                 return;
             }
 
-            s_LogHelper.Log(GameFrameworkLogLevel.Fatal, Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12));
+            s_LogHelper.Log(GameFrameworkLogLevel.Fatal,
+                Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12));
         }
 
         /// <summary>
@@ -2501,14 +2634,18 @@ namespace GameFramework
         /// <param name="arg11">日志参数 11。</param>
         /// <param name="arg12">日志参数 12。</param>
         /// <param name="arg13">日志参数 13。</param>
-        public static void Fatal<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11, T12 arg12, T13 arg13)
+        public static void Fatal<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>(string format, T1 arg1,
+            T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11, T12 arg12,
+            T13 arg13)
         {
             if (s_LogHelper == null)
             {
                 return;
             }
 
-            s_LogHelper.Log(GameFrameworkLogLevel.Fatal, Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12, arg13));
+            s_LogHelper.Log(GameFrameworkLogLevel.Fatal,
+                Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12,
+                    arg13));
         }
 
         /// <summary>
@@ -2543,14 +2680,18 @@ namespace GameFramework
         /// <param name="arg12">日志参数 12。</param>
         /// <param name="arg13">日志参数 13。</param>
         /// <param name="arg14">日志参数 14。</param>
-        public static void Fatal<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11, T12 arg12, T13 arg13, T14 arg14)
+        public static void Fatal<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14>(string format, T1 arg1,
+            T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11, T12 arg12,
+            T13 arg13, T14 arg14)
         {
             if (s_LogHelper == null)
             {
                 return;
             }
 
-            s_LogHelper.Log(GameFrameworkLogLevel.Fatal, Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12, arg13, arg14));
+            s_LogHelper.Log(GameFrameworkLogLevel.Fatal,
+                Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12,
+                    arg13, arg14));
         }
 
         /// <summary>
@@ -2587,14 +2728,18 @@ namespace GameFramework
         /// <param name="arg13">日志参数 13。</param>
         /// <param name="arg14">日志参数 14。</param>
         /// <param name="arg15">日志参数 15。</param>
-        public static void Fatal<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11, T12 arg12, T13 arg13, T14 arg14, T15 arg15)
+        public static void Fatal<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15>(string format,
+            T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11,
+            T12 arg12, T13 arg13, T14 arg14, T15 arg15)
         {
             if (s_LogHelper == null)
             {
                 return;
             }
 
-            s_LogHelper.Log(GameFrameworkLogLevel.Fatal, Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12, arg13, arg14, arg15));
+            s_LogHelper.Log(GameFrameworkLogLevel.Fatal,
+                Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12,
+                    arg13, arg14, arg15));
         }
 
         /// <summary>
@@ -2633,14 +2778,18 @@ namespace GameFramework
         /// <param name="arg14">日志参数 14。</param>
         /// <param name="arg15">日志参数 15。</param>
         /// <param name="arg16">日志参数 16。</param>
-        public static void Fatal<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(string format, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11, T12 arg12, T13 arg13, T14 arg14, T15 arg15, T16 arg16)
+        public static void Fatal<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16>(string format,
+            T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10, T11 arg11,
+            T12 arg12, T13 arg13, T14 arg14, T15 arg15, T16 arg16)
         {
             if (s_LogHelper == null)
             {
                 return;
             }
 
-            s_LogHelper.Log(GameFrameworkLogLevel.Fatal, Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12, arg13, arg14, arg15, arg16));
+            s_LogHelper.Log(GameFrameworkLogLevel.Fatal,
+                Utility.Text.Format(format, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12,
+                    arg13, arg14, arg15, arg16));
         }
     }
 }

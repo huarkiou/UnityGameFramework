@@ -30,45 +30,15 @@ namespace UnityGameFramework.Runtime
             [SerializeField]
             private int m_AgentHelperCount = 1;
 
-            public string Name
-            {
-                get
-                {
-                    return m_Name;
-                }
-            }
+            public string Name => m_Name;
 
-            public bool AvoidBeingReplacedBySamePriority
-            {
-                get
-                {
-                    return m_AvoidBeingReplacedBySamePriority;
-                }
-            }
+            public bool AvoidBeingReplacedBySamePriority => m_AvoidBeingReplacedBySamePriority;
 
-            public bool Mute
-            {
-                get
-                {
-                    return m_Mute;
-                }
-            }
+            public bool Mute => m_Mute;
 
-            public float Volume
-            {
-                get
-                {
-                    return m_Volume;
-                }
-            }
+            public float Volume => m_Volume;
 
-            public int AgentHelperCount
-            {
-                get
-                {
-                    return m_AgentHelperCount;
-                }
-            }
+            public int AgentHelperCount => m_AgentHelperCount;
         }
     }
 }

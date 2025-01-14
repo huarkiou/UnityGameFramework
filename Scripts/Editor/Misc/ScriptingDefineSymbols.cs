@@ -16,7 +16,8 @@ namespace UnityGameFramework.Editor
     /// </summary>
     public static class ScriptingDefineSymbols
     {
-        private static readonly NamedBuildTarget[] NamedBuildTargets = {
+        private static readonly NamedBuildTarget[] NamedBuildTargets =
+        {
             NamedBuildTarget.Standalone,
             NamedBuildTarget.iOS,
             NamedBuildTarget.Android,

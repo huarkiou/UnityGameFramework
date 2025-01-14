@@ -5,11 +5,11 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameFramework;
-using GameFramework.Resource;
 using System;
 using System.IO;
 using System.Text;
+using GameFramework;
+using GameFramework.Resource;
 
 namespace UnityGameFramework.Runtime
 {
@@ -123,7 +123,8 @@ namespace UnityGameFramework.Runtime
                 {
                     binaryWriter.WriteEncryptedString(resource.Name, s_CachedHashBytes);
                     binaryWriter.WriteEncryptedString(resource.Variant, s_CachedHashBytes);
-                    binaryWriter.WriteEncryptedString(resource.Extension != DefaultExtension ? resource.Extension : null, s_CachedHashBytes);
+                    binaryWriter.WriteEncryptedString(
+                        resource.Extension != DefaultExtension ? resource.Extension : null, s_CachedHashBytes);
                     binaryWriter.Write(resource.LoadType);
                     binaryWriter.Write7BitEncodedInt32(resource.Length);
                     binaryWriter.Write(resource.HashCode);
@@ -191,7 +192,8 @@ namespace UnityGameFramework.Runtime
                 {
                     binaryWriter.WriteEncryptedString(resource.Name, s_CachedHashBytes);
                     binaryWriter.WriteEncryptedString(resource.Variant, s_CachedHashBytes);
-                    binaryWriter.WriteEncryptedString(resource.Extension != DefaultExtension ? resource.Extension : null, s_CachedHashBytes);
+                    binaryWriter.WriteEncryptedString(
+                        resource.Extension != DefaultExtension ? resource.Extension : null, s_CachedHashBytes);
                     binaryWriter.Write(resource.LoadType);
                     binaryWriter.Write7BitEncodedInt32(resource.Length);
                     binaryWriter.Write(resource.HashCode);

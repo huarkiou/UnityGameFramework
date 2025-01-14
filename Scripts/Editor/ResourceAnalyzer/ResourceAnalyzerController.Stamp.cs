@@ -23,21 +23,9 @@ namespace UnityGameFramework.Editor.ResourceTools
                 m_DependencyAssetName = dependencyAssetName;
             }
 
-            public string HostAssetName
-            {
-                get
-                {
-                    return m_HostAssetName;
-                }
-            }
+            public string HostAssetName => m_HostAssetName;
 
-            public string DependencyAssetName
-            {
-                get
-                {
-                    return m_DependencyAssetName;
-                }
-            }
+            public string DependencyAssetName => m_DependencyAssetName;
         }
     }
 }

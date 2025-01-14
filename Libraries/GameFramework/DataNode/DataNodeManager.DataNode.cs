@@ -53,46 +53,24 @@ namespace GameFramework.DataNode
             /// <summary>
             /// 获取数据结点的名称。
             /// </summary>
-            public string Name
-            {
-                get
-                {
-                    return m_Name;
-                }
-            }
+            public string Name => m_Name;
 
             /// <summary>
             /// 获取数据结点的完整名称。
             /// </summary>
-            public string FullName
-            {
-                get
-                {
-                    return m_Parent == null ? m_Name : Utility.Text.Format("{0}{1}{2}", m_Parent.FullName, PathSplitSeparator[0], m_Name);
-                }
-            }
+            public string FullName => m_Parent == null
+                ? m_Name
+                : Utility.Text.Format("{0}{1}{2}", m_Parent.FullName, PathSplitSeparator[0], m_Name);
 
             /// <summary>
             /// 获取父数据结点。
             /// </summary>
-            public IDataNode Parent
-            {
-                get
-                {
-                    return m_Parent;
-                }
-            }
+            public IDataNode Parent => m_Parent;
 
             /// <summary>
             /// 获取子数据结点的数量。
             /// </summary>
-            public int ChildCount
-            {
-                get
-                {
-                    return m_Childs != null ? m_Childs.Count : 0;
-                }
-            }
+            public int ChildCount => m_Childs != null ? m_Childs.Count : 0;
 
             /// <summary>
             /// 根据类型获取数据结点的数据。

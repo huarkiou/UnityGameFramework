@@ -36,67 +36,37 @@ namespace UnityGameFramework.Runtime
         /// <summary>
         /// 获取打开界面更新事件编号。
         /// </summary>
-        public override int Id
-        {
-            get
-            {
-                return EventId;
-            }
-        }
+        public override int Id => EventId;
 
         /// <summary>
         /// 获取界面序列编号。
         /// </summary>
-        public int SerialId
-        {
-            get;
-            private set;
-        }
+        public int SerialId { get; private set; }
 
         /// <summary>
         /// 获取界面资源名称。
         /// </summary>
-        public string UIFormAssetName
-        {
-            get;
-            private set;
-        }
+        public string UIFormAssetName { get; private set; }
 
         /// <summary>
         /// 获取界面组名称。
         /// </summary>
-        public string UIGroupName
-        {
-            get;
-            private set;
-        }
+        public string UIGroupName { get; private set; }
 
         /// <summary>
         /// 获取是否暂停被覆盖的界面。
         /// </summary>
-        public bool PauseCoveredUIForm
-        {
-            get;
-            private set;
-        }
+        public bool PauseCoveredUIForm { get; private set; }
 
         /// <summary>
         /// 获取打开界面进度。
         /// </summary>
-        public float Progress
-        {
-            get;
-            private set;
-        }
+        public float Progress { get; private set; }
 
         /// <summary>
         /// 获取用户自定义数据。
         /// </summary>
-        public object UserData
-        {
-            get;
-            private set;
-        }
+        public object UserData { get; private set; }
 
         /// <summary>
         /// 创建打开界面更新事件。

@@ -27,36 +27,18 @@ namespace GameFramework.UI
                     m_Covered = false;
                 }
 
-                public IUIForm UIForm
-                {
-                    get
-                    {
-                        return m_UIForm;
-                    }
-                }
+                public IUIForm UIForm => m_UIForm;
 
                 public bool Paused
                 {
-                    get
-                    {
-                        return m_Paused;
-                    }
-                    set
-                    {
-                        m_Paused = value;
-                    }
+                    get => m_Paused;
+                    set => m_Paused = value;
                 }
 
                 public bool Covered
                 {
-                    get
-                    {
-                        return m_Covered;
-                    }
-                    set
-                    {
-                        m_Covered = value;
-                    }
+                    get => m_Covered;
+                    set => m_Covered = value;
                 }
 
                 public static UIFormInfo Create(IUIForm uiForm)

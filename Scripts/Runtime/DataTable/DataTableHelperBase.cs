@@ -24,7 +24,8 @@ namespace UnityGameFramework.Runtime
         /// <param name="dataTableAsset">数据表资源。</param>
         /// <param name="userData">用户自定义数据。</param>
         /// <returns>是否读取数据表成功。</returns>
-        public abstract bool ReadData(DataTableBase dataTable, string dataTableAssetName, object dataTableAsset, object userData);
+        public abstract bool ReadData(DataTableBase dataTable, string dataTableAssetName, object dataTableAsset,
+            object userData);
 
         /// <summary>
         /// 读取数据表。
@@ -36,7 +37,8 @@ namespace UnityGameFramework.Runtime
         /// <param name="length">数据表二进制流的长度。</param>
         /// <param name="userData">用户自定义数据。</param>
         /// <returns>是否读取数据表成功。</returns>
-        public abstract bool ReadData(DataTableBase dataTable, string dataTableAssetName, byte[] dataTableBytes, int startIndex, int length, object userData);
+        public abstract bool ReadData(DataTableBase dataTable, string dataTableAssetName, byte[] dataTableBytes,
+            int startIndex, int length, object userData);
 
         /// <summary>
         /// 解析数据表。
@@ -56,7 +58,8 @@ namespace UnityGameFramework.Runtime
         /// <param name="length">数据表二进制流的长度。</param>
         /// <param name="userData">用户自定义数据。</param>
         /// <returns>是否解析数据表成功。</returns>
-        public abstract bool ParseData(DataTableBase dataTable, byte[] dataTableBytes, int startIndex, int length, object userData);
+        public abstract bool ParseData(DataTableBase dataTable, byte[] dataTableBytes, int startIndex, int length,
+            object userData);
 
         /// <summary>
         /// 释放数据表资源。

@@ -45,86 +45,44 @@ namespace GameFramework.Download
         /// 获取游戏框架模块优先级。
         /// </summary>
         /// <remarks>优先级较高的模块会优先轮询，并且关闭操作会后进行。</remarks>
-        internal override int Priority
-        {
-            get
-            {
-                return 5;
-            }
-        }
+        internal override int Priority => 5;
 
         /// <summary>
         /// 获取或设置下载是否被暂停。
         /// </summary>
         public bool Paused
         {
-            get
-            {
-                return m_TaskPool.Paused;
-            }
-            set
-            {
-                m_TaskPool.Paused = value;
-            }
+            get => m_TaskPool.Paused;
+            set => m_TaskPool.Paused = value;
         }
 
         /// <summary>
         /// 获取下载代理总数量。
         /// </summary>
-        public int TotalAgentCount
-        {
-            get
-            {
-                return m_TaskPool.TotalAgentCount;
-            }
-        }
+        public int TotalAgentCount => m_TaskPool.TotalAgentCount;
 
         /// <summary>
         /// 获取可用下载代理数量。
         /// </summary>
-        public int FreeAgentCount
-        {
-            get
-            {
-                return m_TaskPool.FreeAgentCount;
-            }
-        }
+        public int FreeAgentCount => m_TaskPool.FreeAgentCount;
 
         /// <summary>
         /// 获取工作中下载代理数量。
         /// </summary>
-        public int WorkingAgentCount
-        {
-            get
-            {
-                return m_TaskPool.WorkingAgentCount;
-            }
-        }
+        public int WorkingAgentCount => m_TaskPool.WorkingAgentCount;
 
         /// <summary>
         /// 获取等待下载任务数量。
         /// </summary>
-        public int WaitingTaskCount
-        {
-            get
-            {
-                return m_TaskPool.WaitingTaskCount;
-            }
-        }
+        public int WaitingTaskCount => m_TaskPool.WaitingTaskCount;
 
         /// <summary>
         /// 获取或设置将缓冲区写入磁盘的临界大小。
         /// </summary>
         public int FlushSize
         {
-            get
-            {
-                return m_FlushSize;
-            }
-            set
-            {
-                m_FlushSize = value;
-            }
+            get => m_FlushSize;
+            set => m_FlushSize = value;
         }
 
         /// <summary>
@@ -132,40 +90,22 @@ namespace GameFramework.Download
         /// </summary>
         public float Timeout
         {
-            get
-            {
-                return m_Timeout;
-            }
-            set
-            {
-                m_Timeout = value;
-            }
+            get => m_Timeout;
+            set => m_Timeout = value;
         }
 
         /// <summary>
         /// 获取当前下载速度。
         /// </summary>
-        public float CurrentSpeed
-        {
-            get
-            {
-                return m_DownloadCounter.CurrentSpeed;
-            }
-        }
+        public float CurrentSpeed => m_DownloadCounter.CurrentSpeed;
 
         /// <summary>
         /// 下载开始事件。
         /// </summary>
         public event EventHandler<DownloadStartEventArgs> DownloadStart
         {
-            add
-            {
-                m_DownloadStartEventHandler += value;
-            }
-            remove
-            {
-                m_DownloadStartEventHandler -= value;
-            }
+            add => m_DownloadStartEventHandler += value;
+            remove => m_DownloadStartEventHandler -= value;
         }
 
         /// <summary>
@@ -173,14 +113,8 @@ namespace GameFramework.Download
         /// </summary>
         public event EventHandler<DownloadUpdateEventArgs> DownloadUpdate
         {
-            add
-            {
-                m_DownloadUpdateEventHandler += value;
-            }
-            remove
-            {
-                m_DownloadUpdateEventHandler -= value;
-            }
+            add => m_DownloadUpdateEventHandler += value;
+            remove => m_DownloadUpdateEventHandler -= value;
         }
 
         /// <summary>
@@ -188,14 +122,8 @@ namespace GameFramework.Download
         /// </summary>
         public event EventHandler<DownloadSuccessEventArgs> DownloadSuccess
         {
-            add
-            {
-                m_DownloadSuccessEventHandler += value;
-            }
-            remove
-            {
-                m_DownloadSuccessEventHandler -= value;
-            }
+            add => m_DownloadSuccessEventHandler += value;
+            remove => m_DownloadSuccessEventHandler -= value;
         }
 
         /// <summary>
@@ -203,14 +131,8 @@ namespace GameFramework.Download
         /// </summary>
         public event EventHandler<DownloadFailureEventArgs> DownloadFailure
         {
-            add
-            {
-                m_DownloadFailureEventHandler += value;
-            }
-            remove
-            {
-                m_DownloadFailureEventHandler -= value;
-            }
+            add => m_DownloadFailureEventHandler += value;
+            remove => m_DownloadFailureEventHandler -= value;
         }
 
         /// <summary>
@@ -408,7 +330,8 @@ namespace GameFramework.Download
                 throw new GameFrameworkException("You must add download agent first.");
             }
 
-            DownloadTask downloadTask = DownloadTask.Create(downloadPath, downloadUri, tag, priority, m_FlushSize, m_Timeout, userData);
+            DownloadTask downloadTask = DownloadTask.Create(downloadPath, downloadUri, tag, priority, m_FlushSize,
+                m_Timeout, userData);
             m_TaskPool.AddTask(downloadTask);
             return downloadTask.SerialId;
         }
@@ -446,7 +369,8 @@ namespace GameFramework.Download
         {
             if (m_DownloadStartEventHandler != null)
             {
-                DownloadStartEventArgs downloadStartEventArgs = DownloadStartEventArgs.Create(sender.Task.SerialId, sender.Task.DownloadPath, sender.Task.DownloadUri, sender.CurrentLength, sender.Task.UserData);
+                DownloadStartEventArgs downloadStartEventArgs = DownloadStartEventArgs.Create(sender.Task.SerialId,
+                    sender.Task.DownloadPath, sender.Task.DownloadUri, sender.CurrentLength, sender.Task.UserData);
                 m_DownloadStartEventHandler(this, downloadStartEventArgs);
                 ReferencePool.Release(downloadStartEventArgs);
             }
@@ -457,7 +381,8 @@ namespace GameFramework.Download
             m_DownloadCounter.RecordDeltaLength(deltaLength);
             if (m_DownloadUpdateEventHandler != null)
             {
-                DownloadUpdateEventArgs downloadUpdateEventArgs = DownloadUpdateEventArgs.Create(sender.Task.SerialId, sender.Task.DownloadPath, sender.Task.DownloadUri, sender.CurrentLength, sender.Task.UserData);
+                DownloadUpdateEventArgs downloadUpdateEventArgs = DownloadUpdateEventArgs.Create(sender.Task.SerialId,
+                    sender.Task.DownloadPath, sender.Task.DownloadUri, sender.CurrentLength, sender.Task.UserData);
                 m_DownloadUpdateEventHandler(this, downloadUpdateEventArgs);
                 ReferencePool.Release(downloadUpdateEventArgs);
             }
@@ -467,7 +392,9 @@ namespace GameFramework.Download
         {
             if (m_DownloadSuccessEventHandler != null)
             {
-                DownloadSuccessEventArgs downloadSuccessEventArgs = DownloadSuccessEventArgs.Create(sender.Task.SerialId, sender.Task.DownloadPath, sender.Task.DownloadUri, sender.CurrentLength, sender.Task.UserData);
+                DownloadSuccessEventArgs downloadSuccessEventArgs =
+                    DownloadSuccessEventArgs.Create(sender.Task.SerialId, sender.Task.DownloadPath,
+                        sender.Task.DownloadUri, sender.CurrentLength, sender.Task.UserData);
                 m_DownloadSuccessEventHandler(this, downloadSuccessEventArgs);
                 ReferencePool.Release(downloadSuccessEventArgs);
             }
@@ -477,7 +404,9 @@ namespace GameFramework.Download
         {
             if (m_DownloadFailureEventHandler != null)
             {
-                DownloadFailureEventArgs downloadFailureEventArgs = DownloadFailureEventArgs.Create(sender.Task.SerialId, sender.Task.DownloadPath, sender.Task.DownloadUri, errorMessage, sender.Task.UserData);
+                DownloadFailureEventArgs downloadFailureEventArgs =
+                    DownloadFailureEventArgs.Create(sender.Task.SerialId, sender.Task.DownloadPath,
+                        sender.Task.DownloadUri, errorMessage, sender.Task.UserData);
                 m_DownloadFailureEventHandler(this, downloadFailureEventArgs);
                 ReferencePool.Release(downloadFailureEventArgs);
             }

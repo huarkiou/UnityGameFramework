@@ -40,24 +40,12 @@ namespace GameFramework
         /// <summary>
         /// 获取事件处理函数的数量。
         /// </summary>
-        public int EventHandlerCount
-        {
-            get
-            {
-                return m_EventHandlers.Count;
-            }
-        }
+        public int EventHandlerCount => m_EventHandlers.Count;
 
         /// <summary>
         /// 获取事件数量。
         /// </summary>
-        public int EventCount
-        {
-            get
-            {
-                return m_Events.Count;
-            }
-        }
+        public int EventCount => m_Events.Count;
 
         /// <summary>
         /// 事件池轮询。
@@ -107,7 +95,8 @@ namespace GameFramework
         /// <returns>事件处理函数的数量。</returns>
         public int Count(int id)
         {
-            GameFrameworkLinkedListRange<EventHandler<T>> range = default(GameFrameworkLinkedListRange<EventHandler<T>>);
+            GameFrameworkLinkedListRange<EventHandler<T>>
+                range = default(GameFrameworkLinkedListRange<EventHandler<T>>);
             if (m_EventHandlers.TryGetValue(id, out range))
             {
                 return range.Count;
@@ -152,7 +141,8 @@ namespace GameFramework
             {
                 throw new GameFrameworkException(Utility.Text.Format("Event '{0}' not allow multi handler.", id));
             }
-            else if ((m_EventPoolMode & EventPoolMode.AllowDuplicateHandler) != EventPoolMode.AllowDuplicateHandler && Check(id, handler))
+            else if ((m_EventPoolMode & EventPoolMode.AllowDuplicateHandler) != EventPoolMode.AllowDuplicateHandler &&
+                     Check(id, handler))
             {
                 throw new GameFrameworkException(Utility.Text.Format("Event '{0}' not allow duplicate handler.", id));
             }
@@ -252,7 +242,8 @@ namespace GameFramework
         private void HandleEvent(object sender, T e)
         {
             bool noHandlerException = false;
-            GameFrameworkLinkedListRange<EventHandler<T>> range = default(GameFrameworkLinkedListRange<EventHandler<T>>);
+            GameFrameworkLinkedListRange<EventHandler<T>>
+                range = default(GameFrameworkLinkedListRange<EventHandler<T>>);
             if (m_EventHandlers.TryGetValue(e.Id, out range))
             {
                 LinkedListNode<EventHandler<T>> current = range.First;

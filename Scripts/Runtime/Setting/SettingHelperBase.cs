@@ -5,9 +5,9 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameFramework.Setting;
 using System;
 using System.Collections.Generic;
+using GameFramework.Setting;
 using UnityEngine;
 
 namespace UnityGameFramework.Runtime
@@ -20,10 +20,7 @@ namespace UnityGameFramework.Runtime
         /// <summary>
         /// 获取游戏配置项数量。
         /// </summary>
-        public abstract int Count
-        {
-            get;
-        }
+        public abstract int Count { get; }
 
         /// <summary>
         /// 加载游戏配置。

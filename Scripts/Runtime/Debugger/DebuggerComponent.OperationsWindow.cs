@@ -50,10 +50,12 @@ namespace UnityGameFramework.Runtime
                     {
                         GameEntry.Shutdown(ShutdownType.None);
                     }
+
                     if (GUILayout.Button("Shutdown Game Framework (Restart)", GUILayout.Height(30f)))
                     {
                         GameEntry.Shutdown(ShutdownType.Restart);
                     }
+
                     if (GUILayout.Button("Shutdown Game Framework (Quit)", GUILayout.Height(30f)))
                     {
                         GameEntry.Shutdown(ShutdownType.Quit);

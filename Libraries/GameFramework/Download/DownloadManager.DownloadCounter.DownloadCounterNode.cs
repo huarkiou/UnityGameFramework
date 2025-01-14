@@ -22,21 +22,9 @@ namespace GameFramework.Download
                     m_ElapseSeconds = 0f;
                 }
 
-                public long DeltaLength
-                {
-                    get
-                    {
-                        return m_DeltaLength;
-                    }
-                }
+                public long DeltaLength => m_DeltaLength;
 
-                public float ElapseSeconds
-                {
-                    get
-                    {
-                        return m_ElapseSeconds;
-                    }
-                }
+                public float ElapseSeconds => m_ElapseSeconds;
 
                 public static DownloadCounterNode Create()
                 {

@@ -5,11 +5,11 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
 using GameFramework;
 using GameFramework.Resource;
 using GameFramework.Scene;
-using System;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -26,7 +26,8 @@ namespace UnityGameFramework.Runtime
 
         private ISceneManager m_SceneManager = null;
         private EventComponent m_EventComponent = null;
-        private readonly SortedDictionary<string, int> m_SceneOrder = new SortedDictionary<string, int>(StringComparer.Ordinal);
+        private readonly SortedDictionary<string, int> m_SceneOrder =
+            new SortedDictionary<string, int>(StringComparer.Ordinal);
         private Camera m_MainCamera = null;
         private Scene m_GameFrameworkScene = default(Scene);
 
@@ -39,13 +40,7 @@ namespace UnityGameFramework.Runtime
         /// <summary>
         /// 获取当前场景主摄像机。
         /// </summary>
-        public Camera MainCamera
-        {
-            get
-            {
-                return m_MainCamera;
-            }
-        }
+        public Camera MainCamera => m_MainCamera;
 
         /// <summary>
         /// 游戏框架组件初始化。
@@ -238,7 +233,8 @@ namespace UnityGameFramework.Runtime
                 return false;
             }
 
-            if (!sceneAssetName.StartsWith("Assets/", StringComparison.Ordinal) || !sceneAssetName.EndsWith(".unity", StringComparison.Ordinal))
+            if (!sceneAssetName.StartsWith("Assets/", StringComparison.Ordinal) ||
+                !sceneAssetName.EndsWith(".unity", StringComparison.Ordinal))
             {
                 Log.Error("Scene asset name '{0}' is invalid.", sceneAssetName);
                 return false;
@@ -290,7 +286,8 @@ namespace UnityGameFramework.Runtime
                 return;
             }
 
-            if (!sceneAssetName.StartsWith("Assets/", StringComparison.Ordinal) || !sceneAssetName.EndsWith(".unity", StringComparison.Ordinal))
+            if (!sceneAssetName.StartsWith("Assets/", StringComparison.Ordinal) ||
+                !sceneAssetName.EndsWith(".unity", StringComparison.Ordinal))
             {
                 Log.Error("Scene asset name '{0}' is invalid.", sceneAssetName);
                 return;
@@ -321,7 +318,8 @@ namespace UnityGameFramework.Runtime
                 return;
             }
 
-            if (!sceneAssetName.StartsWith("Assets/", StringComparison.Ordinal) || !sceneAssetName.EndsWith(".unity", StringComparison.Ordinal))
+            if (!sceneAssetName.StartsWith("Assets/", StringComparison.Ordinal) ||
+                !sceneAssetName.EndsWith(".unity", StringComparison.Ordinal))
             {
                 Log.Error("Scene asset name '{0}' is invalid.", sceneAssetName);
                 return;
@@ -344,7 +342,8 @@ namespace UnityGameFramework.Runtime
                 return;
             }
 
-            if (!sceneAssetName.StartsWith("Assets/", StringComparison.Ordinal) || !sceneAssetName.EndsWith(".unity", StringComparison.Ordinal))
+            if (!sceneAssetName.StartsWith("Assets/", StringComparison.Ordinal) ||
+                !sceneAssetName.EndsWith(".unity", StringComparison.Ordinal))
             {
                 Log.Error("Scene asset name '{0}' is invalid.", sceneAssetName);
                 return;
@@ -447,7 +446,8 @@ namespace UnityGameFramework.Runtime
 
         private void OnLoadSceneFailure(object sender, GameFramework.Scene.LoadSceneFailureEventArgs e)
         {
-            Log.Warning("Load scene failure, scene asset name '{0}', error message '{1}'.", e.SceneAssetName, e.ErrorMessage);
+            Log.Warning("Load scene failure, scene asset name '{0}', error message '{1}'.", e.SceneAssetName,
+                e.ErrorMessage);
             m_EventComponent.Fire(this, LoadSceneFailureEventArgs.Create(e));
         }
 

@@ -33,31 +33,17 @@ namespace UnityGameFramework.Runtime
         /// <summary>
         /// 获取网络心跳包丢失事件编号。
         /// </summary>
-        public override int Id
-        {
-            get
-            {
-                return EventId;
-            }
-        }
+        public override int Id => EventId;
 
         /// <summary>
         /// 获取网络频道。
         /// </summary>
-        public INetworkChannel NetworkChannel
-        {
-            get;
-            private set;
-        }
+        public INetworkChannel NetworkChannel { get; private set; }
 
         /// <summary>
         /// 获取心跳包已丢失次数。
         /// </summary>
-        public int MissCount
-        {
-            get;
-            private set;
-        }
+        public int MissCount { get; private set; }
 
         /// <summary>
         /// 创建网络心跳包丢失事件。
@@ -66,7 +52,8 @@ namespace UnityGameFramework.Runtime
         /// <returns>创建的网络心跳包丢失事件。</returns>
         public static NetworkMissHeartBeatEventArgs Create(GameFramework.Network.NetworkMissHeartBeatEventArgs e)
         {
-            NetworkMissHeartBeatEventArgs networkMissHeartBeatEventArgs = ReferencePool.Acquire<NetworkMissHeartBeatEventArgs>();
+            NetworkMissHeartBeatEventArgs networkMissHeartBeatEventArgs =
+                ReferencePool.Acquire<NetworkMissHeartBeatEventArgs>();
             networkMissHeartBeatEventArgs.NetworkChannel = e.NetworkChannel;
             networkMissHeartBeatEventArgs.MissCount = e.MissCount;
             return networkMissHeartBeatEventArgs;

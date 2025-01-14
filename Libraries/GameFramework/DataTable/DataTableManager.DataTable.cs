@@ -38,59 +38,29 @@ namespace GameFramework.DataTable
             /// <summary>
             /// 获取数据表行的类型。
             /// </summary>
-            public override Type Type
-            {
-                get
-                {
-                    return typeof(T);
-                }
-            }
+            public override Type Type => typeof(T);
 
             /// <summary>
             /// 获取数据表行数。
             /// </summary>
-            public override int Count
-            {
-                get
-                {
-                    return m_DataSet.Count;
-                }
-            }
+            public override int Count => m_DataSet.Count;
 
             /// <summary>
             /// 获取数据表行。
             /// </summary>
             /// <param name="id">数据表行的编号。</param>
             /// <returns>数据表行。</returns>
-            public T this[int id]
-            {
-                get
-                {
-                    return GetDataRow(id);
-                }
-            }
+            public T this[int id] => GetDataRow(id);
 
             /// <summary>
             /// 获取编号最小的数据表行。
             /// </summary>
-            public T MinIdDataRow
-            {
-                get
-                {
-                    return m_MinIdDataRow;
-                }
-            }
+            public T MinIdDataRow => m_MinIdDataRow;
 
             /// <summary>
             /// 获取编号最大的数据表行。
             /// </summary>
-            public T MaxIdDataRow
-            {
-                get
-                {
-                    return m_MaxIdDataRow;
-                }
-            }
+            public T MaxIdDataRow => m_MaxIdDataRow;
 
             /// <summary>
             /// 检查是否存在数据表行。
@@ -390,7 +360,9 @@ namespace GameFramework.DataTable
                         throw;
                     }
 
-                    throw new GameFrameworkException(Utility.Text.Format("Can not parse data row string for data table '{0}' with exception '{1}'.", new TypeNamePair(typeof(T), Name), exception), exception);
+                    throw new GameFrameworkException(
+                        Utility.Text.Format("Can not parse data row string for data table '{0}' with exception '{1}'.",
+                            new TypeNamePair(typeof(T), Name), exception), exception);
                 }
             }
 
@@ -422,7 +394,9 @@ namespace GameFramework.DataTable
                         throw;
                     }
 
-                    throw new GameFrameworkException(Utility.Text.Format("Can not parse data row bytes for data table '{0}' with exception '{1}'.", new TypeNamePair(typeof(T), Name), exception), exception);
+                    throw new GameFrameworkException(
+                        Utility.Text.Format("Can not parse data row bytes for data table '{0}' with exception '{1}'.",
+                            new TypeNamePair(typeof(T), Name), exception), exception);
                 }
             }
 
@@ -443,7 +417,8 @@ namespace GameFramework.DataTable
                     return false;
                 }
 
-                if (m_MinIdDataRow != null && m_MinIdDataRow.Id == id || m_MaxIdDataRow != null && m_MaxIdDataRow.Id == id)
+                if (m_MinIdDataRow != null && m_MinIdDataRow.Id == id ||
+                    m_MaxIdDataRow != null && m_MaxIdDataRow.Id == id)
                 {
                     m_MinIdDataRow = null;
                     m_MaxIdDataRow = null;
@@ -504,7 +479,8 @@ namespace GameFramework.DataTable
             {
                 if (m_DataSet.ContainsKey(dataRow.Id))
                 {
-                    throw new GameFrameworkException(Utility.Text.Format("Already exist '{0}' in data table '{1}'.", dataRow.Id, new TypeNamePair(typeof(T), Name)));
+                    throw new GameFrameworkException(Utility.Text.Format("Already exist '{0}' in data table '{1}'.",
+                        dataRow.Id, new TypeNamePair(typeof(T), Name)));
                 }
 
                 m_DataSet.Add(dataRow.Id, dataRow);

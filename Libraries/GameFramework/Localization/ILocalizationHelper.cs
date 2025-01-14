@@ -15,9 +15,6 @@ namespace GameFramework.Localization
         /// <summary>
         /// 获取系统语言。
         /// </summary>
-        Language SystemLanguage
-        {
-            get;
-        }
+        Language SystemLanguage { get; }
     }
 }

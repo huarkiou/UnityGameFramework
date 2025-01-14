@@ -24,20 +24,12 @@ namespace GameFramework.Resource
         /// <summary>
         /// 获取资源名称。
         /// </summary>
-        public string Name
-        {
-            get;
-            private set;
-        }
+        public string Name { get; private set; }
 
         /// <summary>
         /// 获取资源大小。
         /// </summary>
-        public int Length
-        {
-            get;
-            private set;
-        }
+        public int Length { get; private set; }
 
         /// <summary>
         /// 创建资源校验成功事件。
@@ -47,7 +39,8 @@ namespace GameFramework.Resource
         /// <returns>创建的资源校验成功事件。</returns>
         public static ResourceVerifySuccessEventArgs Create(string name, int length)
         {
-            ResourceVerifySuccessEventArgs resourceVerifySuccessEventArgs = ReferencePool.Acquire<ResourceVerifySuccessEventArgs>();
+            ResourceVerifySuccessEventArgs resourceVerifySuccessEventArgs =
+                ReferencePool.Acquire<ResourceVerifySuccessEventArgs>();
             resourceVerifySuccessEventArgs.Name = name;
             resourceVerifySuccessEventArgs.Length = length;
             return resourceVerifySuccessEventArgs;

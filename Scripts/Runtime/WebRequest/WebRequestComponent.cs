@@ -5,9 +5,9 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
+using System.Collections.Generic;
 using GameFramework;
 using GameFramework.WebRequest;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace UnityGameFramework.Runtime
@@ -42,60 +42,30 @@ namespace UnityGameFramework.Runtime
         /// <summary>
         /// 获取 Web 请求代理总数量。
         /// </summary>
-        public int TotalAgentCount
-        {
-            get
-            {
-                return m_WebRequestManager.TotalAgentCount;
-            }
-        }
+        public int TotalAgentCount => m_WebRequestManager.TotalAgentCount;
 
         /// <summary>
         /// 获取可用 Web 请求代理数量。
         /// </summary>
-        public int FreeAgentCount
-        {
-            get
-            {
-                return m_WebRequestManager.FreeAgentCount;
-            }
-        }
+        public int FreeAgentCount => m_WebRequestManager.FreeAgentCount;
 
         /// <summary>
         /// 获取工作中 Web 请求代理数量。
         /// </summary>
-        public int WorkingAgentCount
-        {
-            get
-            {
-                return m_WebRequestManager.WorkingAgentCount;
-            }
-        }
+        public int WorkingAgentCount => m_WebRequestManager.WorkingAgentCount;
 
         /// <summary>
         /// 获取等待 Web 请求数量。
         /// </summary>
-        public int WaitingTaskCount
-        {
-            get
-            {
-                return m_WebRequestManager.WaitingTaskCount;
-            }
-        }
+        public int WaitingTaskCount => m_WebRequestManager.WaitingTaskCount;
 
         /// <summary>
         /// 获取或设置 Web 请求超时时长，以秒为单位。
         /// </summary>
         public float Timeout
         {
-            get
-            {
-                return m_WebRequestManager.Timeout;
-            }
-            set
-            {
-                m_WebRequestManager.Timeout = m_Timeout = value;
-            }
+            get => m_WebRequestManager.Timeout;
+            set => m_WebRequestManager.Timeout = m_Timeout = value;
         }
 
         /// <summary>
@@ -515,7 +485,8 @@ namespace UnityGameFramework.Runtime
         /// <param name="index">Web 请求代理辅助器索引。</param>
         private void AddWebRequestAgentHelper(int index)
         {
-            WebRequestAgentHelperBase webRequestAgentHelper = Helper.CreateHelper(m_WebRequestAgentHelperTypeName, m_CustomWebRequestAgentHelper, index);
+            WebRequestAgentHelperBase webRequestAgentHelper =
+                Helper.CreateHelper(m_WebRequestAgentHelperTypeName, m_CustomWebRequestAgentHelper, index);
             if (webRequestAgentHelper == null)
             {
                 Log.Error("Can not create web request agent helper.");
@@ -540,9 +511,11 @@ namespace UnityGameFramework.Runtime
         /// <param name="priority">Web 请求任务的优先级。</param>
         /// <param name="userData">用户自定义数据。</param>
         /// <returns>新增 Web 请求任务的序列编号。</returns>
-        private int AddWebRequest(string webRequestUri, byte[] postData, WWWForm wwwForm, string tag, int priority, object userData)
+        private int AddWebRequest(string webRequestUri, byte[] postData, WWWForm wwwForm, string tag, int priority,
+            object userData)
         {
-            return m_WebRequestManager.AddWebRequest(webRequestUri, postData, tag, priority, WWWFormInfo.Create(wwwForm, userData));
+            return m_WebRequestManager.AddWebRequest(webRequestUri, postData, tag, priority,
+                WWWFormInfo.Create(wwwForm, userData));
         }
 
         private void OnWebRequestStart(object sender, GameFramework.WebRequest.WebRequestStartEventArgs e)
@@ -557,7 +530,8 @@ namespace UnityGameFramework.Runtime
 
         private void OnWebRequestFailure(object sender, GameFramework.WebRequest.WebRequestFailureEventArgs e)
         {
-            Log.Warning("Web request failure, web request serial id '{0}', web request uri '{1}', error message '{2}'.", e.SerialId, e.WebRequestUri, e.ErrorMessage);
+            Log.Warning("Web request failure, web request serial id '{0}', web request uri '{1}', error message '{2}'.",
+                e.SerialId, e.WebRequestUri, e.ErrorMessage);
             m_EventComponent.Fire(this, WebRequestFailureEventArgs.Create(e));
         }
     }

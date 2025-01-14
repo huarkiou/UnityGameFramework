@@ -5,9 +5,9 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameFramework.Resource;
 using System.IO;
 using System.Text;
+using GameFramework.Resource;
 
 namespace UnityGameFramework.Runtime
 {
@@ -27,7 +27,8 @@ namespace UnityGameFramework.Runtime
             {
                 byte[] encryptBytes = binaryReader.ReadBytes(CachedHashBytesLength);
                 int resourceCount = binaryReader.ReadInt32();
-                LocalVersionList.Resource[] resources = resourceCount > 0 ? new LocalVersionList.Resource[resourceCount] : null;
+                LocalVersionList.Resource[] resources =
+                    resourceCount > 0 ? new LocalVersionList.Resource[resourceCount] : null;
                 for (int i = 0; i < resourceCount; i++)
                 {
                     string name = binaryReader.ReadEncryptedString(encryptBytes);
@@ -53,7 +54,8 @@ namespace UnityGameFramework.Runtime
             {
                 byte[] encryptBytes = binaryReader.ReadBytes(CachedHashBytesLength);
                 int resourceCount = binaryReader.Read7BitEncodedInt32();
-                LocalVersionList.Resource[] resources = resourceCount > 0 ? new LocalVersionList.Resource[resourceCount] : null;
+                LocalVersionList.Resource[] resources =
+                    resourceCount > 0 ? new LocalVersionList.Resource[resourceCount] : null;
                 for (int i = 0; i < resourceCount; i++)
                 {
                     string name = binaryReader.ReadEncryptedString(encryptBytes);
@@ -80,7 +82,8 @@ namespace UnityGameFramework.Runtime
             {
                 byte[] encryptBytes = binaryReader.ReadBytes(CachedHashBytesLength);
                 int resourceCount = binaryReader.Read7BitEncodedInt32();
-                LocalVersionList.Resource[] resources = resourceCount > 0 ? new LocalVersionList.Resource[resourceCount] : null;
+                LocalVersionList.Resource[] resources =
+                    resourceCount > 0 ? new LocalVersionList.Resource[resourceCount] : null;
                 for (int i = 0; i < resourceCount; i++)
                 {
                     string name = binaryReader.ReadEncryptedString(encryptBytes);
@@ -93,7 +96,8 @@ namespace UnityGameFramework.Runtime
                 }
 
                 int fileSystemCount = binaryReader.Read7BitEncodedInt32();
-                LocalVersionList.FileSystem[] fileSystems = fileSystemCount > 0 ? new LocalVersionList.FileSystem[fileSystemCount] : null;
+                LocalVersionList.FileSystem[] fileSystems =
+                    fileSystemCount > 0 ? new LocalVersionList.FileSystem[fileSystemCount] : null;
                 for (int i = 0; i < fileSystemCount; i++)
                 {
                     string name = binaryReader.ReadEncryptedString(encryptBytes);

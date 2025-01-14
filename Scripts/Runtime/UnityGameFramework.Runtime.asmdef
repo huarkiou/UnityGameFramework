@@ -1,17 +1,17 @@
 {
-    "name": "UnityGameFramework.Runtime",
-    "rootNamespace": "",
-    "references": [
-        "GameFramework",
-        "ICSharpCode.SharpZipLib"
-    ],
-    "includePlatforms": [],
-    "excludePlatforms": [],
-    "allowUnsafeCode": false,
-    "overrideReferences": false,
-    "precompiledReferences": [],
-    "autoReferenced": true,
-    "defineConstraints": [],
-    "versionDefines": [],
-    "noEngineReferences": false
+  "name": "UnityGameFramework.Runtime",
+  "rootNamespace": "",
+  "references": [
+    "GameFramework",
+    "ICSharpCode.SharpZipLib"
+  ],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
 }

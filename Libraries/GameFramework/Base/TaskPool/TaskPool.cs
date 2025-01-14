@@ -36,59 +36,29 @@ namespace GameFramework
         /// </summary>
         public bool Paused
         {
-            get
-            {
-                return m_Paused;
-            }
-            set
-            {
-                m_Paused = value;
-            }
+            get => m_Paused;
+            set => m_Paused = value;
         }
 
         /// <summary>
         /// 获取任务代理总数量。
         /// </summary>
-        public int TotalAgentCount
-        {
-            get
-            {
-                return FreeAgentCount + WorkingAgentCount;
-            }
-        }
+        public int TotalAgentCount => FreeAgentCount + WorkingAgentCount;
 
         /// <summary>
         /// 获取可用任务代理数量。
         /// </summary>
-        public int FreeAgentCount
-        {
-            get
-            {
-                return m_FreeAgents.Count;
-            }
-        }
+        public int FreeAgentCount => m_FreeAgents.Count;
 
         /// <summary>
         /// 获取工作中任务代理数量。
         /// </summary>
-        public int WorkingAgentCount
-        {
-            get
-            {
-                return m_WorkingAgents.Count;
-            }
-        }
+        public int WorkingAgentCount => m_WorkingAgents.Count;
 
         /// <summary>
         /// 获取等待任务数量。
         /// </summary>
-        public int WaitingTaskCount
-        {
-            get
-            {
-                return m_WaitingTasks.Count;
-            }
-        }
+        public int WaitingTaskCount => m_WaitingTasks.Count;
 
         /// <summary>
         /// 任务池轮询。
@@ -146,7 +116,9 @@ namespace GameFramework
                 T workingTask = workingAgent.Task;
                 if (workingTask.SerialId == serialId)
                 {
-                    return new TaskInfo(workingTask.SerialId, workingTask.Tag, workingTask.Priority, workingTask.UserData, workingTask.Done ? TaskStatus.Done : TaskStatus.Doing, workingTask.Description);
+                    return new TaskInfo(workingTask.SerialId, workingTask.Tag, workingTask.Priority,
+                        workingTask.UserData, workingTask.Done ? TaskStatus.Done : TaskStatus.Doing,
+                        workingTask.Description);
                 }
             }
 
@@ -154,7 +126,8 @@ namespace GameFramework
             {
                 if (waitingTask.SerialId == serialId)
                 {
-                    return new TaskInfo(waitingTask.SerialId, waitingTask.Tag, waitingTask.Priority, waitingTask.UserData, TaskStatus.Todo, waitingTask.Description);
+                    return new TaskInfo(waitingTask.SerialId, waitingTask.Tag, waitingTask.Priority,
+                        waitingTask.UserData, TaskStatus.Todo, waitingTask.Description);
                 }
             }
 
@@ -191,7 +164,9 @@ namespace GameFramework
                 T workingTask = workingAgent.Task;
                 if (workingTask.Tag == tag)
                 {
-                    results.Add(new TaskInfo(workingTask.SerialId, workingTask.Tag, workingTask.Priority, workingTask.UserData, workingTask.Done ? TaskStatus.Done : TaskStatus.Doing, workingTask.Description));
+                    results.Add(new TaskInfo(workingTask.SerialId, workingTask.Tag, workingTask.Priority,
+                        workingTask.UserData, workingTask.Done ? TaskStatus.Done : TaskStatus.Doing,
+                        workingTask.Description));
                 }
             }
 
@@ -199,7 +174,8 @@ namespace GameFramework
             {
                 if (waitingTask.Tag == tag)
                 {
-                    results.Add(new TaskInfo(waitingTask.SerialId, waitingTask.Tag, waitingTask.Priority, waitingTask.UserData, TaskStatus.Todo, waitingTask.Description));
+                    results.Add(new TaskInfo(waitingTask.SerialId, waitingTask.Tag, waitingTask.Priority,
+                        waitingTask.UserData, TaskStatus.Todo, waitingTask.Description));
                 }
             }
         }
@@ -215,12 +191,15 @@ namespace GameFramework
             foreach (ITaskAgent<T> workingAgent in m_WorkingAgents)
             {
                 T workingTask = workingAgent.Task;
-                results[index++] = new TaskInfo(workingTask.SerialId, workingTask.Tag, workingTask.Priority, workingTask.UserData, workingTask.Done ? TaskStatus.Done : TaskStatus.Doing, workingTask.Description);
+                results[index++] = new TaskInfo(workingTask.SerialId, workingTask.Tag, workingTask.Priority,
+                    workingTask.UserData, workingTask.Done ? TaskStatus.Done : TaskStatus.Doing,
+                    workingTask.Description);
             }
 
             foreach (T waitingTask in m_WaitingTasks)
             {
-                results[index++] = new TaskInfo(waitingTask.SerialId, waitingTask.Tag, waitingTask.Priority, waitingTask.UserData, TaskStatus.Todo, waitingTask.Description);
+                results[index++] = new TaskInfo(waitingTask.SerialId, waitingTask.Tag, waitingTask.Priority,
+                    waitingTask.UserData, TaskStatus.Todo, waitingTask.Description);
             }
 
             return results;
@@ -241,12 +220,15 @@ namespace GameFramework
             foreach (ITaskAgent<T> workingAgent in m_WorkingAgents)
             {
                 T workingTask = workingAgent.Task;
-                results.Add(new TaskInfo(workingTask.SerialId, workingTask.Tag, workingTask.Priority, workingTask.UserData, workingTask.Done ? TaskStatus.Done : TaskStatus.Doing, workingTask.Description));
+                results.Add(new TaskInfo(workingTask.SerialId, workingTask.Tag, workingTask.Priority,
+                    workingTask.UserData, workingTask.Done ? TaskStatus.Done : TaskStatus.Doing,
+                    workingTask.Description));
             }
 
             foreach (T waitingTask in m_WaitingTasks)
             {
-                results.Add(new TaskInfo(waitingTask.SerialId, waitingTask.Tag, waitingTask.Priority, waitingTask.UserData, TaskStatus.Todo, waitingTask.Description));
+                results.Add(new TaskInfo(waitingTask.SerialId, waitingTask.Tag, waitingTask.Priority,
+                    waitingTask.UserData, TaskStatus.Todo, waitingTask.Description));
             }
         }
 
@@ -420,14 +402,16 @@ namespace GameFramework
                 T task = current.Value;
                 LinkedListNode<T> next = current.Next;
                 StartTaskStatus status = agent.Start(task);
-                if (status == StartTaskStatus.Done || status == StartTaskStatus.HasToWait || status == StartTaskStatus.UnknownError)
+                if (status == StartTaskStatus.Done || status == StartTaskStatus.HasToWait ||
+                    status == StartTaskStatus.UnknownError)
                 {
                     agent.Reset();
                     m_FreeAgents.Push(agent);
                     m_WorkingAgents.Remove(agentNode);
                 }
 
-                if (status == StartTaskStatus.Done || status == StartTaskStatus.CanResume || status == StartTaskStatus.UnknownError)
+                if (status == StartTaskStatus.Done || status == StartTaskStatus.CanResume ||
+                    status == StartTaskStatus.UnknownError)
                 {
                     m_WaitingTasks.Remove(current);
                 }

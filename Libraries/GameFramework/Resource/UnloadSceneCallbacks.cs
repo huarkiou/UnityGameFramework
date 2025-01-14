@@ -29,7 +29,8 @@ namespace GameFramework.Resource
         /// </summary>
         /// <param name="unloadSceneSuccessCallback">卸载场景成功回调函数。</param>
         /// <param name="unloadSceneFailureCallback">卸载场景失败回调函数。</param>
-        public UnloadSceneCallbacks(UnloadSceneSuccessCallback unloadSceneSuccessCallback, UnloadSceneFailureCallback unloadSceneFailureCallback)
+        public UnloadSceneCallbacks(UnloadSceneSuccessCallback unloadSceneSuccessCallback,
+            UnloadSceneFailureCallback unloadSceneFailureCallback)
         {
             if (unloadSceneSuccessCallback == null)
             {
@@ -43,23 +44,11 @@ namespace GameFramework.Resource
         /// <summary>
         /// 获取卸载场景成功回调函数。
         /// </summary>
-        public UnloadSceneSuccessCallback UnloadSceneSuccessCallback
-        {
-            get
-            {
-                return m_UnloadSceneSuccessCallback;
-            }
-        }
+        public UnloadSceneSuccessCallback UnloadSceneSuccessCallback => m_UnloadSceneSuccessCallback;
 
         /// <summary>
         /// 获取卸载场景失败回调函数。
         /// </summary>
-        public UnloadSceneFailureCallback UnloadSceneFailureCallback
-        {
-            get
-            {
-                return m_UnloadSceneFailureCallback;
-            }
-        }
+        public UnloadSceneFailureCallback UnloadSceneFailureCallback => m_UnloadSceneFailureCallback;
     }
 }

@@ -17,10 +17,7 @@ namespace GameFramework.Network
         /// <summary>
         /// 获取消息包头长度。
         /// </summary>
-        int PacketHeaderLength
-        {
-            get;
-        }
+        int PacketHeaderLength { get; }
 
         /// <summary>
         /// 初始化网络频道辅助器。

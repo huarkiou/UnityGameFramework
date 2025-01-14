@@ -5,10 +5,10 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
+using System.Net.Sockets;
 using GameFramework;
 using GameFramework.Event;
 using GameFramework.Network;
-using System.Net.Sockets;
 
 namespace UnityGameFramework.Runtime
 {
@@ -35,49 +35,27 @@ namespace UnityGameFramework.Runtime
         /// <summary>
         /// 获取网络错误事件编号。
         /// </summary>
-        public override int Id
-        {
-            get
-            {
-                return EventId;
-            }
-        }
+        public override int Id => EventId;
 
         /// <summary>
         /// 获取网络频道。
         /// </summary>
-        public INetworkChannel NetworkChannel
-        {
-            get;
-            private set;
-        }
+        public INetworkChannel NetworkChannel { get; private set; }
 
         /// <summary>
         /// 获取错误码。
         /// </summary>
-        public NetworkErrorCode ErrorCode
-        {
-            get;
-            private set;
-        }
+        public NetworkErrorCode ErrorCode { get; private set; }
 
         /// <summary>
         /// 获取 Socket 错误码。
         /// </summary>
-        public SocketError SocketErrorCode
-        {
-            get;
-            private set;
-        }
+        public SocketError SocketErrorCode { get; private set; }
 
         /// <summary>
         /// 获取错误信息。
         /// </summary>
-        public string ErrorMessage
-        {
-            get;
-            private set;
-        }
+        public string ErrorMessage { get; private set; }
 
         /// <summary>
         /// 创建网络错误事件。

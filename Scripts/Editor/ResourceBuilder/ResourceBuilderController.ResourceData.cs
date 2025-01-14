@@ -22,7 +22,8 @@ namespace UnityGameFramework.Editor.ResourceTools
             private readonly List<AssetData> m_AssetDatas;
             private readonly List<ResourceCode> m_Codes;
 
-            public ResourceData(string name, string variant, string fileSystem, LoadType loadType, bool packed, string[] resourceGroups)
+            public ResourceData(string name, string variant, string fileSystem, LoadType loadType, bool packed,
+                string[] resourceGroups)
             {
                 m_Name = name;
                 m_Variant = variant;
@@ -34,61 +35,21 @@ namespace UnityGameFramework.Editor.ResourceTools
                 m_Codes = new List<ResourceCode>();
             }
 
-            public string Name
-            {
-                get
-                {
-                    return m_Name;
-                }
-            }
+            public string Name => m_Name;
 
-            public string Variant
-            {
-                get
-                {
-                    return m_Variant;
-                }
-            }
+            public string Variant => m_Variant;
 
-            public string FileSystem
-            {
-                get
-                {
-                    return m_FileSystem;
-                }
-            }
+            public string FileSystem => m_FileSystem;
 
-            public bool IsLoadFromBinary
-            {
-                get
-                {
-                    return m_LoadType == LoadType.LoadFromBinary || m_LoadType == LoadType.LoadFromBinaryAndQuickDecrypt || m_LoadType == LoadType.LoadFromBinaryAndDecrypt;
-                }
-            }
+            public bool IsLoadFromBinary => m_LoadType == LoadType.LoadFromBinary ||
+                                            m_LoadType == LoadType.LoadFromBinaryAndQuickDecrypt ||
+                                            m_LoadType == LoadType.LoadFromBinaryAndDecrypt;
 
-            public LoadType LoadType
-            {
-                get
-                {
-                    return m_LoadType;
-                }
-            }
+            public LoadType LoadType => m_LoadType;
 
-            public bool Packed
-            {
-                get
-                {
-                    return m_Packed;
-                }
-            }
+            public bool Packed => m_Packed;
 
-            public int AssetCount
-            {
-                get
-                {
-                    return m_AssetDatas.Count;
-                }
-            }
+            public int AssetCount => m_AssetDatas.Count;
 
             public string[] GetResourceGroups()
             {
@@ -158,7 +119,8 @@ namespace UnityGameFramework.Editor.ResourceTools
                 return m_Codes.ToArray();
             }
 
-            public void AddCode(Platform platform, int length, int hashCode, int compressedLength, int compressedHashCode)
+            public void AddCode(Platform platform, int length, int hashCode, int compressedLength,
+                int compressedHashCode)
             {
                 m_Codes.Add(new ResourceCode(platform, length, hashCode, compressedLength, compressedHashCode));
             }

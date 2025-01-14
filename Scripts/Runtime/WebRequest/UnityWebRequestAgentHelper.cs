@@ -5,14 +5,14 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameFramework;
-using GameFramework.WebRequest;
-using System;
 #if UNITY_5_4_OR_NEWER
 using UnityEngine.Networking;
 #else
 using UnityEngine.Experimental.Networking;
 #endif
+using System;
+using GameFramework;
+using GameFramework.WebRequest;
 using Utility = GameFramework.Utility;
 
 namespace UnityGameFramework.Runtime
@@ -33,14 +33,8 @@ namespace UnityGameFramework.Runtime
         /// </summary>
         public override event EventHandler<WebRequestAgentHelperCompleteEventArgs> WebRequestAgentHelperComplete
         {
-            add
-            {
-                m_WebRequestAgentHelperCompleteEventHandler += value;
-            }
-            remove
-            {
-                m_WebRequestAgentHelperCompleteEventHandler -= value;
-            }
+            add => m_WebRequestAgentHelperCompleteEventHandler += value;
+            remove => m_WebRequestAgentHelperCompleteEventHandler -= value;
         }
 
         /// <summary>
@@ -48,14 +42,8 @@ namespace UnityGameFramework.Runtime
         /// </summary>
         public override event EventHandler<WebRequestAgentHelperErrorEventArgs> WebRequestAgentHelperError
         {
-            add
-            {
-                m_WebRequestAgentHelperErrorEventHandler += value;
-            }
-            remove
-            {
-                m_WebRequestAgentHelperErrorEventHandler -= value;
-            }
+            add => m_WebRequestAgentHelperErrorEventHandler += value;
+            remove => m_WebRequestAgentHelperErrorEventHandler -= value;
         }
 
         /// <summary>
@@ -171,13 +159,15 @@ namespace UnityGameFramework.Runtime
 #endif
             if (isError)
             {
-                WebRequestAgentHelperErrorEventArgs webRequestAgentHelperErrorEventArgs = WebRequestAgentHelperErrorEventArgs.Create(m_UnityWebRequest.error);
+                WebRequestAgentHelperErrorEventArgs webRequestAgentHelperErrorEventArgs =
+                    WebRequestAgentHelperErrorEventArgs.Create(m_UnityWebRequest.error);
                 m_WebRequestAgentHelperErrorEventHandler(this, webRequestAgentHelperErrorEventArgs);
                 ReferencePool.Release(webRequestAgentHelperErrorEventArgs);
             }
             else if (m_UnityWebRequest.downloadHandler.isDone)
             {
-                WebRequestAgentHelperCompleteEventArgs webRequestAgentHelperCompleteEventArgs = WebRequestAgentHelperCompleteEventArgs.Create(m_UnityWebRequest.downloadHandler.data);
+                WebRequestAgentHelperCompleteEventArgs webRequestAgentHelperCompleteEventArgs =
+                    WebRequestAgentHelperCompleteEventArgs.Create(m_UnityWebRequest.downloadHandler.data);
                 m_WebRequestAgentHelperCompleteEventHandler(this, webRequestAgentHelperCompleteEventArgs);
                 ReferencePool.Release(webRequestAgentHelperCompleteEventArgs);
             }

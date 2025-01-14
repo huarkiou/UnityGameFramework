@@ -26,37 +26,13 @@ namespace UnityGameFramework.Editor.ResourceTools
                 m_DependencyAssetNames = dependencyAssetNames;
             }
 
-            public string Guid
-            {
-                get
-                {
-                    return m_Guid;
-                }
-            }
+            public string Guid => m_Guid;
 
-            public string Name
-            {
-                get
-                {
-                    return m_Name;
-                }
-            }
+            public string Name => m_Name;
 
-            public int Length
-            {
-                get
-                {
-                    return m_Length;
-                }
-            }
+            public int Length => m_Length;
 
-            public int HashCode
-            {
-                get
-                {
-                    return m_HashCode;
-                }
-            }
+            public int HashCode => m_HashCode;
 
             public string[] GetDependencyAssetNames()
             {

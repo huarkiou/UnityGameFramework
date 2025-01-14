@@ -40,35 +40,17 @@ namespace GameFramework
         /// <summary>
         /// 获取链表范围是否有效。
         /// </summary>
-        public bool IsValid
-        {
-            get
-            {
-                return m_First != null && m_Terminal != null && m_First != m_Terminal;
-            }
-        }
+        public bool IsValid => m_First != null && m_Terminal != null && m_First != m_Terminal;
 
         /// <summary>
         /// 获取链表范围的开始结点。
         /// </summary>
-        public LinkedListNode<T> First
-        {
-            get
-            {
-                return m_First;
-            }
-        }
+        public LinkedListNode<T> First => m_First;
 
         /// <summary>
         /// 获取链表范围的终结标记结点。
         /// </summary>
-        public LinkedListNode<T> Terminal
-        {
-            get
-            {
-                return m_Terminal;
-            }
-        }
+        public LinkedListNode<T> Terminal => m_Terminal;
 
         /// <summary>
         /// 获取链表范围的结点数量。
@@ -83,7 +65,9 @@ namespace GameFramework
                 }
 
                 int count = 0;
-                for (LinkedListNode<T> current = m_First; current != null && current != m_Terminal; current = current.Next)
+                for (LinkedListNode<T> current = m_First;
+                     current != null && current != m_Terminal;
+                     current = current.Next)
                 {
                     count++;
                 }
@@ -162,24 +146,12 @@ namespace GameFramework
             /// <summary>
             /// 获取当前结点。
             /// </summary>
-            public T Current
-            {
-                get
-                {
-                    return m_CurrentValue;
-                }
-            }
+            public T Current => m_CurrentValue;
 
             /// <summary>
             /// 获取当前的枚举数。
             /// </summary>
-            object IEnumerator.Current
-            {
-                get
-                {
-                    return m_CurrentValue;
-                }
-            }
+            object IEnumerator.Current => m_CurrentValue;
 
             /// <summary>
             /// 清理枚举数。

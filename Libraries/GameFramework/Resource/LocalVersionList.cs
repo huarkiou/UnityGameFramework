@@ -37,13 +37,7 @@ namespace GameFramework.Resource
         /// <summary>
         /// 获取本地版本资源列表是否有效。
         /// </summary>
-        public bool IsValid
-        {
-            get
-            {
-                return m_IsValid;
-            }
-        }
+        public bool IsValid => m_IsValid;
 
         /// <summary>
         /// 获取包含的资源集合。

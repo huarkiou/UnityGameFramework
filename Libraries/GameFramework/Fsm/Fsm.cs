@@ -39,90 +39,42 @@ namespace GameFramework.Fsm
         /// <summary>
         /// 获取有限状态机持有者。
         /// </summary>
-        public T Owner
-        {
-            get
-            {
-                return m_Owner;
-            }
-        }
+        public T Owner => m_Owner;
 
         /// <summary>
         /// 获取有限状态机持有者类型。
         /// </summary>
-        public override Type OwnerType
-        {
-            get
-            {
-                return typeof(T);
-            }
-        }
+        public override Type OwnerType => typeof(T);
 
         /// <summary>
         /// 获取有限状态机中状态的数量。
         /// </summary>
-        public override int FsmStateCount
-        {
-            get
-            {
-                return m_States.Count;
-            }
-        }
+        public override int FsmStateCount => m_States.Count;
 
         /// <summary>
         /// 获取有限状态机是否正在运行。
         /// </summary>
-        public override bool IsRunning
-        {
-            get
-            {
-                return m_CurrentState != null;
-            }
-        }
+        public override bool IsRunning => m_CurrentState != null;
 
         /// <summary>
         /// 获取有限状态机是否被销毁。
         /// </summary>
-        public override bool IsDestroyed
-        {
-            get
-            {
-                return m_IsDestroyed;
-            }
-        }
+        public override bool IsDestroyed => m_IsDestroyed;
 
         /// <summary>
         /// 获取当前有限状态机状态。
         /// </summary>
-        public FsmState<T> CurrentState
-        {
-            get
-            {
-                return m_CurrentState;
-            }
-        }
+        public FsmState<T> CurrentState => m_CurrentState;
 
         /// <summary>
         /// 获取当前有限状态机状态名称。
         /// </summary>
-        public override string CurrentStateName
-        {
-            get
-            {
-                return m_CurrentState != null ? m_CurrentState.GetType().FullName : null;
-            }
-        }
+        public override string CurrentStateName => m_CurrentState != null ? m_CurrentState.GetType().FullName : null;
 
         /// <summary>
         /// 获取当前有限状态机状态持续时间。
         /// </summary>
-        public override float CurrentStateTime
-        {
-            get
-            {
-                return m_CurrentStateTime;
-            }
-        }
+        public override float CurrentStateTime => m_CurrentStateTime;
 
         /// <summary>
         /// 创建有限状态机。
@@ -157,7 +109,8 @@ namespace GameFramework.Fsm
                 Type stateType = state.GetType();
                 if (fsm.m_States.ContainsKey(stateType))
                 {
-                    throw new GameFrameworkException(Utility.Text.Format("FSM '{0}' state '{1}' is already exist.", new TypeNamePair(typeof(T), name), stateType.FullName));
+                    throw new GameFrameworkException(Utility.Text.Format("FSM '{0}' state '{1}' is already exist.",
+                        new TypeNamePair(typeof(T), name), stateType.FullName));
                 }
 
                 fsm.m_States.Add(stateType, state);
@@ -200,7 +153,8 @@ namespace GameFramework.Fsm
                 Type stateType = state.GetType();
                 if (fsm.m_States.ContainsKey(stateType))
                 {
-                    throw new GameFrameworkException(Utility.Text.Format("FSM '{0}' state '{1}' is already exist.", new TypeNamePair(typeof(T), name), stateType.FullName));
+                    throw new GameFrameworkException(Utility.Text.Format("FSM '{0}' state '{1}' is already exist.",
+                        new TypeNamePair(typeof(T), name), stateType.FullName));
                 }
 
                 fsm.m_States.Add(stateType, state);
@@ -263,7 +217,9 @@ namespace GameFramework.Fsm
             FsmState<T> state = GetState<TState>();
             if (state == null)
             {
-                throw new GameFrameworkException(Utility.Text.Format("FSM '{0}' can not start state '{1}' which is not exist.", new TypeNamePair(typeof(T), Name), typeof(TState).FullName));
+                throw new GameFrameworkException(Utility.Text.Format(
+                    "FSM '{0}' can not start state '{1}' which is not exist.", new TypeNamePair(typeof(T), Name),
+                    typeof(TState).FullName));
             }
 
             m_CurrentStateTime = 0f;
@@ -289,13 +245,16 @@ namespace GameFramework.Fsm
 
             if (!typeof(FsmState<T>).IsAssignableFrom(stateType))
             {
-                throw new GameFrameworkException(Utility.Text.Format("State type '{0}' is invalid.", stateType.FullName));
+                throw new GameFrameworkException(
+                    Utility.Text.Format("State type '{0}' is invalid.", stateType.FullName));
             }
 
             FsmState<T> state = GetState(stateType);
             if (state == null)
             {
-                throw new GameFrameworkException(Utility.Text.Format("FSM '{0}' can not start state '{1}' which is not exist.", new TypeNamePair(typeof(T), Name), stateType.FullName));
+                throw new GameFrameworkException(Utility.Text.Format(
+                    "FSM '{0}' can not start state '{1}' which is not exist.", new TypeNamePair(typeof(T), Name),
+                    stateType.FullName));
             }
 
             m_CurrentStateTime = 0f;
@@ -327,7 +286,8 @@ namespace GameFramework.Fsm
 
             if (!typeof(FsmState<T>).IsAssignableFrom(stateType))
             {
-                throw new GameFrameworkException(Utility.Text.Format("State type '{0}' is invalid.", stateType.FullName));
+                throw new GameFrameworkException(
+                    Utility.Text.Format("State type '{0}' is invalid.", stateType.FullName));
             }
 
             return m_States.ContainsKey(stateType);
@@ -363,7 +323,8 @@ namespace GameFramework.Fsm
 
             if (!typeof(FsmState<T>).IsAssignableFrom(stateType))
             {
-                throw new GameFrameworkException(Utility.Text.Format("State type '{0}' is invalid.", stateType.FullName));
+                throw new GameFrameworkException(
+                    Utility.Text.Format("State type '{0}' is invalid.", stateType.FullName));
             }
 
             FsmState<T> state = null;
@@ -576,7 +537,9 @@ namespace GameFramework.Fsm
             FsmState<T> state = GetState(stateType);
             if (state == null)
             {
-                throw new GameFrameworkException(Utility.Text.Format("FSM '{0}' can not change state to '{1}' which is not exist.", new TypeNamePair(typeof(T), Name), stateType.FullName));
+                throw new GameFrameworkException(Utility.Text.Format(
+                    "FSM '{0}' can not change state to '{1}' which is not exist.", new TypeNamePair(typeof(T), Name),
+                    stateType.FullName));
             }
 
             m_CurrentState.OnLeave(this, false);

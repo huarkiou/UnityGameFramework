@@ -42,13 +42,7 @@ namespace GameFramework.Resource
         /// <summary>
         /// 获取资源包版本资源列表是否有效。
         /// </summary>
-        public bool IsValid
-        {
-            get
-            {
-                return m_IsValid;
-            }
-        }
+        public bool IsValid => m_IsValid;
 
         /// <summary>
         /// 获取资源数据偏移。

@@ -48,38 +48,20 @@ namespace GameFramework.Sound
             /// <summary>
             /// 获取声音组名称。
             /// </summary>
-            public string Name
-            {
-                get
-                {
-                    return m_Name;
-                }
-            }
+            public string Name => m_Name;
 
             /// <summary>
             /// 获取声音代理数。
             /// </summary>
-            public int SoundAgentCount
-            {
-                get
-                {
-                    return m_SoundAgents.Count;
-                }
-            }
+            public int SoundAgentCount => m_SoundAgents.Count;
 
             /// <summary>
             /// 获取或设置声音组中的声音是否避免被同优先级声音替换。
             /// </summary>
             public bool AvoidBeingReplacedBySamePriority
             {
-                get
-                {
-                    return m_AvoidBeingReplacedBySamePriority;
-                }
-                set
-                {
-                    m_AvoidBeingReplacedBySamePriority = value;
-                }
+                get => m_AvoidBeingReplacedBySamePriority;
+                set => m_AvoidBeingReplacedBySamePriority = value;
             }
 
             /// <summary>
@@ -87,10 +69,7 @@ namespace GameFramework.Sound
             /// </summary>
             public bool Mute
             {
-                get
-                {
-                    return m_Mute;
-                }
+                get => m_Mute;
                 set
                 {
                     m_Mute = value;
@@ -106,10 +85,7 @@ namespace GameFramework.Sound
             /// </summary>
             public float Volume
             {
-                get
-                {
-                    return m_Volume;
-                }
+                get => m_Volume;
                 set
                 {
                     m_Volume = value;
@@ -123,13 +99,7 @@ namespace GameFramework.Sound
             /// <summary>
             /// 获取声音组辅助器。
             /// </summary>
-            public ISoundGroupHelper Helper
-            {
-                get
-                {
-                    return m_SoundGroupHelper;
-                }
-            }
+            public ISoundGroupHelper Helper => m_SoundGroupHelper;
 
             /// <summary>
             /// 增加声音代理辅助器。
@@ -149,7 +119,8 @@ namespace GameFramework.Sound
             /// <param name="playSoundParams">播放声音参数。</param>
             /// <param name="errorCode">错误码。</param>
             /// <returns>用于播放的声音代理。</returns>
-            public ISoundAgent PlaySound(int serialId, object soundAsset, PlaySoundParams playSoundParams, out PlaySoundErrorCode? errorCode)
+            public ISoundAgent PlaySound(int serialId, object soundAsset, PlaySoundParams playSoundParams,
+                out PlaySoundErrorCode? errorCode)
             {
                 errorCode = null;
                 SoundAgent candidateAgent = null;

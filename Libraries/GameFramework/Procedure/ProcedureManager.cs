@@ -5,8 +5,8 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameFramework.Fsm;
 using System;
+using GameFramework.Fsm;
 
 namespace GameFramework.Procedure
 {
@@ -31,13 +31,7 @@ namespace GameFramework.Procedure
         /// 获取游戏框架模块优先级。
         /// </summary>
         /// <remarks>优先级较高的模块会优先轮询，并且关闭操作会后进行。</remarks>
-        internal override int Priority
-        {
-            get
-            {
-                return -2;
-            }
-        }
+        internal override int Priority => -2;
 
         /// <summary>
         /// 获取当前流程。

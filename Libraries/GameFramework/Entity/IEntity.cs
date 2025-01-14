@@ -15,34 +15,22 @@ namespace GameFramework.Entity
         /// <summary>
         /// 获取实体编号。
         /// </summary>
-        int Id
-        {
-            get;
-        }
+        int Id { get; }
 
         /// <summary>
         /// 获取实体资源名称。
         /// </summary>
-        string EntityAssetName
-        {
-            get;
-        }
+        string EntityAssetName { get; }
 
         /// <summary>
         /// 获取实体实例。
         /// </summary>
-        object Handle
-        {
-            get;
-        }
+        object Handle { get; }
 
         /// <summary>
         /// 获取实体所属的实体组。
         /// </summary>
-        IEntityGroup EntityGroup
-        {
-            get;
-        }
+        IEntityGroup EntityGroup { get; }
 
         /// <summary>
         /// 实体初始化。
@@ -52,7 +40,8 @@ namespace GameFramework.Entity
         /// <param name="entityGroup">实体所属的实体组。</param>
         /// <param name="isNewInstance">是否是新实例。</param>
         /// <param name="userData">用户自定义数据。</param>
-        void OnInit(int entityId, string entityAssetName, IEntityGroup entityGroup, bool isNewInstance, object userData);
+        void OnInit(int entityId, string entityAssetName, IEntityGroup entityGroup, bool isNewInstance,
+            object userData);
 
         /// <summary>
         /// 实体回收。

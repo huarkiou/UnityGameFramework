@@ -44,7 +44,9 @@ namespace GameFramework
                     return null;
                 }
 
-                return regularPath.Contains("://") ? regularPath : ("file:///" + regularPath).Replace("file:////", "file:///");
+                return regularPath.Contains("://")
+                    ? regularPath
+                    : ("file:///" + regularPath).Replace("file:////", "file:///");
             }
 
             /// <summary>

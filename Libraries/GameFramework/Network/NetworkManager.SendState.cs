@@ -24,13 +24,7 @@ namespace GameFramework.Network
                 m_Disposed = false;
             }
 
-            public MemoryStream Stream
-            {
-                get
-                {
-                    return m_Stream;
-                }
-            }
+            public MemoryStream Stream => m_Stream;
 
             public void Reset()
             {

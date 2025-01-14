@@ -23,49 +23,28 @@ namespace UnityGameFramework.Runtime
         /// <summary>
         /// 获取界面。
         /// </summary>
-        public UIForm UIForm
-        {
-            get
-            {
-                return m_UIForm;
-            }
-        }
+        public UIForm UIForm => m_UIForm;
 
         /// <summary>
         /// 获取或设置界面名称。
         /// </summary>
         public string Name
         {
-            get
-            {
-                return gameObject.name;
-            }
-            set
-            {
-                gameObject.name = value;
-            }
+            get => gameObject.name;
+            set => gameObject.name = value;
         }
 
         /// <summary>
         /// 获取界面是否可用。
         /// </summary>
-        public bool Available
-        {
-            get
-            {
-                return m_Available;
-            }
-        }
+        public bool Available => m_Available;
 
         /// <summary>
         /// 获取或设置界面是否可见。
         /// </summary>
         public bool Visible
         {
-            get
-            {
-                return m_Available && m_Visible;
-            }
+            get => m_Available && m_Visible;
             set
             {
                 if (!m_Available)
@@ -87,13 +66,7 @@ namespace UnityGameFramework.Runtime
         /// <summary>
         /// 获取已缓存的 Transform。
         /// </summary>
-        public Transform CachedTransform
-        {
-            get
-            {
-                return m_CachedTransform;
-            }
-        }
+        public Transform CachedTransform => m_CachedTransform;
 
         /// <summary>
         /// 界面初始化。

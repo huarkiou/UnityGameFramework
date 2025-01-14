@@ -24,39 +24,16 @@ namespace GameFramework.Sound
                 m_UserData = null;
             }
 
-            public int SerialId
-            {
-                get
-                {
-                    return m_SerialId;
-                }
-            }
+            public int SerialId => m_SerialId;
 
-            public SoundGroup SoundGroup
-            {
-                get
-                {
-                    return m_SoundGroup;
-                }
-            }
+            public SoundGroup SoundGroup => m_SoundGroup;
 
-            public PlaySoundParams PlaySoundParams
-            {
-                get
-                {
-                    return m_PlaySoundParams;
-                }
-            }
+            public PlaySoundParams PlaySoundParams => m_PlaySoundParams;
 
-            public object UserData
-            {
-                get
-                {
-                    return m_UserData;
-                }
-            }
+            public object UserData => m_UserData;
 
-            public static PlaySoundInfo Create(int serialId, SoundGroup soundGroup, PlaySoundParams playSoundParams, object userData)
+            public static PlaySoundInfo Create(int serialId, SoundGroup soundGroup, PlaySoundParams playSoundParams,
+                object userData)
             {
                 PlaySoundInfo playSoundInfo = ReferencePool.Acquire<PlaySoundInfo>();
                 playSoundInfo.m_SerialId = serialId;

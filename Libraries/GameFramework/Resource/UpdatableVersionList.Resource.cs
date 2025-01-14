@@ -41,7 +41,8 @@ namespace GameFramework.Resource
             /// <param name="compressedLength">资源压缩后长度。</param>
             /// <param name="compressedHashCode">资源压缩后哈希值。</param>
             /// <param name="assetIndexes">资源包含的资源索引集合。</param>
-            public Resource(string name, string variant, string extension, byte loadType, int length, int hashCode, int compressedLength, int compressedHashCode, int[] assetIndexes)
+            public Resource(string name, string variant, string extension, byte loadType, int length, int hashCode,
+                int compressedLength, int compressedHashCode, int[] assetIndexes)
             {
                 if (string.IsNullOrEmpty(name))
                 {
@@ -62,90 +63,42 @@ namespace GameFramework.Resource
             /// <summary>
             /// 获取资源名称。
             /// </summary>
-            public string Name
-            {
-                get
-                {
-                    return m_Name;
-                }
-            }
+            public string Name => m_Name;
 
             /// <summary>
             /// 获取资源变体名称。
             /// </summary>
-            public string Variant
-            {
-                get
-                {
-                    return m_Variant;
-                }
-            }
+            public string Variant => m_Variant;
 
             /// <summary>
             /// 获取资源扩展名称。
             /// </summary>
-            public string Extension
-            {
-                get
-                {
-                    return m_Extension;
-                }
-            }
+            public string Extension => m_Extension;
 
             /// <summary>
             /// 获取资源加载方式。
             /// </summary>
-            public byte LoadType
-            {
-                get
-                {
-                    return m_LoadType;
-                }
-            }
+            public byte LoadType => m_LoadType;
 
             /// <summary>
             /// 获取资源长度。
             /// </summary>
-            public int Length
-            {
-                get
-                {
-                    return m_Length;
-                }
-            }
+            public int Length => m_Length;
 
             /// <summary>
             /// 获取资源哈希值。
             /// </summary>
-            public int HashCode
-            {
-                get
-                {
-                    return m_HashCode;
-                }
-            }
+            public int HashCode => m_HashCode;
 
             /// <summary>
             /// 获取资源压缩后长度。
             /// </summary>
-            public int CompressedLength
-            {
-                get
-                {
-                    return m_CompressedLength;
-                }
-            }
+            public int CompressedLength => m_CompressedLength;
 
             /// <summary>
             /// 获取资源压缩后哈希值。
             /// </summary>
-            public int CompressedHashCode
-            {
-                get
-                {
-                    return m_CompressedHashCode;
-                }
-            }
+            public int CompressedHashCode => m_CompressedHashCode;
 
             /// <summary>
             /// 获取资源包含的资源索引集合。

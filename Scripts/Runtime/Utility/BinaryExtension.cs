@@ -5,9 +5,9 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameFramework;
 using System;
 using System.IO;
+using GameFramework;
 
 /// <summary>
 /// 对 BinaryReader 和 BinaryWriter 的扩展方法。

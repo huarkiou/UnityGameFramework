@@ -30,27 +30,15 @@ namespace GameFramework.Debugger
             /// <summary>
             /// 获取调试器窗口数量。
             /// </summary>
-            public int DebuggerWindowCount
-            {
-                get
-                {
-                    return m_DebuggerWindows.Count;
-                }
-            }
+            public int DebuggerWindowCount => m_DebuggerWindows.Count;
 
             /// <summary>
             /// 获取或设置当前选中的调试器窗口索引。
             /// </summary>
             public int SelectedIndex
             {
-                get
-                {
-                    return m_SelectedIndex;
-                }
-                set
-                {
-                    m_SelectedIndex = value;
-                }
+                get => m_SelectedIndex;
+                set => m_SelectedIndex = value;
             }
 
             /// <summary>
@@ -161,7 +149,8 @@ namespace GameFramework.Debugger
 
                 string debuggerWindowGroupName = path.Substring(0, pos);
                 string leftPath = path.Substring(pos + 1);
-                DebuggerWindowGroup debuggerWindowGroup = (DebuggerWindowGroup)InternalGetDebuggerWindow(debuggerWindowGroupName);
+                DebuggerWindowGroup debuggerWindowGroup =
+                    (DebuggerWindowGroup)InternalGetDebuggerWindow(debuggerWindowGroupName);
                 if (debuggerWindowGroup == null)
                 {
                     return null;
@@ -190,7 +179,8 @@ namespace GameFramework.Debugger
 
                 string debuggerWindowGroupName = path.Substring(0, pos);
                 string leftPath = path.Substring(pos + 1);
-                DebuggerWindowGroup debuggerWindowGroup = (DebuggerWindowGroup)InternalGetDebuggerWindow(debuggerWindowGroupName);
+                DebuggerWindowGroup debuggerWindowGroup =
+                    (DebuggerWindowGroup)InternalGetDebuggerWindow(debuggerWindowGroupName);
                 if (debuggerWindowGroup == null || !InternalSelectDebuggerWindow(debuggerWindowGroupName))
                 {
                     return false;
@@ -226,16 +216,19 @@ namespace GameFramework.Debugger
                 {
                     string debuggerWindowGroupName = path.Substring(0, pos);
                     string leftPath = path.Substring(pos + 1);
-                    DebuggerWindowGroup debuggerWindowGroup = (DebuggerWindowGroup)InternalGetDebuggerWindow(debuggerWindowGroupName);
+                    DebuggerWindowGroup debuggerWindowGroup =
+                        (DebuggerWindowGroup)InternalGetDebuggerWindow(debuggerWindowGroupName);
                     if (debuggerWindowGroup == null)
                     {
                         if (InternalGetDebuggerWindow(debuggerWindowGroupName) != null)
                         {
-                            throw new GameFrameworkException("Debugger window has been registered, can not create debugger window group.");
+                            throw new GameFrameworkException(
+                                "Debugger window has been registered, can not create debugger window group.");
                         }
 
                         debuggerWindowGroup = new DebuggerWindowGroup();
-                        m_DebuggerWindows.Add(new KeyValuePair<string, IDebuggerWindow>(debuggerWindowGroupName, debuggerWindowGroup));
+                        m_DebuggerWindows.Add(
+                            new KeyValuePair<string, IDebuggerWindow>(debuggerWindowGroupName, debuggerWindowGroup));
                         RefreshDebuggerWindowNames();
                     }
 
@@ -259,7 +252,8 @@ namespace GameFramework.Debugger
                 if (pos < 0 || pos >= path.Length - 1)
                 {
                     IDebuggerWindow debuggerWindow = InternalGetDebuggerWindow(path);
-                    bool result = m_DebuggerWindows.Remove(new KeyValuePair<string, IDebuggerWindow>(path, debuggerWindow));
+                    bool result =
+                        m_DebuggerWindows.Remove(new KeyValuePair<string, IDebuggerWindow>(path, debuggerWindow));
                     debuggerWindow.Shutdown();
                     RefreshDebuggerWindowNames();
                     return result;
@@ -267,7 +261,8 @@ namespace GameFramework.Debugger
 
                 string debuggerWindowGroupName = path.Substring(0, pos);
                 string leftPath = path.Substring(pos + 1);
-                DebuggerWindowGroup debuggerWindowGroup = (DebuggerWindowGroup)InternalGetDebuggerWindow(debuggerWindowGroupName);
+                DebuggerWindowGroup debuggerWindowGroup =
+                    (DebuggerWindowGroup)InternalGetDebuggerWindow(debuggerWindowGroupName);
                 if (debuggerWindowGroup == null)
                 {
                     return false;

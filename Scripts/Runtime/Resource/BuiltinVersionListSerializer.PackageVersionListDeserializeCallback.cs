@@ -5,12 +5,12 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameFramework;
-using GameFramework.Resource;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using GameFramework;
+using GameFramework.Resource;
 
 namespace UnityGameFramework.Runtime
 {
@@ -34,9 +34,11 @@ namespace UnityGameFramework.Runtime
                 int assetCount = binaryReader.ReadInt32();
                 PackageVersionList.Asset[] assets = assetCount > 0 ? new PackageVersionList.Asset[assetCount] : null;
                 int resourceCount = binaryReader.ReadInt32();
-                PackageVersionList.Resource[] resources = resourceCount > 0 ? new PackageVersionList.Resource[resourceCount] : null;
+                PackageVersionList.Resource[] resources =
+                    resourceCount > 0 ? new PackageVersionList.Resource[resourceCount] : null;
                 string[][] resourceToAssetNames = new string[resourceCount][];
-                List<KeyValuePair<string, string[]>> assetNameToDependencyAssetNames = new List<KeyValuePair<string, string[]>>(assetCount);
+                List<KeyValuePair<string, string[]>> assetNameToDependencyAssetNames =
+                    new List<KeyValuePair<string, string[]>>(assetCount);
                 for (int i = 0; i < resourceCount; i++)
                 {
                     string name = binaryReader.ReadEncryptedString(encryptBytes);
@@ -52,17 +54,20 @@ namespace UnityGameFramework.Runtime
                     {
                         assetNames[j] = binaryReader.ReadEncryptedString(s_CachedHashBytes);
                         int dependencyAssetNameCount = binaryReader.ReadInt32();
-                        string[] dependencyAssetNames = dependencyAssetNameCount > 0 ? new string[dependencyAssetNameCount] : null;
+                        string[] dependencyAssetNames =
+                            dependencyAssetNameCount > 0 ? new string[dependencyAssetNameCount] : null;
                         for (int k = 0; k < dependencyAssetNameCount; k++)
                         {
                             dependencyAssetNames[k] = binaryReader.ReadEncryptedString(s_CachedHashBytes);
                         }
 
-                        assetNameToDependencyAssetNames.Add(new KeyValuePair<string, string[]>(assetNames[j], dependencyAssetNames));
+                        assetNameToDependencyAssetNames.Add(
+                            new KeyValuePair<string, string[]>(assetNames[j], dependencyAssetNames));
                     }
 
                     resourceToAssetNames[i] = assetNames;
-                    resources[i] = new PackageVersionList.Resource(name, variant, null, loadType, length, hashCode, assetNameCount > 0 ? new int[assetNameCount] : null);
+                    resources[i] = new PackageVersionList.Resource(name, variant, null, loadType, length, hashCode,
+                        assetNameCount > 0 ? new int[assetNameCount] : null);
                 }
 
                 assetNameToDependencyAssetNames.Sort(AssetNameToDependencyAssetNamesComparer);
@@ -91,12 +96,15 @@ namespace UnityGameFramework.Runtime
                     int[] assetIndexes = resources[i].GetAssetIndexes();
                     for (int j = 0; j < assetIndexes.Length; j++)
                     {
-                        assetIndexes[j] = GetAssetNameIndex(assetNameToDependencyAssetNames, resourceToAssetNames[i][j]);
+                        assetIndexes[j] =
+                            GetAssetNameIndex(assetNameToDependencyAssetNames, resourceToAssetNames[i][j]);
                     }
                 }
 
                 int resourceGroupCount = binaryReader.ReadInt32();
-                PackageVersionList.ResourceGroup[] resourceGroups = resourceGroupCount > 0 ? new PackageVersionList.ResourceGroup[resourceGroupCount] : null;
+                PackageVersionList.ResourceGroup[] resourceGroups = resourceGroupCount > 0
+                    ? new PackageVersionList.ResourceGroup[resourceGroupCount]
+                    : null;
                 for (int i = 0; i < resourceGroupCount; i++)
                 {
                     string name = binaryReader.ReadEncryptedString(encryptBytes);
@@ -110,7 +118,8 @@ namespace UnityGameFramework.Runtime
                     resourceGroups[i] = new PackageVersionList.ResourceGroup(name, resourceIndexes);
                 }
 
-                return new PackageVersionList(applicableGameVersion, internalResourceVersion, assets, resources, null, resourceGroups);
+                return new PackageVersionList(applicableGameVersion, internalResourceVersion, assets, resources, null,
+                    resourceGroups);
             }
         }
 
@@ -142,7 +151,8 @@ namespace UnityGameFramework.Runtime
                 }
 
                 int resourceCount = binaryReader.Read7BitEncodedInt32();
-                PackageVersionList.Resource[] resources = resourceCount > 0 ? new PackageVersionList.Resource[resourceCount] : null;
+                PackageVersionList.Resource[] resources =
+                    resourceCount > 0 ? new PackageVersionList.Resource[resourceCount] : null;
                 for (int i = 0; i < resourceCount; i++)
                 {
                     string name = binaryReader.ReadEncryptedString(encryptBytes);
@@ -158,11 +168,14 @@ namespace UnityGameFramework.Runtime
                         assetIndexes[j] = binaryReader.Read7BitEncodedInt32();
                     }
 
-                    resources[i] = new PackageVersionList.Resource(name, variant, extension, loadType, length, hashCode, assetIndexes);
+                    resources[i] = new PackageVersionList.Resource(name, variant, extension, loadType, length, hashCode,
+                        assetIndexes);
                 }
 
                 int resourceGroupCount = binaryReader.Read7BitEncodedInt32();
-                PackageVersionList.ResourceGroup[] resourceGroups = resourceGroupCount > 0 ? new PackageVersionList.ResourceGroup[resourceGroupCount] : null;
+                PackageVersionList.ResourceGroup[] resourceGroups = resourceGroupCount > 0
+                    ? new PackageVersionList.ResourceGroup[resourceGroupCount]
+                    : null;
                 for (int i = 0; i < resourceGroupCount; i++)
                 {
                     string name = binaryReader.ReadEncryptedString(encryptBytes);
@@ -176,7 +189,8 @@ namespace UnityGameFramework.Runtime
                     resourceGroups[i] = new PackageVersionList.ResourceGroup(name, resourceIndexes);
                 }
 
-                return new PackageVersionList(applicableGameVersion, internalResourceVersion, assets, resources, null, resourceGroups);
+                return new PackageVersionList(applicableGameVersion, internalResourceVersion, assets, resources, null,
+                    resourceGroups);
             }
         }
 
@@ -208,7 +222,8 @@ namespace UnityGameFramework.Runtime
                 }
 
                 int resourceCount = binaryReader.Read7BitEncodedInt32();
-                PackageVersionList.Resource[] resources = resourceCount > 0 ? new PackageVersionList.Resource[resourceCount] : null;
+                PackageVersionList.Resource[] resources =
+                    resourceCount > 0 ? new PackageVersionList.Resource[resourceCount] : null;
                 for (int i = 0; i < resourceCount; i++)
                 {
                     string name = binaryReader.ReadEncryptedString(encryptBytes);
@@ -224,11 +239,13 @@ namespace UnityGameFramework.Runtime
                         assetIndexes[j] = binaryReader.Read7BitEncodedInt32();
                     }
 
-                    resources[i] = new PackageVersionList.Resource(name, variant, extension, loadType, length, hashCode, assetIndexes);
+                    resources[i] = new PackageVersionList.Resource(name, variant, extension, loadType, length, hashCode,
+                        assetIndexes);
                 }
 
                 int fileSystemCount = binaryReader.Read7BitEncodedInt32();
-                PackageVersionList.FileSystem[] fileSystems = fileSystemCount > 0 ? new PackageVersionList.FileSystem[fileSystemCount] : null;
+                PackageVersionList.FileSystem[] fileSystems =
+                    fileSystemCount > 0 ? new PackageVersionList.FileSystem[fileSystemCount] : null;
                 for (int i = 0; i < fileSystemCount; i++)
                 {
                     string name = binaryReader.ReadEncryptedString(encryptBytes);
@@ -243,7 +260,9 @@ namespace UnityGameFramework.Runtime
                 }
 
                 int resourceGroupCount = binaryReader.Read7BitEncodedInt32();
-                PackageVersionList.ResourceGroup[] resourceGroups = resourceGroupCount > 0 ? new PackageVersionList.ResourceGroup[resourceGroupCount] : null;
+                PackageVersionList.ResourceGroup[] resourceGroups = resourceGroupCount > 0
+                    ? new PackageVersionList.ResourceGroup[resourceGroupCount]
+                    : null;
                 for (int i = 0; i < resourceGroupCount; i++)
                 {
                     string name = binaryReader.ReadEncryptedString(encryptBytes);
@@ -257,7 +276,8 @@ namespace UnityGameFramework.Runtime
                     resourceGroups[i] = new PackageVersionList.ResourceGroup(name, resourceIndexes);
                 }
 
-                return new PackageVersionList(applicableGameVersion, internalResourceVersion, assets, resources, fileSystems, resourceGroups);
+                return new PackageVersionList(applicableGameVersion, internalResourceVersion, assets, resources,
+                    fileSystems, resourceGroups);
             }
         }
     }

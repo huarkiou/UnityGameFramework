@@ -33,40 +33,22 @@ namespace UnityGameFramework.Runtime
         /// <summary>
         /// 获取加载场景失败事件编号。
         /// </summary>
-        public override int Id
-        {
-            get
-            {
-                return EventId;
-            }
-        }
+        public override int Id => EventId;
 
         /// <summary>
         /// 获取场景资源名称。
         /// </summary>
-        public string SceneAssetName
-        {
-            get;
-            private set;
-        }
+        public string SceneAssetName { get; private set; }
 
         /// <summary>
         /// 获取错误信息。
         /// </summary>
-        public string ErrorMessage
-        {
-            get;
-            private set;
-        }
+        public string ErrorMessage { get; private set; }
 
         /// <summary>
         /// 获取用户自定义数据。
         /// </summary>
-        public object UserData
-        {
-            get;
-            private set;
-        }
+        public object UserData { get; private set; }
 
         /// <summary>
         /// 创建加载场景失败事件。

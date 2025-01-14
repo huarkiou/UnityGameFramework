@@ -22,14 +22,8 @@ namespace UnityGameFramework.Runtime
         /// </summary>
         public string Key
         {
-            get
-            {
-                return m_Key ?? string.Empty;
-            }
-            set
-            {
-                m_Key = value;
-            }
+            get => m_Key ?? string.Empty;
+            set => m_Key = value;
         }
     }
 }

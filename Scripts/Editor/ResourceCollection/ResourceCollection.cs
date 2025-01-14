@@ -5,13 +5,13 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameFramework;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Xml;
+using GameFramework;
 using UnityEditor;
 using UnityEngine;
 
@@ -32,26 +32,16 @@ namespace UnityGameFramework.Editor.ResourceTools
 
         public ResourceCollection()
         {
-            m_ConfigurationPath = Type.GetConfigurationPath<ResourceCollectionConfigPathAttribute>() ?? Utility.Path.GetRegularPath(Path.Combine(Application.dataPath, "GameFramework/Configs/ResourceCollection.xml"));
+            m_ConfigurationPath = Type.GetConfigurationPath<ResourceCollectionConfigPathAttribute>() ??
+                                  Utility.Path.GetRegularPath(Path.Combine(Application.dataPath,
+                                      "GameFramework/Configs/ResourceCollection.xml"));
             m_Resources = new SortedDictionary<string, Resource>(StringComparer.Ordinal);
             m_Assets = new SortedDictionary<string, Asset>(StringComparer.Ordinal);
         }
 
-        public int ResourceCount
-        {
-            get
-            {
-                return m_Resources.Count;
-            }
-        }
+        public int ResourceCount => m_Resources.Count;
 
-        public int AssetCount
-        {
-            get
-            {
-                return m_Assets.Count;
-            }
-        }
+        public int AssetCount => m_Assets.Count;
 
         public event GameFrameworkAction<int, int> OnLoadingResource = null;
 
@@ -103,8 +93,12 @@ namespace UnityGameFramework.Editor.ResourceTools
                     }
 
                     string name = xmlNode.Attributes.GetNamedItem("Name").Value;
-                    string variant = xmlNode.Attributes.GetNamedItem("Variant") != null ? xmlNode.Attributes.GetNamedItem("Variant").Value : null;
-                    string fileSystem = xmlNode.Attributes.GetNamedItem("FileSystem") != null ? xmlNode.Attributes.GetNamedItem("FileSystem").Value : null;
+                    string variant = xmlNode.Attributes.GetNamedItem("Variant") != null
+                        ? xmlNode.Attributes.GetNamedItem("Variant").Value
+                        : null;
+                    string fileSystem = xmlNode.Attributes.GetNamedItem("FileSystem") != null
+                        ? xmlNode.Attributes.GetNamedItem("FileSystem").Value
+                        : null;
                     byte loadType = 0;
                     if (xmlNode.Attributes.GetNamedItem("LoadType") != null)
                     {
@@ -117,10 +111,13 @@ namespace UnityGameFramework.Editor.ResourceTools
                         bool.TryParse(xmlNode.Attributes.GetNamedItem("Packed").Value, out packed);
                     }
 
-                    string[] resourceGroups = xmlNode.Attributes.GetNamedItem("ResourceGroups") != null ? xmlNode.Attributes.GetNamedItem("ResourceGroups").Value.Split(',') : null;
+                    string[] resourceGroups = xmlNode.Attributes.GetNamedItem("ResourceGroups") != null
+                        ? xmlNode.Attributes.GetNamedItem("ResourceGroups").Value.Split(',')
+                        : null;
                     if (!AddResource(name, variant, fileSystem, (LoadType)loadType, packed, resourceGroups))
                     {
-                        Debug.LogWarning(Utility.Text.Format("Can not add resource '{0}'.", GetResourceFullName(name, variant)));
+                        Debug.LogWarning(Utility.Text.Format("Can not add resource '{0}'.",
+                            GetResourceFullName(name, variant)));
                         continue;
                     }
                 }
@@ -142,10 +139,13 @@ namespace UnityGameFramework.Editor.ResourceTools
 
                     string guid = xmlNode.Attributes.GetNamedItem("Guid").Value;
                     string name = xmlNode.Attributes.GetNamedItem("ResourceName").Value;
-                    string variant = xmlNode.Attributes.GetNamedItem("ResourceVariant") != null ? xmlNode.Attributes.GetNamedItem("ResourceVariant").Value : null;
+                    string variant = xmlNode.Attributes.GetNamedItem("ResourceVariant") != null
+                        ? xmlNode.Attributes.GetNamedItem("ResourceVariant").Value
+                        : null;
                     if (!AssignAsset(guid, name, variant))
                     {
-                        Debug.LogWarning(Utility.Text.Format("Can not assign asset '{0}' to resource '{1}'.", guid, GetResourceFullName(name, variant)));
+                        Debug.LogWarning(Utility.Text.Format("Can not assign asset '{0}' to resource '{1}'.", guid,
+                            GetResourceFullName(name, variant)));
                         continue;
                     }
                 }
@@ -305,7 +305,8 @@ namespace UnityGameFramework.Editor.ResourceTools
             return AddResource(name, variant, fileSystem, loadType, packed, null);
         }
 
-        public bool AddResource(string name, string variant, string fileSystem, LoadType loadType, bool packed, string[] resourceGroups)
+        public bool AddResource(string name, string variant, string fileSystem, LoadType loadType, bool packed,
+            string[] resourceGroups)
         {
             if (!IsValidResourceName(name, variant))
             {
@@ -395,7 +396,8 @@ namespace UnityGameFramework.Editor.ResourceTools
                 return false;
             }
 
-            if ((loadType == LoadType.LoadFromBinary || loadType == LoadType.LoadFromBinaryAndQuickDecrypt || loadType == LoadType.LoadFromBinaryAndDecrypt) && resource.GetAssets().Length > 1)
+            if ((loadType == LoadType.LoadFromBinary || loadType == LoadType.LoadFromBinaryAndQuickDecrypt ||
+                 loadType == LoadType.LoadFromBinaryAndDecrypt) && resource.GetAssets().Length > 1)
             {
                 return false;
             }

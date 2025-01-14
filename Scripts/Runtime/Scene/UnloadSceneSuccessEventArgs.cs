@@ -32,31 +32,17 @@ namespace UnityGameFramework.Runtime
         /// <summary>
         /// 获取加载场景成功事件编号。
         /// </summary>
-        public override int Id
-        {
-            get
-            {
-                return EventId;
-            }
-        }
+        public override int Id => EventId;
 
         /// <summary>
         /// 获取场景资源名称。
         /// </summary>
-        public string SceneAssetName
-        {
-            get;
-            private set;
-        }
+        public string SceneAssetName { get; private set; }
 
         /// <summary>
         /// 获取用户自定义数据。
         /// </summary>
-        public object UserData
-        {
-            get;
-            private set;
-        }
+        public object UserData { get; private set; }
 
         /// <summary>
         /// 创建卸载场景成功事件。
@@ -65,7 +51,8 @@ namespace UnityGameFramework.Runtime
         /// <returns>创建的卸载场景成功事件。</returns>
         public static UnloadSceneSuccessEventArgs Create(GameFramework.Scene.UnloadSceneSuccessEventArgs e)
         {
-            UnloadSceneSuccessEventArgs unloadSceneSuccessEventArgs = ReferencePool.Acquire<UnloadSceneSuccessEventArgs>();
+            UnloadSceneSuccessEventArgs unloadSceneSuccessEventArgs =
+                ReferencePool.Acquire<UnloadSceneSuccessEventArgs>();
             unloadSceneSuccessEventArgs.SceneAssetName = e.SceneAssetName;
             unloadSceneSuccessEventArgs.UserData = e.UserData;
             return unloadSceneSuccessEventArgs;

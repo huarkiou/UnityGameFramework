@@ -20,8 +20,10 @@ namespace UnityGameFramework.Editor
         private SerializedProperty m_SoundGroups = null;
 
         private HelperInfo<SoundHelperBase> m_SoundHelperInfo = new HelperInfo<SoundHelperBase>("Sound");
-        private HelperInfo<SoundGroupHelperBase> m_SoundGroupHelperInfo = new HelperInfo<SoundGroupHelperBase>("SoundGroup");
-        private HelperInfo<SoundAgentHelperBase> m_SoundAgentHelperInfo = new HelperInfo<SoundAgentHelperBase>("SoundAgent");
+        private HelperInfo<SoundGroupHelperBase> m_SoundGroupHelperInfo =
+            new HelperInfo<SoundGroupHelperBase>("SoundGroup");
+        private HelperInfo<SoundAgentHelperBase> m_SoundAgentHelperInfo =
+            new HelperInfo<SoundAgentHelperBase>("SoundAgent");
 
         public override void OnInspectorGUI()
         {
@@ -64,7 +66,8 @@ namespace UnityGameFramework.Editor
         private void OnEnable()
         {
             m_EnablePlaySoundUpdateEvent = serializedObject.FindProperty("m_EnablePlaySoundUpdateEvent");
-            m_EnablePlaySoundDependencyAssetEvent = serializedObject.FindProperty("m_EnablePlaySoundDependencyAssetEvent");
+            m_EnablePlaySoundDependencyAssetEvent =
+                serializedObject.FindProperty("m_EnablePlaySoundDependencyAssetEvent");
             m_InstanceRoot = serializedObject.FindProperty("m_InstanceRoot");
             m_AudioMixer = serializedObject.FindProperty("m_AudioMixer");
             m_SoundGroups = serializedObject.FindProperty("m_SoundGroups");

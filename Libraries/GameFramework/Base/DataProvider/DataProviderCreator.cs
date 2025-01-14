@@ -51,7 +51,8 @@ namespace GameFramework
         /// <param name="resourceManager">资源管理器。</param>
         /// <param name="dataProviderHelper">数据提供者辅助器。</param>
         /// <returns>创建的数据提供者。</returns>
-        public static IDataProvider<T> Create<T>(T owner, IResourceManager resourceManager, IDataProviderHelper<T> dataProviderHelper)
+        public static IDataProvider<T> Create<T>(T owner, IResourceManager resourceManager,
+            IDataProviderHelper<T> dataProviderHelper)
         {
             if (owner == null)
             {

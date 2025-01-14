@@ -33,24 +33,12 @@ namespace GameFramework.FileSystem
         /// 获取游戏框架模块优先级。
         /// </summary>
         /// <remarks>优先级较高的模块会优先轮询，并且关闭操作会后进行。</remarks>
-        internal override int Priority
-        {
-            get
-            {
-                return 4;
-            }
-        }
+        internal override int Priority => 4;
 
         /// <summary>
         /// 获取文件系统数量。
         /// </summary>
-        public int Count
-        {
-            get
-            {
-                return m_FileSystems.Count;
-            }
-        }
+        public int Count => m_FileSystems.Count;
 
         /// <summary>
         /// 文件系统管理器轮询。
@@ -134,7 +122,8 @@ namespace GameFramework.FileSystem
         /// <param name="maxFileCount">要创建的文件系统的最大文件数量。</param>
         /// <param name="maxBlockCount">要创建的文件系统的最大块数据数量。</param>
         /// <returns>创建的文件系统。</returns>
-        public IFileSystem CreateFileSystem(string fullPath, FileSystemAccess access, int maxFileCount, int maxBlockCount)
+        public IFileSystem CreateFileSystem(string fullPath, FileSystemAccess access, int maxFileCount,
+            int maxBlockCount)
         {
             if (m_FileSystemHelper == null)
             {
@@ -165,7 +154,8 @@ namespace GameFramework.FileSystem
             FileSystemStream fileSystemStream = m_FileSystemHelper.CreateFileSystemStream(fullPath, access, true);
             if (fileSystemStream == null)
             {
-                throw new GameFrameworkException(Utility.Text.Format("Create file system stream for '{0}' failure.", fullPath));
+                throw new GameFrameworkException(Utility.Text.Format("Create file system stream for '{0}' failure.",
+                    fullPath));
             }
 
             FileSystem fileSystem = FileSystem.Create(fullPath, access, fileSystemStream, maxFileCount, maxBlockCount);
@@ -210,7 +200,8 @@ namespace GameFramework.FileSystem
             FileSystemStream fileSystemStream = m_FileSystemHelper.CreateFileSystemStream(fullPath, access, false);
             if (fileSystemStream == null)
             {
-                throw new GameFrameworkException(Utility.Text.Format("Create file system stream for '{0}' failure.", fullPath));
+                throw new GameFrameworkException(Utility.Text.Format("Create file system stream for '{0}' failure.",
+                    fullPath));
             }
 
             FileSystem fileSystem = FileSystem.Load(fullPath, access, fileSystemStream);

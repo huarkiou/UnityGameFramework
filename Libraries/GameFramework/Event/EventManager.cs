@@ -27,36 +27,18 @@ namespace GameFramework.Event
         /// <summary>
         /// 获取事件处理函数的数量。
         /// </summary>
-        public int EventHandlerCount
-        {
-            get
-            {
-                return m_EventPool.EventHandlerCount;
-            }
-        }
+        public int EventHandlerCount => m_EventPool.EventHandlerCount;
 
         /// <summary>
         /// 获取事件数量。
         /// </summary>
-        public int EventCount
-        {
-            get
-            {
-                return m_EventPool.EventCount;
-            }
-        }
+        public int EventCount => m_EventPool.EventCount;
 
         /// <summary>
         /// 获取游戏框架模块优先级。
         /// </summary>
         /// <remarks>优先级较高的模块会优先轮询，并且关闭操作会后进行。</remarks>
-        internal override int Priority
-        {
-            get
-            {
-                return 7;
-            }
-        }
+        internal override int Priority => 7;
 
         /// <summary>
         /// 事件管理器轮询。

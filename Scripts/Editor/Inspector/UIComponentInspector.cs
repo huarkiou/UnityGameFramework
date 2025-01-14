@@ -46,7 +46,8 @@ namespace UnityGameFramework.Editor
             }
             EditorGUI.EndDisabledGroup();
 
-            float instanceAutoReleaseInterval = EditorGUILayout.DelayedFloatField("Instance Auto Release Interval", m_InstanceAutoReleaseInterval.floatValue);
+            float instanceAutoReleaseInterval = EditorGUILayout.DelayedFloatField("Instance Auto Release Interval",
+                m_InstanceAutoReleaseInterval.floatValue);
             if (instanceAutoReleaseInterval != m_InstanceAutoReleaseInterval.floatValue)
             {
                 if (EditorApplication.isPlaying)
@@ -72,7 +73,8 @@ namespace UnityGameFramework.Editor
                 }
             }
 
-            float instanceExpireTime = EditorGUILayout.DelayedFloatField("Instance Expire Time", m_InstanceExpireTime.floatValue);
+            float instanceExpireTime =
+                EditorGUILayout.DelayedFloatField("Instance Expire Time", m_InstanceExpireTime.floatValue);
             if (instanceExpireTime != m_InstanceExpireTime.floatValue)
             {
                 if (EditorApplication.isPlaying)
@@ -129,7 +131,8 @@ namespace UnityGameFramework.Editor
             m_EnableOpenUIFormSuccessEvent = serializedObject.FindProperty("m_EnableOpenUIFormSuccessEvent");
             m_EnableOpenUIFormFailureEvent = serializedObject.FindProperty("m_EnableOpenUIFormFailureEvent");
             m_EnableOpenUIFormUpdateEvent = serializedObject.FindProperty("m_EnableOpenUIFormUpdateEvent");
-            m_EnableOpenUIFormDependencyAssetEvent = serializedObject.FindProperty("m_EnableOpenUIFormDependencyAssetEvent");
+            m_EnableOpenUIFormDependencyAssetEvent =
+                serializedObject.FindProperty("m_EnableOpenUIFormDependencyAssetEvent");
             m_EnableCloseUIFormCompleteEvent = serializedObject.FindProperty("m_EnableCloseUIFormCompleteEvent");
             m_InstanceAutoReleaseInterval = serializedObject.FindProperty("m_InstanceAutoReleaseInterval");
             m_InstanceCapacity = serializedObject.FindProperty("m_InstanceCapacity");

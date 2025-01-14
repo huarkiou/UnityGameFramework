@@ -50,46 +50,20 @@ namespace GameFramework.FileSystem
                 m_BlockCount = blockCount;
             }
 
-            public bool IsValid
-            {
-                get
-                {
-                    return m_Header.Length == HeaderLength && m_Header[0] == Header[0] && m_Header[1] == Header[1] && m_Header[2] == Header[2] && m_Version == FileSystemVersion && m_EncryptBytes.Length == EncryptBytesLength
-                        && m_MaxFileCount > 0 && m_MaxBlockCount > 0 && m_MaxFileCount <= m_MaxBlockCount && m_BlockCount > 0 && m_BlockCount <= m_MaxBlockCount;
-                }
-            }
+            public bool IsValid =>
+                m_Header.Length == HeaderLength && m_Header[0] == Header[0] && m_Header[1] == Header[1] &&
+                m_Header[2] == Header[2] && m_Version == FileSystemVersion &&
+                m_EncryptBytes.Length == EncryptBytesLength
+                && m_MaxFileCount > 0 && m_MaxBlockCount > 0 && m_MaxFileCount <= m_MaxBlockCount && m_BlockCount > 0 &&
+                m_BlockCount <= m_MaxBlockCount;
 
-            public byte Version
-            {
-                get
-                {
-                    return m_Version;
-                }
-            }
+            public byte Version => m_Version;
 
-            public int MaxFileCount
-            {
-                get
-                {
-                    return m_MaxFileCount;
-                }
-            }
+            public int MaxFileCount => m_MaxFileCount;
 
-            public int MaxBlockCount
-            {
-                get
-                {
-                    return m_MaxBlockCount;
-                }
-            }
+            public int MaxBlockCount => m_MaxBlockCount;
 
-            public int BlockCount
-            {
-                get
-                {
-                    return m_BlockCount;
-                }
-            }
+            public int BlockCount => m_BlockCount;
 
             public byte[] GetEncryptBytes()
             {

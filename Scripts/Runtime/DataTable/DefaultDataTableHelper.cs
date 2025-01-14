@@ -5,11 +5,11 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameFramework;
-using GameFramework.DataTable;
 using System;
 using System.IO;
 using System.Text;
+using GameFramework;
+using GameFramework.DataTable;
 using UnityEngine;
 
 namespace UnityGameFramework.Runtime
@@ -31,7 +31,8 @@ namespace UnityGameFramework.Runtime
         /// <param name="dataTableAsset">数据表资源。</param>
         /// <param name="userData">用户自定义数据。</param>
         /// <returns>是否读取数据表成功。</returns>
-        public override bool ReadData(DataTableBase dataTable, string dataTableAssetName, object dataTableAsset, object userData)
+        public override bool ReadData(DataTableBase dataTable, string dataTableAssetName, object dataTableAsset,
+            object userData)
         {
             TextAsset dataTableTextAsset = dataTableAsset as TextAsset;
             if (dataTableTextAsset != null)
@@ -60,7 +61,8 @@ namespace UnityGameFramework.Runtime
         /// <param name="length">数据表二进制流的长度。</param>
         /// <param name="userData">用户自定义数据。</param>
         /// <returns>是否读取数据表成功。</returns>
-        public override bool ReadData(DataTableBase dataTable, string dataTableAssetName, byte[] dataTableBytes, int startIndex, int length, object userData)
+        public override bool ReadData(DataTableBase dataTable, string dataTableAssetName, byte[] dataTableBytes,
+            int startIndex, int length, object userData)
         {
             if (dataTableAssetName.EndsWith(BytesAssetExtension, StringComparison.Ordinal))
             {
@@ -117,7 +119,8 @@ namespace UnityGameFramework.Runtime
         /// <param name="length">数据表二进制流的长度。</param>
         /// <param name="userData">用户自定义数据。</param>
         /// <returns>是否解析数据表成功。</returns>
-        public override bool ParseData(DataTableBase dataTable, byte[] dataTableBytes, int startIndex, int length, object userData)
+        public override bool ParseData(DataTableBase dataTable, byte[] dataTableBytes, int startIndex, int length,
+            object userData)
         {
             try
             {
@@ -128,7 +131,8 @@ namespace UnityGameFramework.Runtime
                         while (binaryReader.BaseStream.Position < binaryReader.BaseStream.Length)
                         {
                             int dataRowBytesLength = binaryReader.Read7BitEncodedInt32();
-                            if (!dataTable.AddDataRow(dataTableBytes, (int)binaryReader.BaseStream.Position, dataRowBytesLength, userData))
+                            if (!dataTable.AddDataRow(dataTableBytes, (int)binaryReader.BaseStream.Position,
+                                    dataRowBytesLength, userData))
                             {
                                 Log.Warning("Can not parse data row bytes.");
                                 return false;

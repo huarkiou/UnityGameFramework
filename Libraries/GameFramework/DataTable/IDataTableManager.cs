@@ -5,9 +5,9 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameFramework.Resource;
 using System;
 using System.Collections.Generic;
+using GameFramework.Resource;
 
 namespace GameFramework.DataTable
 {
@@ -19,18 +19,12 @@ namespace GameFramework.DataTable
         /// <summary>
         /// 获取数据表数量。
         /// </summary>
-        int Count
-        {
-            get;
-        }
+        int Count { get; }
 
         /// <summary>
         /// 获取缓冲二进制流的大小。
         /// </summary>
-        int CachedBytesSize
-        {
-            get;
-        }
+        int CachedBytesSize { get; }
 
         /// <summary>
         /// 设置资源管理器。

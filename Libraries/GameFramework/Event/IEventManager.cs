@@ -17,18 +17,12 @@ namespace GameFramework.Event
         /// <summary>
         /// 获取事件处理函数的数量。
         /// </summary>
-        int EventHandlerCount
-        {
-            get;
-        }
+        int EventHandlerCount { get; }
 
         /// <summary>
         /// 获取事件数量。
         /// </summary>
-        int EventCount
-        {
-            get;
-        }
+        int EventCount { get; }
 
         /// <summary>
         /// 获取事件处理函数的数量。

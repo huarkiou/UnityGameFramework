@@ -5,8 +5,8 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameFramework.Resource;
 using System;
+using GameFramework.Resource;
 
 namespace GameFramework.DataTable
 {
@@ -39,54 +39,30 @@ namespace GameFramework.DataTable
         /// <summary>
         /// 获取数据表名称。
         /// </summary>
-        public string Name
-        {
-            get
-            {
-                return m_Name;
-            }
-        }
+        public string Name => m_Name;
 
         /// <summary>
         /// 获取数据表完整名称。
         /// </summary>
-        public string FullName
-        {
-            get
-            {
-                return new TypeNamePair(Type, m_Name).ToString();
-            }
-        }
+        public string FullName => new TypeNamePair(Type, m_Name).ToString();
 
         /// <summary>
         /// 获取数据表行的类型。
         /// </summary>
-        public abstract Type Type
-        {
-            get;
-        }
+        public abstract Type Type { get; }
 
         /// <summary>
         /// 获取数据表行数。
         /// </summary>
-        public abstract int Count
-        {
-            get;
-        }
+        public abstract int Count { get; }
 
         /// <summary>
         /// 读取数据表成功事件。
         /// </summary>
         public event EventHandler<ReadDataSuccessEventArgs> ReadDataSuccess
         {
-            add
-            {
-                m_DataProvider.ReadDataSuccess += value;
-            }
-            remove
-            {
-                m_DataProvider.ReadDataSuccess -= value;
-            }
+            add => m_DataProvider.ReadDataSuccess += value;
+            remove => m_DataProvider.ReadDataSuccess -= value;
         }
 
         /// <summary>
@@ -94,14 +70,8 @@ namespace GameFramework.DataTable
         /// </summary>
         public event EventHandler<ReadDataFailureEventArgs> ReadDataFailure
         {
-            add
-            {
-                m_DataProvider.ReadDataFailure += value;
-            }
-            remove
-            {
-                m_DataProvider.ReadDataFailure -= value;
-            }
+            add => m_DataProvider.ReadDataFailure += value;
+            remove => m_DataProvider.ReadDataFailure -= value;
         }
 
         /// <summary>
@@ -109,14 +79,8 @@ namespace GameFramework.DataTable
         /// </summary>
         public event EventHandler<ReadDataUpdateEventArgs> ReadDataUpdate
         {
-            add
-            {
-                m_DataProvider.ReadDataUpdate += value;
-            }
-            remove
-            {
-                m_DataProvider.ReadDataUpdate -= value;
-            }
+            add => m_DataProvider.ReadDataUpdate += value;
+            remove => m_DataProvider.ReadDataUpdate -= value;
         }
 
         /// <summary>
@@ -124,14 +88,8 @@ namespace GameFramework.DataTable
         /// </summary>
         public event EventHandler<ReadDataDependencyAssetEventArgs> ReadDataDependencyAsset
         {
-            add
-            {
-                m_DataProvider.ReadDataDependencyAsset += value;
-            }
-            remove
-            {
-                m_DataProvider.ReadDataDependencyAsset -= value;
-            }
+            add => m_DataProvider.ReadDataDependencyAsset += value;
+            remove => m_DataProvider.ReadDataDependencyAsset -= value;
         }
 
         /// <summary>

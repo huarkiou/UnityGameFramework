@@ -35,58 +35,32 @@ namespace UnityGameFramework.Runtime
         /// <summary>
         /// 获取资源更新成功事件编号。
         /// </summary>
-        public override int Id
-        {
-            get
-            {
-                return EventId;
-            }
-        }
+        public override int Id => EventId;
 
         /// <summary>
         /// 获取资源名称。
         /// </summary>
-        public string Name
-        {
-            get;
-            private set;
-        }
+        public string Name { get; private set; }
 
         /// <summary>
         /// 获取资源下载后存放路径。
         /// </summary>
-        public string DownloadPath
-        {
-            get;
-            private set;
-        }
+        public string DownloadPath { get; private set; }
 
         /// <summary>
         /// 获取下载地址。
         /// </summary>
-        public string DownloadUri
-        {
-            get;
-            private set;
-        }
+        public string DownloadUri { get; private set; }
 
         /// <summary>
         /// 获取资源大小。
         /// </summary>
-        public int Length
-        {
-            get;
-            private set;
-        }
+        public int Length { get; private set; }
 
         /// <summary>
         /// 获取压缩后大小。
         /// </summary>
-        public int CompressedLength
-        {
-            get;
-            private set;
-        }
+        public int CompressedLength { get; private set; }
 
         /// <summary>
         /// 创建资源更新成功事件。
@@ -95,7 +69,8 @@ namespace UnityGameFramework.Runtime
         /// <returns>创建的资源更新成功事件。</returns>
         public static ResourceUpdateSuccessEventArgs Create(GameFramework.Resource.ResourceUpdateSuccessEventArgs e)
         {
-            ResourceUpdateSuccessEventArgs resourceUpdateSuccessEventArgs = ReferencePool.Acquire<ResourceUpdateSuccessEventArgs>();
+            ResourceUpdateSuccessEventArgs resourceUpdateSuccessEventArgs =
+                ReferencePool.Acquire<ResourceUpdateSuccessEventArgs>();
             resourceUpdateSuccessEventArgs.Name = e.Name;
             resourceUpdateSuccessEventArgs.DownloadPath = e.DownloadPath;
             resourceUpdateSuccessEventArgs.DownloadUri = e.DownloadUri;

@@ -36,60 +36,30 @@ namespace GameFramework.WebRequest
         /// <summary>
         /// 获取 Web 请求代理总数量。
         /// </summary>
-        public int TotalAgentCount
-        {
-            get
-            {
-                return m_TaskPool.TotalAgentCount;
-            }
-        }
+        public int TotalAgentCount => m_TaskPool.TotalAgentCount;
 
         /// <summary>
         /// 获取可用 Web 请求代理数量。
         /// </summary>
-        public int FreeAgentCount
-        {
-            get
-            {
-                return m_TaskPool.FreeAgentCount;
-            }
-        }
+        public int FreeAgentCount => m_TaskPool.FreeAgentCount;
 
         /// <summary>
         /// 获取工作中 Web 请求代理数量。
         /// </summary>
-        public int WorkingAgentCount
-        {
-            get
-            {
-                return m_TaskPool.WorkingAgentCount;
-            }
-        }
+        public int WorkingAgentCount => m_TaskPool.WorkingAgentCount;
 
         /// <summary>
         /// 获取等待 Web 请求数量。
         /// </summary>
-        public int WaitingTaskCount
-        {
-            get
-            {
-                return m_TaskPool.WaitingTaskCount;
-            }
-        }
+        public int WaitingTaskCount => m_TaskPool.WaitingTaskCount;
 
         /// <summary>
         /// 获取或设置 Web 请求超时时长，以秒为单位。
         /// </summary>
         public float Timeout
         {
-            get
-            {
-                return m_Timeout;
-            }
-            set
-            {
-                m_Timeout = value;
-            }
+            get => m_Timeout;
+            set => m_Timeout = value;
         }
 
         /// <summary>
@@ -97,14 +67,8 @@ namespace GameFramework.WebRequest
         /// </summary>
         public event EventHandler<WebRequestStartEventArgs> WebRequestStart
         {
-            add
-            {
-                m_WebRequestStartEventHandler += value;
-            }
-            remove
-            {
-                m_WebRequestStartEventHandler -= value;
-            }
+            add => m_WebRequestStartEventHandler += value;
+            remove => m_WebRequestStartEventHandler -= value;
         }
 
         /// <summary>
@@ -112,14 +76,8 @@ namespace GameFramework.WebRequest
         /// </summary>
         public event EventHandler<WebRequestSuccessEventArgs> WebRequestSuccess
         {
-            add
-            {
-                m_WebRequestSuccessEventHandler += value;
-            }
-            remove
-            {
-                m_WebRequestSuccessEventHandler -= value;
-            }
+            add => m_WebRequestSuccessEventHandler += value;
+            remove => m_WebRequestSuccessEventHandler -= value;
         }
 
         /// <summary>
@@ -127,14 +85,8 @@ namespace GameFramework.WebRequest
         /// </summary>
         public event EventHandler<WebRequestFailureEventArgs> WebRequestFailure
         {
-            add
-            {
-                m_WebRequestFailureEventHandler += value;
-            }
-            remove
-            {
-                m_WebRequestFailureEventHandler -= value;
-            }
+            add => m_WebRequestFailureEventHandler += value;
+            remove => m_WebRequestFailureEventHandler -= value;
         }
 
         /// <summary>
@@ -416,7 +368,8 @@ namespace GameFramework.WebRequest
                 throw new GameFrameworkException("You must add web request agent first.");
             }
 
-            WebRequestTask webRequestTask = WebRequestTask.Create(webRequestUri, postData, tag, priority, m_Timeout, userData);
+            WebRequestTask webRequestTask =
+                WebRequestTask.Create(webRequestUri, postData, tag, priority, m_Timeout, userData);
             m_TaskPool.AddTask(webRequestTask);
             return webRequestTask.SerialId;
         }
@@ -454,7 +407,9 @@ namespace GameFramework.WebRequest
         {
             if (m_WebRequestStartEventHandler != null)
             {
-                WebRequestStartEventArgs webRequestStartEventArgs = WebRequestStartEventArgs.Create(sender.Task.SerialId, sender.Task.WebRequestUri, sender.Task.UserData);
+                WebRequestStartEventArgs webRequestStartEventArgs =
+                    WebRequestStartEventArgs.Create(sender.Task.SerialId, sender.Task.WebRequestUri,
+                        sender.Task.UserData);
                 m_WebRequestStartEventHandler(this, webRequestStartEventArgs);
                 ReferencePool.Release(webRequestStartEventArgs);
             }
@@ -464,7 +419,9 @@ namespace GameFramework.WebRequest
         {
             if (m_WebRequestSuccessEventHandler != null)
             {
-                WebRequestSuccessEventArgs webRequestSuccessEventArgs = WebRequestSuccessEventArgs.Create(sender.Task.SerialId, sender.Task.WebRequestUri, webResponseBytes, sender.Task.UserData);
+                WebRequestSuccessEventArgs webRequestSuccessEventArgs =
+                    WebRequestSuccessEventArgs.Create(sender.Task.SerialId, sender.Task.WebRequestUri, webResponseBytes,
+                        sender.Task.UserData);
                 m_WebRequestSuccessEventHandler(this, webRequestSuccessEventArgs);
                 ReferencePool.Release(webRequestSuccessEventArgs);
             }
@@ -474,7 +431,9 @@ namespace GameFramework.WebRequest
         {
             if (m_WebRequestFailureEventHandler != null)
             {
-                WebRequestFailureEventArgs webRequestFailureEventArgs = WebRequestFailureEventArgs.Create(sender.Task.SerialId, sender.Task.WebRequestUri, errorMessage, sender.Task.UserData);
+                WebRequestFailureEventArgs webRequestFailureEventArgs =
+                    WebRequestFailureEventArgs.Create(sender.Task.SerialId, sender.Task.WebRequestUri, errorMessage,
+                        sender.Task.UserData);
                 m_WebRequestFailureEventHandler(this, webRequestFailureEventArgs);
                 ReferencePool.Release(webRequestFailureEventArgs);
             }

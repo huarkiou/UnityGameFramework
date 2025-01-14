@@ -16,10 +16,7 @@ namespace GameFramework
         /// <summary>
         /// 获取任务。
         /// </summary>
-        T Task
-        {
-            get;
-        }
+        T Task { get; }
 
         /// <summary>
         /// 初始化任务代理。

@@ -18,10 +18,7 @@ namespace GameFramework.Network
         /// <summary>
         /// 获取网络频道数量。
         /// </summary>
-        int NetworkChannelCount
-        {
-            get;
-        }
+        int NetworkChannelCount { get; }
 
         /// <summary>
         /// 网络连接成功事件。
@@ -81,7 +78,8 @@ namespace GameFramework.Network
         /// <param name="serviceType">网络服务类型。</param>
         /// <param name="networkChannelHelper">网络频道辅助器。</param>
         /// <returns>要创建的网络频道。</returns>
-        INetworkChannel CreateNetworkChannel(string name, ServiceType serviceType, INetworkChannelHelper networkChannelHelper);
+        INetworkChannel CreateNetworkChannel(string name, ServiceType serviceType,
+            INetworkChannelHelper networkChannelHelper);
 
         /// <summary>
         /// 销毁网络频道。

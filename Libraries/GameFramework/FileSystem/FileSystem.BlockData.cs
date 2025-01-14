@@ -35,37 +35,13 @@ namespace GameFramework.FileSystem
                 m_Length = length;
             }
 
-            public bool Using
-            {
-                get
-                {
-                    return m_StringIndex >= 0;
-                }
-            }
+            public bool Using => m_StringIndex >= 0;
 
-            public int StringIndex
-            {
-                get
-                {
-                    return m_StringIndex;
-                }
-            }
+            public int StringIndex => m_StringIndex;
 
-            public int ClusterIndex
-            {
-                get
-                {
-                    return m_ClusterIndex;
-                }
-            }
+            public int ClusterIndex => m_ClusterIndex;
 
-            public int Length
-            {
-                get
-                {
-                    return m_Length;
-                }
-            }
+            public int Length => m_Length;
 
             public BlockData Free()
             {

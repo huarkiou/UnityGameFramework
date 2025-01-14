@@ -5,11 +5,11 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameFramework;
-using GameFramework.Resource;
 using System;
 using System.IO;
 using System.Text;
+using GameFramework;
+using GameFramework.Resource;
 
 namespace UnityGameFramework.Runtime
 {
@@ -26,7 +26,8 @@ namespace UnityGameFramework.Runtime
         /// <param name="stream">目标流。</param>
         /// <param name="versionList">要序列化的资源包版本资源列表（版本 0）。</param>
         /// <returns>是否序列化资源包版本资源列表（版本 0）成功。</returns>
-        public static bool ResourcePackVersionListSerializeCallback_V0(Stream stream, ResourcePackVersionList versionList)
+        public static bool ResourcePackVersionListSerializeCallback_V0(Stream stream,
+            ResourcePackVersionList versionList)
         {
             if (!versionList.IsValid)
             {
@@ -46,7 +47,8 @@ namespace UnityGameFramework.Runtime
                 {
                     binaryWriter.WriteEncryptedString(resource.Name, s_CachedHashBytes);
                     binaryWriter.WriteEncryptedString(resource.Variant, s_CachedHashBytes);
-                    binaryWriter.WriteEncryptedString(resource.Extension != DefaultExtension ? resource.Extension : null, s_CachedHashBytes);
+                    binaryWriter.WriteEncryptedString(
+                        resource.Extension != DefaultExtension ? resource.Extension : null, s_CachedHashBytes);
                     binaryWriter.Write(resource.LoadType);
                     binaryWriter.Write7BitEncodedInt64(resource.Offset);
                     binaryWriter.Write7BitEncodedInt32(resource.Length);

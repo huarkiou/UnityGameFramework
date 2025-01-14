@@ -36,53 +36,17 @@ namespace GameFramework.Resource
                         m_HashCode = hashCode;
                     }
 
-                    public bool Exist
-                    {
-                        get
-                        {
-                            return m_Exist;
-                        }
-                    }
+                    public bool Exist => m_Exist;
 
-                    public bool UseFileSystem
-                    {
-                        get
-                        {
-                            return !string.IsNullOrEmpty(m_FileSystemName);
-                        }
-                    }
+                    public bool UseFileSystem => !string.IsNullOrEmpty(m_FileSystemName);
 
-                    public string FileSystemName
-                    {
-                        get
-                        {
-                            return m_FileSystemName;
-                        }
-                    }
+                    public string FileSystemName => m_FileSystemName;
 
-                    public LoadType LoadType
-                    {
-                        get
-                        {
-                            return m_LoadType;
-                        }
-                    }
+                    public LoadType LoadType => m_LoadType;
 
-                    public int Length
-                    {
-                        get
-                        {
-                            return m_Length;
-                        }
-                    }
+                    public int Length => m_Length;
 
-                    public int HashCode
-                    {
-                        get
-                        {
-                            return m_HashCode;
-                        }
-                    }
+                    public int HashCode => m_HashCode;
                 }
             }
         }

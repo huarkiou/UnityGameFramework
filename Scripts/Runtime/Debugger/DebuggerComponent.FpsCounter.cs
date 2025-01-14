@@ -31,10 +31,7 @@ namespace UnityGameFramework.Runtime
 
             public float UpdateInterval
             {
-                get
-                {
-                    return m_UpdateInterval;
-                }
+                get => m_UpdateInterval;
                 set
                 {
                     if (value <= 0f)
@@ -48,13 +45,7 @@ namespace UnityGameFramework.Runtime
                 }
             }
 
-            public float CurrentFps
-            {
-                get
-                {
-                    return m_CurrentFps;
-                }
-            }
+            public float CurrentFps => m_CurrentFps;
 
             public void Update(float elapseSeconds, float realElapseSeconds)
             {

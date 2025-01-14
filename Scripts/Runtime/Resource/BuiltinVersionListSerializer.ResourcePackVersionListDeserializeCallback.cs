@@ -5,9 +5,9 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameFramework.Resource;
 using System.IO;
 using System.Text;
+using GameFramework.Resource;
 
 namespace UnityGameFramework.Runtime
 {
@@ -30,7 +30,8 @@ namespace UnityGameFramework.Runtime
                 long dataLength = binaryReader.ReadInt64();
                 int dataHashCode = binaryReader.ReadInt32();
                 int resourceCount = binaryReader.Read7BitEncodedInt32();
-                ResourcePackVersionList.Resource[] resources = resourceCount > 0 ? new ResourcePackVersionList.Resource[resourceCount] : null;
+                ResourcePackVersionList.Resource[] resources =
+                    resourceCount > 0 ? new ResourcePackVersionList.Resource[resourceCount] : null;
                 for (int i = 0; i < resourceCount; i++)
                 {
                     string name = binaryReader.ReadEncryptedString(encryptBytes);
@@ -42,7 +43,8 @@ namespace UnityGameFramework.Runtime
                     int hashCode = binaryReader.ReadInt32();
                     int compressedLength = binaryReader.Read7BitEncodedInt32();
                     int compressedHashCode = binaryReader.ReadInt32();
-                    resources[i] = new ResourcePackVersionList.Resource(name, variant, extension, loadType, offset, length, hashCode, compressedLength, compressedHashCode);
+                    resources[i] = new ResourcePackVersionList.Resource(name, variant, extension, loadType, offset,
+                        length, hashCode, compressedLength, compressedHashCode);
                 }
 
                 return new ResourcePackVersionList(dataOffset, dataLength, dataHashCode, resources);

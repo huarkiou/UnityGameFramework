@@ -39,7 +39,8 @@ namespace GameFramework.ObjectPool
             /// <param name="capacity">对象池的容量。</param>
             /// <param name="expireTime">对象池对象过期秒数。</param>
             /// <param name="priority">对象池的优先级。</param>
-            public ObjectPool(string name, bool allowMultiSpawn, float autoReleaseInterval, int capacity, float expireTime, int priority)
+            public ObjectPool(string name, bool allowMultiSpawn, float autoReleaseInterval, int capacity,
+                float expireTime, int priority)
                 : base(name)
             {
                 m_Objects = new GameFrameworkMultiDictionary<string, Object<T>>();
@@ -58,24 +59,12 @@ namespace GameFramework.ObjectPool
             /// <summary>
             /// 获取对象池对象类型。
             /// </summary>
-            public override Type ObjectType
-            {
-                get
-                {
-                    return typeof(T);
-                }
-            }
+            public override Type ObjectType => typeof(T);
 
             /// <summary>
             /// 获取对象池中对象的数量。
             /// </summary>
-            public override int Count
-            {
-                get
-                {
-                    return m_ObjectMap.Count;
-                }
-            }
+            public override int Count => m_ObjectMap.Count;
 
             /// <summary>
             /// 获取对象池中能被释放的对象的数量。
@@ -92,27 +81,15 @@ namespace GameFramework.ObjectPool
             /// <summary>
             /// 获取是否允许对象被多次获取。
             /// </summary>
-            public override bool AllowMultiSpawn
-            {
-                get
-                {
-                    return m_AllowMultiSpawn;
-                }
-            }
+            public override bool AllowMultiSpawn => m_AllowMultiSpawn;
 
             /// <summary>
             /// 获取或设置对象池自动释放可释放对象的间隔秒数。
             /// </summary>
             public override float AutoReleaseInterval
             {
-                get
-                {
-                    return m_AutoReleaseInterval;
-                }
-                set
-                {
-                    m_AutoReleaseInterval = value;
-                }
+                get => m_AutoReleaseInterval;
+                set => m_AutoReleaseInterval = value;
             }
 
             /// <summary>
@@ -120,10 +97,7 @@ namespace GameFramework.ObjectPool
             /// </summary>
             public override int Capacity
             {
-                get
-                {
-                    return m_Capacity;
-                }
+                get => m_Capacity;
                 set
                 {
                     if (value < 0)
@@ -146,10 +120,7 @@ namespace GameFramework.ObjectPool
             /// </summary>
             public override float ExpireTime
             {
-                get
-                {
-                    return m_ExpireTime;
-                }
+                get => m_ExpireTime;
 
                 set
                 {
@@ -173,14 +144,8 @@ namespace GameFramework.ObjectPool
             /// </summary>
             public override int Priority
             {
-                get
-                {
-                    return m_Priority;
-                }
-                set
-                {
-                    m_Priority = value;
-                }
+                get => m_Priority;
+                set => m_Priority = value;
             }
 
             /// <summary>
@@ -313,7 +278,9 @@ namespace GameFramework.ObjectPool
                 }
                 else
                 {
-                    throw new GameFrameworkException(Utility.Text.Format("Can not find target in object pool '{0}', target type is '{1}', target value is '{2}'.", new TypeNamePair(typeof(T), Name), target.GetType().FullName, target));
+                    throw new GameFrameworkException(Utility.Text.Format(
+                        "Can not find target in object pool '{0}', target type is '{1}', target value is '{2}'.",
+                        new TypeNamePair(typeof(T), Name), target.GetType().FullName, target));
                 }
             }
 
@@ -351,7 +318,9 @@ namespace GameFramework.ObjectPool
                 }
                 else
                 {
-                    throw new GameFrameworkException(Utility.Text.Format("Can not find target in object pool '{0}', target type is '{1}', target value is '{2}'.", new TypeNamePair(typeof(T), Name), target.GetType().FullName, target));
+                    throw new GameFrameworkException(Utility.Text.Format(
+                        "Can not find target in object pool '{0}', target type is '{1}', target value is '{2}'.",
+                        new TypeNamePair(typeof(T), Name), target.GetType().FullName, target));
                 }
             }
 
@@ -389,7 +358,9 @@ namespace GameFramework.ObjectPool
                 }
                 else
                 {
-                    throw new GameFrameworkException(Utility.Text.Format("Can not find target in object pool '{0}', target type is '{1}', target value is '{2}'.", new TypeNamePair(typeof(T), Name), target.GetType().FullName, target));
+                    throw new GameFrameworkException(Utility.Text.Format(
+                        "Can not find target in object pool '{0}', target type is '{1}', target value is '{2}'.",
+                        new TypeNamePair(typeof(T), Name), target.GetType().FullName, target));
                 }
             }
 
@@ -490,7 +461,8 @@ namespace GameFramework.ObjectPool
 
                 m_AutoReleaseTime = 0f;
                 GetCanReleaseObjects(m_CachedCanReleaseObjects);
-                List<T> toReleaseObjects = releaseObjectFilterCallback(m_CachedCanReleaseObjects, toReleaseCount, expireTime);
+                List<T> toReleaseObjects =
+                    releaseObjectFilterCallback(m_CachedCanReleaseObjects, toReleaseCount, expireTime);
                 if (toReleaseObjects == null || toReleaseObjects.Count <= 0)
                 {
                     return;
@@ -526,7 +498,9 @@ namespace GameFramework.ObjectPool
                 {
                     foreach (Object<T> internalObject in objectRanges.Value)
                     {
-                        results.Add(new ObjectInfo(internalObject.Name, internalObject.Locked, internalObject.CustomCanReleaseFlag, internalObject.Priority, internalObject.LastUseTime, internalObject.SpawnCount));
+                        results.Add(new ObjectInfo(internalObject.Name, internalObject.Locked,
+                            internalObject.CustomCanReleaseFlag, internalObject.Priority, internalObject.LastUseTime,
+                            internalObject.SpawnCount));
                     }
                 }
 
@@ -594,7 +568,8 @@ namespace GameFramework.ObjectPool
                 }
             }
 
-            private List<T> DefaultReleaseObjectFilterCallback(List<T> candidateObjects, int toReleaseCount, DateTime expireTime)
+            private List<T> DefaultReleaseObjectFilterCallback(List<T> candidateObjects, int toReleaseCount,
+                DateTime expireTime)
             {
                 m_CachedToReleaseObjects.Clear();
 
@@ -618,7 +593,8 @@ namespace GameFramework.ObjectPool
                     for (int j = i + 1; j < candidateObjects.Count; j++)
                     {
                         if (candidateObjects[i].Priority > candidateObjects[j].Priority
-                            || candidateObjects[i].Priority == candidateObjects[j].Priority && candidateObjects[i].LastUseTime > candidateObjects[j].LastUseTime)
+                            || candidateObjects[i].Priority == candidateObjects[j].Priority &&
+                            candidateObjects[i].LastUseTime > candidateObjects[j].LastUseTime)
                         {
                             T temp = candidateObjects[i];
                             candidateObjects[i] = candidateObjects[j];

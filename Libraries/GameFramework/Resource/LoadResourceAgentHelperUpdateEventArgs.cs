@@ -24,20 +24,12 @@ namespace GameFramework.Resource
         /// <summary>
         /// 获取进度类型。
         /// </summary>
-        public LoadResourceProgress Type
-        {
-            get;
-            private set;
-        }
+        public LoadResourceProgress Type { get; private set; }
 
         /// <summary>
         /// 获取进度。
         /// </summary>
-        public float Progress
-        {
-            get;
-            private set;
-        }
+        public float Progress { get; private set; }
 
         /// <summary>
         /// 创建加载资源代理辅助器更新事件。
@@ -47,7 +39,8 @@ namespace GameFramework.Resource
         /// <returns>创建的加载资源代理辅助器更新事件。</returns>
         public static LoadResourceAgentHelperUpdateEventArgs Create(LoadResourceProgress type, float progress)
         {
-            LoadResourceAgentHelperUpdateEventArgs loadResourceAgentHelperUpdateEventArgs = ReferencePool.Acquire<LoadResourceAgentHelperUpdateEventArgs>();
+            LoadResourceAgentHelperUpdateEventArgs loadResourceAgentHelperUpdateEventArgs =
+                ReferencePool.Acquire<LoadResourceAgentHelperUpdateEventArgs>();
             loadResourceAgentHelperUpdateEventArgs.Type = type;
             loadResourceAgentHelperUpdateEventArgs.Progress = progress;
             return loadResourceAgentHelperUpdateEventArgs;

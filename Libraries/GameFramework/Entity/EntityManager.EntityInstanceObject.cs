@@ -25,7 +25,8 @@ namespace GameFramework.Entity
                 m_EntityHelper = null;
             }
 
-            public static EntityInstanceObject Create(string name, object entityAsset, object entityInstance, IEntityHelper entityHelper)
+            public static EntityInstanceObject Create(string name, object entityAsset, object entityInstance,
+                IEntityHelper entityHelper)
             {
                 if (entityAsset == null)
                 {

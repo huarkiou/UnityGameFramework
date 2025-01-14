@@ -23,13 +23,7 @@ namespace GameFramework
             /// <summary>
             /// 获取缓存的从进程的非托管内存中分配的内存的大小。
             /// </summary>
-            public static int CachedHGlobalSize
-            {
-                get
-                {
-                    return s_CachedHGlobalSize;
-                }
-            }
+            public static int CachedHGlobalSize => s_CachedHGlobalSize;
 
             /// <summary>
             /// 确保从进程的非托管内存中分配足够大小的内存并缓存。
@@ -128,7 +122,8 @@ namespace GameFramework
             /// <param name="startIndex">写入存储转换结果的二进制流的起始位置。</param>
             public static void StructureToBytes<T>(T structure, byte[] result, int startIndex)
             {
-                StructureToBytes(structure, System.Runtime.InteropServices.Marshal.SizeOf(typeof(T)), result, startIndex);
+                StructureToBytes(structure, System.Runtime.InteropServices.Marshal.SizeOf(typeof(T)), result,
+                    startIndex);
             }
 
             /// <summary>
@@ -186,7 +181,8 @@ namespace GameFramework
             /// <returns>存储转换结果的对象。</returns>
             public static T BytesToStructure<T>(byte[] buffer, int startIndex)
             {
-                return BytesToStructure<T>(System.Runtime.InteropServices.Marshal.SizeOf(typeof(T)), buffer, startIndex);
+                return BytesToStructure<T>(System.Runtime.InteropServices.Marshal.SizeOf(typeof(T)), buffer,
+                    startIndex);
             }
 
             /// <summary>

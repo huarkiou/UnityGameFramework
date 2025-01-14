@@ -5,9 +5,9 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
+using System.Collections.Generic;
 using GameFramework;
 using GameFramework.FileSystem;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace UnityGameFramework.Runtime
@@ -30,13 +30,7 @@ namespace UnityGameFramework.Runtime
         /// <summary>
         /// 获取文件系统数量。
         /// </summary>
-        public int Count
-        {
-            get
-            {
-                return m_FileSystemManager.Count;
-            }
-        }
+        public int Count => m_FileSystemManager.Count;
 
         /// <summary>
         /// 游戏框架组件初始化。
@@ -52,7 +46,8 @@ namespace UnityGameFramework.Runtime
                 return;
             }
 
-            FileSystemHelperBase fileSystemHelper = Helper.CreateHelper(m_FileSystemHelperTypeName, m_CustomFileSystemHelper);
+            FileSystemHelperBase fileSystemHelper =
+                Helper.CreateHelper(m_FileSystemHelperTypeName, m_CustomFileSystemHelper);
             if (fileSystemHelper == null)
             {
                 Log.Error("Can not create fileSystem helper.");
@@ -99,7 +94,8 @@ namespace UnityGameFramework.Runtime
         /// <param name="maxFileCount">要创建的文件系统的最大文件数量。</param>
         /// <param name="maxBlockCount">要创建的文件系统的最大块数据数量。</param>
         /// <returns>创建的文件系统。</returns>
-        public IFileSystem CreateFileSystem(string fullPath, FileSystemAccess access, int maxFileCount, int maxBlockCount)
+        public IFileSystem CreateFileSystem(string fullPath, FileSystemAccess access, int maxFileCount,
+            int maxBlockCount)
         {
             return m_FileSystemManager.CreateFileSystem(fullPath, access, maxFileCount, maxBlockCount);
         }

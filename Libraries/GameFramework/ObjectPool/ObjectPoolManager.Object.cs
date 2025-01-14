@@ -32,27 +32,15 @@ namespace GameFramework.ObjectPool
             /// <summary>
             /// 获取对象名称。
             /// </summary>
-            public string Name
-            {
-                get
-                {
-                    return m_Object.Name;
-                }
-            }
+            public string Name => m_Object.Name;
 
             /// <summary>
             /// 获取对象是否被加锁。
             /// </summary>
             public bool Locked
             {
-                get
-                {
-                    return m_Object.Locked;
-                }
-                internal set
-                {
-                    m_Object.Locked = value;
-                }
+                get => m_Object.Locked;
+                internal set => m_Object.Locked = value;
             }
 
             /// <summary>
@@ -60,59 +48,29 @@ namespace GameFramework.ObjectPool
             /// </summary>
             public int Priority
             {
-                get
-                {
-                    return m_Object.Priority;
-                }
-                internal set
-                {
-                    m_Object.Priority = value;
-                }
+                get => m_Object.Priority;
+                internal set => m_Object.Priority = value;
             }
 
             /// <summary>
             /// 获取自定义释放检查标记。
             /// </summary>
-            public bool CustomCanReleaseFlag
-            {
-                get
-                {
-                    return m_Object.CustomCanReleaseFlag;
-                }
-            }
+            public bool CustomCanReleaseFlag => m_Object.CustomCanReleaseFlag;
 
             /// <summary>
             /// 获取对象上次使用时间。
             /// </summary>
-            public DateTime LastUseTime
-            {
-                get
-                {
-                    return m_Object.LastUseTime;
-                }
-            }
+            public DateTime LastUseTime => m_Object.LastUseTime;
 
             /// <summary>
             /// 获取对象是否正在使用。
             /// </summary>
-            public bool IsInUse
-            {
-                get
-                {
-                    return m_SpawnCount > 0;
-                }
-            }
+            public bool IsInUse => m_SpawnCount > 0;
 
             /// <summary>
             /// 获取对象的获取计数。
             /// </summary>
-            public int SpawnCount
-            {
-                get
-                {
-                    return m_SpawnCount;
-                }
-            }
+            public int SpawnCount => m_SpawnCount;
 
             /// <summary>
             /// 创建内部对象。
@@ -178,7 +136,8 @@ namespace GameFramework.ObjectPool
                 m_SpawnCount--;
                 if (m_SpawnCount < 0)
                 {
-                    throw new GameFrameworkException(Utility.Text.Format("Object '{0}' spawn count is less than 0.", Name));
+                    throw new GameFrameworkException(Utility.Text.Format("Object '{0}' spawn count is less than 0.",
+                        Name));
                 }
             }
 

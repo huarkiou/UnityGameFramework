@@ -23,11 +23,7 @@ namespace GameFramework.Resource
         /// <summary>
         /// 获取加载的资源。
         /// </summary>
-        public object Asset
-        {
-            get;
-            private set;
-        }
+        public object Asset { get; private set; }
 
         /// <summary>
         /// 创建加载资源代理辅助器异步加载资源完成事件。
@@ -36,7 +32,8 @@ namespace GameFramework.Resource
         /// <returns>创建的加载资源代理辅助器异步加载资源完成事件。</returns>
         public static LoadResourceAgentHelperLoadCompleteEventArgs Create(object asset)
         {
-            LoadResourceAgentHelperLoadCompleteEventArgs loadResourceAgentHelperLoadCompleteEventArgs = ReferencePool.Acquire<LoadResourceAgentHelperLoadCompleteEventArgs>();
+            LoadResourceAgentHelperLoadCompleteEventArgs loadResourceAgentHelperLoadCompleteEventArgs =
+                ReferencePool.Acquire<LoadResourceAgentHelperLoadCompleteEventArgs>();
             loadResourceAgentHelperLoadCompleteEventArgs.Asset = asset;
             return loadResourceAgentHelperLoadCompleteEventArgs;
         }

@@ -5,14 +5,14 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameFramework;
-using GameFramework.FileSystem;
-using GameFramework.Resource;
-using System;
-using UnityEngine;
 #if UNITY_5_4_OR_NEWER
 using UnityEngine.Networking;
 #endif
+using System;
+using GameFramework;
+using GameFramework.FileSystem;
+using GameFramework.Resource;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using Utility = GameFramework.Utility;
 
@@ -40,10 +40,14 @@ namespace UnityGameFramework.Runtime
         private AsyncOperation m_AsyncOperation = null;
 
         private EventHandler<LoadResourceAgentHelperUpdateEventArgs> m_LoadResourceAgentHelperUpdateEventHandler = null;
-        private EventHandler<LoadResourceAgentHelperReadFileCompleteEventArgs> m_LoadResourceAgentHelperReadFileCompleteEventHandler = null;
-        private EventHandler<LoadResourceAgentHelperReadBytesCompleteEventArgs> m_LoadResourceAgentHelperReadBytesCompleteEventHandler = null;
-        private EventHandler<LoadResourceAgentHelperParseBytesCompleteEventArgs> m_LoadResourceAgentHelperParseBytesCompleteEventHandler = null;
-        private EventHandler<LoadResourceAgentHelperLoadCompleteEventArgs> m_LoadResourceAgentHelperLoadCompleteEventHandler = null;
+        private EventHandler<LoadResourceAgentHelperReadFileCompleteEventArgs>
+            m_LoadResourceAgentHelperReadFileCompleteEventHandler = null;
+        private EventHandler<LoadResourceAgentHelperReadBytesCompleteEventArgs>
+            m_LoadResourceAgentHelperReadBytesCompleteEventHandler = null;
+        private EventHandler<LoadResourceAgentHelperParseBytesCompleteEventArgs>
+            m_LoadResourceAgentHelperParseBytesCompleteEventHandler = null;
+        private EventHandler<LoadResourceAgentHelperLoadCompleteEventArgs>
+            m_LoadResourceAgentHelperLoadCompleteEventHandler = null;
         private EventHandler<LoadResourceAgentHelperErrorEventArgs> m_LoadResourceAgentHelperErrorEventHandler = null;
 
         /// <summary>
@@ -51,89 +55,57 @@ namespace UnityGameFramework.Runtime
         /// </summary>
         public override event EventHandler<LoadResourceAgentHelperUpdateEventArgs> LoadResourceAgentHelperUpdate
         {
-            add
-            {
-                m_LoadResourceAgentHelperUpdateEventHandler += value;
-            }
-            remove
-            {
-                m_LoadResourceAgentHelperUpdateEventHandler -= value;
-            }
+            add => m_LoadResourceAgentHelperUpdateEventHandler += value;
+            remove => m_LoadResourceAgentHelperUpdateEventHandler -= value;
         }
 
         /// <summary>
         /// 加载资源代理辅助器异步读取资源文件完成事件。
         /// </summary>
-        public override event EventHandler<LoadResourceAgentHelperReadFileCompleteEventArgs> LoadResourceAgentHelperReadFileComplete
-        {
-            add
+        public override event EventHandler<LoadResourceAgentHelperReadFileCompleteEventArgs>
+            LoadResourceAgentHelperReadFileComplete
             {
-                m_LoadResourceAgentHelperReadFileCompleteEventHandler += value;
+                add => m_LoadResourceAgentHelperReadFileCompleteEventHandler += value;
+                remove => m_LoadResourceAgentHelperReadFileCompleteEventHandler -= value;
             }
-            remove
-            {
-                m_LoadResourceAgentHelperReadFileCompleteEventHandler -= value;
-            }
-        }
 
         /// <summary>
         /// 加载资源代理辅助器异步读取资源二进制流完成事件。
         /// </summary>
-        public override event EventHandler<LoadResourceAgentHelperReadBytesCompleteEventArgs> LoadResourceAgentHelperReadBytesComplete
-        {
-            add
+        public override event EventHandler<LoadResourceAgentHelperReadBytesCompleteEventArgs>
+            LoadResourceAgentHelperReadBytesComplete
             {
-                m_LoadResourceAgentHelperReadBytesCompleteEventHandler += value;
+                add => m_LoadResourceAgentHelperReadBytesCompleteEventHandler += value;
+                remove => m_LoadResourceAgentHelperReadBytesCompleteEventHandler -= value;
             }
-            remove
-            {
-                m_LoadResourceAgentHelperReadBytesCompleteEventHandler -= value;
-            }
-        }
 
         /// <summary>
         /// 加载资源代理辅助器异步将资源二进制流转换为加载对象完成事件。
         /// </summary>
-        public override event EventHandler<LoadResourceAgentHelperParseBytesCompleteEventArgs> LoadResourceAgentHelperParseBytesComplete
-        {
-            add
+        public override event EventHandler<LoadResourceAgentHelperParseBytesCompleteEventArgs>
+            LoadResourceAgentHelperParseBytesComplete
             {
-                m_LoadResourceAgentHelperParseBytesCompleteEventHandler += value;
+                add => m_LoadResourceAgentHelperParseBytesCompleteEventHandler += value;
+                remove => m_LoadResourceAgentHelperParseBytesCompleteEventHandler -= value;
             }
-            remove
-            {
-                m_LoadResourceAgentHelperParseBytesCompleteEventHandler -= value;
-            }
-        }
 
         /// <summary>
         /// 加载资源代理辅助器异步加载资源完成事件。
         /// </summary>
-        public override event EventHandler<LoadResourceAgentHelperLoadCompleteEventArgs> LoadResourceAgentHelperLoadComplete
-        {
-            add
+        public override event EventHandler<LoadResourceAgentHelperLoadCompleteEventArgs>
+            LoadResourceAgentHelperLoadComplete
             {
-                m_LoadResourceAgentHelperLoadCompleteEventHandler += value;
+                add => m_LoadResourceAgentHelperLoadCompleteEventHandler += value;
+                remove => m_LoadResourceAgentHelperLoadCompleteEventHandler -= value;
             }
-            remove
-            {
-                m_LoadResourceAgentHelperLoadCompleteEventHandler -= value;
-            }
-        }
 
         /// <summary>
         /// 加载资源代理辅助器错误事件。
         /// </summary>
         public override event EventHandler<LoadResourceAgentHelperErrorEventArgs> LoadResourceAgentHelperError
         {
-            add
-            {
-                m_LoadResourceAgentHelperErrorEventHandler += value;
-            }
-            remove
-            {
-                m_LoadResourceAgentHelperErrorEventHandler -= value;
-            }
+            add => m_LoadResourceAgentHelperErrorEventHandler += value;
+            remove => m_LoadResourceAgentHelperErrorEventHandler -= value;
         }
 
         /// <summary>
@@ -142,7 +114,9 @@ namespace UnityGameFramework.Runtime
         /// <param name="fullPath">要加载资源的完整路径名。</param>
         public override void ReadFile(string fullPath)
         {
-            if (m_LoadResourceAgentHelperReadFileCompleteEventHandler == null || m_LoadResourceAgentHelperUpdateEventHandler == null || m_LoadResourceAgentHelperErrorEventHandler == null)
+            if (m_LoadResourceAgentHelperReadFileCompleteEventHandler == null ||
+                m_LoadResourceAgentHelperUpdateEventHandler == null ||
+                m_LoadResourceAgentHelperErrorEventHandler == null)
             {
                 Log.Fatal("Load resource agent helper handler is invalid.");
                 return;
@@ -160,7 +134,9 @@ namespace UnityGameFramework.Runtime
         public override void ReadFile(IFileSystem fileSystem, string name)
         {
 #if UNITY_5_3_5 || UNITY_5_3_6 || UNITY_5_3_7 || UNITY_5_3_8 || UNITY_5_4_OR_NEWER
-            if (m_LoadResourceAgentHelperReadFileCompleteEventHandler == null || m_LoadResourceAgentHelperUpdateEventHandler == null || m_LoadResourceAgentHelperErrorEventHandler == null)
+            if (m_LoadResourceAgentHelperReadFileCompleteEventHandler == null ||
+                m_LoadResourceAgentHelperUpdateEventHandler == null ||
+                m_LoadResourceAgentHelperErrorEventHandler == null)
             {
                 Log.Fatal("Load resource agent helper handler is invalid.");
                 return;
@@ -169,7 +145,8 @@ namespace UnityGameFramework.Runtime
             FileInfo fileInfo = fileSystem.GetFileInfo(name);
             m_FileFullPath = fileSystem.FullPath;
             m_FileName = name;
-            m_FileAssetBundleCreateRequest = AssetBundle.LoadFromFileAsync(fileSystem.FullPath, 0u, (ulong)fileInfo.Offset);
+            m_FileAssetBundleCreateRequest =
+                AssetBundle.LoadFromFileAsync(fileSystem.FullPath, 0u, (ulong)fileInfo.Offset);
 #else
             Log.Fatal("Load from file async with offset is not supported, use Unity 5.3.5f1 or above.");
 #endif
@@ -181,7 +158,9 @@ namespace UnityGameFramework.Runtime
         /// <param name="fullPath">要加载资源的完整路径名。</param>
         public override void ReadBytes(string fullPath)
         {
-            if (m_LoadResourceAgentHelperReadBytesCompleteEventHandler == null || m_LoadResourceAgentHelperUpdateEventHandler == null || m_LoadResourceAgentHelperErrorEventHandler == null)
+            if (m_LoadResourceAgentHelperReadBytesCompleteEventHandler == null ||
+                m_LoadResourceAgentHelperUpdateEventHandler == null ||
+                m_LoadResourceAgentHelperErrorEventHandler == null)
             {
                 Log.Fatal("Load resource agent helper handler is invalid.");
                 return;
@@ -207,15 +186,19 @@ namespace UnityGameFramework.Runtime
         /// <param name="name">要加载资源的名称。</param>
         public override void ReadBytes(IFileSystem fileSystem, string name)
         {
-            if (m_LoadResourceAgentHelperReadBytesCompleteEventHandler == null || m_LoadResourceAgentHelperUpdateEventHandler == null || m_LoadResourceAgentHelperErrorEventHandler == null)
+            if (m_LoadResourceAgentHelperReadBytesCompleteEventHandler == null ||
+                m_LoadResourceAgentHelperUpdateEventHandler == null ||
+                m_LoadResourceAgentHelperErrorEventHandler == null)
             {
                 Log.Fatal("Load resource agent helper handler is invalid.");
                 return;
             }
 
             byte[] bytes = fileSystem.ReadFile(name);
-            LoadResourceAgentHelperReadBytesCompleteEventArgs loadResourceAgentHelperReadBytesCompleteEventArgs = LoadResourceAgentHelperReadBytesCompleteEventArgs.Create(bytes);
-            m_LoadResourceAgentHelperReadBytesCompleteEventHandler(this, loadResourceAgentHelperReadBytesCompleteEventArgs);
+            LoadResourceAgentHelperReadBytesCompleteEventArgs loadResourceAgentHelperReadBytesCompleteEventArgs =
+                LoadResourceAgentHelperReadBytesCompleteEventArgs.Create(bytes);
+            m_LoadResourceAgentHelperReadBytesCompleteEventHandler(this,
+                loadResourceAgentHelperReadBytesCompleteEventArgs);
             ReferencePool.Release(loadResourceAgentHelperReadBytesCompleteEventArgs);
         }
 
@@ -225,7 +208,9 @@ namespace UnityGameFramework.Runtime
         /// <param name="bytes">要加载资源的二进制流。</param>
         public override void ParseBytes(byte[] bytes)
         {
-            if (m_LoadResourceAgentHelperParseBytesCompleteEventHandler == null || m_LoadResourceAgentHelperUpdateEventHandler == null || m_LoadResourceAgentHelperErrorEventHandler == null)
+            if (m_LoadResourceAgentHelperParseBytesCompleteEventHandler == null ||
+                m_LoadResourceAgentHelperUpdateEventHandler == null ||
+                m_LoadResourceAgentHelperErrorEventHandler == null)
             {
                 Log.Fatal("Load resource agent helper handler is invalid.");
                 return;
@@ -243,7 +228,9 @@ namespace UnityGameFramework.Runtime
         /// <param name="isScene">要加载的资源是否是场景。</param>
         public override void LoadAsset(object resource, string assetName, Type assetType, bool isScene)
         {
-            if (m_LoadResourceAgentHelperLoadCompleteEventHandler == null || m_LoadResourceAgentHelperUpdateEventHandler == null || m_LoadResourceAgentHelperErrorEventHandler == null)
+            if (m_LoadResourceAgentHelperLoadCompleteEventHandler == null ||
+                m_LoadResourceAgentHelperUpdateEventHandler == null ||
+                m_LoadResourceAgentHelperErrorEventHandler == null)
             {
                 Log.Fatal("Load resource agent helper handler is invalid.");
                 return;
@@ -252,7 +239,9 @@ namespace UnityGameFramework.Runtime
             AssetBundle assetBundle = resource as AssetBundle;
             if (assetBundle == null)
             {
-                LoadResourceAgentHelperErrorEventArgs loadResourceAgentHelperErrorEventArgs = LoadResourceAgentHelperErrorEventArgs.Create(LoadResourceStatus.TypeError, "Can not load asset bundle from loaded resource which is not an asset bundle.");
+                LoadResourceAgentHelperErrorEventArgs loadResourceAgentHelperErrorEventArgs =
+                    LoadResourceAgentHelperErrorEventArgs.Create(LoadResourceStatus.TypeError,
+                        "Can not load asset bundle from loaded resource which is not an asset bundle.");
                 m_LoadResourceAgentHelperErrorEventHandler(this, loadResourceAgentHelperErrorEventArgs);
                 ReferencePool.Release(loadResourceAgentHelperErrorEventArgs);
                 return;
@@ -260,7 +249,9 @@ namespace UnityGameFramework.Runtime
 
             if (string.IsNullOrEmpty(assetName))
             {
-                LoadResourceAgentHelperErrorEventArgs loadResourceAgentHelperErrorEventArgs = LoadResourceAgentHelperErrorEventArgs.Create(LoadResourceStatus.AssetError, "Can not load asset from asset bundle which child name is invalid.");
+                LoadResourceAgentHelperErrorEventArgs loadResourceAgentHelperErrorEventArgs =
+                    LoadResourceAgentHelperErrorEventArgs.Create(LoadResourceStatus.AssetError,
+                        "Can not load asset from asset bundle which child name is invalid.");
                 m_LoadResourceAgentHelperErrorEventHandler(this, loadResourceAgentHelperErrorEventArgs);
                 ReferencePool.Release(loadResourceAgentHelperErrorEventArgs);
                 return;
@@ -271,15 +262,19 @@ namespace UnityGameFramework.Runtime
             {
                 int sceneNamePositionStart = assetName.LastIndexOf('/');
                 int sceneNamePositionEnd = assetName.LastIndexOf('.');
-                if (sceneNamePositionStart <= 0 || sceneNamePositionEnd <= 0 || sceneNamePositionStart > sceneNamePositionEnd)
+                if (sceneNamePositionStart <= 0 || sceneNamePositionEnd <= 0 ||
+                    sceneNamePositionStart > sceneNamePositionEnd)
                 {
-                    LoadResourceAgentHelperErrorEventArgs loadResourceAgentHelperErrorEventArgs = LoadResourceAgentHelperErrorEventArgs.Create(LoadResourceStatus.AssetError, Utility.Text.Format("Scene name '{0}' is invalid.", assetName));
+                    LoadResourceAgentHelperErrorEventArgs loadResourceAgentHelperErrorEventArgs =
+                        LoadResourceAgentHelperErrorEventArgs.Create(LoadResourceStatus.AssetError,
+                            Utility.Text.Format("Scene name '{0}' is invalid.", assetName));
                     m_LoadResourceAgentHelperErrorEventHandler(this, loadResourceAgentHelperErrorEventArgs);
                     ReferencePool.Release(loadResourceAgentHelperErrorEventArgs);
                     return;
                 }
 
-                string sceneName = assetName.Substring(sceneNamePositionStart + 1, sceneNamePositionEnd - sceneNamePositionStart - 1);
+                string sceneName = assetName.Substring(sceneNamePositionStart + 1,
+                    sceneNamePositionEnd - sceneNamePositionStart - 1);
                 m_AsyncOperation = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
             }
             else
@@ -388,8 +383,12 @@ namespace UnityGameFramework.Runtime
                 {
                     if (string.IsNullOrEmpty(m_UnityWebRequest.error))
                     {
-                        LoadResourceAgentHelperReadBytesCompleteEventArgs loadResourceAgentHelperReadBytesCompleteEventArgs = LoadResourceAgentHelperReadBytesCompleteEventArgs.Create(m_UnityWebRequest.downloadHandler.data);
-                        m_LoadResourceAgentHelperReadBytesCompleteEventHandler(this, loadResourceAgentHelperReadBytesCompleteEventArgs);
+                        LoadResourceAgentHelperReadBytesCompleteEventArgs
+                            loadResourceAgentHelperReadBytesCompleteEventArgs =
+                                LoadResourceAgentHelperReadBytesCompleteEventArgs.Create(m_UnityWebRequest
+                                    .downloadHandler.data);
+                        m_LoadResourceAgentHelperReadBytesCompleteEventHandler(this,
+                            loadResourceAgentHelperReadBytesCompleteEventArgs);
                         ReferencePool.Release(loadResourceAgentHelperReadBytesCompleteEventArgs);
                         m_UnityWebRequest.Dispose();
                         m_UnityWebRequest = null;
@@ -406,7 +405,10 @@ namespace UnityGameFramework.Runtime
 #else
                         isError = m_UnityWebRequest.isError;
 #endif
-                        LoadResourceAgentHelperErrorEventArgs loadResourceAgentHelperErrorEventArgs = LoadResourceAgentHelperErrorEventArgs.Create(LoadResourceStatus.NotExist, Utility.Text.Format("Can not load asset bundle '{0}' with error message '{1}'.", m_BytesFullPath, isError ? m_UnityWebRequest.error : null));
+                        LoadResourceAgentHelperErrorEventArgs loadResourceAgentHelperErrorEventArgs =
+                            LoadResourceAgentHelperErrorEventArgs.Create(LoadResourceStatus.NotExist,
+                                Utility.Text.Format("Can not load asset bundle '{0}' with error message '{1}'.",
+                                    m_BytesFullPath, isError ? m_UnityWebRequest.error : null));
                         m_LoadResourceAgentHelperErrorEventHandler(this, loadResourceAgentHelperErrorEventArgs);
                         ReferencePool.Release(loadResourceAgentHelperErrorEventArgs);
                     }
@@ -414,7 +416,9 @@ namespace UnityGameFramework.Runtime
                 else if (m_UnityWebRequest.downloadProgress != m_LastProgress)
                 {
                     m_LastProgress = m_UnityWebRequest.downloadProgress;
-                    LoadResourceAgentHelperUpdateEventArgs loadResourceAgentHelperUpdateEventArgs = LoadResourceAgentHelperUpdateEventArgs.Create(LoadResourceProgress.ReadResource, m_UnityWebRequest.downloadProgress);
+                    LoadResourceAgentHelperUpdateEventArgs loadResourceAgentHelperUpdateEventArgs =
+                        LoadResourceAgentHelperUpdateEventArgs.Create(LoadResourceProgress.ReadResource,
+                            m_UnityWebRequest.downloadProgress);
                     m_LoadResourceAgentHelperUpdateEventHandler(this, loadResourceAgentHelperUpdateEventArgs);
                     ReferencePool.Release(loadResourceAgentHelperUpdateEventArgs);
                 }
@@ -429,7 +433,8 @@ namespace UnityGameFramework.Runtime
                 {
                     if (string.IsNullOrEmpty(m_WWW.error))
                     {
-                        LoadResourceAgentHelperReadBytesCompleteEventArgs loadResourceAgentHelperReadBytesCompleteEventArgs = LoadResourceAgentHelperReadBytesCompleteEventArgs.Create(m_WWW.bytes);
+                        LoadResourceAgentHelperReadBytesCompleteEventArgs loadResourceAgentHelperReadBytesCompleteEventArgs
+ = LoadResourceAgentHelperReadBytesCompleteEventArgs.Create(m_WWW.bytes);
                         m_LoadResourceAgentHelperReadBytesCompleteEventHandler(this, loadResourceAgentHelperReadBytesCompleteEventArgs);
                         ReferencePool.Release(loadResourceAgentHelperReadBytesCompleteEventArgs);
                         m_WWW.Dispose();
@@ -439,7 +444,8 @@ namespace UnityGameFramework.Runtime
                     }
                     else
                     {
-                        LoadResourceAgentHelperErrorEventArgs loadResourceAgentHelperErrorEventArgs = LoadResourceAgentHelperErrorEventArgs.Create(LoadResourceStatus.NotExist, Utility.Text.Format("Can not load asset bundle '{0}' with error message '{1}'.", m_BytesFullPath, m_WWW.error));
+                        LoadResourceAgentHelperErrorEventArgs loadResourceAgentHelperErrorEventArgs =
+ LoadResourceAgentHelperErrorEventArgs.Create(LoadResourceStatus.NotExist, Utility.Text.Format("Can not load asset bundle '{0}' with error message '{1}'.", m_BytesFullPath, m_WWW.error));
                         m_LoadResourceAgentHelperErrorEventHandler(this, loadResourceAgentHelperErrorEventArgs);
                         ReferencePool.Release(loadResourceAgentHelperErrorEventArgs);
                     }
@@ -447,7 +453,8 @@ namespace UnityGameFramework.Runtime
                 else if (m_WWW.progress != m_LastProgress)
                 {
                     m_LastProgress = m_WWW.progress;
-                    LoadResourceAgentHelperUpdateEventArgs loadResourceAgentHelperUpdateEventArgs = LoadResourceAgentHelperUpdateEventArgs.Create(LoadResourceProgress.ReadResource, m_WWW.progress);
+                    LoadResourceAgentHelperUpdateEventArgs loadResourceAgentHelperUpdateEventArgs =
+ LoadResourceAgentHelperUpdateEventArgs.Create(LoadResourceProgress.ReadResource, m_WWW.progress);
                     m_LoadResourceAgentHelperUpdateEventHandler(this, loadResourceAgentHelperUpdateEventArgs);
                     ReferencePool.Release(loadResourceAgentHelperUpdateEventArgs);
                 }
@@ -465,8 +472,11 @@ namespace UnityGameFramework.Runtime
                     if (assetBundle != null)
                     {
                         AssetBundleCreateRequest oldFileAssetBundleCreateRequest = m_FileAssetBundleCreateRequest;
-                        LoadResourceAgentHelperReadFileCompleteEventArgs loadResourceAgentHelperReadFileCompleteEventArgs = LoadResourceAgentHelperReadFileCompleteEventArgs.Create(assetBundle);
-                        m_LoadResourceAgentHelperReadFileCompleteEventHandler(this, loadResourceAgentHelperReadFileCompleteEventArgs);
+                        LoadResourceAgentHelperReadFileCompleteEventArgs
+                            loadResourceAgentHelperReadFileCompleteEventArgs =
+                                LoadResourceAgentHelperReadFileCompleteEventArgs.Create(assetBundle);
+                        m_LoadResourceAgentHelperReadFileCompleteEventHandler(this,
+                            loadResourceAgentHelperReadFileCompleteEventArgs);
                         ReferencePool.Release(loadResourceAgentHelperReadFileCompleteEventArgs);
                         if (m_FileAssetBundleCreateRequest == oldFileAssetBundleCreateRequest)
                         {
@@ -476,7 +486,13 @@ namespace UnityGameFramework.Runtime
                     }
                     else
                     {
-                        LoadResourceAgentHelperErrorEventArgs loadResourceAgentHelperErrorEventArgs = LoadResourceAgentHelperErrorEventArgs.Create(LoadResourceStatus.NotExist, Utility.Text.Format("Can not load asset bundle from file '{0}' which is not a valid asset bundle.", m_FileName == null ? m_FileFullPath : Utility.Text.Format("{0} | {1}", m_FileFullPath, m_FileName)));
+                        LoadResourceAgentHelperErrorEventArgs loadResourceAgentHelperErrorEventArgs =
+                            LoadResourceAgentHelperErrorEventArgs.Create(LoadResourceStatus.NotExist,
+                                Utility.Text.Format(
+                                    "Can not load asset bundle from file '{0}' which is not a valid asset bundle.",
+                                    m_FileName == null
+                                        ? m_FileFullPath
+                                        : Utility.Text.Format("{0} | {1}", m_FileFullPath, m_FileName)));
                         m_LoadResourceAgentHelperErrorEventHandler(this, loadResourceAgentHelperErrorEventArgs);
                         ReferencePool.Release(loadResourceAgentHelperErrorEventArgs);
                     }
@@ -484,7 +500,9 @@ namespace UnityGameFramework.Runtime
                 else if (m_FileAssetBundleCreateRequest.progress != m_LastProgress)
                 {
                     m_LastProgress = m_FileAssetBundleCreateRequest.progress;
-                    LoadResourceAgentHelperUpdateEventArgs loadResourceAgentHelperUpdateEventArgs = LoadResourceAgentHelperUpdateEventArgs.Create(LoadResourceProgress.LoadResource, m_FileAssetBundleCreateRequest.progress);
+                    LoadResourceAgentHelperUpdateEventArgs loadResourceAgentHelperUpdateEventArgs =
+                        LoadResourceAgentHelperUpdateEventArgs.Create(LoadResourceProgress.LoadResource,
+                            m_FileAssetBundleCreateRequest.progress);
                     m_LoadResourceAgentHelperUpdateEventHandler(this, loadResourceAgentHelperUpdateEventArgs);
                     ReferencePool.Release(loadResourceAgentHelperUpdateEventArgs);
                 }
@@ -501,8 +519,11 @@ namespace UnityGameFramework.Runtime
                     if (assetBundle != null)
                     {
                         AssetBundleCreateRequest oldBytesAssetBundleCreateRequest = m_BytesAssetBundleCreateRequest;
-                        LoadResourceAgentHelperParseBytesCompleteEventArgs loadResourceAgentHelperParseBytesCompleteEventArgs = LoadResourceAgentHelperParseBytesCompleteEventArgs.Create(assetBundle);
-                        m_LoadResourceAgentHelperParseBytesCompleteEventHandler(this, loadResourceAgentHelperParseBytesCompleteEventArgs);
+                        LoadResourceAgentHelperParseBytesCompleteEventArgs
+                            loadResourceAgentHelperParseBytesCompleteEventArgs =
+                                LoadResourceAgentHelperParseBytesCompleteEventArgs.Create(assetBundle);
+                        m_LoadResourceAgentHelperParseBytesCompleteEventHandler(this,
+                            loadResourceAgentHelperParseBytesCompleteEventArgs);
                         ReferencePool.Release(loadResourceAgentHelperParseBytesCompleteEventArgs);
                         if (m_BytesAssetBundleCreateRequest == oldBytesAssetBundleCreateRequest)
                         {
@@ -512,7 +533,9 @@ namespace UnityGameFramework.Runtime
                     }
                     else
                     {
-                        LoadResourceAgentHelperErrorEventArgs loadResourceAgentHelperErrorEventArgs = LoadResourceAgentHelperErrorEventArgs.Create(LoadResourceStatus.NotExist, "Can not load asset bundle from memory which is not a valid asset bundle.");
+                        LoadResourceAgentHelperErrorEventArgs loadResourceAgentHelperErrorEventArgs =
+                            LoadResourceAgentHelperErrorEventArgs.Create(LoadResourceStatus.NotExist,
+                                "Can not load asset bundle from memory which is not a valid asset bundle.");
                         m_LoadResourceAgentHelperErrorEventHandler(this, loadResourceAgentHelperErrorEventArgs);
                         ReferencePool.Release(loadResourceAgentHelperErrorEventArgs);
                     }
@@ -520,7 +543,9 @@ namespace UnityGameFramework.Runtime
                 else if (m_BytesAssetBundleCreateRequest.progress != m_LastProgress)
                 {
                     m_LastProgress = m_BytesAssetBundleCreateRequest.progress;
-                    LoadResourceAgentHelperUpdateEventArgs loadResourceAgentHelperUpdateEventArgs = LoadResourceAgentHelperUpdateEventArgs.Create(LoadResourceProgress.LoadResource, m_BytesAssetBundleCreateRequest.progress);
+                    LoadResourceAgentHelperUpdateEventArgs loadResourceAgentHelperUpdateEventArgs =
+                        LoadResourceAgentHelperUpdateEventArgs.Create(LoadResourceProgress.LoadResource,
+                            m_BytesAssetBundleCreateRequest.progress);
                     m_LoadResourceAgentHelperUpdateEventHandler(this, loadResourceAgentHelperUpdateEventArgs);
                     ReferencePool.Release(loadResourceAgentHelperUpdateEventArgs);
                 }
@@ -535,8 +560,10 @@ namespace UnityGameFramework.Runtime
                 {
                     if (m_AssetBundleRequest.asset != null)
                     {
-                        LoadResourceAgentHelperLoadCompleteEventArgs loadResourceAgentHelperLoadCompleteEventArgs = LoadResourceAgentHelperLoadCompleteEventArgs.Create(m_AssetBundleRequest.asset);
-                        m_LoadResourceAgentHelperLoadCompleteEventHandler(this, loadResourceAgentHelperLoadCompleteEventArgs);
+                        LoadResourceAgentHelperLoadCompleteEventArgs loadResourceAgentHelperLoadCompleteEventArgs =
+                            LoadResourceAgentHelperLoadCompleteEventArgs.Create(m_AssetBundleRequest.asset);
+                        m_LoadResourceAgentHelperLoadCompleteEventHandler(this,
+                            loadResourceAgentHelperLoadCompleteEventArgs);
                         ReferencePool.Release(loadResourceAgentHelperLoadCompleteEventArgs);
                         m_AssetName = null;
                         m_LastProgress = 0f;
@@ -544,7 +571,10 @@ namespace UnityGameFramework.Runtime
                     }
                     else
                     {
-                        LoadResourceAgentHelperErrorEventArgs loadResourceAgentHelperErrorEventArgs = LoadResourceAgentHelperErrorEventArgs.Create(LoadResourceStatus.AssetError, Utility.Text.Format("Can not load asset '{0}' from asset bundle which is not exist.", m_AssetName));
+                        LoadResourceAgentHelperErrorEventArgs loadResourceAgentHelperErrorEventArgs =
+                            LoadResourceAgentHelperErrorEventArgs.Create(LoadResourceStatus.AssetError,
+                                Utility.Text.Format("Can not load asset '{0}' from asset bundle which is not exist.",
+                                    m_AssetName));
                         m_LoadResourceAgentHelperErrorEventHandler(this, loadResourceAgentHelperErrorEventArgs);
                         ReferencePool.Release(loadResourceAgentHelperErrorEventArgs);
                     }
@@ -552,7 +582,9 @@ namespace UnityGameFramework.Runtime
                 else if (m_AssetBundleRequest.progress != m_LastProgress)
                 {
                     m_LastProgress = m_AssetBundleRequest.progress;
-                    LoadResourceAgentHelperUpdateEventArgs loadResourceAgentHelperUpdateEventArgs = LoadResourceAgentHelperUpdateEventArgs.Create(LoadResourceProgress.LoadAsset, m_AssetBundleRequest.progress);
+                    LoadResourceAgentHelperUpdateEventArgs loadResourceAgentHelperUpdateEventArgs =
+                        LoadResourceAgentHelperUpdateEventArgs.Create(LoadResourceProgress.LoadAsset,
+                            m_AssetBundleRequest.progress);
                     m_LoadResourceAgentHelperUpdateEventHandler(this, loadResourceAgentHelperUpdateEventArgs);
                     ReferencePool.Release(loadResourceAgentHelperUpdateEventArgs);
                 }
@@ -568,8 +600,10 @@ namespace UnityGameFramework.Runtime
                     if (m_AsyncOperation.allowSceneActivation)
                     {
                         SceneAsset sceneAsset = new SceneAsset();
-                        LoadResourceAgentHelperLoadCompleteEventArgs loadResourceAgentHelperLoadCompleteEventArgs = LoadResourceAgentHelperLoadCompleteEventArgs.Create(sceneAsset);
-                        m_LoadResourceAgentHelperLoadCompleteEventHandler(this, loadResourceAgentHelperLoadCompleteEventArgs);
+                        LoadResourceAgentHelperLoadCompleteEventArgs loadResourceAgentHelperLoadCompleteEventArgs =
+                            LoadResourceAgentHelperLoadCompleteEventArgs.Create(sceneAsset);
+                        m_LoadResourceAgentHelperLoadCompleteEventHandler(this,
+                            loadResourceAgentHelperLoadCompleteEventArgs);
                         ReferencePool.Release(loadResourceAgentHelperLoadCompleteEventArgs);
                         m_AssetName = null;
                         m_LastProgress = 0f;
@@ -577,7 +611,9 @@ namespace UnityGameFramework.Runtime
                     }
                     else
                     {
-                        LoadResourceAgentHelperErrorEventArgs loadResourceAgentHelperErrorEventArgs = LoadResourceAgentHelperErrorEventArgs.Create(LoadResourceStatus.AssetError, Utility.Text.Format("Can not load scene asset '{0}' from asset bundle.", m_AssetName));
+                        LoadResourceAgentHelperErrorEventArgs loadResourceAgentHelperErrorEventArgs =
+                            LoadResourceAgentHelperErrorEventArgs.Create(LoadResourceStatus.AssetError,
+                                Utility.Text.Format("Can not load scene asset '{0}' from asset bundle.", m_AssetName));
                         m_LoadResourceAgentHelperErrorEventHandler(this, loadResourceAgentHelperErrorEventArgs);
                         ReferencePool.Release(loadResourceAgentHelperErrorEventArgs);
                     }
@@ -585,7 +621,9 @@ namespace UnityGameFramework.Runtime
                 else if (m_AsyncOperation.progress != m_LastProgress)
                 {
                     m_LastProgress = m_AsyncOperation.progress;
-                    LoadResourceAgentHelperUpdateEventArgs loadResourceAgentHelperUpdateEventArgs = LoadResourceAgentHelperUpdateEventArgs.Create(LoadResourceProgress.LoadScene, m_AsyncOperation.progress);
+                    LoadResourceAgentHelperUpdateEventArgs loadResourceAgentHelperUpdateEventArgs =
+                        LoadResourceAgentHelperUpdateEventArgs.Create(LoadResourceProgress.LoadScene,
+                            m_AsyncOperation.progress);
                     m_LoadResourceAgentHelperUpdateEventHandler(this, loadResourceAgentHelperUpdateEventArgs);
                     ReferencePool.Release(loadResourceAgentHelperUpdateEventArgs);
                 }

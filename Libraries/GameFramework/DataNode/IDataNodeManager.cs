@@ -15,10 +15,7 @@ namespace GameFramework.DataNode
         /// <summary>
         /// 获取根数据结点。
         /// </summary>
-        IDataNode Root
-        {
-            get;
-        }
+        IDataNode Root { get; }
 
         /// <summary>
         /// 根据类型获取数据结点的数据。

@@ -33,40 +33,22 @@ namespace UnityGameFramework.Runtime
         /// <summary>
         /// 获取加载字典失败事件编号。
         /// </summary>
-        public override int Id
-        {
-            get
-            {
-                return EventId;
-            }
-        }
+        public override int Id => EventId;
 
         /// <summary>
         /// 获取字典资源名称。
         /// </summary>
-        public string DictionaryAssetName
-        {
-            get;
-            private set;
-        }
+        public string DictionaryAssetName { get; private set; }
 
         /// <summary>
         /// 获取错误信息。
         /// </summary>
-        public string ErrorMessage
-        {
-            get;
-            private set;
-        }
+        public string ErrorMessage { get; private set; }
 
         /// <summary>
         /// 获取用户自定义数据。
         /// </summary>
-        public object UserData
-        {
-            get;
-            private set;
-        }
+        public object UserData { get; private set; }
 
         /// <summary>
         /// 创建加载字典失败事件。
@@ -75,7 +57,8 @@ namespace UnityGameFramework.Runtime
         /// <returns>创建的加载字典失败事件。</returns>
         public static LoadDictionaryFailureEventArgs Create(ReadDataFailureEventArgs e)
         {
-            LoadDictionaryFailureEventArgs loadDictionaryFailureEventArgs = ReferencePool.Acquire<LoadDictionaryFailureEventArgs>();
+            LoadDictionaryFailureEventArgs loadDictionaryFailureEventArgs =
+                ReferencePool.Acquire<LoadDictionaryFailureEventArgs>();
             loadDictionaryFailureEventArgs.DictionaryAssetName = e.DataAssetName;
             loadDictionaryFailureEventArgs.ErrorMessage = e.ErrorMessage;
             loadDictionaryFailureEventArgs.UserData = e.UserData;

@@ -46,13 +46,7 @@ namespace GameFramework
         /// <summary>
         /// 获取任务信息是否有效。
         /// </summary>
-        public bool IsValid
-        {
-            get
-            {
-                return m_IsValid;
-            }
-        }
+        public bool IsValid => m_IsValid;
 
         /// <summary>
         /// 获取任务的序列编号。

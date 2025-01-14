@@ -29,7 +29,8 @@ namespace GameFramework.Resource
         /// </summary>
         /// <param name="updateVersionListSuccessCallback">版本资源列表更新成功回调函数。</param>
         /// <param name="updateVersionListFailureCallback">版本资源列表更新失败回调函数。</param>
-        public UpdateVersionListCallbacks(UpdateVersionListSuccessCallback updateVersionListSuccessCallback, UpdateVersionListFailureCallback updateVersionListFailureCallback)
+        public UpdateVersionListCallbacks(UpdateVersionListSuccessCallback updateVersionListSuccessCallback,
+            UpdateVersionListFailureCallback updateVersionListFailureCallback)
         {
             if (updateVersionListSuccessCallback == null)
             {
@@ -43,23 +44,11 @@ namespace GameFramework.Resource
         /// <summary>
         /// 获取版本资源列表更新成功回调函数。
         /// </summary>
-        public UpdateVersionListSuccessCallback UpdateVersionListSuccessCallback
-        {
-            get
-            {
-                return m_UpdateVersionListSuccessCallback;
-            }
-        }
+        public UpdateVersionListSuccessCallback UpdateVersionListSuccessCallback => m_UpdateVersionListSuccessCallback;
 
         /// <summary>
         /// 获取版本资源列表更新失败回调函数。
         /// </summary>
-        public UpdateVersionListFailureCallback UpdateVersionListFailureCallback
-        {
-            get
-            {
-                return m_UpdateVersionListFailureCallback;
-            }
-        }
+        public UpdateVersionListFailureCallback UpdateVersionListFailureCallback => m_UpdateVersionListFailureCallback;
     }
 }

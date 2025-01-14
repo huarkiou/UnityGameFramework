@@ -22,21 +22,9 @@ namespace GameFramework.Network
                 m_UserData = userData;
             }
 
-            public Socket Socket
-            {
-                get
-                {
-                    return m_Socket;
-                }
-            }
+            public Socket Socket => m_Socket;
 
-            public object UserData
-            {
-                get
-                {
-                    return m_UserData;
-                }
-            }
+            public object UserData => m_UserData;
         }
     }
 }

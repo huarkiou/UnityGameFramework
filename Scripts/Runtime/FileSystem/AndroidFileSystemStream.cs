@@ -5,10 +5,10 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameFramework;
-using GameFramework.FileSystem;
 using System;
 using System.IO;
+using GameFramework;
+using GameFramework.FileSystem;
 using UnityEngine;
 
 namespace UnityGameFramework.Runtime
@@ -73,7 +73,8 @@ namespace UnityGameFramework.Runtime
 
             if (access != FileSystemAccess.Read)
             {
-                throw new GameFrameworkException(Utility.Text.Format("'{0}' is not supported in AndroidFileSystemStream.", access));
+                throw new GameFrameworkException(
+                    Utility.Text.Format("'{0}' is not supported in AndroidFileSystemStream.", access));
             }
 
             if (createNew)
@@ -91,7 +92,8 @@ namespace UnityGameFramework.Runtime
             m_FileStream = InternalOpen(fileName);
             if (m_FileStream == null)
             {
-                throw new GameFrameworkException(Utility.Text.Format("Open file '{0}' from Android asset manager failure.", fullPath));
+                throw new GameFrameworkException(
+                    Utility.Text.Format("Open file '{0}' from Android asset manager failure.", fullPath));
             }
 
             m_FileStreamRawObject = m_FileStream.GetRawObject();
@@ -102,26 +104,14 @@ namespace UnityGameFramework.Runtime
         /// </summary>
         protected override long Position
         {
-            get
-            {
-                throw new GameFrameworkException("Get position is not supported in AndroidFileSystemStream.");
-            }
-            set
-            {
-                Seek(value, SeekOrigin.Begin);
-            }
+            get => throw new GameFrameworkException("Get position is not supported in AndroidFileSystemStream.");
+            set => Seek(value, SeekOrigin.Begin);
         }
 
         /// <summary>
         /// 获取文件系统流长度。
         /// </summary>
-        protected override long Length
-        {
-            get
-            {
-                return InternalAvailable();
-            }
-        }
+        protected override long Length => InternalAvailable();
 
         /// <summary>
         /// 设置文件系统流长度。
@@ -259,7 +249,8 @@ namespace UnityGameFramework.Runtime
                 s_InternalReadArgs[0] = new jvalue() { l = resultPtr };
                 s_InternalReadArgs[1] = new jvalue() { i = offset };
                 s_InternalReadArgs[2] = new jvalue() { i = bytesLeft };
-                int bytesRead = AndroidJNI.CallIntMethod(m_FileStreamRawObject, s_InternalReadMethodId, s_InternalReadArgs);
+                int bytesRead =
+                    AndroidJNI.CallIntMethod(m_FileStreamRawObject, s_InternalReadMethodId, s_InternalReadArgs);
                 if (bytesRead <= 0)
                 {
                     break;

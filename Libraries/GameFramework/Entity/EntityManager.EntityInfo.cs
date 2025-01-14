@@ -29,45 +29,21 @@ namespace GameFramework.Entity
                 m_ChildEntities = new List<IEntity>();
             }
 
-            public IEntity Entity
-            {
-                get
-                {
-                    return m_Entity;
-                }
-            }
+            public IEntity Entity => m_Entity;
 
             public EntityStatus Status
             {
-                get
-                {
-                    return m_Status;
-                }
-                set
-                {
-                    m_Status = value;
-                }
+                get => m_Status;
+                set => m_Status = value;
             }
 
             public IEntity ParentEntity
             {
-                get
-                {
-                    return m_ParentEntity;
-                }
-                set
-                {
-                    m_ParentEntity = value;
-                }
+                get => m_ParentEntity;
+                set => m_ParentEntity = value;
             }
 
-            public int ChildEntityCount
-            {
-                get
-                {
-                    return m_ChildEntities.Count;
-                }
-            }
+            public int ChildEntityCount => m_ChildEntities.Count;
 
             public static EntityInfo Create(IEntity entity)
             {

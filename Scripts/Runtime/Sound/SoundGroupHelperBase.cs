@@ -24,14 +24,8 @@ namespace UnityGameFramework.Runtime
         /// </summary>
         public AudioMixerGroup AudioMixerGroup
         {
-            get
-            {
-                return m_AudioMixerGroup;
-            }
-            set
-            {
-                m_AudioMixerGroup = value;
-            }
+            get => m_AudioMixerGroup;
+            set => m_AudioMixerGroup = value;
         }
     }
 }

@@ -5,8 +5,8 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameFramework.ObjectPool;
 using System.Collections.Generic;
+using GameFramework.ObjectPool;
 
 namespace GameFramework.Entity
 {
@@ -33,7 +33,9 @@ namespace GameFramework.Entity
             /// <param name="instancePriority">实体实例对象池的优先级。</param>
             /// <param name="entityGroupHelper">实体组辅助器。</param>
             /// <param name="objectPoolManager">对象池管理器。</param>
-            public EntityGroup(string name, float instanceAutoReleaseInterval, int instanceCapacity, float instanceExpireTime, int instancePriority, IEntityGroupHelper entityGroupHelper, IObjectPoolManager objectPoolManager)
+            public EntityGroup(string name, float instanceAutoReleaseInterval, int instanceCapacity,
+                float instanceExpireTime, int instancePriority, IEntityGroupHelper entityGroupHelper,
+                IObjectPoolManager objectPoolManager)
             {
                 if (string.IsNullOrEmpty(name))
                 {
@@ -47,7 +49,9 @@ namespace GameFramework.Entity
 
                 m_Name = name;
                 m_EntityGroupHelper = entityGroupHelper;
-                m_InstancePool = objectPoolManager.CreateSingleSpawnObjectPool<EntityInstanceObject>(Utility.Text.Format("Entity Instance Pool ({0})", name), instanceCapacity, instanceExpireTime, instancePriority);
+                m_InstancePool = objectPoolManager.CreateSingleSpawnObjectPool<EntityInstanceObject>(
+                    Utility.Text.Format("Entity Instance Pool ({0})", name), instanceCapacity, instanceExpireTime,
+                    instancePriority);
                 m_InstancePool.AutoReleaseInterval = instanceAutoReleaseInterval;
                 m_Entities = new GameFrameworkLinkedList<IEntity>();
                 m_CachedNode = null;
@@ -56,38 +60,20 @@ namespace GameFramework.Entity
             /// <summary>
             /// 获取实体组名称。
             /// </summary>
-            public string Name
-            {
-                get
-                {
-                    return m_Name;
-                }
-            }
+            public string Name => m_Name;
 
             /// <summary>
             /// 获取实体组中实体数量。
             /// </summary>
-            public int EntityCount
-            {
-                get
-                {
-                    return m_Entities.Count;
-                }
-            }
+            public int EntityCount => m_Entities.Count;
 
             /// <summary>
             /// 获取或设置实体组实例对象池自动释放可释放对象的间隔秒数。
             /// </summary>
             public float InstanceAutoReleaseInterval
             {
-                get
-                {
-                    return m_InstancePool.AutoReleaseInterval;
-                }
-                set
-                {
-                    m_InstancePool.AutoReleaseInterval = value;
-                }
+                get => m_InstancePool.AutoReleaseInterval;
+                set => m_InstancePool.AutoReleaseInterval = value;
             }
 
             /// <summary>
@@ -95,14 +81,8 @@ namespace GameFramework.Entity
             /// </summary>
             public int InstanceCapacity
             {
-                get
-                {
-                    return m_InstancePool.Capacity;
-                }
-                set
-                {
-                    m_InstancePool.Capacity = value;
-                }
+                get => m_InstancePool.Capacity;
+                set => m_InstancePool.Capacity = value;
             }
 
             /// <summary>
@@ -110,14 +90,8 @@ namespace GameFramework.Entity
             /// </summary>
             public float InstanceExpireTime
             {
-                get
-                {
-                    return m_InstancePool.ExpireTime;
-                }
-                set
-                {
-                    m_InstancePool.ExpireTime = value;
-                }
+                get => m_InstancePool.ExpireTime;
+                set => m_InstancePool.ExpireTime = value;
             }
 
             /// <summary>
@@ -125,26 +99,14 @@ namespace GameFramework.Entity
             /// </summary>
             public int InstancePriority
             {
-                get
-                {
-                    return m_InstancePool.Priority;
-                }
-                set
-                {
-                    m_InstancePool.Priority = value;
-                }
+                get => m_InstancePool.Priority;
+                set => m_InstancePool.Priority = value;
             }
 
             /// <summary>
             /// 获取实体组辅助器。
             /// </summary>
-            public IEntityGroupHelper Helper
-            {
-                get
-                {
-                    return m_EntityGroupHelper;
-                }
-            }
+            public IEntityGroupHelper Helper => m_EntityGroupHelper;
 
             /// <summary>
             /// 实体组轮询。
@@ -351,7 +313,9 @@ namespace GameFramework.Entity
 
                 if (!m_Entities.Remove(entity))
                 {
-                    throw new GameFrameworkException(Utility.Text.Format("Entity group '{0}' not exists specified entity '[{1}]{2}'.", m_Name, entity.Id, entity.EntityAssetName));
+                    throw new GameFrameworkException(Utility.Text.Format(
+                        "Entity group '{0}' not exists specified entity '[{1}]{2}'.", m_Name, entity.Id,
+                        entity.EntityAssetName));
                 }
             }
 

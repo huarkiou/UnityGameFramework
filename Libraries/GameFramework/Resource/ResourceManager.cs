@@ -5,12 +5,12 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameFramework.Download;
-using GameFramework.FileSystem;
-using GameFramework.ObjectPool;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using GameFramework.Download;
+using GameFramework.FileSystem;
+using GameFramework.ObjectPool;
 
 namespace GameFramework.Resource
 {
@@ -133,181 +133,86 @@ namespace GameFramework.Resource
         /// 获取游戏框架模块优先级。
         /// </summary>
         /// <remarks>优先级较高的模块会优先轮询，并且关闭操作会后进行。</remarks>
-        internal override int Priority
-        {
-            get
-            {
-                return 3;
-            }
-        }
+        internal override int Priority => 3;
 
         /// <summary>
         /// 获取资源只读区路径。
         /// </summary>
-        public string ReadOnlyPath
-        {
-            get
-            {
-                return m_ReadOnlyPath;
-            }
-        }
+        public string ReadOnlyPath => m_ReadOnlyPath;
 
         /// <summary>
         /// 获取资源读写区路径。
         /// </summary>
-        public string ReadWritePath
-        {
-            get
-            {
-                return m_ReadWritePath;
-            }
-        }
+        public string ReadWritePath => m_ReadWritePath;
 
         /// <summary>
         /// 获取资源模式。
         /// </summary>
-        public ResourceMode ResourceMode
-        {
-            get
-            {
-                return m_ResourceMode;
-            }
-        }
+        public ResourceMode ResourceMode => m_ResourceMode;
 
         /// <summary>
         /// 获取当前变体。
         /// </summary>
-        public string CurrentVariant
-        {
-            get
-            {
-                return m_CurrentVariant;
-            }
-        }
+        public string CurrentVariant => m_CurrentVariant;
 
         /// <summary>
         /// 获取单机模式版本资源列表序列化器。
         /// </summary>
-        public PackageVersionListSerializer PackageVersionListSerializer
-        {
-            get
-            {
-                return m_PackageVersionListSerializer;
-            }
-        }
+        public PackageVersionListSerializer PackageVersionListSerializer => m_PackageVersionListSerializer;
 
         /// <summary>
         /// 获取可更新模式版本资源列表序列化器。
         /// </summary>
-        public UpdatableVersionListSerializer UpdatableVersionListSerializer
-        {
-            get
-            {
-                return m_UpdatableVersionListSerializer;
-            }
-        }
+        public UpdatableVersionListSerializer UpdatableVersionListSerializer => m_UpdatableVersionListSerializer;
 
         /// <summary>
         /// 获取本地只读区版本资源列表序列化器。
         /// </summary>
-        public ReadOnlyVersionListSerializer ReadOnlyVersionListSerializer
-        {
-            get
-            {
-                return m_ReadOnlyVersionListSerializer;
-            }
-        }
+        public ReadOnlyVersionListSerializer ReadOnlyVersionListSerializer => m_ReadOnlyVersionListSerializer;
 
         /// <summary>
         /// 获取本地读写区版本资源列表序列化器。
         /// </summary>
-        public ReadWriteVersionListSerializer ReadWriteVersionListSerializer
-        {
-            get
-            {
-                return m_ReadWriteVersionListSerializer;
-            }
-        }
+        public ReadWriteVersionListSerializer ReadWriteVersionListSerializer => m_ReadWriteVersionListSerializer;
 
         /// <summary>
         /// 获取资源包版本资源列表序列化器。
         /// </summary>
-        public ResourcePackVersionListSerializer ResourcePackVersionListSerializer
-        {
-            get
-            {
-                return m_ResourcePackVersionListSerializer;
-            }
-        }
+        public ResourcePackVersionListSerializer ResourcePackVersionListSerializer =>
+            m_ResourcePackVersionListSerializer;
 
         /// <summary>
         /// 获取当前资源适用的游戏版本号。
         /// </summary>
-        public string ApplicableGameVersion
-        {
-            get
-            {
-                return m_ApplicableGameVersion;
-            }
-        }
+        public string ApplicableGameVersion => m_ApplicableGameVersion;
 
         /// <summary>
         /// 获取当前内部资源版本号。
         /// </summary>
-        public int InternalResourceVersion
-        {
-            get
-            {
-                return m_InternalResourceVersion;
-            }
-        }
+        public int InternalResourceVersion => m_InternalResourceVersion;
 
         /// <summary>
         /// 获取资源数量。
         /// </summary>
-        public int AssetCount
-        {
-            get
-            {
-                return m_AssetInfos != null ? m_AssetInfos.Count : 0;
-            }
-        }
+        public int AssetCount => m_AssetInfos != null ? m_AssetInfos.Count : 0;
 
         /// <summary>
         /// 获取资源数量。
         /// </summary>
-        public int ResourceCount
-        {
-            get
-            {
-                return m_ResourceInfos != null ? m_ResourceInfos.Count : 0;
-            }
-        }
+        public int ResourceCount => m_ResourceInfos != null ? m_ResourceInfos.Count : 0;
 
         /// <summary>
         /// 获取资源组数量。
         /// </summary>
-        public int ResourceGroupCount
-        {
-            get
-            {
-                return m_ResourceGroups.Count;
-            }
-        }
+        public int ResourceGroupCount => m_ResourceGroups.Count;
 
         /// <summary>
         /// 获取或设置资源更新下载地址前缀。
         /// </summary>
         public string UpdatePrefixUri
         {
-            get
-            {
-                return m_UpdatePrefixUri;
-            }
-            set
-            {
-                m_UpdatePrefixUri = value;
-            }
+            get => m_UpdatePrefixUri;
+            set => m_UpdatePrefixUri = value;
         }
 
         /// <summary>
@@ -315,15 +220,13 @@ namespace GameFramework.Resource
         /// </summary>
         public int GenerateReadWriteVersionListLength
         {
-            get
-            {
-                return m_ResourceUpdater != null ? m_ResourceUpdater.GenerateReadWriteVersionListLength : 0;
-            }
+            get => m_ResourceUpdater != null ? m_ResourceUpdater.GenerateReadWriteVersionListLength : 0;
             set
             {
                 if (m_ResourceUpdater == null)
                 {
-                    throw new GameFrameworkException("You can not use GenerateReadWriteVersionListLength at this time.");
+                    throw new GameFrameworkException(
+                        "You can not use GenerateReadWriteVersionListLength at this time.");
                 }
 
                 m_ResourceUpdater.GenerateReadWriteVersionListLength = value;
@@ -333,34 +236,20 @@ namespace GameFramework.Resource
         /// <summary>
         /// 获取正在应用的资源包路径。
         /// </summary>
-        public string ApplyingResourcePackPath
-        {
-            get
-            {
-                return m_ResourceUpdater != null ? m_ResourceUpdater.ApplyingResourcePackPath : null;
-            }
-        }
+        public string ApplyingResourcePackPath =>
+            m_ResourceUpdater != null ? m_ResourceUpdater.ApplyingResourcePackPath : null;
 
         /// <summary>
         /// 获取等待应用资源数量。
         /// </summary>
-        public int ApplyWaitingCount
-        {
-            get
-            {
-                return m_ResourceUpdater != null ? m_ResourceUpdater.ApplyWaitingCount : 0;
-            }
-        }
+        public int ApplyWaitingCount => m_ResourceUpdater != null ? m_ResourceUpdater.ApplyWaitingCount : 0;
 
         /// <summary>
         /// 获取或设置资源更新重试次数。
         /// </summary>
         public int UpdateRetryCount
         {
-            get
-            {
-                return m_ResourceUpdater != null ? m_ResourceUpdater.UpdateRetryCount : 0;
-            }
+            get => m_ResourceUpdater != null ? m_ResourceUpdater.UpdateRetryCount : 0;
             set
             {
                 if (m_ResourceUpdater == null)
@@ -375,104 +264,52 @@ namespace GameFramework.Resource
         /// <summary>
         /// 获取正在更新的资源组。
         /// </summary>
-        public IResourceGroup UpdatingResourceGroup
-        {
-            get
-            {
-                return m_ResourceUpdater != null ? m_ResourceUpdater.UpdatingResourceGroup : null;
-            }
-        }
+        public IResourceGroup UpdatingResourceGroup =>
+            m_ResourceUpdater != null ? m_ResourceUpdater.UpdatingResourceGroup : null;
 
         /// <summary>
         /// 获取等待更新资源数量。
         /// </summary>
-        public int UpdateWaitingCount
-        {
-            get
-            {
-                return m_ResourceUpdater != null ? m_ResourceUpdater.UpdateWaitingCount : 0;
-            }
-        }
+        public int UpdateWaitingCount => m_ResourceUpdater != null ? m_ResourceUpdater.UpdateWaitingCount : 0;
 
         /// <summary>
         /// 获取使用时下载的等待更新资源数量。
         /// </summary>
-        public int UpdateWaitingWhilePlayingCount
-        {
-            get
-            {
-                return m_ResourceUpdater != null ? m_ResourceUpdater.UpdateWaitingWhilePlayingCount : 0;
-            }
-        }
+        public int UpdateWaitingWhilePlayingCount =>
+            m_ResourceUpdater != null ? m_ResourceUpdater.UpdateWaitingWhilePlayingCount : 0;
 
         /// <summary>
         /// 获取候选更新资源数量。
         /// </summary>
-        public int UpdateCandidateCount
-        {
-            get
-            {
-                return m_ResourceUpdater != null ? m_ResourceUpdater.UpdateCandidateCount : 0;
-            }
-        }
+        public int UpdateCandidateCount => m_ResourceUpdater != null ? m_ResourceUpdater.UpdateCandidateCount : 0;
 
         /// <summary>
         /// 获取加载资源代理总数量。
         /// </summary>
-        public int LoadTotalAgentCount
-        {
-            get
-            {
-                return m_ResourceLoader.TotalAgentCount;
-            }
-        }
+        public int LoadTotalAgentCount => m_ResourceLoader.TotalAgentCount;
 
         /// <summary>
         /// 获取可用加载资源代理数量。
         /// </summary>
-        public int LoadFreeAgentCount
-        {
-            get
-            {
-                return m_ResourceLoader.FreeAgentCount;
-            }
-        }
+        public int LoadFreeAgentCount => m_ResourceLoader.FreeAgentCount;
 
         /// <summary>
         /// 获取工作中加载资源代理数量。
         /// </summary>
-        public int LoadWorkingAgentCount
-        {
-            get
-            {
-                return m_ResourceLoader.WorkingAgentCount;
-            }
-        }
+        public int LoadWorkingAgentCount => m_ResourceLoader.WorkingAgentCount;
 
         /// <summary>
         /// 获取等待加载资源任务数量。
         /// </summary>
-        public int LoadWaitingTaskCount
-        {
-            get
-            {
-                return m_ResourceLoader.WaitingTaskCount;
-            }
-        }
+        public int LoadWaitingTaskCount => m_ResourceLoader.WaitingTaskCount;
 
         /// <summary>
         /// 获取或设置资源对象池自动释放可释放对象的间隔秒数。
         /// </summary>
         public float AssetAutoReleaseInterval
         {
-            get
-            {
-                return m_ResourceLoader.AssetAutoReleaseInterval;
-            }
-            set
-            {
-                m_ResourceLoader.AssetAutoReleaseInterval = value;
-            }
+            get => m_ResourceLoader.AssetAutoReleaseInterval;
+            set => m_ResourceLoader.AssetAutoReleaseInterval = value;
         }
 
         /// <summary>
@@ -480,14 +317,8 @@ namespace GameFramework.Resource
         /// </summary>
         public int AssetCapacity
         {
-            get
-            {
-                return m_ResourceLoader.AssetCapacity;
-            }
-            set
-            {
-                m_ResourceLoader.AssetCapacity = value;
-            }
+            get => m_ResourceLoader.AssetCapacity;
+            set => m_ResourceLoader.AssetCapacity = value;
         }
 
         /// <summary>
@@ -495,14 +326,8 @@ namespace GameFramework.Resource
         /// </summary>
         public float AssetExpireTime
         {
-            get
-            {
-                return m_ResourceLoader.AssetExpireTime;
-            }
-            set
-            {
-                m_ResourceLoader.AssetExpireTime = value;
-            }
+            get => m_ResourceLoader.AssetExpireTime;
+            set => m_ResourceLoader.AssetExpireTime = value;
         }
 
         /// <summary>
@@ -510,14 +335,8 @@ namespace GameFramework.Resource
         /// </summary>
         public int AssetPriority
         {
-            get
-            {
-                return m_ResourceLoader.AssetPriority;
-            }
-            set
-            {
-                m_ResourceLoader.AssetPriority = value;
-            }
+            get => m_ResourceLoader.AssetPriority;
+            set => m_ResourceLoader.AssetPriority = value;
         }
 
         /// <summary>
@@ -525,14 +344,8 @@ namespace GameFramework.Resource
         /// </summary>
         public float ResourceAutoReleaseInterval
         {
-            get
-            {
-                return m_ResourceLoader.ResourceAutoReleaseInterval;
-            }
-            set
-            {
-                m_ResourceLoader.ResourceAutoReleaseInterval = value;
-            }
+            get => m_ResourceLoader.ResourceAutoReleaseInterval;
+            set => m_ResourceLoader.ResourceAutoReleaseInterval = value;
         }
 
         /// <summary>
@@ -540,14 +353,8 @@ namespace GameFramework.Resource
         /// </summary>
         public int ResourceCapacity
         {
-            get
-            {
-                return m_ResourceLoader.ResourceCapacity;
-            }
-            set
-            {
-                m_ResourceLoader.ResourceCapacity = value;
-            }
+            get => m_ResourceLoader.ResourceCapacity;
+            set => m_ResourceLoader.ResourceCapacity = value;
         }
 
         /// <summary>
@@ -555,14 +362,8 @@ namespace GameFramework.Resource
         /// </summary>
         public float ResourceExpireTime
         {
-            get
-            {
-                return m_ResourceLoader.ResourceExpireTime;
-            }
-            set
-            {
-                m_ResourceLoader.ResourceExpireTime = value;
-            }
+            get => m_ResourceLoader.ResourceExpireTime;
+            set => m_ResourceLoader.ResourceExpireTime = value;
         }
 
         /// <summary>
@@ -570,14 +371,8 @@ namespace GameFramework.Resource
         /// </summary>
         public int ResourcePriority
         {
-            get
-            {
-                return m_ResourceLoader.ResourcePriority;
-            }
-            set
-            {
-                m_ResourceLoader.ResourcePriority = value;
-            }
+            get => m_ResourceLoader.ResourcePriority;
+            set => m_ResourceLoader.ResourcePriority = value;
         }
 
         /// <summary>
@@ -585,14 +380,8 @@ namespace GameFramework.Resource
         /// </summary>
         public event EventHandler<ResourceVerifyStartEventArgs> ResourceVerifyStart
         {
-            add
-            {
-                m_ResourceVerifyStartEventHandler += value;
-            }
-            remove
-            {
-                m_ResourceVerifyStartEventHandler -= value;
-            }
+            add => m_ResourceVerifyStartEventHandler += value;
+            remove => m_ResourceVerifyStartEventHandler -= value;
         }
 
         /// <summary>
@@ -600,14 +389,8 @@ namespace GameFramework.Resource
         /// </summary>
         public event EventHandler<ResourceVerifySuccessEventArgs> ResourceVerifySuccess
         {
-            add
-            {
-                m_ResourceVerifySuccessEventHandler += value;
-            }
-            remove
-            {
-                m_ResourceVerifySuccessEventHandler -= value;
-            }
+            add => m_ResourceVerifySuccessEventHandler += value;
+            remove => m_ResourceVerifySuccessEventHandler -= value;
         }
 
         /// <summary>
@@ -615,14 +398,8 @@ namespace GameFramework.Resource
         /// </summary>
         public event EventHandler<ResourceVerifyFailureEventArgs> ResourceVerifyFailure
         {
-            add
-            {
-                m_ResourceVerifyFailureEventHandler += value;
-            }
-            remove
-            {
-                m_ResourceVerifyFailureEventHandler -= value;
-            }
+            add => m_ResourceVerifyFailureEventHandler += value;
+            remove => m_ResourceVerifyFailureEventHandler -= value;
         }
 
         /// <summary>
@@ -630,14 +407,8 @@ namespace GameFramework.Resource
         /// </summary>
         public event EventHandler<ResourceApplyStartEventArgs> ResourceApplyStart
         {
-            add
-            {
-                m_ResourceApplyStartEventHandler += value;
-            }
-            remove
-            {
-                m_ResourceApplyStartEventHandler -= value;
-            }
+            add => m_ResourceApplyStartEventHandler += value;
+            remove => m_ResourceApplyStartEventHandler -= value;
         }
 
         /// <summary>
@@ -645,14 +416,8 @@ namespace GameFramework.Resource
         /// </summary>
         public event EventHandler<ResourceApplySuccessEventArgs> ResourceApplySuccess
         {
-            add
-            {
-                m_ResourceApplySuccessEventHandler += value;
-            }
-            remove
-            {
-                m_ResourceApplySuccessEventHandler -= value;
-            }
+            add => m_ResourceApplySuccessEventHandler += value;
+            remove => m_ResourceApplySuccessEventHandler -= value;
         }
 
         /// <summary>
@@ -660,14 +425,8 @@ namespace GameFramework.Resource
         /// </summary>
         public event EventHandler<ResourceApplyFailureEventArgs> ResourceApplyFailure
         {
-            add
-            {
-                m_ResourceApplyFailureEventHandler += value;
-            }
-            remove
-            {
-                m_ResourceApplyFailureEventHandler -= value;
-            }
+            add => m_ResourceApplyFailureEventHandler += value;
+            remove => m_ResourceApplyFailureEventHandler -= value;
         }
 
         /// <summary>
@@ -675,14 +434,8 @@ namespace GameFramework.Resource
         /// </summary>
         public event EventHandler<ResourceUpdateStartEventArgs> ResourceUpdateStart
         {
-            add
-            {
-                m_ResourceUpdateStartEventHandler += value;
-            }
-            remove
-            {
-                m_ResourceUpdateStartEventHandler -= value;
-            }
+            add => m_ResourceUpdateStartEventHandler += value;
+            remove => m_ResourceUpdateStartEventHandler -= value;
         }
 
         /// <summary>
@@ -690,14 +443,8 @@ namespace GameFramework.Resource
         /// </summary>
         public event EventHandler<ResourceUpdateChangedEventArgs> ResourceUpdateChanged
         {
-            add
-            {
-                m_ResourceUpdateChangedEventHandler += value;
-            }
-            remove
-            {
-                m_ResourceUpdateChangedEventHandler -= value;
-            }
+            add => m_ResourceUpdateChangedEventHandler += value;
+            remove => m_ResourceUpdateChangedEventHandler -= value;
         }
 
         /// <summary>
@@ -705,14 +452,8 @@ namespace GameFramework.Resource
         /// </summary>
         public event EventHandler<ResourceUpdateSuccessEventArgs> ResourceUpdateSuccess
         {
-            add
-            {
-                m_ResourceUpdateSuccessEventHandler += value;
-            }
-            remove
-            {
-                m_ResourceUpdateSuccessEventHandler -= value;
-            }
+            add => m_ResourceUpdateSuccessEventHandler += value;
+            remove => m_ResourceUpdateSuccessEventHandler -= value;
         }
 
         /// <summary>
@@ -720,14 +461,8 @@ namespace GameFramework.Resource
         /// </summary>
         public event EventHandler<ResourceUpdateFailureEventArgs> ResourceUpdateFailure
         {
-            add
-            {
-                m_ResourceUpdateFailureEventHandler += value;
-            }
-            remove
-            {
-                m_ResourceUpdateFailureEventHandler -= value;
-            }
+            add => m_ResourceUpdateFailureEventHandler += value;
+            remove => m_ResourceUpdateFailureEventHandler -= value;
         }
 
         /// <summary>
@@ -735,14 +470,8 @@ namespace GameFramework.Resource
         /// </summary>
         public event EventHandler<ResourceUpdateAllCompleteEventArgs> ResourceUpdateAllComplete
         {
-            add
-            {
-                m_ResourceUpdateAllCompleteEventHandler += value;
-            }
-            remove
-            {
-                m_ResourceUpdateAllCompleteEventHandler -= value;
-            }
+            add => m_ResourceUpdateAllCompleteEventHandler += value;
+            remove => m_ResourceUpdateAllCompleteEventHandler -= value;
         }
 
         /// <summary>
@@ -925,7 +654,8 @@ namespace GameFramework.Resource
                     m_ResourceIniter = new ResourceIniter(this);
                     m_ResourceIniter.ResourceInitComplete += OnIniterResourceInitComplete;
                 }
-                else if (m_ResourceMode == ResourceMode.Updatable || m_ResourceMode == ResourceMode.UpdatableWhilePlaying)
+                else if (m_ResourceMode == ResourceMode.Updatable ||
+                         m_ResourceMode == ResourceMode.UpdatableWhilePlaying)
                 {
                     m_UpdatableVersionListSerializer = new UpdatableVersionListSerializer();
                     m_ReadOnlyVersionListSerializer = new ReadOnlyVersionListSerializer();
@@ -1032,7 +762,8 @@ namespace GameFramework.Resource
         {
             if (m_ResourceLoader.TotalAgentCount > 0)
             {
-                throw new GameFrameworkException("You must set decrypt resource callback before add load resource agent helper.");
+                throw new GameFrameworkException(
+                    "You must set decrypt resource callback before add load resource agent helper.");
             }
 
             m_DecryptResourceCallback = decryptResourceCallback;
@@ -1078,7 +809,8 @@ namespace GameFramework.Resource
                 throw new GameFrameworkException("Read-write path is invalid.");
             }
 
-            m_ResourceLoader.AddLoadResourceAgentHelper(loadResourceAgentHelper, m_ResourceHelper, m_ReadOnlyPath, m_ReadWritePath, m_DecryptResourceCallback);
+            m_ResourceLoader.AddLoadResourceAgentHelper(loadResourceAgentHelper, m_ResourceHelper, m_ReadOnlyPath,
+                m_ReadWritePath, m_DecryptResourceCallback);
         }
 
         /// <summary>
@@ -1145,7 +877,8 @@ namespace GameFramework.Resource
         /// <param name="versionListCompressedLength">版本资源列表压缩后大小。</param>
         /// <param name="versionListCompressedHashCode">版本资源列表压缩后哈希值。</param>
         /// <param name="updateVersionListCallbacks">版本资源列表更新回调函数集。</param>
-        public void UpdateVersionList(int versionListLength, int versionListHashCode, int versionListCompressedLength, int versionListCompressedHashCode, UpdateVersionListCallbacks updateVersionListCallbacks)
+        public void UpdateVersionList(int versionListLength, int versionListHashCode, int versionListCompressedLength,
+            int versionListCompressedHashCode, UpdateVersionListCallbacks updateVersionListCallbacks)
         {
             if (updateVersionListCallbacks == null)
             {
@@ -1168,7 +901,8 @@ namespace GameFramework.Resource
             }
 
             m_UpdateVersionListCallbacks = updateVersionListCallbacks;
-            m_VersionListProcessor.UpdateVersionList(versionListLength, versionListHashCode, versionListCompressedLength, versionListCompressedHashCode);
+            m_VersionListProcessor.UpdateVersionList(versionListLength, versionListHashCode,
+                versionListCompressedLength, versionListCompressedHashCode);
         }
 
         /// <summary>
@@ -1176,7 +910,8 @@ namespace GameFramework.Resource
         /// </summary>
         /// <param name="verifyResourceLengthPerFrame">每帧至少校验资源的大小，以字节为单位。</param>
         /// <param name="verifyResourcesCompleteCallback">使用可更新模式并校验资源完成时的回调函数。</param>
-        public void VerifyResources(int verifyResourceLengthPerFrame, VerifyResourcesCompleteCallback verifyResourcesCompleteCallback)
+        public void VerifyResources(int verifyResourceLengthPerFrame,
+            VerifyResourcesCompleteCallback verifyResourcesCompleteCallback)
         {
             if (verifyResourcesCompleteCallback == null)
             {
@@ -1212,7 +947,8 @@ namespace GameFramework.Resource
         /// </summary>
         /// <param name="ignoreOtherVariant">是否忽略处理其它变体的资源，若不忽略，将会移除其它变体的资源。</param>
         /// <param name="checkResourcesCompleteCallback">使用可更新模式并检查资源完成时的回调函数。</param>
-        public void CheckResources(bool ignoreOtherVariant, CheckResourcesCompleteCallback checkResourcesCompleteCallback)
+        public void CheckResources(bool ignoreOtherVariant,
+            CheckResourcesCompleteCallback checkResourcesCompleteCallback)
         {
             if (checkResourcesCompleteCallback == null)
             {
@@ -1244,7 +980,8 @@ namespace GameFramework.Resource
         /// </summary>
         /// <param name="resourcePackPath">要应用的资源包路径。</param>
         /// <param name="applyResourcesCompleteCallback">使用可更新模式并应用资源包资源完成时的回调函数。</param>
-        public void ApplyResources(string resourcePackPath, ApplyResourcesCompleteCallback applyResourcesCompleteCallback)
+        public void ApplyResources(string resourcePackPath,
+            ApplyResourcesCompleteCallback applyResourcesCompleteCallback)
         {
             if (string.IsNullOrEmpty(resourcePackPath))
             {
@@ -1253,7 +990,8 @@ namespace GameFramework.Resource
 
             if (!File.Exists(resourcePackPath))
             {
-                throw new GameFrameworkException(Utility.Text.Format("Resource pack '{0}' is not exist.", resourcePackPath));
+                throw new GameFrameworkException(Utility.Text.Format("Resource pack '{0}' is not exist.",
+                    resourcePackPath));
             }
 
             if (applyResourcesCompleteCallback == null)
@@ -1294,7 +1032,8 @@ namespace GameFramework.Resource
         /// </summary>
         /// <param name="resourceGroupName">要更新的资源组名称。</param>
         /// <param name="updateResourcesCompleteCallback">使用可更新模式并更新指定资源组完成时的回调函数。</param>
-        public void UpdateResources(string resourceGroupName, UpdateResourcesCompleteCallback updateResourcesCompleteCallback)
+        public void UpdateResources(string resourceGroupName,
+            UpdateResourcesCompleteCallback updateResourcesCompleteCallback)
         {
             if (updateResourcesCompleteCallback == null)
             {
@@ -1319,7 +1058,8 @@ namespace GameFramework.Resource
             ResourceGroup resourceGroup = (ResourceGroup)GetResourceGroup(resourceGroupName);
             if (resourceGroup == null)
             {
-                throw new GameFrameworkException(Utility.Text.Format("Can not find resource group '{0}'.", resourceGroupName));
+                throw new GameFrameworkException(Utility.Text.Format("Can not find resource group '{0}'.",
+                    resourceGroupName));
             }
 
             m_UpdateResourcesCompleteCallback = updateResourcesCompleteCallback;
@@ -1338,7 +1078,8 @@ namespace GameFramework.Resource
 
             if (m_ResourceMode != ResourceMode.Updatable && m_ResourceMode != ResourceMode.UpdatableWhilePlaying)
             {
-                throw new GameFrameworkException("You can not use StopUpdateResources without updatable resource mode.");
+                throw new GameFrameworkException(
+                    "You can not use StopUpdateResources without updatable resource mode.");
             }
 
             if (m_ResourceUpdater == null)
@@ -1364,7 +1105,8 @@ namespace GameFramework.Resource
 
             if (!File.Exists(resourcePackPath))
             {
-                throw new GameFrameworkException(Utility.Text.Format("Resource pack '{0}' is not exist.", resourcePackPath));
+                throw new GameFrameworkException(Utility.Text.Format("Resource pack '{0}' is not exist.",
+                    resourcePackPath));
             }
 
             if (m_ResourceMode == ResourceMode.Unspecified)
@@ -1612,7 +1354,8 @@ namespace GameFramework.Resource
         /// <param name="priority">加载资源的优先级。</param>
         /// <param name="loadAssetCallbacks">加载资源回调函数集。</param>
         /// <param name="userData">用户自定义数据。</param>
-        public void LoadAsset(string assetName, Type assetType, int priority, LoadAssetCallbacks loadAssetCallbacks, object userData)
+        public void LoadAsset(string assetName, Type assetType, int priority, LoadAssetCallbacks loadAssetCallbacks,
+            object userData)
         {
             if (string.IsNullOrEmpty(assetName))
             {
@@ -1715,7 +1458,8 @@ namespace GameFramework.Resource
         /// <param name="priority">加载场景资源的优先级。</param>
         /// <param name="loadSceneCallbacks">加载场景回调函数集。</param>
         /// <param name="userData">用户自定义数据。</param>
-        public void LoadScene(string sceneAssetName, int priority, LoadSceneCallbacks loadSceneCallbacks, object userData)
+        public void LoadScene(string sceneAssetName, int priority, LoadSceneCallbacks loadSceneCallbacks,
+            object userData)
         {
             if (string.IsNullOrEmpty(sceneAssetName))
             {
@@ -1796,9 +1540,11 @@ namespace GameFramework.Resource
         /// <param name="relativePath">二进制资源或存储二进制资源的文件系统，相对于只读区或者读写区的相对路径。</param>
         /// <param name="fileName">若二进制资源存储在文件系统中，则指示二进制资源在文件系统中的名称，否则此参数返回空。</param>
         /// <returns>是否获取二进制资源的实际路径成功。</returns>
-        public bool GetBinaryPath(string binaryAssetName, out bool storageInReadOnly, out bool storageInFileSystem, out string relativePath, out string fileName)
+        public bool GetBinaryPath(string binaryAssetName, out bool storageInReadOnly, out bool storageInFileSystem,
+            out string relativePath, out string fileName)
         {
-            return m_ResourceLoader.GetBinaryPath(binaryAssetName, out storageInReadOnly, out storageInFileSystem, out relativePath, out fileName);
+            return m_ResourceLoader.GetBinaryPath(binaryAssetName, out storageInReadOnly, out storageInFileSystem,
+                out relativePath, out fileName);
         }
 
         /// <summary>
@@ -1907,7 +1653,8 @@ namespace GameFramework.Resource
                 throw new GameFrameworkException("Buffer is invalid.");
             }
 
-            return m_ResourceLoader.LoadBinaryFromFileSystem(binaryAssetName, buffer, startIndex, buffer.Length - startIndex);
+            return m_ResourceLoader.LoadBinaryFromFileSystem(binaryAssetName, buffer, startIndex,
+                buffer.Length - startIndex);
         }
 
         /// <summary>
@@ -2086,7 +1833,8 @@ namespace GameFramework.Resource
         /// <param name="startIndex">存储加载二进制资源片段内容的二进制流的起始位置。</param>
         /// <param name="length">要加载片段的长度。</param>
         /// <returns>实际加载了多少字节。</returns>
-        public int LoadBinarySegmentFromFileSystem(string binaryAssetName, int offset, byte[] buffer, int startIndex, int length)
+        public int LoadBinarySegmentFromFileSystem(string binaryAssetName, int offset, byte[] buffer, int startIndex,
+            int length)
         {
             if (string.IsNullOrEmpty(binaryAssetName))
             {
@@ -2098,7 +1846,8 @@ namespace GameFramework.Resource
                 throw new GameFrameworkException("Buffer is invalid.");
             }
 
-            return m_ResourceLoader.LoadBinarySegmentFromFileSystem(binaryAssetName, offset, buffer, startIndex, length);
+            return m_ResourceLoader.LoadBinarySegmentFromFileSystem(binaryAssetName, offset, buffer, startIndex,
+                length);
         }
 
         /// <summary>
@@ -2193,7 +1942,8 @@ namespace GameFramework.Resource
                 resourceGroups[i] = (ResourceGroup)GetResourceGroup(resourceGroupNames[i]);
                 if (resourceGroups[i] == null)
                 {
-                    throw new GameFrameworkException(Utility.Text.Format("Resource group '{0}' is not exist.", resourceGroupNames[i]));
+                    throw new GameFrameworkException(Utility.Text.Format("Resource group '{0}' is not exist.",
+                        resourceGroupNames[i]));
                 }
             }
 
@@ -2223,7 +1973,8 @@ namespace GameFramework.Resource
                 resourceGroups[i] = (ResourceGroup)GetResourceGroup(resourceGroupNames[i]);
                 if (resourceGroups[i] == null)
                 {
-                    throw new GameFrameworkException(Utility.Text.Format("Resource group '{0}' is not exist.", resourceGroupNames[i]));
+                    throw new GameFrameworkException(Utility.Text.Format("Resource group '{0}' is not exist.",
+                        resourceGroupNames[i]));
                 }
             }
 
@@ -2301,7 +2052,8 @@ namespace GameFramework.Resource
             {
                 if (!m_ReadOnlyFileSystems.TryGetValue(fileSystemName, out fileSystem))
                 {
-                    string fullPath = Utility.Path.GetRegularPath(Path.Combine(m_ReadOnlyPath, Utility.Text.Format("{0}.{1}", fileSystemName, DefaultExtension)));
+                    string fullPath = Utility.Path.GetRegularPath(Path.Combine(m_ReadOnlyPath,
+                        Utility.Text.Format("{0}.{1}", fileSystemName, DefaultExtension)));
                     fileSystem = m_FileSystemManager.GetFileSystem(fullPath);
                     if (fileSystem == null)
                     {
@@ -2314,7 +2066,8 @@ namespace GameFramework.Resource
             {
                 if (!m_ReadWriteFileSystems.TryGetValue(fileSystemName, out fileSystem))
                 {
-                    string fullPath = Utility.Path.GetRegularPath(Path.Combine(m_ReadWritePath, Utility.Text.Format("{0}.{1}", fileSystemName, DefaultExtension)));
+                    string fullPath = Utility.Path.GetRegularPath(Path.Combine(m_ReadWritePath,
+                        Utility.Text.Format("{0}.{1}", fileSystemName, DefaultExtension)));
                     fileSystem = m_FileSystemManager.GetFileSystem(fullPath);
                     if (fileSystem == null)
                     {
@@ -2330,7 +2083,8 @@ namespace GameFramework.Resource
                                 Directory.CreateDirectory(directory);
                             }
 
-                            fileSystem = m_FileSystemManager.CreateFileSystem(fullPath, FileSystemAccess.ReadWrite, FileSystemMaxFileCount, FileSystemMaxBlockCount);
+                            fileSystem = m_FileSystemManager.CreateFileSystem(fullPath, FileSystemAccess.ReadWrite,
+                                FileSystemMaxFileCount, FileSystemMaxBlockCount);
                         }
 
                         m_ReadWriteFileSystems.Add(fileSystemName, fileSystem);
@@ -2388,7 +2142,8 @@ namespace GameFramework.Resource
         {
             if (m_ResourceVerifyStartEventHandler != null)
             {
-                ResourceVerifyStartEventArgs resourceVerifyStartEventArgs = ResourceVerifyStartEventArgs.Create(count, totalLength);
+                ResourceVerifyStartEventArgs resourceVerifyStartEventArgs =
+                    ResourceVerifyStartEventArgs.Create(count, totalLength);
                 m_ResourceVerifyStartEventHandler(this, resourceVerifyStartEventArgs);
                 ReferencePool.Release(resourceVerifyStartEventArgs);
             }
@@ -2398,7 +2153,8 @@ namespace GameFramework.Resource
         {
             if (m_ResourceVerifySuccessEventHandler != null)
             {
-                ResourceVerifySuccessEventArgs resourceVerifySuccessEventArgs = ResourceVerifySuccessEventArgs.Create(resourceName.FullName, length);
+                ResourceVerifySuccessEventArgs resourceVerifySuccessEventArgs =
+                    ResourceVerifySuccessEventArgs.Create(resourceName.FullName, length);
                 m_ResourceVerifySuccessEventHandler(this, resourceVerifySuccessEventArgs);
                 ReferencePool.Release(resourceVerifySuccessEventArgs);
             }
@@ -2408,7 +2164,8 @@ namespace GameFramework.Resource
         {
             if (m_ResourceVerifyFailureEventHandler != null)
             {
-                ResourceVerifyFailureEventArgs resourceVerifyFailureEventArgs = ResourceVerifyFailureEventArgs.Create(resourceName.FullName);
+                ResourceVerifyFailureEventArgs resourceVerifyFailureEventArgs =
+                    ResourceVerifyFailureEventArgs.Create(resourceName.FullName);
                 m_ResourceVerifyFailureEventHandler(this, resourceVerifyFailureEventArgs);
                 ReferencePool.Release(resourceVerifyFailureEventArgs);
             }
@@ -2425,12 +2182,16 @@ namespace GameFramework.Resource
             m_ResourceVerifier = null;
         }
 
-        private void OnCheckerResourceNeedUpdate(ResourceName resourceName, string fileSystemName, LoadType loadType, int length, int hashCode, int compressedLength, int compressedHashCode)
+        private void OnCheckerResourceNeedUpdate(ResourceName resourceName, string fileSystemName, LoadType loadType,
+            int length, int hashCode, int compressedLength, int compressedHashCode)
         {
-            m_ResourceUpdater.AddResourceUpdate(resourceName, fileSystemName, loadType, length, hashCode, compressedLength, compressedHashCode, Utility.Path.GetRegularPath(Path.Combine(m_ReadWritePath, resourceName.FullName)));
+            m_ResourceUpdater.AddResourceUpdate(resourceName, fileSystemName, loadType, length, hashCode,
+                compressedLength, compressedHashCode,
+                Utility.Path.GetRegularPath(Path.Combine(m_ReadWritePath, resourceName.FullName)));
         }
 
-        private void OnCheckerResourceCheckComplete(int movedCount, int removedCount, int updateCount, long updateTotalLength, long updateTotalCompressedLength)
+        private void OnCheckerResourceCheckComplete(int movedCount, int removedCount, int updateCount,
+            long updateTotalLength, long updateTotalCompressedLength)
         {
             m_VersionListProcessor.VersionListUpdateSuccess -= OnVersionListProcessorUpdateSuccess;
             m_VersionListProcessor.VersionListUpdateFailure -= OnVersionListProcessorUpdateFailure;
@@ -2466,7 +2227,8 @@ namespace GameFramework.Resource
                 FreeCachedStream();
             }
 
-            m_CheckResourcesCompleteCallback(movedCount, removedCount, updateCount, updateTotalLength, updateTotalCompressedLength);
+            m_CheckResourcesCompleteCallback(movedCount, removedCount, updateCount, updateTotalLength,
+                updateTotalCompressedLength);
             m_CheckResourcesCompleteCallback = null;
         }
 
@@ -2474,27 +2236,33 @@ namespace GameFramework.Resource
         {
             if (m_ResourceApplyStartEventHandler != null)
             {
-                ResourceApplyStartEventArgs resourceApplyStartEventArgs = ResourceApplyStartEventArgs.Create(resourcePackPath, count, totalLength);
+                ResourceApplyStartEventArgs resourceApplyStartEventArgs =
+                    ResourceApplyStartEventArgs.Create(resourcePackPath, count, totalLength);
                 m_ResourceApplyStartEventHandler(this, resourceApplyStartEventArgs);
                 ReferencePool.Release(resourceApplyStartEventArgs);
             }
         }
 
-        private void OnUpdaterResourceApplySuccess(ResourceName resourceName, string applyPath, string resourcePackPath, int length, int compressedLength)
+        private void OnUpdaterResourceApplySuccess(ResourceName resourceName, string applyPath, string resourcePackPath,
+            int length, int compressedLength)
         {
             if (m_ResourceApplySuccessEventHandler != null)
             {
-                ResourceApplySuccessEventArgs resourceApplySuccessEventArgs = ResourceApplySuccessEventArgs.Create(resourceName.FullName, applyPath, resourcePackPath, length, compressedLength);
+                ResourceApplySuccessEventArgs resourceApplySuccessEventArgs =
+                    ResourceApplySuccessEventArgs.Create(resourceName.FullName, applyPath, resourcePackPath, length,
+                        compressedLength);
                 m_ResourceApplySuccessEventHandler(this, resourceApplySuccessEventArgs);
                 ReferencePool.Release(resourceApplySuccessEventArgs);
             }
         }
 
-        private void OnUpdaterResourceApplyFailure(ResourceName resourceName, string resourcePackPath, string errorMessage)
+        private void OnUpdaterResourceApplyFailure(ResourceName resourceName, string resourcePackPath,
+            string errorMessage)
         {
             if (m_ResourceApplyFailureEventHandler != null)
             {
-                ResourceApplyFailureEventArgs resourceApplyFailureEventArgs = ResourceApplyFailureEventArgs.Create(resourceName.FullName, resourcePackPath, errorMessage);
+                ResourceApplyFailureEventArgs resourceApplyFailureEventArgs =
+                    ResourceApplyFailureEventArgs.Create(resourceName.FullName, resourcePackPath, errorMessage);
                 m_ResourceApplyFailureEventHandler(this, resourceApplyFailureEventArgs);
                 ReferencePool.Release(resourceApplyFailureEventArgs);
             }
@@ -2507,41 +2275,53 @@ namespace GameFramework.Resource
             applyResourcesCompleteCallback(resourcePackPath, result);
         }
 
-        private void OnUpdaterResourceUpdateStart(ResourceName resourceName, string downloadPath, string downloadUri, int currentLength, int compressedLength, int retryCount)
+        private void OnUpdaterResourceUpdateStart(ResourceName resourceName, string downloadPath, string downloadUri,
+            int currentLength, int compressedLength, int retryCount)
         {
             if (m_ResourceUpdateStartEventHandler != null)
             {
-                ResourceUpdateStartEventArgs resourceUpdateStartEventArgs = ResourceUpdateStartEventArgs.Create(resourceName.FullName, downloadPath, downloadUri, currentLength, compressedLength, retryCount);
+                ResourceUpdateStartEventArgs resourceUpdateStartEventArgs =
+                    ResourceUpdateStartEventArgs.Create(resourceName.FullName, downloadPath, downloadUri, currentLength,
+                        compressedLength, retryCount);
                 m_ResourceUpdateStartEventHandler(this, resourceUpdateStartEventArgs);
                 ReferencePool.Release(resourceUpdateStartEventArgs);
             }
         }
 
-        private void OnUpdaterResourceUpdateChanged(ResourceName resourceName, string downloadPath, string downloadUri, int currentLength, int compressedLength)
+        private void OnUpdaterResourceUpdateChanged(ResourceName resourceName, string downloadPath, string downloadUri,
+            int currentLength, int compressedLength)
         {
             if (m_ResourceUpdateChangedEventHandler != null)
             {
-                ResourceUpdateChangedEventArgs resourceUpdateChangedEventArgs = ResourceUpdateChangedEventArgs.Create(resourceName.FullName, downloadPath, downloadUri, currentLength, compressedLength);
+                ResourceUpdateChangedEventArgs resourceUpdateChangedEventArgs =
+                    ResourceUpdateChangedEventArgs.Create(resourceName.FullName, downloadPath, downloadUri,
+                        currentLength, compressedLength);
                 m_ResourceUpdateChangedEventHandler(this, resourceUpdateChangedEventArgs);
                 ReferencePool.Release(resourceUpdateChangedEventArgs);
             }
         }
 
-        private void OnUpdaterResourceUpdateSuccess(ResourceName resourceName, string downloadPath, string downloadUri, int length, int compressedLength)
+        private void OnUpdaterResourceUpdateSuccess(ResourceName resourceName, string downloadPath, string downloadUri,
+            int length, int compressedLength)
         {
             if (m_ResourceUpdateSuccessEventHandler != null)
             {
-                ResourceUpdateSuccessEventArgs resourceUpdateSuccessEventArgs = ResourceUpdateSuccessEventArgs.Create(resourceName.FullName, downloadPath, downloadUri, length, compressedLength);
+                ResourceUpdateSuccessEventArgs resourceUpdateSuccessEventArgs =
+                    ResourceUpdateSuccessEventArgs.Create(resourceName.FullName, downloadPath, downloadUri, length,
+                        compressedLength);
                 m_ResourceUpdateSuccessEventHandler(this, resourceUpdateSuccessEventArgs);
                 ReferencePool.Release(resourceUpdateSuccessEventArgs);
             }
         }
 
-        private void OnUpdaterResourceUpdateFailure(ResourceName resourceName, string downloadUri, int retryCount, int totalRetryCount, string errorMessage)
+        private void OnUpdaterResourceUpdateFailure(ResourceName resourceName, string downloadUri, int retryCount,
+            int totalRetryCount, string errorMessage)
         {
             if (m_ResourceUpdateFailureEventHandler != null)
             {
-                ResourceUpdateFailureEventArgs resourceUpdateFailureEventArgs = ResourceUpdateFailureEventArgs.Create(resourceName.FullName, downloadUri, retryCount, totalRetryCount, errorMessage);
+                ResourceUpdateFailureEventArgs resourceUpdateFailureEventArgs =
+                    ResourceUpdateFailureEventArgs.Create(resourceName.FullName, downloadUri, retryCount,
+                        totalRetryCount, errorMessage);
                 m_ResourceUpdateFailureEventHandler(this, resourceUpdateFailureEventArgs);
                 ReferencePool.Release(resourceUpdateFailureEventArgs);
             }
@@ -2578,7 +2358,8 @@ namespace GameFramework.Resource
 
             if (m_ResourceUpdateAllCompleteEventHandler != null)
             {
-                ResourceUpdateAllCompleteEventArgs resourceUpdateAllCompleteEventArgs = ResourceUpdateAllCompleteEventArgs.Create();
+                ResourceUpdateAllCompleteEventArgs resourceUpdateAllCompleteEventArgs =
+                    ResourceUpdateAllCompleteEventArgs.Create();
                 m_ResourceUpdateAllCompleteEventHandler(this, resourceUpdateAllCompleteEventArgs);
                 ReferencePool.Release(resourceUpdateAllCompleteEventArgs);
             }

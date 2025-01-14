@@ -1,9 +1,7 @@
-﻿using System;
-
-namespace ICSharpCode.SharpZipLib.Core
+﻿namespace ICSharpCode.SharpZipLib.Core
 {
-	internal static class Empty
-	{
+    internal static class Empty
+    {
 #if NET45
 		internal static class EmptyArray<T>
 		{
@@ -11,7 +9,10 @@ namespace ICSharpCode.SharpZipLib.Core
 		}
 		public static T[] Array<T>() => EmptyArray<T>.Value;
 #else
-		public static T[] Array<T>() => System.Array.Empty<T>();
+        public static T[] Array<T>()
+        {
+            return System.Array.Empty<T>();
+        }
 #endif
-	}
+    }
 }

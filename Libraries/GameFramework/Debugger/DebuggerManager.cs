@@ -28,39 +28,21 @@ namespace GameFramework.Debugger
         /// 获取游戏框架模块优先级。
         /// </summary>
         /// <remarks>优先级较高的模块会优先轮询，并且关闭操作会后进行。</remarks>
-        internal override int Priority
-        {
-            get
-            {
-                return -1;
-            }
-        }
+        internal override int Priority => -1;
 
         /// <summary>
         /// 获取或设置调试器窗口是否激活。
         /// </summary>
         public bool ActiveWindow
         {
-            get
-            {
-                return m_ActiveWindow;
-            }
-            set
-            {
-                m_ActiveWindow = value;
-            }
+            get => m_ActiveWindow;
+            set => m_ActiveWindow = value;
         }
 
         /// <summary>
         /// 调试器窗口根结点。
         /// </summary>
-        public IDebuggerWindowGroup DebuggerWindowRoot
-        {
-            get
-            {
-                return m_DebuggerWindowRoot;
-            }
-        }
+        public IDebuggerWindowGroup DebuggerWindowRoot => m_DebuggerWindowRoot;
 
         /// <summary>
         /// 调试器管理器轮询。

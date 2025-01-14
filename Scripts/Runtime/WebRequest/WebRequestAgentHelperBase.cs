@@ -5,8 +5,8 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameFramework.WebRequest;
 using System;
+using GameFramework.WebRequest;
 using UnityEngine;
 
 namespace UnityGameFramework.Runtime

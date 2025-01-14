@@ -15,10 +15,7 @@ namespace GameFramework.DataTable
         /// <summary>
         /// 获取数据表行的编号。
         /// </summary>
-        int Id
-        {
-            get;
-        }
+        int Id { get; }
 
         /// <summary>
         /// 解析数据表行。

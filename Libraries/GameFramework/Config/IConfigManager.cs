@@ -17,18 +17,12 @@ namespace GameFramework.Config
         /// <summary>
         /// 获取全局配置项数量。
         /// </summary>
-        int Count
-        {
-            get;
-        }
+        int Count { get; }
 
         /// <summary>
         /// 获取缓冲二进制流的大小。
         /// </summary>
-        int CachedBytesSize
-        {
-            get;
-        }
+        int CachedBytesSize { get; }
 
         /// <summary>
         /// 设置资源管理器。

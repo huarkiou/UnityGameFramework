@@ -22,6 +22,7 @@ namespace UnityGameFramework.Runtime
         /// <param name="access">要加载的文件系统的访问方式。</param>
         /// <param name="createNew">是否创建新的文件系统流。</param>
         /// <returns>创建的文件系统流。</returns>
-        public abstract FileSystemStream CreateFileSystemStream(string fullPath, FileSystemAccess access, bool createNew);
+        public abstract FileSystemStream CreateFileSystemStream(string fullPath, FileSystemAccess access,
+            bool createNew);
     }
 }

@@ -5,16 +5,16 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
+using System.Collections.Generic;
 using GameFramework;
 using GameFramework.Resource;
-#if UNITY_5_3
-using GameFramework.Scene;
-#endif
 using GameFramework.Sound;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
+#if UNITY_5_3
+using GameFramework.Scene;
+#endif
 
 namespace UnityGameFramework.Runtime
 {
@@ -67,24 +67,12 @@ namespace UnityGameFramework.Runtime
         /// <summary>
         /// 获取声音组数量。
         /// </summary>
-        public int SoundGroupCount
-        {
-            get
-            {
-                return m_SoundManager.SoundGroupCount;
-            }
-        }
+        public int SoundGroupCount => m_SoundManager.SoundGroupCount;
 
         /// <summary>
         /// 获取声音混响器。
         /// </summary>
-        public AudioMixer AudioMixer
-        {
-            get
-            {
-                return m_AudioMixer;
-            }
-        }
+        public AudioMixer AudioMixer => m_AudioMixer;
 
         /// <summary>
         /// 游戏框架组件初始化。
@@ -181,7 +169,8 @@ namespace UnityGameFramework.Runtime
 
             for (int i = 0; i < m_SoundGroups.Length; i++)
             {
-                if (!AddSoundGroup(m_SoundGroups[i].Name, m_SoundGroups[i].AvoidBeingReplacedBySamePriority, m_SoundGroups[i].Mute, m_SoundGroups[i].Volume, m_SoundGroups[i].AgentHelperCount))
+                if (!AddSoundGroup(m_SoundGroups[i].Name, m_SoundGroups[i].AvoidBeingReplacedBySamePriority,
+                        m_SoundGroups[i].Mute, m_SoundGroups[i].Volume, m_SoundGroups[i].AgentHelperCount))
                 {
                     Log.Warning("Add sound group '{0}' failure.", m_SoundGroups[i].Name);
                     continue;
@@ -255,14 +244,16 @@ namespace UnityGameFramework.Runtime
         /// <param name="soundGroupVolume">声音组音量。</param>
         /// <param name="soundAgentHelperCount">声音代理辅助器数量。</param>
         /// <returns>是否增加声音组成功。</returns>
-        public bool AddSoundGroup(string soundGroupName, bool soundGroupAvoidBeingReplacedBySamePriority, bool soundGroupMute, float soundGroupVolume, int soundAgentHelperCount)
+        public bool AddSoundGroup(string soundGroupName, bool soundGroupAvoidBeingReplacedBySamePriority,
+            bool soundGroupMute, float soundGroupVolume, int soundAgentHelperCount)
         {
             if (m_SoundManager.HasSoundGroup(soundGroupName))
             {
                 return false;
             }
 
-            SoundGroupHelperBase soundGroupHelper = Helper.CreateHelper(m_SoundGroupHelperTypeName, m_CustomSoundGroupHelper, SoundGroupCount);
+            SoundGroupHelperBase soundGroupHelper =
+                Helper.CreateHelper(m_SoundGroupHelperTypeName, m_CustomSoundGroupHelper, SoundGroupCount);
             if (soundGroupHelper == null)
             {
                 Log.Error("Can not create sound group helper.");
@@ -276,7 +267,8 @@ namespace UnityGameFramework.Runtime
 
             if (m_AudioMixer != null)
             {
-                AudioMixerGroup[] audioMixerGroups = m_AudioMixer.FindMatchingGroups(Utility.Text.Format("Master/{0}", soundGroupName));
+                AudioMixerGroup[] audioMixerGroups =
+                    m_AudioMixer.FindMatchingGroups(Utility.Text.Format("Master/{0}", soundGroupName));
                 if (audioMixerGroups.Length > 0)
                 {
                     soundGroupHelper.AudioMixerGroup = audioMixerGroups[0];
@@ -287,7 +279,8 @@ namespace UnityGameFramework.Runtime
                 }
             }
 
-            if (!m_SoundManager.AddSoundGroup(soundGroupName, soundGroupAvoidBeingReplacedBySamePriority, soundGroupMute, soundGroupVolume, soundGroupHelper))
+            if (!m_SoundManager.AddSoundGroup(soundGroupName, soundGroupAvoidBeingReplacedBySamePriority,
+                    soundGroupMute, soundGroupVolume, soundGroupHelper))
             {
                 return false;
             }
@@ -410,7 +403,8 @@ namespace UnityGameFramework.Runtime
         /// <param name="priority">加载声音资源的优先级。</param>
         /// <param name="playSoundParams">播放声音参数。</param>
         /// <returns>声音的序列编号。</returns>
-        public int PlaySound(string soundAssetName, string soundGroupName, int priority, PlaySoundParams playSoundParams)
+        public int PlaySound(string soundAssetName, string soundGroupName, int priority,
+            PlaySoundParams playSoundParams)
         {
             return PlaySound(soundAssetName, soundGroupName, priority, playSoundParams, null, null);
         }
@@ -424,7 +418,8 @@ namespace UnityGameFramework.Runtime
         /// <param name="playSoundParams">播放声音参数。</param>
         /// <param name="userData">用户自定义数据。</param>
         /// <returns>声音的序列编号。</returns>
-        public int PlaySound(string soundAssetName, string soundGroupName, int priority, PlaySoundParams playSoundParams, object userData)
+        public int PlaySound(string soundAssetName, string soundGroupName, int priority,
+            PlaySoundParams playSoundParams, object userData)
         {
             return PlaySound(soundAssetName, soundGroupName, priority, playSoundParams, null, userData);
         }
@@ -438,7 +433,8 @@ namespace UnityGameFramework.Runtime
         /// <param name="playSoundParams">播放声音参数。</param>
         /// <param name="bindingEntity">声音绑定的实体。</param>
         /// <returns>声音的序列编号。</returns>
-        public int PlaySound(string soundAssetName, string soundGroupName, int priority, PlaySoundParams playSoundParams, Entity bindingEntity)
+        public int PlaySound(string soundAssetName, string soundGroupName, int priority,
+            PlaySoundParams playSoundParams, Entity bindingEntity)
         {
             return PlaySound(soundAssetName, soundGroupName, priority, playSoundParams, bindingEntity, null);
         }
@@ -453,9 +449,11 @@ namespace UnityGameFramework.Runtime
         /// <param name="bindingEntity">声音绑定的实体。</param>
         /// <param name="userData">用户自定义数据。</param>
         /// <returns>声音的序列编号。</returns>
-        public int PlaySound(string soundAssetName, string soundGroupName, int priority, PlaySoundParams playSoundParams, Entity bindingEntity, object userData)
+        public int PlaySound(string soundAssetName, string soundGroupName, int priority,
+            PlaySoundParams playSoundParams, Entity bindingEntity, object userData)
         {
-            return m_SoundManager.PlaySound(soundAssetName, soundGroupName, priority, playSoundParams, PlaySoundInfo.Create(bindingEntity, Vector3.zero, userData));
+            return m_SoundManager.PlaySound(soundAssetName, soundGroupName, priority, playSoundParams,
+                PlaySoundInfo.Create(bindingEntity, Vector3.zero, userData));
         }
 
         /// <summary>
@@ -467,7 +465,8 @@ namespace UnityGameFramework.Runtime
         /// <param name="playSoundParams">播放声音参数。</param>
         /// <param name="worldPosition">声音所在的世界坐标。</param>
         /// <returns>声音的序列编号。</returns>
-        public int PlaySound(string soundAssetName, string soundGroupName, int priority, PlaySoundParams playSoundParams, Vector3 worldPosition)
+        public int PlaySound(string soundAssetName, string soundGroupName, int priority,
+            PlaySoundParams playSoundParams, Vector3 worldPosition)
         {
             return PlaySound(soundAssetName, soundGroupName, priority, playSoundParams, worldPosition, null);
         }
@@ -482,9 +481,11 @@ namespace UnityGameFramework.Runtime
         /// <param name="worldPosition">声音所在的世界坐标。</param>
         /// <param name="userData">用户自定义数据。</param>
         /// <returns>声音的序列编号。</returns>
-        public int PlaySound(string soundAssetName, string soundGroupName, int priority, PlaySoundParams playSoundParams, Vector3 worldPosition, object userData)
+        public int PlaySound(string soundAssetName, string soundGroupName, int priority,
+            PlaySoundParams playSoundParams, Vector3 worldPosition, object userData)
         {
-            return m_SoundManager.PlaySound(soundAssetName, soundGroupName, priority, playSoundParams, PlaySoundInfo.Create(null, worldPosition, userData));
+            return m_SoundManager.PlaySound(soundAssetName, soundGroupName, priority, playSoundParams,
+                PlaySoundInfo.Create(null, worldPosition, userData));
         }
 
         /// <summary>
@@ -580,7 +581,8 @@ namespace UnityGameFramework.Runtime
         /// <returns>是否增加声音代理辅助器成功。</returns>
         private bool AddSoundAgentHelper(string soundGroupName, SoundGroupHelperBase soundGroupHelper, int index)
         {
-            SoundAgentHelperBase soundAgentHelper = Helper.CreateHelper(m_SoundAgentHelperTypeName, m_CustomSoundAgentHelper, index);
+            SoundAgentHelperBase soundAgentHelper =
+                Helper.CreateHelper(m_SoundAgentHelperTypeName, m_CustomSoundAgentHelper, index);
             if (soundAgentHelper == null)
             {
                 Log.Error("Can not create sound agent helper.");
@@ -594,7 +596,8 @@ namespace UnityGameFramework.Runtime
 
             if (m_AudioMixer != null)
             {
-                AudioMixerGroup[] audioMixerGroups = m_AudioMixer.FindMatchingGroups(Utility.Text.Format("Master/{0}/{1}", soundGroupName, index));
+                AudioMixerGroup[] audioMixerGroups =
+                    m_AudioMixer.FindMatchingGroups(Utility.Text.Format("Master/{0}/{1}", soundGroupName, index));
                 if (audioMixerGroups.Length > 0)
                 {
                     soundAgentHelper.AudioMixerGroup = audioMixerGroups[0];
@@ -631,7 +634,10 @@ namespace UnityGameFramework.Runtime
 
         private void OnPlaySoundFailure(object sender, GameFramework.Sound.PlaySoundFailureEventArgs e)
         {
-            string logMessage = Utility.Text.Format("Play sound failure, asset name '{0}', sound group name '{1}', error code '{2}', error message '{3}'.", e.SoundAssetName, e.SoundGroupName, e.ErrorCode, e.ErrorMessage);
+            string logMessage =
+                Utility.Text.Format(
+                    "Play sound failure, asset name '{0}', sound group name '{1}', error code '{2}', error message '{3}'.",
+                    e.SoundAssetName, e.SoundGroupName, e.ErrorCode, e.ErrorMessage);
             if (e.ErrorCode == PlaySoundErrorCode.IgnoredDueToLowPriority)
             {
                 Log.Info(logMessage);

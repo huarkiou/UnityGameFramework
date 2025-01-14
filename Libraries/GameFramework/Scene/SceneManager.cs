@@ -5,9 +5,9 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameFramework.Resource;
 using System;
 using System.Collections.Generic;
+using GameFramework.Resource;
 
 namespace GameFramework.Scene
 {
@@ -37,7 +37,8 @@ namespace GameFramework.Scene
             m_LoadedSceneAssetNames = new List<string>();
             m_LoadingSceneAssetNames = new List<string>();
             m_UnloadingSceneAssetNames = new List<string>();
-            m_LoadSceneCallbacks = new LoadSceneCallbacks(LoadSceneSuccessCallback, LoadSceneFailureCallback, LoadSceneUpdateCallback, LoadSceneDependencyAssetCallback);
+            m_LoadSceneCallbacks = new LoadSceneCallbacks(LoadSceneSuccessCallback, LoadSceneFailureCallback,
+                LoadSceneUpdateCallback, LoadSceneDependencyAssetCallback);
             m_UnloadSceneCallbacks = new UnloadSceneCallbacks(UnloadSceneSuccessCallback, UnloadSceneFailureCallback);
             m_ResourceManager = null;
             m_LoadSceneSuccessEventHandler = null;
@@ -52,27 +53,15 @@ namespace GameFramework.Scene
         /// 获取游戏框架模块优先级。
         /// </summary>
         /// <remarks>优先级较高的模块会优先轮询，并且关闭操作会后进行。</remarks>
-        internal override int Priority
-        {
-            get
-            {
-                return 2;
-            }
-        }
+        internal override int Priority => 2;
 
         /// <summary>
         /// 加载场景成功事件。
         /// </summary>
         public event EventHandler<LoadSceneSuccessEventArgs> LoadSceneSuccess
         {
-            add
-            {
-                m_LoadSceneSuccessEventHandler += value;
-            }
-            remove
-            {
-                m_LoadSceneSuccessEventHandler -= value;
-            }
+            add => m_LoadSceneSuccessEventHandler += value;
+            remove => m_LoadSceneSuccessEventHandler -= value;
         }
 
         /// <summary>
@@ -80,14 +69,8 @@ namespace GameFramework.Scene
         /// </summary>
         public event EventHandler<LoadSceneFailureEventArgs> LoadSceneFailure
         {
-            add
-            {
-                m_LoadSceneFailureEventHandler += value;
-            }
-            remove
-            {
-                m_LoadSceneFailureEventHandler -= value;
-            }
+            add => m_LoadSceneFailureEventHandler += value;
+            remove => m_LoadSceneFailureEventHandler -= value;
         }
 
         /// <summary>
@@ -95,14 +78,8 @@ namespace GameFramework.Scene
         /// </summary>
         public event EventHandler<LoadSceneUpdateEventArgs> LoadSceneUpdate
         {
-            add
-            {
-                m_LoadSceneUpdateEventHandler += value;
-            }
-            remove
-            {
-                m_LoadSceneUpdateEventHandler -= value;
-            }
+            add => m_LoadSceneUpdateEventHandler += value;
+            remove => m_LoadSceneUpdateEventHandler -= value;
         }
 
         /// <summary>
@@ -110,14 +87,8 @@ namespace GameFramework.Scene
         /// </summary>
         public event EventHandler<LoadSceneDependencyAssetEventArgs> LoadSceneDependencyAsset
         {
-            add
-            {
-                m_LoadSceneDependencyAssetEventHandler += value;
-            }
-            remove
-            {
-                m_LoadSceneDependencyAssetEventHandler -= value;
-            }
+            add => m_LoadSceneDependencyAssetEventHandler += value;
+            remove => m_LoadSceneDependencyAssetEventHandler -= value;
         }
 
         /// <summary>
@@ -125,14 +96,8 @@ namespace GameFramework.Scene
         /// </summary>
         public event EventHandler<UnloadSceneSuccessEventArgs> UnloadSceneSuccess
         {
-            add
-            {
-                m_UnloadSceneSuccessEventHandler += value;
-            }
-            remove
-            {
-                m_UnloadSceneSuccessEventHandler -= value;
-            }
+            add => m_UnloadSceneSuccessEventHandler += value;
+            remove => m_UnloadSceneSuccessEventHandler -= value;
         }
 
         /// <summary>
@@ -140,14 +105,8 @@ namespace GameFramework.Scene
         /// </summary>
         public event EventHandler<UnloadSceneFailureEventArgs> UnloadSceneFailure
         {
-            add
-            {
-                m_UnloadSceneFailureEventHandler += value;
-            }
-            remove
-            {
-                m_UnloadSceneFailureEventHandler -= value;
-            }
+            add => m_UnloadSceneFailureEventHandler += value;
+            remove => m_UnloadSceneFailureEventHandler -= value;
         }
 
         /// <summary>
@@ -370,17 +329,20 @@ namespace GameFramework.Scene
 
             if (SceneIsUnloading(sceneAssetName))
             {
-                throw new GameFrameworkException(Utility.Text.Format("Scene asset '{0}' is being unloaded.", sceneAssetName));
+                throw new GameFrameworkException(Utility.Text.Format("Scene asset '{0}' is being unloaded.",
+                    sceneAssetName));
             }
 
             if (SceneIsLoading(sceneAssetName))
             {
-                throw new GameFrameworkException(Utility.Text.Format("Scene asset '{0}' is being loaded.", sceneAssetName));
+                throw new GameFrameworkException(Utility.Text.Format("Scene asset '{0}' is being loaded.",
+                    sceneAssetName));
             }
 
             if (SceneIsLoaded(sceneAssetName))
             {
-                throw new GameFrameworkException(Utility.Text.Format("Scene asset '{0}' is already loaded.", sceneAssetName));
+                throw new GameFrameworkException(Utility.Text.Format("Scene asset '{0}' is already loaded.",
+                    sceneAssetName));
             }
 
             m_LoadingSceneAssetNames.Add(sceneAssetName);
@@ -415,17 +377,20 @@ namespace GameFramework.Scene
 
             if (SceneIsUnloading(sceneAssetName))
             {
-                throw new GameFrameworkException(Utility.Text.Format("Scene asset '{0}' is being unloaded.", sceneAssetName));
+                throw new GameFrameworkException(Utility.Text.Format("Scene asset '{0}' is being unloaded.",
+                    sceneAssetName));
             }
 
             if (SceneIsLoading(sceneAssetName))
             {
-                throw new GameFrameworkException(Utility.Text.Format("Scene asset '{0}' is being loaded.", sceneAssetName));
+                throw new GameFrameworkException(Utility.Text.Format("Scene asset '{0}' is being loaded.",
+                    sceneAssetName));
             }
 
             if (!SceneIsLoaded(sceneAssetName))
             {
-                throw new GameFrameworkException(Utility.Text.Format("Scene asset '{0}' is not loaded yet.", sceneAssetName));
+                throw new GameFrameworkException(Utility.Text.Format("Scene asset '{0}' is not loaded yet.",
+                    sceneAssetName));
             }
 
             m_UnloadingSceneAssetNames.Add(sceneAssetName);
@@ -438,19 +403,24 @@ namespace GameFramework.Scene
             m_LoadedSceneAssetNames.Add(sceneAssetName);
             if (m_LoadSceneSuccessEventHandler != null)
             {
-                LoadSceneSuccessEventArgs loadSceneSuccessEventArgs = LoadSceneSuccessEventArgs.Create(sceneAssetName, duration, userData);
+                LoadSceneSuccessEventArgs loadSceneSuccessEventArgs =
+                    LoadSceneSuccessEventArgs.Create(sceneAssetName, duration, userData);
                 m_LoadSceneSuccessEventHandler(this, loadSceneSuccessEventArgs);
                 ReferencePool.Release(loadSceneSuccessEventArgs);
             }
         }
 
-        private void LoadSceneFailureCallback(string sceneAssetName, LoadResourceStatus status, string errorMessage, object userData)
+        private void LoadSceneFailureCallback(string sceneAssetName, LoadResourceStatus status, string errorMessage,
+            object userData)
         {
             m_LoadingSceneAssetNames.Remove(sceneAssetName);
-            string appendErrorMessage = Utility.Text.Format("Load scene failure, scene asset name '{0}', status '{1}', error message '{2}'.", sceneAssetName, status, errorMessage);
+            string appendErrorMessage =
+                Utility.Text.Format("Load scene failure, scene asset name '{0}', status '{1}', error message '{2}'.",
+                    sceneAssetName, status, errorMessage);
             if (m_LoadSceneFailureEventHandler != null)
             {
-                LoadSceneFailureEventArgs loadSceneFailureEventArgs = LoadSceneFailureEventArgs.Create(sceneAssetName, appendErrorMessage, userData);
+                LoadSceneFailureEventArgs loadSceneFailureEventArgs =
+                    LoadSceneFailureEventArgs.Create(sceneAssetName, appendErrorMessage, userData);
                 m_LoadSceneFailureEventHandler(this, loadSceneFailureEventArgs);
                 ReferencePool.Release(loadSceneFailureEventArgs);
                 return;
@@ -463,17 +433,21 @@ namespace GameFramework.Scene
         {
             if (m_LoadSceneUpdateEventHandler != null)
             {
-                LoadSceneUpdateEventArgs loadSceneUpdateEventArgs = LoadSceneUpdateEventArgs.Create(sceneAssetName, progress, userData);
+                LoadSceneUpdateEventArgs loadSceneUpdateEventArgs =
+                    LoadSceneUpdateEventArgs.Create(sceneAssetName, progress, userData);
                 m_LoadSceneUpdateEventHandler(this, loadSceneUpdateEventArgs);
                 ReferencePool.Release(loadSceneUpdateEventArgs);
             }
         }
 
-        private void LoadSceneDependencyAssetCallback(string sceneAssetName, string dependencyAssetName, int loadedCount, int totalCount, object userData)
+        private void LoadSceneDependencyAssetCallback(string sceneAssetName, string dependencyAssetName,
+            int loadedCount, int totalCount, object userData)
         {
             if (m_LoadSceneDependencyAssetEventHandler != null)
             {
-                LoadSceneDependencyAssetEventArgs loadSceneDependencyAssetEventArgs = LoadSceneDependencyAssetEventArgs.Create(sceneAssetName, dependencyAssetName, loadedCount, totalCount, userData);
+                LoadSceneDependencyAssetEventArgs loadSceneDependencyAssetEventArgs =
+                    LoadSceneDependencyAssetEventArgs.Create(sceneAssetName, dependencyAssetName, loadedCount,
+                        totalCount, userData);
                 m_LoadSceneDependencyAssetEventHandler(this, loadSceneDependencyAssetEventArgs);
                 ReferencePool.Release(loadSceneDependencyAssetEventArgs);
             }
@@ -485,7 +459,8 @@ namespace GameFramework.Scene
             m_LoadedSceneAssetNames.Remove(sceneAssetName);
             if (m_UnloadSceneSuccessEventHandler != null)
             {
-                UnloadSceneSuccessEventArgs unloadSceneSuccessEventArgs = UnloadSceneSuccessEventArgs.Create(sceneAssetName, userData);
+                UnloadSceneSuccessEventArgs unloadSceneSuccessEventArgs =
+                    UnloadSceneSuccessEventArgs.Create(sceneAssetName, userData);
                 m_UnloadSceneSuccessEventHandler(this, unloadSceneSuccessEventArgs);
                 ReferencePool.Release(unloadSceneSuccessEventArgs);
             }
@@ -496,13 +471,15 @@ namespace GameFramework.Scene
             m_UnloadingSceneAssetNames.Remove(sceneAssetName);
             if (m_UnloadSceneFailureEventHandler != null)
             {
-                UnloadSceneFailureEventArgs unloadSceneFailureEventArgs = UnloadSceneFailureEventArgs.Create(sceneAssetName, userData);
+                UnloadSceneFailureEventArgs unloadSceneFailureEventArgs =
+                    UnloadSceneFailureEventArgs.Create(sceneAssetName, userData);
                 m_UnloadSceneFailureEventHandler(this, unloadSceneFailureEventArgs);
                 ReferencePool.Release(unloadSceneFailureEventArgs);
                 return;
             }
 
-            throw new GameFrameworkException(Utility.Text.Format("Unload scene failure, scene asset name '{0}'.", sceneAssetName));
+            throw new GameFrameworkException(Utility.Text.Format("Unload scene failure, scene asset name '{0}'.",
+                sceneAssetName));
         }
     }
 }

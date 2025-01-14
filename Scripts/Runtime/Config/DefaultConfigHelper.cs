@@ -5,11 +5,11 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameFramework;
-using GameFramework.Config;
 using System;
 using System.IO;
 using System.Text;
+using GameFramework;
+using GameFramework.Config;
 using UnityEngine;
 
 namespace UnityGameFramework.Runtime
@@ -33,7 +33,8 @@ namespace UnityGameFramework.Runtime
         /// <param name="configAsset">全局配置资源。</param>
         /// <param name="userData">用户自定义数据。</param>
         /// <returns>是否读取全局配置成功。</returns>
-        public override bool ReadData(IConfigManager configManager, string configAssetName, object configAsset, object userData)
+        public override bool ReadData(IConfigManager configManager, string configAssetName, object configAsset,
+            object userData)
         {
             TextAsset configTextAsset = configAsset as TextAsset;
             if (configTextAsset != null)
@@ -62,7 +63,8 @@ namespace UnityGameFramework.Runtime
         /// <param name="length">全局配置二进制流的长度。</param>
         /// <param name="userData">用户自定义数据。</param>
         /// <returns>是否读取全局配置成功。</returns>
-        public override bool ReadData(IConfigManager configManager, string configAssetName, byte[] configBytes, int startIndex, int length, object userData)
+        public override bool ReadData(IConfigManager configManager, string configAssetName, byte[] configBytes,
+            int startIndex, int length, object userData)
         {
             if (configAssetName.EndsWith(BytesAssetExtension, StringComparison.Ordinal))
             {
@@ -97,7 +99,8 @@ namespace UnityGameFramework.Runtime
                     string[] splitedLine = configLineString.Split(ColumnSplitSeparator, StringSplitOptions.None);
                     if (splitedLine.Length != ColumnCount)
                     {
-                        Log.Warning("Can not parse config line string '{0}' which column count is invalid.", configLineString);
+                        Log.Warning("Can not parse config line string '{0}' which column count is invalid.",
+                            configLineString);
                         return false;
                     }
 
@@ -105,7 +108,8 @@ namespace UnityGameFramework.Runtime
                     string configValue = splitedLine[3];
                     if (!configManager.AddConfig(configName, configValue))
                     {
-                        Log.Warning("Can not add config with config name '{0}' which may be invalid or duplicate.", configName);
+                        Log.Warning("Can not add config with config name '{0}' which may be invalid or duplicate.",
+                            configName);
                         return false;
                     }
                 }
@@ -128,7 +132,8 @@ namespace UnityGameFramework.Runtime
         /// <param name="length">全局配置二进制流的长度。</param>
         /// <param name="userData">用户自定义数据。</param>
         /// <returns>是否解析全局配置成功。</returns>
-        public override bool ParseData(IConfigManager configManager, byte[] configBytes, int startIndex, int length, object userData)
+        public override bool ParseData(IConfigManager configManager, byte[] configBytes, int startIndex, int length,
+            object userData)
         {
             try
             {
@@ -142,7 +147,9 @@ namespace UnityGameFramework.Runtime
                             string configValue = binaryReader.ReadString();
                             if (!configManager.AddConfig(configName, configValue))
                             {
-                                Log.Warning("Can not add config with config name '{0}' which may be invalid or duplicate.", configName);
+                                Log.Warning(
+                                    "Can not add config with config name '{0}' which may be invalid or duplicate.",
+                                    configName);
                                 return false;
                             }
                         }

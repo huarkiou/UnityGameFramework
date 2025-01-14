@@ -5,11 +5,12 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
+using System;
 using GameFramework;
 using GameFramework.Localization;
 using GameFramework.Resource;
-using System;
 using UnityEngine;
+using Version = GameFramework.Version;
 
 namespace UnityGameFramework.Runtime
 {
@@ -20,7 +21,7 @@ namespace UnityGameFramework.Runtime
     [AddComponentMenu("Game Framework/Base")]
     public sealed class BaseComponent : GameFrameworkComponent
     {
-        private const int DefaultDpi = 96;  // default windows dpi
+        private const int DefaultDpi = 96; // default windows dpi
 
         private float m_GameSpeedBeforePause = 1f;
 
@@ -62,14 +63,8 @@ namespace UnityGameFramework.Runtime
         /// </summary>
         public bool EditorResourceMode
         {
-            get
-            {
-                return m_EditorResourceMode;
-            }
-            set
-            {
-                m_EditorResourceMode = value;
-            }
+            get => m_EditorResourceMode;
+            set => m_EditorResourceMode = value;
         }
 
         /// <summary>
@@ -77,38 +72,22 @@ namespace UnityGameFramework.Runtime
         /// </summary>
         public Language EditorLanguage
         {
-            get
-            {
-                return m_EditorLanguage;
-            }
-            set
-            {
-                m_EditorLanguage = value;
-            }
+            get => m_EditorLanguage;
+            set => m_EditorLanguage = value;
         }
 
         /// <summary>
         /// 获取或设置编辑器资源辅助器。
         /// </summary>
-        public IResourceManager EditorResourceHelper
-        {
-            get;
-            set;
-        }
+        public IResourceManager EditorResourceHelper { get; set; }
 
         /// <summary>
         /// 获取或设置游戏帧率。
         /// </summary>
         public int FrameRate
         {
-            get
-            {
-                return m_FrameRate;
-            }
-            set
-            {
-                Application.targetFrameRate = m_FrameRate = value;
-            }
+            get => m_FrameRate;
+            set => Application.targetFrameRate = m_FrameRate = value;
         }
 
         /// <summary>
@@ -116,51 +95,27 @@ namespace UnityGameFramework.Runtime
         /// </summary>
         public float GameSpeed
         {
-            get
-            {
-                return m_GameSpeed;
-            }
-            set
-            {
-                Time.timeScale = m_GameSpeed = value >= 0f ? value : 0f;
-            }
+            get => m_GameSpeed;
+            set => Time.timeScale = m_GameSpeed = value >= 0f ? value : 0f;
         }
 
         /// <summary>
         /// 获取游戏是否暂停。
         /// </summary>
-        public bool IsGamePaused
-        {
-            get
-            {
-                return m_GameSpeed <= 0f;
-            }
-        }
+        public bool IsGamePaused => m_GameSpeed <= 0f;
 
         /// <summary>
         /// 获取是否正常游戏速度。
         /// </summary>
-        public bool IsNormalGameSpeed
-        {
-            get
-            {
-                return m_GameSpeed == 1f;
-            }
-        }
+        public bool IsNormalGameSpeed => m_GameSpeed == 1f;
 
         /// <summary>
         /// 获取或设置是否允许后台运行。
         /// </summary>
         public bool RunInBackground
         {
-            get
-            {
-                return m_RunInBackground;
-            }
-            set
-            {
-                Application.runInBackground = m_RunInBackground = value;
-            }
+            get => m_RunInBackground;
+            set => Application.runInBackground = m_RunInBackground = value;
         }
 
         /// <summary>
@@ -168,10 +123,7 @@ namespace UnityGameFramework.Runtime
         /// </summary>
         public bool NeverSleep
         {
-            get
-            {
-                return m_NeverSleep;
-            }
+            get => m_NeverSleep;
             set
             {
                 m_NeverSleep = value;
@@ -189,8 +141,8 @@ namespace UnityGameFramework.Runtime
             InitTextHelper();
             InitVersionHelper();
             InitLogHelper();
-            Log.Info("Game Framework Version: {0}", GameFramework.Version.GameFrameworkVersion);
-            Log.Info("Game Version: {0} ({1})", GameFramework.Version.GameVersion, GameFramework.Version.InternalGameVersion);
+            Log.Info("Game Framework Version: {0}", Version.GameFrameworkVersion);
+            Log.Info("Game Version: {0} ({1})", Version.GameVersion, Version.InternalGameVersion);
             Log.Info("Unity Version: {0}", Application.unityVersion);
 
 #if UNITY_5_3_OR_NEWER || UNITY_5_3
@@ -206,7 +158,8 @@ namespace UnityGameFramework.Runtime
             m_EditorResourceMode &= Application.isEditor;
             if (m_EditorResourceMode)
             {
-                Log.Info("During this run, Game Framework will use editor resource files, which you should validate first.");
+                Log.Info(
+                    "During this run, Game Framework will use editor resource files, which you should validate first.");
             }
 
             Application.targetFrameRate = m_FrameRate;
@@ -323,16 +276,18 @@ namespace UnityGameFramework.Runtime
             Type versionHelperType = Utility.Assembly.GetType(m_VersionHelperTypeName);
             if (versionHelperType == null)
             {
-                throw new GameFrameworkException(Utility.Text.Format("Can not find version helper type '{0}'.", m_VersionHelperTypeName));
+                throw new GameFrameworkException(Utility.Text.Format("Can not find version helper type '{0}'.",
+                    m_VersionHelperTypeName));
             }
 
-            GameFramework.Version.IVersionHelper versionHelper = (GameFramework.Version.IVersionHelper)Activator.CreateInstance(versionHelperType);
+            Version.IVersionHelper versionHelper = (Version.IVersionHelper)Activator.CreateInstance(versionHelperType);
             if (versionHelper == null)
             {
-                throw new GameFrameworkException(Utility.Text.Format("Can not create version helper instance '{0}'.", m_VersionHelperTypeName));
+                throw new GameFrameworkException(Utility.Text.Format("Can not create version helper instance '{0}'.",
+                    m_VersionHelperTypeName));
             }
 
-            GameFramework.Version.SetVersionHelper(versionHelper);
+            Version.SetVersionHelper(versionHelper);
         }
 
         private void InitLogHelper()
@@ -345,13 +300,16 @@ namespace UnityGameFramework.Runtime
             Type logHelperType = Utility.Assembly.GetType(m_LogHelperTypeName);
             if (logHelperType == null)
             {
-                throw new GameFrameworkException(Utility.Text.Format("Can not find log helper type '{0}'.", m_LogHelperTypeName));
+                throw new GameFrameworkException(Utility.Text.Format("Can not find log helper type '{0}'.",
+                    m_LogHelperTypeName));
             }
 
-            GameFrameworkLog.ILogHelper logHelper = (GameFrameworkLog.ILogHelper)Activator.CreateInstance(logHelperType);
+            GameFrameworkLog.ILogHelper
+                logHelper = (GameFrameworkLog.ILogHelper)Activator.CreateInstance(logHelperType);
             if (logHelper == null)
             {
-                throw new GameFrameworkException(Utility.Text.Format("Can not create log helper instance '{0}'.", m_LogHelperTypeName));
+                throw new GameFrameworkException(Utility.Text.Format("Can not create log helper instance '{0}'.",
+                    m_LogHelperTypeName));
             }
 
             GameFrameworkLog.SetLogHelper(logHelper);
@@ -371,7 +329,8 @@ namespace UnityGameFramework.Runtime
                 return;
             }
 
-            Utility.Compression.ICompressionHelper compressionHelper = (Utility.Compression.ICompressionHelper)Activator.CreateInstance(compressionHelperType);
+            Utility.Compression.ICompressionHelper compressionHelper =
+                (Utility.Compression.ICompressionHelper)Activator.CreateInstance(compressionHelperType);
             if (compressionHelper == null)
             {
                 Log.Error("Can not create compression helper instance '{0}'.", m_CompressionHelperTypeName);

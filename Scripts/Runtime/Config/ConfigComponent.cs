@@ -42,24 +42,12 @@ namespace UnityGameFramework.Runtime
         /// <summary>
         /// 获取全局配置项数量。
         /// </summary>
-        public int Count
-        {
-            get
-            {
-                return m_ConfigManager.Count;
-            }
-        }
+        public int Count => m_ConfigManager.Count;
 
         /// <summary>
         /// 获取缓冲二进制流的大小。
         /// </summary>
-        public int CachedBytesSize
-        {
-            get
-            {
-                return m_ConfigManager.CachedBytesSize;
-            }
-        }
+        public int CachedBytesSize => m_ConfigManager.CachedBytesSize;
 
         /// <summary>
         /// 游戏框架组件初始化。

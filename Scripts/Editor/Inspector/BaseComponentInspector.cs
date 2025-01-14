@@ -5,8 +5,8 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameFramework;
 using System.Collections.Generic;
+using GameFramework;
 using UnityEditor;
 using UnityEngine;
 using UnityGameFramework.Runtime;
@@ -18,7 +18,8 @@ namespace UnityGameFramework.Editor
     {
         private const string NoneOptionName = "<None>";
         private static readonly float[] GameSpeed = new float[] { 0f, 0.01f, 0.1f, 0.25f, 0.5f, 1f, 1.5f, 2f, 4f, 8f };
-        private static readonly string[] GameSpeedForDisplay = new string[] { "0x", "0.01x", "0.1x", "0.25x", "0.5x", "1x", "1.5x", "2x", "4x", "8x" };
+        private static readonly string[] GameSpeedForDisplay = new string[]
+            { "0x", "0.01x", "0.1x", "0.25x", "0.5x", "1x", "1.5x", "2x", "4x", "8x" };
 
         private SerializedProperty m_EditorResourceMode = null;
         private SerializedProperty m_EditorLanguage = null;
@@ -53,11 +54,15 @@ namespace UnityGameFramework.Editor
 
             EditorGUI.BeginDisabledGroup(EditorApplication.isPlayingOrWillChangePlaymode);
             {
-                m_EditorResourceMode.boolValue = EditorGUILayout.BeginToggleGroup("Editor Resource Mode", m_EditorResourceMode.boolValue);
+                m_EditorResourceMode.boolValue =
+                    EditorGUILayout.BeginToggleGroup("Editor Resource Mode", m_EditorResourceMode.boolValue);
                 {
-                    EditorGUILayout.HelpBox("Editor resource mode option is only for editor mode. Game Framework will use editor resource files, which you should validate first.", MessageType.Warning);
+                    EditorGUILayout.HelpBox(
+                        "Editor resource mode option is only for editor mode. Game Framework will use editor resource files, which you should validate first.",
+                        MessageType.Warning);
                     EditorGUILayout.PropertyField(m_EditorLanguage);
-                    EditorGUILayout.HelpBox("Editor language option is only use for localization test in editor mode.", MessageType.Info);
+                    EditorGUILayout.HelpBox("Editor language option is only use for localization test in editor mode.",
+                        MessageType.Info);
                 }
                 EditorGUILayout.EndToggleGroup();
 
@@ -65,39 +70,54 @@ namespace UnityGameFramework.Editor
                 {
                     EditorGUILayout.LabelField("Global Helpers", EditorStyles.boldLabel);
 
-                    int textHelperSelectedIndex = EditorGUILayout.Popup("Text Helper", m_TextHelperTypeNameIndex, m_TextHelperTypeNames);
+                    int textHelperSelectedIndex =
+                        EditorGUILayout.Popup("Text Helper", m_TextHelperTypeNameIndex, m_TextHelperTypeNames);
                     if (textHelperSelectedIndex != m_TextHelperTypeNameIndex)
                     {
                         m_TextHelperTypeNameIndex = textHelperSelectedIndex;
-                        m_TextHelperTypeName.stringValue = textHelperSelectedIndex <= 0 ? null : m_TextHelperTypeNames[textHelperSelectedIndex];
+                        m_TextHelperTypeName.stringValue = textHelperSelectedIndex <= 0
+                            ? null
+                            : m_TextHelperTypeNames[textHelperSelectedIndex];
                     }
 
-                    int versionHelperSelectedIndex = EditorGUILayout.Popup("Version Helper", m_VersionHelperTypeNameIndex, m_VersionHelperTypeNames);
+                    int versionHelperSelectedIndex = EditorGUILayout.Popup("Version Helper",
+                        m_VersionHelperTypeNameIndex, m_VersionHelperTypeNames);
                     if (versionHelperSelectedIndex != m_VersionHelperTypeNameIndex)
                     {
                         m_VersionHelperTypeNameIndex = versionHelperSelectedIndex;
-                        m_VersionHelperTypeName.stringValue = versionHelperSelectedIndex <= 0 ? null : m_VersionHelperTypeNames[versionHelperSelectedIndex];
+                        m_VersionHelperTypeName.stringValue = versionHelperSelectedIndex <= 0
+                            ? null
+                            : m_VersionHelperTypeNames[versionHelperSelectedIndex];
                     }
 
-                    int logHelperSelectedIndex = EditorGUILayout.Popup("Log Helper", m_LogHelperTypeNameIndex, m_LogHelperTypeNames);
+                    int logHelperSelectedIndex =
+                        EditorGUILayout.Popup("Log Helper", m_LogHelperTypeNameIndex, m_LogHelperTypeNames);
                     if (logHelperSelectedIndex != m_LogHelperTypeNameIndex)
                     {
                         m_LogHelperTypeNameIndex = logHelperSelectedIndex;
-                        m_LogHelperTypeName.stringValue = logHelperSelectedIndex <= 0 ? null : m_LogHelperTypeNames[logHelperSelectedIndex];
+                        m_LogHelperTypeName.stringValue = logHelperSelectedIndex <= 0
+                            ? null
+                            : m_LogHelperTypeNames[logHelperSelectedIndex];
                     }
 
-                    int compressionHelperSelectedIndex = EditorGUILayout.Popup("Compression Helper", m_CompressionHelperTypeNameIndex, m_CompressionHelperTypeNames);
+                    int compressionHelperSelectedIndex = EditorGUILayout.Popup("Compression Helper",
+                        m_CompressionHelperTypeNameIndex, m_CompressionHelperTypeNames);
                     if (compressionHelperSelectedIndex != m_CompressionHelperTypeNameIndex)
                     {
                         m_CompressionHelperTypeNameIndex = compressionHelperSelectedIndex;
-                        m_CompressionHelperTypeName.stringValue = compressionHelperSelectedIndex <= 0 ? null : m_CompressionHelperTypeNames[compressionHelperSelectedIndex];
+                        m_CompressionHelperTypeName.stringValue = compressionHelperSelectedIndex <= 0
+                            ? null
+                            : m_CompressionHelperTypeNames[compressionHelperSelectedIndex];
                     }
 
-                    int jsonHelperSelectedIndex = EditorGUILayout.Popup("JSON Helper", m_JsonHelperTypeNameIndex, m_JsonHelperTypeNames);
+                    int jsonHelperSelectedIndex =
+                        EditorGUILayout.Popup("JSON Helper", m_JsonHelperTypeNameIndex, m_JsonHelperTypeNames);
                     if (jsonHelperSelectedIndex != m_JsonHelperTypeNameIndex)
                     {
                         m_JsonHelperTypeNameIndex = jsonHelperSelectedIndex;
-                        m_JsonHelperTypeName.stringValue = jsonHelperSelectedIndex <= 0 ? null : m_JsonHelperTypeNames[jsonHelperSelectedIndex];
+                        m_JsonHelperTypeName.stringValue = jsonHelperSelectedIndex <= 0
+                            ? null
+                            : m_JsonHelperTypeNames[jsonHelperSelectedIndex];
                     }
                 }
                 EditorGUILayout.EndVertical();
@@ -120,7 +140,8 @@ namespace UnityGameFramework.Editor
             EditorGUILayout.BeginVertical("box");
             {
                 float gameSpeed = EditorGUILayout.Slider("Game Speed", m_GameSpeed.floatValue, 0f, 8f);
-                int selectedGameSpeed = GUILayout.SelectionGrid(GetSelectedGameSpeed(gameSpeed), GameSpeedForDisplay, 5);
+                int selectedGameSpeed =
+                    GUILayout.SelectionGrid(GetSelectedGameSpeed(gameSpeed), GameSpeedForDisplay, 5);
                 if (selectedGameSpeed >= 0)
                 {
                     gameSpeed = GetGameSpeed(selectedGameSpeed);
@@ -254,12 +275,14 @@ namespace UnityGameFramework.Editor
                 NoneOptionName
             };
 
-            compressionHelperTypeNames.AddRange(Type.GetRuntimeTypeNames(typeof(Utility.Compression.ICompressionHelper)));
+            compressionHelperTypeNames.AddRange(
+                Type.GetRuntimeTypeNames(typeof(Utility.Compression.ICompressionHelper)));
             m_CompressionHelperTypeNames = compressionHelperTypeNames.ToArray();
             m_CompressionHelperTypeNameIndex = 0;
             if (!string.IsNullOrEmpty(m_CompressionHelperTypeName.stringValue))
             {
-                m_CompressionHelperTypeNameIndex = compressionHelperTypeNames.IndexOf(m_CompressionHelperTypeName.stringValue);
+                m_CompressionHelperTypeNameIndex =
+                    compressionHelperTypeNames.IndexOf(m_CompressionHelperTypeName.stringValue);
                 if (m_CompressionHelperTypeNameIndex <= 0)
                 {
                     m_CompressionHelperTypeNameIndex = 0;

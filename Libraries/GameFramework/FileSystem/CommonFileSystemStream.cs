@@ -37,11 +37,13 @@ namespace GameFramework.FileSystem
                     break;
 
                 case FileSystemAccess.Write:
-                    m_FileStream = new FileStream(fullPath, createNew ? FileMode.Create : FileMode.Open, FileAccess.Write, FileShare.Read);
+                    m_FileStream = new FileStream(fullPath, createNew ? FileMode.Create : FileMode.Open,
+                        FileAccess.Write, FileShare.Read);
                     break;
 
                 case FileSystemAccess.ReadWrite:
-                    m_FileStream = new FileStream(fullPath, createNew ? FileMode.Create : FileMode.Open, FileAccess.ReadWrite, FileShare.Read);
+                    m_FileStream = new FileStream(fullPath, createNew ? FileMode.Create : FileMode.Open,
+                        FileAccess.ReadWrite, FileShare.Read);
                     break;
 
                 default:
@@ -54,26 +56,14 @@ namespace GameFramework.FileSystem
         /// </summary>
         protected internal override long Position
         {
-            get
-            {
-                return m_FileStream.Position;
-            }
-            set
-            {
-                m_FileStream.Position = value;
-            }
+            get => m_FileStream.Position;
+            set => m_FileStream.Position = value;
         }
 
         /// <summary>
         /// 获取文件系统流长度。
         /// </summary>
-        protected internal override long Length
-        {
-            get
-            {
-                return m_FileStream.Length;
-            }
-        }
+        protected internal override long Length => m_FileStream.Length;
 
         /// <summary>
         /// 设置文件系统流长度。

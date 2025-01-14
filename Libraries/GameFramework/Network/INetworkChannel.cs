@@ -19,108 +19,67 @@ namespace GameFramework.Network
         /// <summary>
         /// 获取网络频道名称。
         /// </summary>
-        string Name
-        {
-            get;
-        }
+        string Name { get; }
 
         /// <summary>
         /// 获取网络频道所使用的 Socket。
         /// </summary>
-        Socket Socket
-        {
-            get;
-        }
+        Socket Socket { get; }
 
         /// <summary>
         /// 获取是否已连接。
         /// </summary>
-        bool Connected
-        {
-            get;
-        }
+        bool Connected { get; }
 
         /// <summary>
         /// 获取网络服务类型。
         /// </summary>
-        ServiceType ServiceType
-        {
-            get;
-        }
+        ServiceType ServiceType { get; }
 
         /// <summary>
         /// 获取网络地址类型。
         /// </summary>
-        AddressFamily AddressFamily
-        {
-            get;
-        }
+        AddressFamily AddressFamily { get; }
 
         /// <summary>
         /// 获取要发送的消息包数量。
         /// </summary>
-        int SendPacketCount
-        {
-            get;
-        }
+        int SendPacketCount { get; }
 
         /// <summary>
         /// 获取累计发送的消息包数量。
         /// </summary>
-        int SentPacketCount
-        {
-            get;
-        }
+        int SentPacketCount { get; }
 
         /// <summary>
         /// 获取已接收未处理的消息包数量。
         /// </summary>
-        int ReceivePacketCount
-        {
-            get;
-        }
+        int ReceivePacketCount { get; }
 
         /// <summary>
         /// 获取累计已接收的消息包数量。
         /// </summary>
-        int ReceivedPacketCount
-        {
-            get;
-        }
+        int ReceivedPacketCount { get; }
 
         /// <summary>
         /// 获取或设置当收到消息包时是否重置心跳流逝时间。
         /// </summary>
-        bool ResetHeartBeatElapseSecondsWhenReceivePacket
-        {
-            get;
-            set;
-        }
+        bool ResetHeartBeatElapseSecondsWhenReceivePacket { get; set; }
 
         /// <summary>
         /// 获取丢失心跳的次数。
         /// </summary>
-        int MissHeartBeatCount
-        {
-            get;
-        }
+        int MissHeartBeatCount { get; }
 
         /// <summary>
         /// 获取或设置心跳间隔时长，以秒为单位。
         /// </summary>
-        float HeartBeatInterval
-        {
-            get;
-            set;
-        }
+        float HeartBeatInterval { get; set; }
 
         /// <summary>
         /// 获取心跳等待时长，以秒为单位。
         /// </summary>
-        float HeartBeatElapseSeconds
-        {
-            get;
-        }
+        float HeartBeatElapseSeconds { get; }
 
         /// <summary>
         /// 注册网络消息包处理函数。

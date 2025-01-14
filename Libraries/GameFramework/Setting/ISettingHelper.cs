@@ -18,10 +18,7 @@ namespace GameFramework.Setting
         /// <summary>
         /// 获取游戏配置项数量。
         /// </summary>
-        int Count
-        {
-            get;
-        }
+        int Count { get; }
 
         /// <summary>
         /// 加载游戏配置。

@@ -23,29 +23,11 @@ namespace UnityGameFramework.Runtime
             m_UserData = null;
         }
 
-        public Entity BindingEntity
-        {
-            get
-            {
-                return m_BindingEntity;
-            }
-        }
+        public Entity BindingEntity => m_BindingEntity;
 
-        public Vector3 WorldPosition
-        {
-            get
-            {
-                return m_WorldPosition;
-            }
-        }
+        public Vector3 WorldPosition => m_WorldPosition;
 
-        public object UserData
-        {
-            get
-            {
-                return m_UserData;
-            }
-        }
+        public object UserData => m_UserData;
 
         public static PlaySoundInfo Create(Entity bindingEntity, Vector3 worldPosition, object userData)
         {

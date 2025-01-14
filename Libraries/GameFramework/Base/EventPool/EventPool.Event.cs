@@ -23,21 +23,9 @@ namespace GameFramework
                 m_EventArgs = null;
             }
 
-            public object Sender
-            {
-                get
-                {
-                    return m_Sender;
-                }
-            }
+            public object Sender => m_Sender;
 
-            public T EventArgs
-            {
-                get
-                {
-                    return m_EventArgs;
-                }
-            }
+            public T EventArgs => m_EventArgs;
 
             public static Event Create(object sender, T e)
             {

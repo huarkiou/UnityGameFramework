@@ -50,7 +50,8 @@ namespace GameFramework
                         throw;
                     }
 
-                    throw new GameFrameworkException(Text.Format("Can not convert to JSON with exception '{0}'.", exception), exception);
+                    throw new GameFrameworkException(
+                        Text.Format("Can not convert to JSON with exception '{0}'.", exception), exception);
                 }
             }
 
@@ -78,7 +79,8 @@ namespace GameFramework
                         throw;
                     }
 
-                    throw new GameFrameworkException(Text.Format("Can not convert to object with exception '{0}'.", exception), exception);
+                    throw new GameFrameworkException(
+                        Text.Format("Can not convert to object with exception '{0}'.", exception), exception);
                 }
             }
 
@@ -111,7 +113,8 @@ namespace GameFramework
                         throw;
                     }
 
-                    throw new GameFrameworkException(Text.Format("Can not convert to object with exception '{0}'.", exception), exception);
+                    throw new GameFrameworkException(
+                        Text.Format("Can not convert to object with exception '{0}'.", exception), exception);
                 }
             }
         }

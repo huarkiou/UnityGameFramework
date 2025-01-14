@@ -5,10 +5,11 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameFramework;
 using System;
 using System.Collections.Generic;
+using GameFramework;
 using UnityEngine;
+using Object = UnityEngine.Object;
 #if UNITY_5_5_OR_NEWER
 using UnityEngine.Profiling;
 #endif
@@ -41,7 +42,9 @@ namespace UnityGameFramework.Runtime
                     }
                     else
                     {
-                        GUILayout.Label(Utility.Text.Format("<b>{0} Objects ({1}) obtained at {2:yyyy-MM-dd HH:mm:ss}.</b>", m_SampleCount, GetByteLengthString(m_SampleSize), m_SampleTime.ToLocalTime()));
+                        GUILayout.Label(Utility.Text.Format(
+                            "<b>{0} Objects ({1}) obtained at {2:yyyy-MM-dd HH:mm:ss}.</b>", m_SampleCount,
+                            GetByteLengthString(m_SampleSize), m_SampleTime.ToLocalTime()));
 
                         GUILayout.BeginHorizontal();
                         {
@@ -73,7 +76,7 @@ namespace UnityGameFramework.Runtime
                 m_SampleCount = 0;
                 m_SampleSize = 0L;
 
-                UnityEngine.Object[] samples = Resources.FindObjectsOfTypeAll<UnityEngine.Object>();
+                Object[] samples = Resources.FindObjectsOfTypeAll<Object>();
                 for (int i = 0; i < samples.Length; i++)
                 {
                     long sampleSize = 0L;

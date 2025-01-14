@@ -5,10 +5,10 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameFramework;
 using System;
 using System.IO;
 using System.Text;
+using GameFramework;
 using UnityEditor;
 using UnityEngine;
 using UnityGameFramework.Runtime;
@@ -23,7 +23,8 @@ namespace UnityGameFramework.Editor
         private SerializedProperty m_Timeout = null;
         private SerializedProperty m_FlushSize = null;
 
-        private HelperInfo<DownloadAgentHelperBase> m_DownloadAgentHelperInfo = new HelperInfo<DownloadAgentHelperBase>("DownloadAgent");
+        private HelperInfo<DownloadAgentHelperBase> m_DownloadAgentHelperInfo =
+            new HelperInfo<DownloadAgentHelperBase>("DownloadAgent");
 
         public override void OnInspectorGUI()
         {
@@ -37,7 +38,8 @@ namespace UnityGameFramework.Editor
             {
                 EditorGUILayout.PropertyField(m_InstanceRoot);
                 m_DownloadAgentHelperInfo.Draw();
-                m_DownloadAgentHelperCount.intValue = EditorGUILayout.IntSlider("Download Agent Helper Count", m_DownloadAgentHelperCount.intValue, 1, 16);
+                m_DownloadAgentHelperCount.intValue = EditorGUILayout.IntSlider("Download Agent Helper Count",
+                    m_DownloadAgentHelperCount.intValue, 1, 16);
             }
             EditorGUI.EndDisabledGroup();
 
@@ -87,7 +89,8 @@ namespace UnityGameFramework.Editor
 
                         if (GUILayout.Button("Export CSV Data"))
                         {
-                            string exportFileName = EditorUtility.SaveFilePanel("Export CSV Data", string.Empty, "Download Task Data.csv", string.Empty);
+                            string exportFileName = EditorUtility.SaveFilePanel("Export CSV Data", string.Empty,
+                                "Download Task Data.csv", string.Empty);
                             if (!string.IsNullOrEmpty(exportFileName))
                             {
                                 try
@@ -97,15 +100,21 @@ namespace UnityGameFramework.Editor
                                     data[index++] = "Download Path,Serial Id,Tag,Priority,Status";
                                     foreach (TaskInfo downloadInfo in downloadInfos)
                                     {
-                                        data[index++] = Utility.Text.Format("{0},{1},{2},{3},{4}", downloadInfo.Description, downloadInfo.SerialId, downloadInfo.Tag ?? string.Empty, downloadInfo.Priority, downloadInfo.Status);
+                                        data[index++] = Utility.Text.Format("{0},{1},{2},{3},{4}",
+                                            downloadInfo.Description, downloadInfo.SerialId,
+                                            downloadInfo.Tag ?? string.Empty, downloadInfo.Priority,
+                                            downloadInfo.Status);
                                     }
 
                                     File.WriteAllLines(exportFileName, data, Encoding.UTF8);
-                                    Debug.Log(Utility.Text.Format("Export download task CSV data to '{0}' success.", exportFileName));
+                                    Debug.Log(Utility.Text.Format("Export download task CSV data to '{0}' success.",
+                                        exportFileName));
                                 }
                                 catch (Exception exception)
                                 {
-                                    Debug.LogError(Utility.Text.Format("Export download task CSV data to '{0}' failure, exception is '{1}'.", exportFileName, exception));
+                                    Debug.LogError(Utility.Text.Format(
+                                        "Export download task CSV data to '{0}' failure, exception is '{1}'.",
+                                        exportFileName, exception));
                                 }
                             }
                         }
@@ -144,7 +153,9 @@ namespace UnityGameFramework.Editor
 
         private void DrawDownloadInfo(TaskInfo downloadInfo)
         {
-            EditorGUILayout.LabelField(downloadInfo.Description, Utility.Text.Format("[SerialId]{0} [Tag]{1} [Priority]{2} [Status]{3}", downloadInfo.SerialId, downloadInfo.Tag ?? "<None>", downloadInfo.Priority, downloadInfo.Status));
+            EditorGUILayout.LabelField(downloadInfo.Description,
+                Utility.Text.Format("[SerialId]{0} [Tag]{1} [Priority]{2} [Status]{3}", downloadInfo.SerialId,
+                    downloadInfo.Tag ?? "<None>", downloadInfo.Priority, downloadInfo.Status));
         }
 
         private void RefreshTypeNames()

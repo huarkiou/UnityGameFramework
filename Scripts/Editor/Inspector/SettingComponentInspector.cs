@@ -47,6 +47,7 @@ namespace UnityGameFramework.Editor
                 {
                     t.Save();
                 }
+
                 if (GUILayout.Button("Remove All Settings"))
                 {
                     t.RemoveAllSettings();

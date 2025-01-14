@@ -39,70 +39,34 @@ namespace GameFramework.Download
             /// </summary>
             public DownloadTaskStatus Status
             {
-                get
-                {
-                    return m_Status;
-                }
-                set
-                {
-                    m_Status = value;
-                }
+                get => m_Status;
+                set => m_Status = value;
             }
 
             /// <summary>
             /// 获取下载后存放路径。
             /// </summary>
-            public string DownloadPath
-            {
-                get
-                {
-                    return m_DownloadPath;
-                }
-            }
+            public string DownloadPath => m_DownloadPath;
 
             /// <summary>
             /// 获取原始下载地址。
             /// </summary>
-            public string DownloadUri
-            {
-                get
-                {
-                    return m_DownloadUri;
-                }
-            }
+            public string DownloadUri => m_DownloadUri;
 
             /// <summary>
             /// 获取将缓冲区写入磁盘的临界大小。
             /// </summary>
-            public int FlushSize
-            {
-                get
-                {
-                    return m_FlushSize;
-                }
-            }
+            public int FlushSize => m_FlushSize;
 
             /// <summary>
             /// 获取下载超时时长，以秒为单位。
             /// </summary>
-            public float Timeout
-            {
-                get
-                {
-                    return m_Timeout;
-                }
-            }
+            public float Timeout => m_Timeout;
 
             /// <summary>
             /// 获取下载任务的描述。
             /// </summary>
-            public override string Description
-            {
-                get
-                {
-                    return m_DownloadPath;
-                }
-            }
+            public override string Description => m_DownloadPath;
 
             /// <summary>
             /// 创建下载任务。
@@ -115,7 +79,8 @@ namespace GameFramework.Download
             /// <param name="timeout">下载超时时长，以秒为单位。</param>
             /// <param name="userData">用户自定义数据。</param>
             /// <returns>创建的下载任务。</returns>
-            public static DownloadTask Create(string downloadPath, string downloadUri, string tag, int priority, int flushSize, float timeout, object userData)
+            public static DownloadTask Create(string downloadPath, string downloadUri, string tag, int priority,
+                int flushSize, float timeout, object userData)
             {
                 DownloadTask downloadTask = ReferencePool.Acquire<DownloadTask>();
                 downloadTask.Initialize(++s_Serial, tag, priority, userData);

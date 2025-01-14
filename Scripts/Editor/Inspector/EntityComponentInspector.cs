@@ -21,7 +21,8 @@ namespace UnityGameFramework.Editor
         private SerializedProperty m_EntityGroups = null;
 
         private HelperInfo<EntityHelperBase> m_EntityHelperInfo = new HelperInfo<EntityHelperBase>("Entity");
-        private HelperInfo<EntityGroupHelperBase> m_EntityGroupHelperInfo = new HelperInfo<EntityGroupHelperBase>("EntityGroup");
+        private HelperInfo<EntityGroupHelperBase> m_EntityGroupHelperInfo =
+            new HelperInfo<EntityGroupHelperBase>("EntityGroup");
 
         public override void OnInspectorGUI()
         {
@@ -49,7 +50,8 @@ namespace UnityGameFramework.Editor
                 IEntityGroup[] entityGroups = t.GetAllEntityGroups();
                 foreach (IEntityGroup entityGroup in entityGroups)
                 {
-                    EditorGUILayout.LabelField(Utility.Text.Format("Entity Count ({0})", entityGroup.Name), entityGroup.EntityCount.ToString());
+                    EditorGUILayout.LabelField(Utility.Text.Format("Entity Count ({0})", entityGroup.Name),
+                        entityGroup.EntityCount.ToString());
                 }
             }
 
@@ -68,7 +70,8 @@ namespace UnityGameFramework.Editor
         private void OnEnable()
         {
             m_EnableShowEntityUpdateEvent = serializedObject.FindProperty("m_EnableShowEntityUpdateEvent");
-            m_EnableShowEntityDependencyAssetEvent = serializedObject.FindProperty("m_EnableShowEntityDependencyAssetEvent");
+            m_EnableShowEntityDependencyAssetEvent =
+                serializedObject.FindProperty("m_EnableShowEntityDependencyAssetEvent");
             m_InstanceRoot = serializedObject.FindProperty("m_InstanceRoot");
             m_EntityGroups = serializedObject.FindProperty("m_EntityGroups");
 

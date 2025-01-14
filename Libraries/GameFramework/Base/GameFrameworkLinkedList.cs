@@ -33,79 +33,37 @@ namespace GameFramework
         /// <summary>
         /// 获取链表中实际包含的结点数量。
         /// </summary>
-        public int Count
-        {
-            get
-            {
-                return m_LinkedList.Count;
-            }
-        }
+        public int Count => m_LinkedList.Count;
 
         /// <summary>
         /// 获取链表结点缓存数量。
         /// </summary>
-        public int CachedNodeCount
-        {
-            get
-            {
-                return m_CachedNodes.Count;
-            }
-        }
+        public int CachedNodeCount => m_CachedNodes.Count;
 
         /// <summary>
         /// 获取链表的第一个结点。
         /// </summary>
-        public LinkedListNode<T> First
-        {
-            get
-            {
-                return m_LinkedList.First;
-            }
-        }
+        public LinkedListNode<T> First => m_LinkedList.First;
 
         /// <summary>
         /// 获取链表的最后一个结点。
         /// </summary>
-        public LinkedListNode<T> Last
-        {
-            get
-            {
-                return m_LinkedList.Last;
-            }
-        }
+        public LinkedListNode<T> Last => m_LinkedList.Last;
 
         /// <summary>
         /// 获取一个值，该值指示 ICollection`1 是否为只读。
         /// </summary>
-        public bool IsReadOnly
-        {
-            get
-            {
-                return ((ICollection<T>)m_LinkedList).IsReadOnly;
-            }
-        }
+        public bool IsReadOnly => ((ICollection<T>)m_LinkedList).IsReadOnly;
 
         /// <summary>
         /// 获取可用于同步对 ICollection 的访问的对象。
         /// </summary>
-        public object SyncRoot
-        {
-            get
-            {
-                return ((ICollection)m_LinkedList).SyncRoot;
-            }
-        }
+        public object SyncRoot => ((ICollection)m_LinkedList).SyncRoot;
 
         /// <summary>
         /// 获取一个值，该值指示是否同步对 ICollection 的访问（线程安全）。
         /// </summary>
-        public bool IsSynchronized
-        {
-            get
-            {
-                return ((ICollection)m_LinkedList).IsSynchronized;
-            }
-        }
+        public bool IsSynchronized => ((ICollection)m_LinkedList).IsSynchronized;
 
         /// <summary>
         /// 在链表中指定的现有结点后添加包含指定值的新结点。
@@ -405,24 +363,12 @@ namespace GameFramework
             /// <summary>
             /// 获取当前结点。
             /// </summary>
-            public T Current
-            {
-                get
-                {
-                    return m_Enumerator.Current;
-                }
-            }
+            public T Current => m_Enumerator.Current;
 
             /// <summary>
             /// 获取当前的枚举数。
             /// </summary>
-            object IEnumerator.Current
-            {
-                get
-                {
-                    return m_Enumerator.Current;
-                }
-            }
+            object IEnumerator.Current => m_Enumerator.Current;
 
             /// <summary>
             /// 清理枚举数。

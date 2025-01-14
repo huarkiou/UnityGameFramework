@@ -19,60 +19,39 @@ namespace GameFramework.DataTable
         /// <summary>
         /// 获取数据表名称。
         /// </summary>
-        string Name
-        {
-            get;
-        }
+        string Name { get; }
 
         /// <summary>
         /// 获取数据表完整名称。
         /// </summary>
-        string FullName
-        {
-            get;
-        }
+        string FullName { get; }
 
         /// <summary>
         /// 获取数据表行的类型。
         /// </summary>
-        Type Type
-        {
-            get;
-        }
+        Type Type { get; }
 
         /// <summary>
         /// 获取数据表行数。
         /// </summary>
-        int Count
-        {
-            get;
-        }
+        int Count { get; }
 
         /// <summary>
         /// 获取数据表行。
         /// </summary>
         /// <param name="id">数据表行的编号。</param>
         /// <returns>数据表行。</returns>
-        T this[int id]
-        {
-            get;
-        }
+        T this[int id] { get; }
 
         /// <summary>
         /// 获取编号最小的数据表行。
         /// </summary>
-        T MinIdDataRow
-        {
-            get;
-        }
+        T MinIdDataRow { get; }
 
         /// <summary>
         /// 获取编号最大的数据表行。
         /// </summary>
-        T MaxIdDataRow
-        {
-            get;
-        }
+        T MaxIdDataRow { get; }
 
         /// <summary>
         /// 检查是否存在数据表行。

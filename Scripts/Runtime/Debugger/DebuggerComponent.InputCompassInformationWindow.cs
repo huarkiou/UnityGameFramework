@@ -24,6 +24,7 @@ namespace UnityGameFramework.Runtime
                         {
                             Input.compass.enabled = true;
                         }
+
                         if (GUILayout.Button("Disable", GUILayout.Height(30f)))
                         {
                             Input.compass.enabled = false;

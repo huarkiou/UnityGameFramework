@@ -17,10 +17,7 @@ namespace UnityGameFramework.Runtime
         /// <summary>
         /// 获取数据表行的编号。
         /// </summary>
-        public abstract int Id
-        {
-            get;
-        }
+        public abstract int Id { get; }
 
         /// <summary>
         /// 解析数据表行。
@@ -44,7 +41,8 @@ namespace UnityGameFramework.Runtime
         /// <returns>是否解析数据表行成功。</returns>
         public virtual bool ParseDataRow(byte[] dataRowBytes, int startIndex, int length, object userData)
         {
-            Log.Warning("Not implemented ParseDataRow(byte[] dataRowBytes, int startIndex, int length, object userData).");
+            Log.Warning(
+                "Not implemented ParseDataRow(byte[] dataRowBytes, int startIndex, int length, object userData).");
             return false;
         }
     }

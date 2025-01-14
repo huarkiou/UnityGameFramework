@@ -5,9 +5,9 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
+using System.Collections.Generic;
 using GameFramework;
 using GameFramework.Download;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace UnityGameFramework.Runtime
@@ -48,73 +48,37 @@ namespace UnityGameFramework.Runtime
         /// </summary>
         public bool Paused
         {
-            get
-            {
-                return m_DownloadManager.Paused;
-            }
-            set
-            {
-                m_DownloadManager.Paused = value;
-            }
+            get => m_DownloadManager.Paused;
+            set => m_DownloadManager.Paused = value;
         }
 
         /// <summary>
         /// 获取下载代理总数量。
         /// </summary>
-        public int TotalAgentCount
-        {
-            get
-            {
-                return m_DownloadManager.TotalAgentCount;
-            }
-        }
+        public int TotalAgentCount => m_DownloadManager.TotalAgentCount;
 
         /// <summary>
         /// 获取可用下载代理数量。
         /// </summary>
-        public int FreeAgentCount
-        {
-            get
-            {
-                return m_DownloadManager.FreeAgentCount;
-            }
-        }
+        public int FreeAgentCount => m_DownloadManager.FreeAgentCount;
 
         /// <summary>
         /// 获取工作中下载代理数量。
         /// </summary>
-        public int WorkingAgentCount
-        {
-            get
-            {
-                return m_DownloadManager.WorkingAgentCount;
-            }
-        }
+        public int WorkingAgentCount => m_DownloadManager.WorkingAgentCount;
 
         /// <summary>
         /// 获取等待下载任务数量。
         /// </summary>
-        public int WaitingTaskCount
-        {
-            get
-            {
-                return m_DownloadManager.WaitingTaskCount;
-            }
-        }
+        public int WaitingTaskCount => m_DownloadManager.WaitingTaskCount;
 
         /// <summary>
         /// 获取或设置下载超时时长，以秒为单位。
         /// </summary>
         public float Timeout
         {
-            get
-            {
-                return m_DownloadManager.Timeout;
-            }
-            set
-            {
-                m_DownloadManager.Timeout = m_Timeout = value;
-            }
+            get => m_DownloadManager.Timeout;
+            set => m_DownloadManager.Timeout = m_Timeout = value;
         }
 
         /// <summary>
@@ -122,26 +86,14 @@ namespace UnityGameFramework.Runtime
         /// </summary>
         public int FlushSize
         {
-            get
-            {
-                return m_DownloadManager.FlushSize;
-            }
-            set
-            {
-                m_DownloadManager.FlushSize = m_FlushSize = value;
-            }
+            get => m_DownloadManager.FlushSize;
+            set => m_DownloadManager.FlushSize = m_FlushSize = value;
         }
 
         /// <summary>
         /// 获取当前下载速度。
         /// </summary>
-        public float CurrentSpeed
-        {
-            get
-            {
-                return m_DownloadManager.CurrentSpeed;
-            }
-        }
+        public float CurrentSpeed => m_DownloadManager.CurrentSpeed;
 
         /// <summary>
         /// 游戏框架组件初始化。
@@ -370,7 +322,8 @@ namespace UnityGameFramework.Runtime
         /// <param name="index">下载代理辅助器索引。</param>
         private void AddDownloadAgentHelper(int index)
         {
-            DownloadAgentHelperBase downloadAgentHelper = Helper.CreateHelper(m_DownloadAgentHelperTypeName, m_CustomDownloadAgentHelper, index);
+            DownloadAgentHelperBase downloadAgentHelper =
+                Helper.CreateHelper(m_DownloadAgentHelperTypeName, m_CustomDownloadAgentHelper, index);
             if (downloadAgentHelper == null)
             {
                 Log.Error("Can not create download agent helper.");
@@ -402,7 +355,9 @@ namespace UnityGameFramework.Runtime
 
         private void OnDownloadFailure(object sender, GameFramework.Download.DownloadFailureEventArgs e)
         {
-            Log.Warning("Download failure, download serial id '{0}', download path '{1}', download uri '{2}', error message '{3}'.", e.SerialId, e.DownloadPath, e.DownloadUri, e.ErrorMessage);
+            Log.Warning(
+                "Download failure, download serial id '{0}', download path '{1}', download uri '{2}', error message '{3}'.",
+                e.SerialId, e.DownloadPath, e.DownloadUri, e.ErrorMessage);
             m_EventComponent.Fire(this, DownloadFailureEventArgs.Create(e));
         }
     }

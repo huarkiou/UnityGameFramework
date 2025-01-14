@@ -34,49 +34,27 @@ namespace UnityGameFramework.Runtime
         /// <summary>
         /// 获取 Web 请求失败事件编号。
         /// </summary>
-        public override int Id
-        {
-            get
-            {
-                return EventId;
-            }
-        }
+        public override int Id => EventId;
 
         /// <summary>
         /// 获取 Web 请求任务的序列编号。
         /// </summary>
-        public int SerialId
-        {
-            get;
-            private set;
-        }
+        public int SerialId { get; private set; }
 
         /// <summary>
         /// 获取 Web 请求地址。
         /// </summary>
-        public string WebRequestUri
-        {
-            get;
-            private set;
-        }
+        public string WebRequestUri { get; private set; }
 
         /// <summary>
         /// 获取错误信息。
         /// </summary>
-        public string ErrorMessage
-        {
-            get;
-            private set;
-        }
+        public string ErrorMessage { get; private set; }
 
         /// <summary>
         /// 获取用户自定义数据。
         /// </summary>
-        public object UserData
-        {
-            get;
-            private set;
-        }
+        public object UserData { get; private set; }
 
         /// <summary>
         /// 创建 Web 请求失败事件。

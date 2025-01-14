@@ -5,9 +5,9 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameFramework;
 using System.Collections.Generic;
 using System.Linq;
+using GameFramework;
 using UnityEditor;
 
 namespace UnityGameFramework.Editor.ResourceTools
@@ -115,7 +115,7 @@ namespace UnityGameFramework.Editor.ResourceTools
         {
             ResourceCollection resourceCollection = new ResourceCollection();
 
-            resourceCollection.OnLoadingResource += delegate (int index, int count)
+            resourceCollection.OnLoadingResource += delegate(int index, int count)
             {
                 if (OnLoadingResource != null)
                 {
@@ -123,7 +123,7 @@ namespace UnityGameFramework.Editor.ResourceTools
                 }
             };
 
-            resourceCollection.OnLoadingAsset += delegate (int index, int count)
+            resourceCollection.OnLoadingAsset += delegate(int index, int count)
             {
                 if (OnLoadingAsset != null)
                 {
@@ -131,7 +131,7 @@ namespace UnityGameFramework.Editor.ResourceTools
                 }
             };
 
-            resourceCollection.OnLoadCompleted += delegate ()
+            resourceCollection.OnLoadCompleted += delegate()
             {
                 if (OnCompleted != null)
                 {

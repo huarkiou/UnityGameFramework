@@ -45,9 +45,12 @@ namespace UnityGameFramework.Runtime
                 m_LastWindowY = m_SettingComponent.GetFloat("Debugger.Window.Y", DefaultWindowRect.y);
                 m_LastWindowWidth = m_SettingComponent.GetFloat("Debugger.Window.Width", DefaultWindowRect.width);
                 m_LastWindowHeight = m_SettingComponent.GetFloat("Debugger.Window.Height", DefaultWindowRect.height);
-                m_DebuggerComponent.WindowScale = m_LastWindowScale = m_SettingComponent.GetFloat("Debugger.Window.Scale", DefaultWindowScale);
-                m_DebuggerComponent.IconRect = new Rect(m_LastIconX, m_LastIconY, DefaultIconRect.width, DefaultIconRect.height);
-                m_DebuggerComponent.WindowRect = new Rect(m_LastWindowX, m_LastWindowY, m_LastWindowWidth, m_LastWindowHeight);
+                m_DebuggerComponent.WindowScale = m_LastWindowScale =
+                    m_SettingComponent.GetFloat("Debugger.Window.Scale", DefaultWindowScale);
+                m_DebuggerComponent.IconRect =
+                    new Rect(m_LastIconX, m_LastIconY, DefaultIconRect.width, DefaultIconRect.height);
+                m_DebuggerComponent.WindowRect =
+                    new Rect(m_LastWindowX, m_LastWindowY, m_LastWindowWidth, m_LastWindowHeight);
             }
 
             public override void OnUpdate(float elapseSeconds, float realElapseSeconds)
@@ -115,15 +118,18 @@ namespace UnityGameFramework.Runtime
                         {
                             width--;
                         }
+
                         width = GUILayout.HorizontalSlider(width, 100f, Screen.width - 20f);
                         if (GUILayout.RepeatButton("+", GUILayout.Width(30f)))
                         {
                             width++;
                         }
+
                         width = Mathf.Clamp(width, 100f, Screen.width - 20f);
                         if (width != m_DebuggerComponent.WindowRect.width)
                         {
-                            m_DebuggerComponent.WindowRect = new Rect(m_DebuggerComponent.WindowRect.x, m_DebuggerComponent.WindowRect.y, width, m_DebuggerComponent.WindowRect.height);
+                            m_DebuggerComponent.WindowRect = new Rect(m_DebuggerComponent.WindowRect.x,
+                                m_DebuggerComponent.WindowRect.y, width, m_DebuggerComponent.WindowRect.height);
                         }
                     }
                     GUILayout.EndHorizontal();
@@ -136,15 +142,18 @@ namespace UnityGameFramework.Runtime
                         {
                             height--;
                         }
+
                         height = GUILayout.HorizontalSlider(height, 100f, Screen.height - 20f);
                         if (GUILayout.RepeatButton("+", GUILayout.Width(30f)))
                         {
                             height++;
                         }
+
                         height = Mathf.Clamp(height, 100f, Screen.height - 20f);
                         if (height != m_DebuggerComponent.WindowRect.height)
                         {
-                            m_DebuggerComponent.WindowRect = new Rect(m_DebuggerComponent.WindowRect.x, m_DebuggerComponent.WindowRect.y, m_DebuggerComponent.WindowRect.width, height);
+                            m_DebuggerComponent.WindowRect = new Rect(m_DebuggerComponent.WindowRect.x,
+                                m_DebuggerComponent.WindowRect.y, m_DebuggerComponent.WindowRect.width, height);
                         }
                     }
                     GUILayout.EndHorizontal();
@@ -157,11 +166,13 @@ namespace UnityGameFramework.Runtime
                         {
                             scale -= 0.01f;
                         }
+
                         scale = GUILayout.HorizontalSlider(scale, 0.5f, 4f);
                         if (GUILayout.RepeatButton("+", GUILayout.Width(30f)))
                         {
                             scale += 0.01f;
                         }
+
                         scale = Mathf.Clamp(scale, 0.5f, 4f);
                         if (scale != m_DebuggerComponent.WindowScale)
                         {
@@ -176,30 +187,37 @@ namespace UnityGameFramework.Runtime
                         {
                             m_DebuggerComponent.WindowScale = 0.5f;
                         }
+
                         if (GUILayout.Button("1.0x", GUILayout.Height(60f)))
                         {
                             m_DebuggerComponent.WindowScale = 1f;
                         }
+
                         if (GUILayout.Button("1.5x", GUILayout.Height(60f)))
                         {
                             m_DebuggerComponent.WindowScale = 1.5f;
                         }
+
                         if (GUILayout.Button("2.0x", GUILayout.Height(60f)))
                         {
                             m_DebuggerComponent.WindowScale = 2f;
                         }
+
                         if (GUILayout.Button("2.5x", GUILayout.Height(60f)))
                         {
                             m_DebuggerComponent.WindowScale = 2.5f;
                         }
+
                         if (GUILayout.Button("3.0x", GUILayout.Height(60f)))
                         {
                             m_DebuggerComponent.WindowScale = 3f;
                         }
+
                         if (GUILayout.Button("3.5x", GUILayout.Height(60f)))
                         {
                             m_DebuggerComponent.WindowScale = 3.5f;
                         }
+
                         if (GUILayout.Button("4.0x", GUILayout.Height(60f)))
                         {
                             m_DebuggerComponent.WindowScale = 4f;

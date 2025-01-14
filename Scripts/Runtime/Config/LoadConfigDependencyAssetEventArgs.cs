@@ -35,58 +35,32 @@ namespace UnityGameFramework.Runtime
         /// <summary>
         /// 获取加载全局配置失败事件编号。
         /// </summary>
-        public override int Id
-        {
-            get
-            {
-                return EventId;
-            }
-        }
+        public override int Id => EventId;
 
         /// <summary>
         /// 获取全局配置资源名称。
         /// </summary>
-        public string ConfigAssetName
-        {
-            get;
-            private set;
-        }
+        public string ConfigAssetName { get; private set; }
 
         /// <summary>
         /// 获取被加载的依赖资源名称。
         /// </summary>
-        public string DependencyAssetName
-        {
-            get;
-            private set;
-        }
+        public string DependencyAssetName { get; private set; }
 
         /// <summary>
         /// 获取当前已加载依赖资源数量。
         /// </summary>
-        public int LoadedCount
-        {
-            get;
-            private set;
-        }
+        public int LoadedCount { get; private set; }
 
         /// <summary>
         /// 获取总共加载依赖资源数量。
         /// </summary>
-        public int TotalCount
-        {
-            get;
-            private set;
-        }
+        public int TotalCount { get; private set; }
 
         /// <summary>
         /// 获取用户自定义数据。
         /// </summary>
-        public object UserData
-        {
-            get;
-            private set;
-        }
+        public object UserData { get; private set; }
 
         /// <summary>
         /// 创建加载全局配置时加载依赖资源事件。
@@ -95,7 +69,8 @@ namespace UnityGameFramework.Runtime
         /// <returns>创建的加载全局配置时加载依赖资源事件。</returns>
         public static LoadConfigDependencyAssetEventArgs Create(ReadDataDependencyAssetEventArgs e)
         {
-            LoadConfigDependencyAssetEventArgs loadConfigDependencyAssetEventArgs = ReferencePool.Acquire<LoadConfigDependencyAssetEventArgs>();
+            LoadConfigDependencyAssetEventArgs loadConfigDependencyAssetEventArgs =
+                ReferencePool.Acquire<LoadConfigDependencyAssetEventArgs>();
             loadConfigDependencyAssetEventArgs.ConfigAssetName = e.DataAssetName;
             loadConfigDependencyAssetEventArgs.DependencyAssetName = e.DependencyAssetName;
             loadConfigDependencyAssetEventArgs.LoadedCount = e.LoadedCount;

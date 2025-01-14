@@ -15,7 +15,8 @@ namespace UnityGameFramework.Editor
     [CustomEditor(typeof(FileSystemComponent))]
     internal sealed class FileSystemComponentInspector : GameFrameworkInspector
     {
-        private HelperInfo<FileSystemHelperBase> m_FileSystemHelperInfo = new HelperInfo<FileSystemHelperBase>("FileSystem");
+        private HelperInfo<FileSystemHelperBase> m_FileSystemHelperInfo =
+            new HelperInfo<FileSystemHelperBase>("FileSystem");
 
         public override void OnInspectorGUI()
         {
@@ -67,7 +68,9 @@ namespace UnityGameFramework.Editor
 
         private void DrawFileSystem(IFileSystem fileSystem)
         {
-            EditorGUILayout.LabelField(fileSystem.FullPath, Utility.Text.Format("{0}, {1} / {2} Files", fileSystem.Access, fileSystem.FileCount, fileSystem.MaxFileCount));
+            EditorGUILayout.LabelField(fileSystem.FullPath,
+                Utility.Text.Format("{0}, {1} / {2} Files", fileSystem.Access, fileSystem.FileCount,
+                    fileSystem.MaxFileCount));
         }
     }
 }

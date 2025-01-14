@@ -39,72 +39,36 @@ namespace GameFramework
         /// <summary>
         /// 获取任务的序列编号。
         /// </summary>
-        public int SerialId
-        {
-            get
-            {
-                return m_SerialId;
-            }
-        }
+        public int SerialId => m_SerialId;
 
         /// <summary>
         /// 获取任务的标签。
         /// </summary>
-        public string Tag
-        {
-            get
-            {
-                return m_Tag;
-            }
-        }
+        public string Tag => m_Tag;
 
         /// <summary>
         /// 获取任务的优先级。
         /// </summary>
-        public int Priority
-        {
-            get
-            {
-                return m_Priority;
-            }
-        }
+        public int Priority => m_Priority;
 
         /// <summary>
         /// 获取任务的用户自定义数据。
         /// </summary>
-        public object UserData
-        {
-            get
-            {
-                return m_UserData;
-            }
-        }
+        public object UserData => m_UserData;
 
         /// <summary>
         /// 获取或设置任务是否完成。
         /// </summary>
         public bool Done
         {
-            get
-            {
-                return m_Done;
-            }
-            set
-            {
-                m_Done = value;
-            }
+            get => m_Done;
+            set => m_Done = value;
         }
 
         /// <summary>
         /// 获取任务描述。
         /// </summary>
-        public virtual string Description
-        {
-            get
-            {
-                return null;
-            }
-        }
+        public virtual string Description => null;
 
         /// <summary>
         /// 初始化任务基类。

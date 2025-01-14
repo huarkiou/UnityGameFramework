@@ -5,8 +5,8 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameFramework;
 using System;
+using GameFramework;
 
 namespace UnityGameFramework.Runtime
 {

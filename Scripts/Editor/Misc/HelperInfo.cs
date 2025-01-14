@@ -5,9 +5,9 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameFramework;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using GameFramework;
 using UnityEditor;
 using UnityEngine;
 
@@ -43,7 +43,8 @@ namespace UnityGameFramework.Editor
         public void Draw()
         {
             string displayName = FieldNameForDisplay(m_Name);
-            int selectedIndex = EditorGUILayout.Popup(Utility.Text.Format("{0} Helper", displayName), m_HelperTypeNameIndex, m_HelperTypeNames);
+            int selectedIndex = EditorGUILayout.Popup(Utility.Text.Format("{0} Helper", displayName),
+                m_HelperTypeNameIndex, m_HelperTypeNames);
             if (selectedIndex != m_HelperTypeNameIndex)
             {
                 m_HelperTypeNameIndex = selectedIndex;
@@ -55,7 +56,8 @@ namespace UnityGameFramework.Editor
                 EditorGUILayout.PropertyField(m_CustomHelper);
                 if (m_CustomHelper.objectReferenceValue == null)
                 {
-                    EditorGUILayout.HelpBox(Utility.Text.Format("You must set Custom {0} Helper.", displayName), MessageType.Error);
+                    EditorGUILayout.HelpBox(Utility.Text.Format("You must set Custom {0} Helper.", displayName),
+                        MessageType.Error);
                 }
             }
         }

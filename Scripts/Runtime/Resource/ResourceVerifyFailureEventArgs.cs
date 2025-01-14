@@ -31,22 +31,12 @@ namespace UnityGameFramework.Runtime
         /// <summary>
         /// 获取资源校验失败事件编号。
         /// </summary>
-        public override int Id
-        {
-            get
-            {
-                return EventId;
-            }
-        }
+        public override int Id => EventId;
 
         /// <summary>
         /// 获取资源名称。
         /// </summary>
-        public string Name
-        {
-            get;
-            private set;
-        }
+        public string Name { get; private set; }
 
         /// <summary>
         /// 创建资源校验失败事件。
@@ -55,7 +45,8 @@ namespace UnityGameFramework.Runtime
         /// <returns>创建的资源校验失败事件。</returns>
         public static ResourceVerifyFailureEventArgs Create(GameFramework.Resource.ResourceVerifyFailureEventArgs e)
         {
-            ResourceVerifyFailureEventArgs resourceVerifyFailureEventArgs = ReferencePool.Acquire<ResourceVerifyFailureEventArgs>();
+            ResourceVerifyFailureEventArgs resourceVerifyFailureEventArgs =
+                ReferencePool.Acquire<ResourceVerifyFailureEventArgs>();
             resourceVerifyFailureEventArgs.Name = e.Name;
             return resourceVerifyFailureEventArgs;
         }

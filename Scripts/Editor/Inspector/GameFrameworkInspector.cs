@@ -6,6 +6,7 @@
 //------------------------------------------------------------
 
 using UnityEditor;
+using UnityEngine;
 
 namespace UnityGameFramework.Editor
 {
@@ -47,7 +48,7 @@ namespace UnityGameFramework.Editor
         {
         }
 
-        protected bool IsPrefabInHierarchy(UnityEngine.Object obj)
+        protected bool IsPrefabInHierarchy(Object obj)
         {
             if (obj == null)
             {

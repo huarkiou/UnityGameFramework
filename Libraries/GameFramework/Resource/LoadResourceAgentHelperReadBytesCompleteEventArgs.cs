@@ -29,7 +29,8 @@ namespace GameFramework.Resource
         /// <returns>创建的加载资源代理辅助器异步读取资源二进制流完成事件。</returns>
         public static LoadResourceAgentHelperReadBytesCompleteEventArgs Create(byte[] bytes)
         {
-            LoadResourceAgentHelperReadBytesCompleteEventArgs loadResourceAgentHelperReadBytesCompleteEventArgs = ReferencePool.Acquire<LoadResourceAgentHelperReadBytesCompleteEventArgs>();
+            LoadResourceAgentHelperReadBytesCompleteEventArgs loadResourceAgentHelperReadBytesCompleteEventArgs =
+                ReferencePool.Acquire<LoadResourceAgentHelperReadBytesCompleteEventArgs>();
             loadResourceAgentHelperReadBytesCompleteEventArgs.m_Bytes = bytes;
             return loadResourceAgentHelperReadBytesCompleteEventArgs;
         }

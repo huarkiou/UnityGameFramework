@@ -33,31 +33,17 @@ namespace UnityGameFramework.Runtime
         /// <summary>
         /// 获取网络连接成功事件编号。
         /// </summary>
-        public override int Id
-        {
-            get
-            {
-                return EventId;
-            }
-        }
+        public override int Id => EventId;
 
         /// <summary>
         /// 获取网络频道。
         /// </summary>
-        public INetworkChannel NetworkChannel
-        {
-            get;
-            private set;
-        }
+        public INetworkChannel NetworkChannel { get; private set; }
 
         /// <summary>
         /// 获取用户自定义数据。
         /// </summary>
-        public object UserData
-        {
-            get;
-            private set;
-        }
+        public object UserData { get; private set; }
 
         /// <summary>
         /// 创建网络连接成功事件。

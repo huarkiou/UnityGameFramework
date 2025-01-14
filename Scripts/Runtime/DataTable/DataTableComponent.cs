@@ -5,11 +5,11 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
 using GameFramework;
 using GameFramework.DataTable;
 using GameFramework.Resource;
-using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace UnityGameFramework.Runtime
@@ -44,24 +44,12 @@ namespace UnityGameFramework.Runtime
         /// <summary>
         /// 获取数据表数量。
         /// </summary>
-        public int Count
-        {
-            get
-            {
-                return m_DataTableManager.Count;
-            }
-        }
+        public int Count => m_DataTableManager.Count;
 
         /// <summary>
         /// 获取缓冲二进制流的大小。
         /// </summary>
-        public int CachedBytesSize
-        {
-            get
-            {
-                return m_DataTableManager.CachedBytesSize;
-            }
-        }
+        public int CachedBytesSize => m_DataTableManager.CachedBytesSize;
 
         /// <summary>
         /// 游戏框架组件初始化。
@@ -103,7 +91,8 @@ namespace UnityGameFramework.Runtime
                 m_DataTableManager.SetResourceManager(GameFrameworkEntry.GetModule<IResourceManager>());
             }
 
-            DataTableHelperBase dataTableHelper = Helper.CreateHelper(m_DataTableHelperTypeName, m_CustomDataTableHelper);
+            DataTableHelperBase dataTableHelper =
+                Helper.CreateHelper(m_DataTableHelperTypeName, m_CustomDataTableHelper);
             if (dataTableHelper == null)
             {
                 Log.Error("Can not create data table helper.");
@@ -382,7 +371,8 @@ namespace UnityGameFramework.Runtime
 
         private void OnReadDataFailure(object sender, ReadDataFailureEventArgs e)
         {
-            Log.Warning("Load data table failure, asset name '{0}', error message '{1}'.", e.DataAssetName, e.ErrorMessage);
+            Log.Warning("Load data table failure, asset name '{0}', error message '{1}'.", e.DataAssetName,
+                e.ErrorMessage);
             m_EventComponent.Fire(this, LoadDataTableFailureEventArgs.Create(e));
         }
 

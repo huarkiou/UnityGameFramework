@@ -24,9 +24,11 @@ namespace UnityGameFramework.Runtime
                     int currentQualityLevel = QualitySettings.GetQualityLevel();
 
                     DrawItem("Current Quality Level", QualitySettings.names[currentQualityLevel]);
-                    m_ApplyExpensiveChanges = GUILayout.Toggle(m_ApplyExpensiveChanges, "Apply expensive changes on quality level change.");
+                    m_ApplyExpensiveChanges = GUILayout.Toggle(m_ApplyExpensiveChanges,
+                        "Apply expensive changes on quality level change.");
 
-                    int newQualityLevel = GUILayout.SelectionGrid(currentQualityLevel, QualitySettings.names, 3, "toggle");
+                    int newQualityLevel =
+                        GUILayout.SelectionGrid(currentQualityLevel, QualitySettings.names, 3, "toggle");
                     if (newQualityLevel != currentQualityLevel)
                     {
                         QualitySettings.SetQualityLevel(newQualityLevel, m_ApplyExpensiveChanges);
@@ -49,17 +51,24 @@ namespace UnityGameFramework.Runtime
 #endif
                     DrawItem("Soft Vegetation", QualitySettings.softVegetation.ToString());
                     DrawItem("Realtime Reflection Probes", QualitySettings.realtimeReflectionProbes.ToString());
-                    DrawItem("Billboards Face Camera Position", QualitySettings.billboardsFaceCameraPosition.ToString());
+                    DrawItem("Billboards Face Camera Position",
+                        QualitySettings.billboardsFaceCameraPosition.ToString());
 #if UNITY_2017_1_OR_NEWER
-                    DrawItem("Resolution Scaling Fixed DPI Factor", QualitySettings.resolutionScalingFixedDPIFactor.ToString());
+                    DrawItem("Resolution Scaling Fixed DPI Factor",
+                        QualitySettings.resolutionScalingFixedDPIFactor.ToString());
 #endif
 #if UNITY_2018_2_OR_NEWER
                     DrawItem("Texture Streaming Enabled", QualitySettings.streamingMipmapsActive.ToString());
-                    DrawItem("Texture Streaming Add All Cameras", QualitySettings.streamingMipmapsAddAllCameras.ToString());
-                    DrawItem("Texture Streaming Memory Budget", QualitySettings.streamingMipmapsMemoryBudget.ToString());
-                    DrawItem("Texture Streaming Renderers Per Frame", QualitySettings.streamingMipmapsRenderersPerFrame.ToString());
-                    DrawItem("Texture Streaming Max Level Reduction", QualitySettings.streamingMipmapsMaxLevelReduction.ToString());
-                    DrawItem("Texture Streaming Max File IO Requests", QualitySettings.streamingMipmapsMaxFileIORequests.ToString());
+                    DrawItem("Texture Streaming Add All Cameras",
+                        QualitySettings.streamingMipmapsAddAllCameras.ToString());
+                    DrawItem("Texture Streaming Memory Budget",
+                        QualitySettings.streamingMipmapsMemoryBudget.ToString());
+                    DrawItem("Texture Streaming Renderers Per Frame",
+                        QualitySettings.streamingMipmapsRenderersPerFrame.ToString());
+                    DrawItem("Texture Streaming Max Level Reduction",
+                        QualitySettings.streamingMipmapsMaxLevelReduction.ToString());
+                    DrawItem("Texture Streaming Max File IO Requests",
+                        QualitySettings.streamingMipmapsMaxFileIORequests.ToString());
 #endif
                 }
                 GUILayout.EndVertical();
@@ -97,8 +106,10 @@ namespace UnityGameFramework.Runtime
                     DrawItem("LOD Bias", QualitySettings.lodBias.ToString());
                     DrawItem("Maximum LOD Level", QualitySettings.maximumLODLevel.ToString());
                     DrawItem("Particle Raycast Budget", QualitySettings.particleRaycastBudget.ToString());
-                    DrawItem("Async Upload Time Slice", Utility.Text.Format("{0} ms", QualitySettings.asyncUploadTimeSlice));
-                    DrawItem("Async Upload Buffer Size", Utility.Text.Format("{0} MB", QualitySettings.asyncUploadBufferSize));
+                    DrawItem("Async Upload Time Slice",
+                        Utility.Text.Format("{0} ms", QualitySettings.asyncUploadTimeSlice));
+                    DrawItem("Async Upload Buffer Size",
+                        Utility.Text.Format("{0} MB", QualitySettings.asyncUploadBufferSize));
 #if UNITY_2018_3_OR_NEWER
                     DrawItem("Async Upload Persistent Buffer", QualitySettings.asyncUploadPersistentBuffer.ToString());
 #endif

@@ -35,38 +35,20 @@ namespace GameFramework.ObjectPool
         /// <summary>
         /// 获取对象名称。
         /// </summary>
-        public string Name
-        {
-            get
-            {
-                return m_Name;
-            }
-        }
+        public string Name => m_Name;
 
         /// <summary>
         /// 获取对象。
         /// </summary>
-        public object Target
-        {
-            get
-            {
-                return m_Target;
-            }
-        }
+        public object Target => m_Target;
 
         /// <summary>
         /// 获取或设置对象是否被加锁。
         /// </summary>
         public bool Locked
         {
-            get
-            {
-                return m_Locked;
-            }
-            set
-            {
-                m_Locked = value;
-            }
+            get => m_Locked;
+            set => m_Locked = value;
         }
 
         /// <summary>
@@ -74,40 +56,22 @@ namespace GameFramework.ObjectPool
         /// </summary>
         public int Priority
         {
-            get
-            {
-                return m_Priority;
-            }
-            set
-            {
-                m_Priority = value;
-            }
+            get => m_Priority;
+            set => m_Priority = value;
         }
 
         /// <summary>
         /// 获取自定义释放检查标记。
         /// </summary>
-        public virtual bool CustomCanReleaseFlag
-        {
-            get
-            {
-                return true;
-            }
-        }
+        public virtual bool CustomCanReleaseFlag => true;
 
         /// <summary>
         /// 获取对象上次使用时间。
         /// </summary>
         public DateTime LastUseTime
         {
-            get
-            {
-                return m_LastUseTime;
-            }
-            internal set
-            {
-                m_LastUseTime = value;
-            }
+            get => m_LastUseTime;
+            internal set => m_LastUseTime = value;
         }
 
         /// <summary>

@@ -5,11 +5,11 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameFramework;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using GameFramework;
 
 namespace UnityGameFramework.Runtime
 {
@@ -18,7 +18,8 @@ namespace UnityGameFramework.Runtime
     /// </summary>
     public sealed class DefaultSetting
     {
-        private readonly SortedDictionary<string, string> m_Settings = new SortedDictionary<string, string>(StringComparer.Ordinal);
+        private readonly SortedDictionary<string, string> m_Settings =
+            new SortedDictionary<string, string>(StringComparer.Ordinal);
 
         /// <summary>
         /// 初始化本地版本资源列表的新实例。
@@ -30,13 +31,7 @@ namespace UnityGameFramework.Runtime
         /// <summary>
         /// 获取游戏配置项数量。
         /// </summary>
-        public int Count
-        {
-            get
-            {
-                return m_Settings.Count;
-            }
-        }
+        public int Count => m_Settings.Count;
 
         /// <summary>
         /// 获取所有游戏配置项的名称。

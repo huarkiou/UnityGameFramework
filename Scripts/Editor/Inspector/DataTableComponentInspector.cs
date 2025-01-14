@@ -19,7 +19,8 @@ namespace UnityGameFramework.Editor
         private SerializedProperty m_EnableLoadDataTableDependencyAssetEvent = null;
         private SerializedProperty m_CachedBytesSize = null;
 
-        private HelperInfo<DataTableHelperBase> m_DataTableHelperInfo = new HelperInfo<DataTableHelperBase>("DataTable");
+        private HelperInfo<DataTableHelperBase>
+            m_DataTableHelperInfo = new HelperInfo<DataTableHelperBase>("DataTable");
 
         public override void OnInspectorGUI()
         {
@@ -65,7 +66,8 @@ namespace UnityGameFramework.Editor
         private void OnEnable()
         {
             m_EnableLoadDataTableUpdateEvent = serializedObject.FindProperty("m_EnableLoadDataTableUpdateEvent");
-            m_EnableLoadDataTableDependencyAssetEvent = serializedObject.FindProperty("m_EnableLoadDataTableDependencyAssetEvent");
+            m_EnableLoadDataTableDependencyAssetEvent =
+                serializedObject.FindProperty("m_EnableLoadDataTableDependencyAssetEvent");
             m_CachedBytesSize = serializedObject.FindProperty("m_CachedBytesSize");
 
             m_DataTableHelperInfo.Init(serializedObject);

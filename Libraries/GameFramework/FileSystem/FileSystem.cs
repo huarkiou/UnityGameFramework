@@ -86,46 +86,22 @@ namespace GameFramework.FileSystem
         /// <summary>
         /// 获取文件系统完整路径。
         /// </summary>
-        public string FullPath
-        {
-            get
-            {
-                return m_FullPath;
-            }
-        }
+        public string FullPath => m_FullPath;
 
         /// <summary>
         /// 获取文件系统访问方式。
         /// </summary>
-        public FileSystemAccess Access
-        {
-            get
-            {
-                return m_Access;
-            }
-        }
+        public FileSystemAccess Access => m_Access;
 
         /// <summary>
         /// 获取文件数量。
         /// </summary>
-        public int FileCount
-        {
-            get
-            {
-                return m_FileDatas.Count;
-            }
-        }
+        public int FileCount => m_FileDatas.Count;
 
         /// <summary>
         /// 获取最大文件数量。
         /// </summary>
-        public int MaxFileCount
-        {
-            get
-            {
-                return m_HeaderData.MaxFileCount;
-            }
-        }
+        public int MaxFileCount => m_HeaderData.MaxFileCount;
 
         /// <summary>
         /// 创建文件系统。
@@ -136,7 +112,8 @@ namespace GameFramework.FileSystem
         /// <param name="maxFileCount">要创建的文件系统的最大文件数量。</param>
         /// <param name="maxBlockCount">要创建的文件系统的最大块数据数量。</param>
         /// <returns>创建的文件系统。</returns>
-        public static FileSystem Create(string fullPath, FileSystemAccess access, FileSystemStream stream, int maxFileCount, int maxBlockCount)
+        public static FileSystem Create(string fullPath, FileSystemAccess access, FileSystemStream stream,
+            int maxFileCount, int maxBlockCount)
         {
             if (maxFileCount <= 0)
             {
@@ -284,7 +261,8 @@ namespace GameFramework.FileSystem
             foreach (KeyValuePair<string, int> fileData in m_FileDatas)
             {
                 BlockData blockData = m_BlockDatas[fileData.Value];
-                results[index++] = new FileInfo(fileData.Key, GetClusterOffset(blockData.ClusterIndex), blockData.Length);
+                results[index++] =
+                    new FileInfo(fileData.Key, GetClusterOffset(blockData.ClusterIndex), blockData.Length);
             }
 
             return results;
@@ -1178,7 +1156,8 @@ namespace GameFramework.FileSystem
             {
                 BlockData previousFreeBlockData = m_BlockDatas[previousFreeBlockIndex];
                 m_FreeBlockIndexes.Remove(previousFreeBlockData.Length, previousFreeBlockIndex);
-                freeBlockData = new BlockData(previousFreeBlockData.ClusterIndex, previousFreeBlockData.Length + freeBlockData.Length);
+                freeBlockData = new BlockData(previousFreeBlockData.ClusterIndex,
+                    previousFreeBlockData.Length + freeBlockData.Length);
                 m_BlockDatas[previousFreeBlockIndex] = BlockData.Empty;
                 m_FreeBlockIndexes.Add(0, previousFreeBlockIndex);
                 WriteBlockData(previousFreeBlockIndex);
@@ -1188,7 +1167,8 @@ namespace GameFramework.FileSystem
             {
                 BlockData nextFreeBlockData = m_BlockDatas[nextFreeBlockIndex];
                 m_FreeBlockIndexes.Remove(nextFreeBlockData.Length, nextFreeBlockIndex);
-                freeBlockData = new BlockData(freeBlockData.ClusterIndex, freeBlockData.Length + nextFreeBlockData.Length);
+                freeBlockData = new BlockData(freeBlockData.ClusterIndex,
+                    freeBlockData.Length + nextFreeBlockData.Length);
                 m_BlockDatas[nextFreeBlockIndex] = BlockData.Empty;
                 m_FreeBlockIndexes.Add(0, nextFreeBlockIndex);
                 WriteBlockData(nextFreeBlockIndex);
@@ -1265,7 +1245,8 @@ namespace GameFramework.FileSystem
 
                     int deltaLength = lengthFound - length;
                     int anotherBlockIndex = GetEmptyBlockIndex();
-                    m_BlockDatas[anotherBlockIndex] = new BlockData(blockData.ClusterIndex + GetUpBoundClusterCount(length), deltaLength);
+                    m_BlockDatas[anotherBlockIndex] =
+                        new BlockData(blockData.ClusterIndex + GetUpBoundClusterCount(length), deltaLength);
                     m_FreeBlockIndexes.Add(deltaLength, anotherBlockIndex);
                     WriteBlockData(anotherBlockIndex);
                 }
@@ -1359,8 +1340,11 @@ namespace GameFramework.FileSystem
         private static void CalcOffsets(FileSystem fileSystem)
         {
             fileSystem.m_BlockDataOffset = HeaderDataSize;
-            fileSystem.m_StringDataOffset = fileSystem.m_BlockDataOffset + BlockDataSize * fileSystem.m_HeaderData.MaxBlockCount;
-            fileSystem.m_FileDataOffset = (int)GetUpBoundClusterOffset(fileSystem.m_StringDataOffset + StringDataSize * fileSystem.m_HeaderData.MaxFileCount);
+            fileSystem.m_StringDataOffset =
+                fileSystem.m_BlockDataOffset + BlockDataSize * fileSystem.m_HeaderData.MaxBlockCount;
+            fileSystem.m_FileDataOffset = (int)GetUpBoundClusterOffset(fileSystem.m_StringDataOffset +
+                                                                       StringDataSize * fileSystem.m_HeaderData
+                                                                           .MaxFileCount);
         }
 
         private static long GetUpBoundClusterOffset(long offset)

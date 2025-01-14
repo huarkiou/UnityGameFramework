@@ -24,20 +24,12 @@ namespace GameFramework.Scene
         /// <summary>
         /// 获取场景资源名称。
         /// </summary>
-        public string SceneAssetName
-        {
-            get;
-            private set;
-        }
+        public string SceneAssetName { get; private set; }
 
         /// <summary>
         /// 获取用户自定义数据。
         /// </summary>
-        public object UserData
-        {
-            get;
-            private set;
-        }
+        public object UserData { get; private set; }
 
         /// <summary>
         /// 创建卸载场景成功事件。
@@ -47,7 +39,8 @@ namespace GameFramework.Scene
         /// <returns>创建的卸载场景成功事件。</returns>
         public static UnloadSceneSuccessEventArgs Create(string sceneAssetName, object userData)
         {
-            UnloadSceneSuccessEventArgs unloadSceneSuccessEventArgs = ReferencePool.Acquire<UnloadSceneSuccessEventArgs>();
+            UnloadSceneSuccessEventArgs unloadSceneSuccessEventArgs =
+                ReferencePool.Acquire<UnloadSceneSuccessEventArgs>();
             unloadSceneSuccessEventArgs.SceneAssetName = sceneAssetName;
             unloadSceneSuccessEventArgs.UserData = userData;
             return unloadSceneSuccessEventArgs;

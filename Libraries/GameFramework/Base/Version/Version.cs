@@ -19,13 +19,7 @@ namespace GameFramework
         /// <summary>
         /// 获取游戏框架版本号。
         /// </summary>
-        public static string GameFrameworkVersion
-        {
-            get
-            {
-                return GameFrameworkVersionString;
-            }
-        }
+        public static string GameFrameworkVersion => GameFrameworkVersionString;
 
         /// <summary>
         /// 获取游戏版本号。

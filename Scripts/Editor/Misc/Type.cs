@@ -5,9 +5,9 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameFramework;
 using System.Collections.Generic;
 using System.Reflection;
+using GameFramework;
 
 namespace UnityGameFramework.Editor
 {
@@ -50,7 +50,8 @@ namespace UnityGameFramework.Editor
                     continue;
                 }
 
-                foreach (FieldInfo fieldInfo in type.GetFields(BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.DeclaredOnly))
+                foreach (FieldInfo fieldInfo in type.GetFields(BindingFlags.Static | BindingFlags.Public |
+                                                               BindingFlags.NonPublic | BindingFlags.DeclaredOnly))
                 {
                     if (fieldInfo.FieldType == typeof(string) && fieldInfo.IsDefined(typeof(T), false))
                     {
@@ -58,7 +59,9 @@ namespace UnityGameFramework.Editor
                     }
                 }
 
-                foreach (PropertyInfo propertyInfo in type.GetProperties(BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.DeclaredOnly))
+                foreach (PropertyInfo propertyInfo in type.GetProperties(BindingFlags.Static | BindingFlags.Public |
+                                                                         BindingFlags.NonPublic |
+                                                                         BindingFlags.DeclaredOnly))
                 {
                     if (propertyInfo.PropertyType == typeof(string) && propertyInfo.IsDefined(typeof(T), false))
                     {

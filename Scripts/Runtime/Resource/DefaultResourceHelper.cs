@@ -5,14 +5,14 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameFramework.Resource;
 using System;
 using System.Collections;
+using GameFramework.Resource;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 #if UNITY_5_4_OR_NEWER
 using UnityEngine.Networking;
 #endif
-using UnityEngine.SceneManagement;
 
 namespace UnityGameFramework.Runtime
 {
@@ -38,7 +38,8 @@ namespace UnityGameFramework.Runtime
         /// <param name="sceneAssetName">场景资源名称。</param>
         /// <param name="unloadSceneCallbacks">卸载场景回调函数集。</param>
         /// <param name="userData">用户自定义数据。</param>
-        public override void UnloadScene(string sceneAssetName, UnloadSceneCallbacks unloadSceneCallbacks, object userData)
+        public override void UnloadScene(string sceneAssetName, UnloadSceneCallbacks unloadSceneCallbacks,
+            object userData)
         {
 #if UNITY_5_5_OR_NEWER
             if (gameObject.activeInHierarchy)
@@ -155,7 +156,8 @@ namespace UnityGameFramework.Runtime
         }
 
 #if UNITY_5_5_OR_NEWER
-        private IEnumerator UnloadSceneCo(string sceneAssetName, UnloadSceneCallbacks unloadSceneCallbacks, object userData)
+        private IEnumerator UnloadSceneCo(string sceneAssetName, UnloadSceneCallbacks unloadSceneCallbacks,
+            object userData)
         {
             AsyncOperation asyncOperation = SceneManager.UnloadSceneAsync(SceneComponent.GetSceneName(sceneAssetName));
             if (asyncOperation == null)

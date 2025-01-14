@@ -47,24 +47,12 @@ namespace GameFramework
         /// <summary>
         /// 获取类型。
         /// </summary>
-        public Type Type
-        {
-            get
-            {
-                return m_Type;
-            }
-        }
+        public Type Type => m_Type;
 
         /// <summary>
         /// 获取名称。
         /// </summary>
-        public string Name
-        {
-            get
-            {
-                return m_Name;
-            }
-        }
+        public string Name => m_Name;
 
         /// <summary>
         /// 获取类型和名称的组合值字符串。

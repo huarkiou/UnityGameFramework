@@ -5,10 +5,10 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameFramework;
-using GameFramework.Setting;
 using System;
 using System.Collections.Generic;
+using GameFramework;
+using GameFramework.Setting;
 using UnityEngine;
 
 namespace UnityGameFramework.Runtime
@@ -31,13 +31,7 @@ namespace UnityGameFramework.Runtime
         /// <summary>
         /// 获取游戏配置项数量。
         /// </summary>
-        public int Count
-        {
-            get
-            {
-                return m_SettingManager.Count;
-            }
-        }
+        public int Count => m_SettingManager.Count;
 
         /// <summary>
         /// 游戏框架组件初始化。

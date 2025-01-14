@@ -5,9 +5,9 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
+using System.Collections.Generic;
 using GameFramework;
 using GameFramework.Network;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace UnityGameFramework.Runtime
@@ -25,13 +25,7 @@ namespace UnityGameFramework.Runtime
         /// <summary>
         /// 获取网络频道数量。
         /// </summary>
-        public int NetworkChannelCount
-        {
-            get
-            {
-                return m_NetworkManager.NetworkChannelCount;
-            }
-        }
+        public int NetworkChannelCount => m_NetworkManager.NetworkChannelCount;
 
         /// <summary>
         /// 游戏框架组件初始化。
@@ -109,7 +103,8 @@ namespace UnityGameFramework.Runtime
         /// <param name="serviceType">网络服务类型。</param>
         /// <param name="networkChannelHelper">网络频道辅助器。</param>
         /// <returns>要创建的网络频道。</returns>
-        public INetworkChannel CreateNetworkChannel(string name, ServiceType serviceType, INetworkChannelHelper networkChannelHelper)
+        public INetworkChannel CreateNetworkChannel(string name, ServiceType serviceType,
+            INetworkChannelHelper networkChannelHelper)
         {
             return m_NetworkManager.CreateNetworkChannel(name, serviceType, networkChannelHelper);
         }

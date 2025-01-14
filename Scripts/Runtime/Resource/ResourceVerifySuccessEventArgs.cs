@@ -32,31 +32,17 @@ namespace UnityGameFramework.Runtime
         /// <summary>
         /// 获取资源校验成功事件编号。
         /// </summary>
-        public override int Id
-        {
-            get
-            {
-                return EventId;
-            }
-        }
+        public override int Id => EventId;
 
         /// <summary>
         /// 获取资源名称。
         /// </summary>
-        public string Name
-        {
-            get;
-            private set;
-        }
+        public string Name { get; private set; }
 
         /// <summary>
         /// 获取资源大小。
         /// </summary>
-        public int Length
-        {
-            get;
-            private set;
-        }
+        public int Length { get; private set; }
 
         /// <summary>
         /// 创建资源校验成功事件。
@@ -65,7 +51,8 @@ namespace UnityGameFramework.Runtime
         /// <returns>创建的资源校验成功事件。</returns>
         public static ResourceVerifySuccessEventArgs Create(GameFramework.Resource.ResourceVerifySuccessEventArgs e)
         {
-            ResourceVerifySuccessEventArgs resourceVerifySuccessEventArgs = ReferencePool.Acquire<ResourceVerifySuccessEventArgs>();
+            ResourceVerifySuccessEventArgs resourceVerifySuccessEventArgs =
+                ReferencePool.Acquire<ResourceVerifySuccessEventArgs>();
             resourceVerifySuccessEventArgs.Name = e.Name;
             resourceVerifySuccessEventArgs.Length = e.Length;
             return resourceVerifySuccessEventArgs;

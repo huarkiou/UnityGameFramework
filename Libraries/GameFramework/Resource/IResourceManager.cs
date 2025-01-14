@@ -5,11 +5,11 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
 using GameFramework.Download;
 using GameFramework.FileSystem;
 using GameFramework.ObjectPool;
-using System;
-using System.Collections.Generic;
 
 namespace GameFramework.Resource
 {
@@ -21,293 +21,177 @@ namespace GameFramework.Resource
         /// <summary>
         /// 获取资源只读区路径。
         /// </summary>
-        string ReadOnlyPath
-        {
-            get;
-        }
+        string ReadOnlyPath { get; }
 
         /// <summary>
         /// 获取资源读写区路径。
         /// </summary>
-        string ReadWritePath
-        {
-            get;
-        }
+        string ReadWritePath { get; }
 
         /// <summary>
         /// 获取资源模式。
         /// </summary>
-        ResourceMode ResourceMode
-        {
-            get;
-        }
+        ResourceMode ResourceMode { get; }
 
         /// <summary>
         /// 获取当前变体。
         /// </summary>
-        string CurrentVariant
-        {
-            get;
-        }
+        string CurrentVariant { get; }
 
         /// <summary>
         /// 获取单机模式版本资源列表序列化器。
         /// </summary>
-        PackageVersionListSerializer PackageVersionListSerializer
-        {
-            get;
-        }
+        PackageVersionListSerializer PackageVersionListSerializer { get; }
 
         /// <summary>
         /// 获取可更新模式版本资源列表序列化器。
         /// </summary>
-        UpdatableVersionListSerializer UpdatableVersionListSerializer
-        {
-            get;
-        }
+        UpdatableVersionListSerializer UpdatableVersionListSerializer { get; }
 
         /// <summary>
         /// 获取本地只读区版本资源列表序列化器。
         /// </summary>
-        ReadOnlyVersionListSerializer ReadOnlyVersionListSerializer
-        {
-            get;
-        }
+        ReadOnlyVersionListSerializer ReadOnlyVersionListSerializer { get; }
 
         /// <summary>
         /// 获取本地读写区版本资源列表序列化器。
         /// </summary>
-        ReadWriteVersionListSerializer ReadWriteVersionListSerializer
-        {
-            get;
-        }
+        ReadWriteVersionListSerializer ReadWriteVersionListSerializer { get; }
 
         /// <summary>
         /// 获取资源包版本资源列表序列化器。
         /// </summary>
-        ResourcePackVersionListSerializer ResourcePackVersionListSerializer
-        {
-            get;
-        }
+        ResourcePackVersionListSerializer ResourcePackVersionListSerializer { get; }
 
         /// <summary>
         /// 获取当前资源适用的游戏版本号。
         /// </summary>
-        string ApplicableGameVersion
-        {
-            get;
-        }
+        string ApplicableGameVersion { get; }
 
         /// <summary>
         /// 获取当前内部资源版本号。
         /// </summary>
-        int InternalResourceVersion
-        {
-            get;
-        }
+        int InternalResourceVersion { get; }
 
         /// <summary>
         /// 获取资源数量。
         /// </summary>
-        int AssetCount
-        {
-            get;
-        }
+        int AssetCount { get; }
 
         /// <summary>
         /// 获取资源数量。
         /// </summary>
-        int ResourceCount
-        {
-            get;
-        }
+        int ResourceCount { get; }
 
         /// <summary>
         /// 获取资源组数量。
         /// </summary>
-        int ResourceGroupCount
-        {
-            get;
-        }
+        int ResourceGroupCount { get; }
 
         /// <summary>
         /// 获取或设置资源更新下载地址。
         /// </summary>
-        string UpdatePrefixUri
-        {
-            get;
-            set;
-        }
+        string UpdatePrefixUri { get; set; }
 
         /// <summary>
         /// 获取或设置每更新多少字节的资源，重新生成一次版本资源列表。
         /// </summary>
-        int GenerateReadWriteVersionListLength
-        {
-            get;
-            set;
-        }
+        int GenerateReadWriteVersionListLength { get; set; }
 
         /// <summary>
         /// 获取正在应用的资源包路径。
         /// </summary>
-        string ApplyingResourcePackPath
-        {
-            get;
-        }
+        string ApplyingResourcePackPath { get; }
 
         /// <summary>
         /// 获取等待应用资源数量。
         /// </summary>
-        int ApplyWaitingCount
-        {
-            get;
-        }
+        int ApplyWaitingCount { get; }
 
         /// <summary>
         /// 获取或设置资源更新重试次数。
         /// </summary>
-        int UpdateRetryCount
-        {
-            get;
-            set;
-        }
+        int UpdateRetryCount { get; set; }
 
         /// <summary>
         /// 获取正在更新的资源组。
         /// </summary>
-        IResourceGroup UpdatingResourceGroup
-        {
-            get;
-        }
+        IResourceGroup UpdatingResourceGroup { get; }
 
         /// <summary>
         /// 获取等待更新资源数量。
         /// </summary>
-        int UpdateWaitingCount
-        {
-            get;
-        }
+        int UpdateWaitingCount { get; }
 
         /// <summary>
         /// 获取使用时下载的等待更新资源数量。
         /// </summary>
-        int UpdateWaitingWhilePlayingCount
-        {
-            get;
-        }
+        int UpdateWaitingWhilePlayingCount { get; }
 
         /// <summary>
         /// 获取候选更新资源数量。
         /// </summary>
-        int UpdateCandidateCount
-        {
-            get;
-        }
+        int UpdateCandidateCount { get; }
 
         /// <summary>
         /// 获取加载资源代理总数量。
         /// </summary>
-        int LoadTotalAgentCount
-        {
-            get;
-        }
+        int LoadTotalAgentCount { get; }
 
         /// <summary>
         /// 获取可用加载资源代理数量。
         /// </summary>
-        int LoadFreeAgentCount
-        {
-            get;
-        }
+        int LoadFreeAgentCount { get; }
 
         /// <summary>
         /// 获取工作中加载资源代理数量。
         /// </summary>
-        int LoadWorkingAgentCount
-        {
-            get;
-        }
+        int LoadWorkingAgentCount { get; }
 
         /// <summary>
         /// 获取等待加载资源任务数量。
         /// </summary>
-        int LoadWaitingTaskCount
-        {
-            get;
-        }
+        int LoadWaitingTaskCount { get; }
 
         /// <summary>
         /// 获取或设置资源对象池自动释放可释放对象的间隔秒数。
         /// </summary>
-        float AssetAutoReleaseInterval
-        {
-            get;
-            set;
-        }
+        float AssetAutoReleaseInterval { get; set; }
 
         /// <summary>
         /// 获取或设置资源对象池的容量。
         /// </summary>
-        int AssetCapacity
-        {
-            get;
-            set;
-        }
+        int AssetCapacity { get; set; }
 
         /// <summary>
         /// 获取或设置资源对象池对象过期秒数。
         /// </summary>
-        float AssetExpireTime
-        {
-            get;
-            set;
-        }
+        float AssetExpireTime { get; set; }
 
         /// <summary>
         /// 获取或设置资源对象池的优先级。
         /// </summary>
-        int AssetPriority
-        {
-            get;
-            set;
-        }
+        int AssetPriority { get; set; }
 
         /// <summary>
         /// 获取或设置资源对象池自动释放可释放对象的间隔秒数。
         /// </summary>
-        float ResourceAutoReleaseInterval
-        {
-            get;
-            set;
-        }
+        float ResourceAutoReleaseInterval { get; set; }
 
         /// <summary>
         /// 获取或设置资源对象池的容量。
         /// </summary>
-        int ResourceCapacity
-        {
-            get;
-            set;
-        }
+        int ResourceCapacity { get; set; }
 
         /// <summary>
         /// 获取或设置资源对象池对象过期秒数。
         /// </summary>
-        float ResourceExpireTime
-        {
-            get;
-            set;
-        }
+        float ResourceExpireTime { get; set; }
 
         /// <summary>
         /// 获取或设置资源对象池的优先级。
         /// </summary>
-        int ResourcePriority
-        {
-            get;
-            set;
-        }
+        int ResourcePriority { get; set; }
 
         /// <summary>
         /// 资源校验开始事件。
@@ -446,14 +330,16 @@ namespace GameFramework.Resource
         /// <param name="versionListCompressedLength">版本资源列表压缩后大小。</param>
         /// <param name="versionListCompressedHashCode">版本资源列表压缩后哈希值。</param>
         /// <param name="updateVersionListCallbacks">版本资源列表更新回调函数集。</param>
-        void UpdateVersionList(int versionListLength, int versionListHashCode, int versionListCompressedLength, int versionListCompressedHashCode, UpdateVersionListCallbacks updateVersionListCallbacks);
+        void UpdateVersionList(int versionListLength, int versionListHashCode, int versionListCompressedLength,
+            int versionListCompressedHashCode, UpdateVersionListCallbacks updateVersionListCallbacks);
 
         /// <summary>
         /// 使用可更新模式并校验资源。
         /// </summary>
         /// <param name="verifyResourceLengthPerFrame">每帧至少校验资源的大小，以字节为单位。</param>
         /// <param name="verifyResourcesCompleteCallback">使用可更新模式并校验资源完成时的回调函数。</param>
-        void VerifyResources(int verifyResourceLengthPerFrame, VerifyResourcesCompleteCallback verifyResourcesCompleteCallback);
+        void VerifyResources(int verifyResourceLengthPerFrame,
+            VerifyResourcesCompleteCallback verifyResourcesCompleteCallback);
 
         /// <summary>
         /// 使用可更新模式并检查资源。
@@ -579,7 +465,8 @@ namespace GameFramework.Resource
         /// <param name="priority">加载资源的优先级。</param>
         /// <param name="loadAssetCallbacks">加载资源回调函数集。</param>
         /// <param name="userData">用户自定义数据。</param>
-        void LoadAsset(string assetName, Type assetType, int priority, LoadAssetCallbacks loadAssetCallbacks, object userData);
+        void LoadAsset(string assetName, Type assetType, int priority, LoadAssetCallbacks loadAssetCallbacks,
+            object userData);
 
         /// <summary>
         /// 卸载资源。
@@ -651,7 +538,8 @@ namespace GameFramework.Resource
         /// <param name="relativePath">二进制资源或存储二进制资源的文件系统，相对于只读区或者读写区的相对路径。</param>
         /// <param name="fileName">若二进制资源存储在文件系统中，则指示二进制资源在文件系统中的名称，否则此参数返回空。</param>
         /// <returns>是否获取二进制资源的实际路径成功。</returns>
-        bool GetBinaryPath(string binaryAssetName, out bool storageInReadOnly, out bool storageInFileSystem, out string relativePath, out string fileName);
+        bool GetBinaryPath(string binaryAssetName, out bool storageInReadOnly, out bool storageInFileSystem,
+            out string relativePath, out string fileName);
 
         /// <summary>
         /// 获取二进制资源的长度。
@@ -781,7 +669,8 @@ namespace GameFramework.Resource
         /// <param name="startIndex">存储加载二进制资源片段内容的二进制流的起始位置。</param>
         /// <param name="length">要加载片段的长度。</param>
         /// <returns>实际加载了多少字节。</returns>
-        int LoadBinarySegmentFromFileSystem(string binaryAssetName, int offset, byte[] buffer, int startIndex, int length);
+        int LoadBinarySegmentFromFileSystem(string binaryAssetName, int offset, byte[] buffer, int startIndex,
+            int length);
 
         /// <summary>
         /// 检查资源组是否存在。

@@ -35,49 +35,27 @@ namespace UnityGameFramework.Runtime
         /// <summary>
         /// 获取关闭界面完成事件编号。
         /// </summary>
-        public override int Id
-        {
-            get
-            {
-                return EventId;
-            }
-        }
+        public override int Id => EventId;
 
         /// <summary>
         /// 获取界面序列编号。
         /// </summary>
-        public int SerialId
-        {
-            get;
-            private set;
-        }
+        public int SerialId { get; private set; }
 
         /// <summary>
         /// 获取界面资源名称。
         /// </summary>
-        public string UIFormAssetName
-        {
-            get;
-            private set;
-        }
+        public string UIFormAssetName { get; private set; }
 
         /// <summary>
         /// 获取界面所属的界面组。
         /// </summary>
-        public IUIGroup UIGroup
-        {
-            get;
-            private set;
-        }
+        public IUIGroup UIGroup { get; private set; }
 
         /// <summary>
         /// 获取用户自定义数据。
         /// </summary>
-        public object UserData
-        {
-            get;
-            private set;
-        }
+        public object UserData { get; private set; }
 
         /// <summary>
         /// 创建关闭界面完成事件。
@@ -86,7 +64,8 @@ namespace UnityGameFramework.Runtime
         /// <returns>创建的关闭界面完成事件。</returns>
         public static CloseUIFormCompleteEventArgs Create(GameFramework.UI.CloseUIFormCompleteEventArgs e)
         {
-            CloseUIFormCompleteEventArgs closeUIFormCompleteEventArgs = ReferencePool.Acquire<CloseUIFormCompleteEventArgs>();
+            CloseUIFormCompleteEventArgs closeUIFormCompleteEventArgs =
+                ReferencePool.Acquire<CloseUIFormCompleteEventArgs>();
             closeUIFormCompleteEventArgs.SerialId = e.SerialId;
             closeUIFormCompleteEventArgs.UIFormAssetName = e.UIFormAssetName;
             closeUIFormCompleteEventArgs.UIGroup = e.UIGroup;

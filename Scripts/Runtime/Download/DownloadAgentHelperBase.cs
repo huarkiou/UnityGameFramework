@@ -5,8 +5,8 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameFramework.Download;
 using System;
+using GameFramework.Download;
 using UnityEngine;
 
 namespace UnityGameFramework.Runtime

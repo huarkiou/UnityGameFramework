@@ -15,27 +15,17 @@ namespace GameFramework.Debugger
         /// <summary>
         /// 获取调试器窗口数量。
         /// </summary>
-        int DebuggerWindowCount
-        {
-            get;
-        }
+        int DebuggerWindowCount { get; }
 
         /// <summary>
         /// 获取或设置当前选中的调试器窗口索引。
         /// </summary>
-        int SelectedIndex
-        {
-            get;
-            set;
-        }
+        int SelectedIndex { get; set; }
 
         /// <summary>
         /// 获取当前选中的调试器窗口。
         /// </summary>
-        IDebuggerWindow SelectedWindow
-        {
-            get;
-        }
+        IDebuggerWindow SelectedWindow { get; }
 
         /// <summary>
         /// 获取调试组的调试器窗口名称集合。

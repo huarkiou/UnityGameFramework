@@ -41,13 +41,7 @@ namespace GameFramework.Resource
             /// <summary>
             /// 获取文件系统名称。
             /// </summary>
-            public string Name
-            {
-                get
-                {
-                    return m_Name;
-                }
-            }
+            public string Name => m_Name;
 
             /// <summary>
             /// 获取文件系统包含的资源索引集合。

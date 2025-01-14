@@ -57,7 +57,8 @@ namespace UnityGameFramework.Editor
         private void OnEnable()
         {
             m_EnableLoadConfigUpdateEvent = serializedObject.FindProperty("m_EnableLoadConfigUpdateEvent");
-            m_EnableLoadConfigDependencyAssetEvent = serializedObject.FindProperty("m_EnableLoadConfigDependencyAssetEvent");
+            m_EnableLoadConfigDependencyAssetEvent =
+                serializedObject.FindProperty("m_EnableLoadConfigDependencyAssetEvent");
             m_CachedBytesSize = serializedObject.FindProperty("m_CachedBytesSize");
 
             m_ConfigHelperInfo.Init(serializedObject);

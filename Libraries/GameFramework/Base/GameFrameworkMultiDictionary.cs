@@ -16,7 +16,10 @@ namespace GameFramework
     /// </summary>
     /// <typeparam name="TKey">指定多值字典的主键类型。</typeparam>
     /// <typeparam name="TValue">指定多值字典的值类型。</typeparam>
-    public sealed class GameFrameworkMultiDictionary<TKey, TValue> : IEnumerable<KeyValuePair<TKey, GameFrameworkLinkedListRange<TValue>>>, IEnumerable
+    public sealed class
+        GameFrameworkMultiDictionary<TKey, TValue> :
+        IEnumerable<KeyValuePair<TKey, GameFrameworkLinkedListRange<TValue>>>,
+        IEnumerable
     {
         private readonly GameFrameworkLinkedList<TValue> m_LinkedList;
         private readonly Dictionary<TKey, GameFrameworkLinkedListRange<TValue>> m_Dictionary;
@@ -33,13 +36,7 @@ namespace GameFramework
         /// <summary>
         /// 获取多值字典中实际包含的主键数量。
         /// </summary>
-        public int Count
-        {
-            get
-            {
-                return m_Dictionary.Count;
-            }
-        }
+        public int Count => m_Dictionary.Count;
 
         /// <summary>
         /// 获取多值字典中指定主键的范围。
@@ -134,7 +131,9 @@ namespace GameFramework
             GameFrameworkLinkedListRange<TValue> range = default(GameFrameworkLinkedListRange<TValue>);
             if (m_Dictionary.TryGetValue(key, out range))
             {
-                for (LinkedListNode<TValue> current = range.First; current != null && current != range.Terminal; current = current.Next)
+                for (LinkedListNode<TValue> current = range.First;
+                     current != null && current != range.Terminal;
+                     current = current.Next)
                 {
                     if (current.Value.Equals(value))
                     {
@@ -200,7 +199,8 @@ namespace GameFramework
         /// 返回循环访问集合的枚举数。
         /// </summary>
         /// <returns>循环访问集合的枚举数。</returns>
-        IEnumerator<KeyValuePair<TKey, GameFrameworkLinkedListRange<TValue>>> IEnumerable<KeyValuePair<TKey, GameFrameworkLinkedListRange<TValue>>>.GetEnumerator()
+        IEnumerator<KeyValuePair<TKey, GameFrameworkLinkedListRange<TValue>>>
+            IEnumerable<KeyValuePair<TKey, GameFrameworkLinkedListRange<TValue>>>.GetEnumerator()
         {
             return GetEnumerator();
         }
@@ -235,24 +235,12 @@ namespace GameFramework
             /// <summary>
             /// 获取当前结点。
             /// </summary>
-            public KeyValuePair<TKey, GameFrameworkLinkedListRange<TValue>> Current
-            {
-                get
-                {
-                    return m_Enumerator.Current;
-                }
-            }
+            public KeyValuePair<TKey, GameFrameworkLinkedListRange<TValue>> Current => m_Enumerator.Current;
 
             /// <summary>
             /// 获取当前的枚举数。
             /// </summary>
-            object IEnumerator.Current
-            {
-                get
-                {
-                    return m_Enumerator.Current;
-                }
-            }
+            object IEnumerator.Current => m_Enumerator.Current;
 
             /// <summary>
             /// 清理枚举数。

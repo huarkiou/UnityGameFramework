@@ -25,29 +25,17 @@ namespace GameFramework
         /// <summary>
         /// 获取内容资源名称。
         /// </summary>
-        public string DataAssetName
-        {
-            get;
-            private set;
-        }
+        public string DataAssetName { get; private set; }
 
         /// <summary>
         /// 获取加载持续时间。
         /// </summary>
-        public float Duration
-        {
-            get;
-            private set;
-        }
+        public float Duration { get; private set; }
 
         /// <summary>
         /// 获取用户自定义数据。
         /// </summary>
-        public object UserData
-        {
-            get;
-            private set;
-        }
+        public object UserData { get; private set; }
 
         /// <summary>
         /// 创建读取数据成功事件。

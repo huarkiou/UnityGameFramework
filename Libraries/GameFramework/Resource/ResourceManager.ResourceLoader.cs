@@ -5,11 +5,11 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameFramework.FileSystem;
-using GameFramework.ObjectPool;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using GameFramework.FileSystem;
+using GameFramework.ObjectPool;
 
 namespace GameFramework.Resource
 {
@@ -54,60 +54,30 @@ namespace GameFramework.Resource
             /// <summary>
             /// 获取加载资源代理总数量。
             /// </summary>
-            public int TotalAgentCount
-            {
-                get
-                {
-                    return m_TaskPool.TotalAgentCount;
-                }
-            }
+            public int TotalAgentCount => m_TaskPool.TotalAgentCount;
 
             /// <summary>
             /// 获取可用加载资源代理数量。
             /// </summary>
-            public int FreeAgentCount
-            {
-                get
-                {
-                    return m_TaskPool.FreeAgentCount;
-                }
-            }
+            public int FreeAgentCount => m_TaskPool.FreeAgentCount;
 
             /// <summary>
             /// 获取工作中加载资源代理数量。
             /// </summary>
-            public int WorkingAgentCount
-            {
-                get
-                {
-                    return m_TaskPool.WorkingAgentCount;
-                }
-            }
+            public int WorkingAgentCount => m_TaskPool.WorkingAgentCount;
 
             /// <summary>
             /// 获取等待加载资源任务数量。
             /// </summary>
-            public int WaitingTaskCount
-            {
-                get
-                {
-                    return m_TaskPool.WaitingTaskCount;
-                }
-            }
+            public int WaitingTaskCount => m_TaskPool.WaitingTaskCount;
 
             /// <summary>
             /// 获取或设置资源对象池自动释放可释放对象的间隔秒数。
             /// </summary>
             public float AssetAutoReleaseInterval
             {
-                get
-                {
-                    return m_AssetPool.AutoReleaseInterval;
-                }
-                set
-                {
-                    m_AssetPool.AutoReleaseInterval = value;
-                }
+                get => m_AssetPool.AutoReleaseInterval;
+                set => m_AssetPool.AutoReleaseInterval = value;
             }
 
             /// <summary>
@@ -115,14 +85,8 @@ namespace GameFramework.Resource
             /// </summary>
             public int AssetCapacity
             {
-                get
-                {
-                    return m_AssetPool.Capacity;
-                }
-                set
-                {
-                    m_AssetPool.Capacity = value;
-                }
+                get => m_AssetPool.Capacity;
+                set => m_AssetPool.Capacity = value;
             }
 
             /// <summary>
@@ -130,14 +94,8 @@ namespace GameFramework.Resource
             /// </summary>
             public float AssetExpireTime
             {
-                get
-                {
-                    return m_AssetPool.ExpireTime;
-                }
-                set
-                {
-                    m_AssetPool.ExpireTime = value;
-                }
+                get => m_AssetPool.ExpireTime;
+                set => m_AssetPool.ExpireTime = value;
             }
 
             /// <summary>
@@ -145,14 +103,8 @@ namespace GameFramework.Resource
             /// </summary>
             public int AssetPriority
             {
-                get
-                {
-                    return m_AssetPool.Priority;
-                }
-                set
-                {
-                    m_AssetPool.Priority = value;
-                }
+                get => m_AssetPool.Priority;
+                set => m_AssetPool.Priority = value;
             }
 
             /// <summary>
@@ -160,14 +112,8 @@ namespace GameFramework.Resource
             /// </summary>
             public float ResourceAutoReleaseInterval
             {
-                get
-                {
-                    return m_ResourcePool.AutoReleaseInterval;
-                }
-                set
-                {
-                    m_ResourcePool.AutoReleaseInterval = value;
-                }
+                get => m_ResourcePool.AutoReleaseInterval;
+                set => m_ResourcePool.AutoReleaseInterval = value;
             }
 
             /// <summary>
@@ -175,14 +121,8 @@ namespace GameFramework.Resource
             /// </summary>
             public int ResourceCapacity
             {
-                get
-                {
-                    return m_ResourcePool.Capacity;
-                }
-                set
-                {
-                    m_ResourcePool.Capacity = value;
-                }
+                get => m_ResourcePool.Capacity;
+                set => m_ResourcePool.Capacity = value;
             }
 
             /// <summary>
@@ -190,14 +130,8 @@ namespace GameFramework.Resource
             /// </summary>
             public float ResourceExpireTime
             {
-                get
-                {
-                    return m_ResourcePool.ExpireTime;
-                }
-                set
-                {
-                    m_ResourcePool.ExpireTime = value;
-                }
+                get => m_ResourcePool.ExpireTime;
+                set => m_ResourcePool.ExpireTime = value;
             }
 
             /// <summary>
@@ -205,14 +139,8 @@ namespace GameFramework.Resource
             /// </summary>
             public int ResourcePriority
             {
-                get
-                {
-                    return m_ResourcePool.Priority;
-                }
-                set
-                {
-                    m_ResourcePool.Priority = value;
-                }
+                get => m_ResourcePool.Priority;
+                set => m_ResourcePool.Priority = value;
             }
 
             /// <summary>
@@ -256,14 +184,17 @@ namespace GameFramework.Resource
             /// <param name="readOnlyPath">资源只读区路径。</param>
             /// <param name="readWritePath">资源读写区路径。</param>
             /// <param name="decryptResourceCallback">要设置的解密资源回调函数。</param>
-            public void AddLoadResourceAgentHelper(ILoadResourceAgentHelper loadResourceAgentHelper, IResourceHelper resourceHelper, string readOnlyPath, string readWritePath, DecryptResourceCallback decryptResourceCallback)
+            public void AddLoadResourceAgentHelper(ILoadResourceAgentHelper loadResourceAgentHelper,
+                IResourceHelper resourceHelper, string readOnlyPath, string readWritePath,
+                DecryptResourceCallback decryptResourceCallback)
             {
                 if (m_AssetPool == null || m_ResourcePool == null)
                 {
                     throw new GameFrameworkException("You must set object pool manager first.");
                 }
 
-                LoadResourceAgent agent = new LoadResourceAgent(loadResourceAgentHelper, resourceHelper, this, readOnlyPath, readWritePath, decryptResourceCallback ?? DefaultDecryptResourceCallback);
+                LoadResourceAgent agent = new LoadResourceAgent(loadResourceAgentHelper, resourceHelper, this,
+                    readOnlyPath, readWritePath, decryptResourceCallback ?? DefaultDecryptResourceCallback);
                 m_TaskPool.AddAgent(agent);
             }
 
@@ -287,7 +218,9 @@ namespace GameFramework.Resource
 
                 if (resourceInfo.UseFileSystem)
                 {
-                    return resourceInfo.IsLoadFromBinary ? HasAssetResult.BinaryOnFileSystem : HasAssetResult.AssetOnFileSystem;
+                    return resourceInfo.IsLoadFromBinary
+                        ? HasAssetResult.BinaryOnFileSystem
+                        : HasAssetResult.AssetOnFileSystem;
                 }
                 else
                 {
@@ -303,7 +236,8 @@ namespace GameFramework.Resource
             /// <param name="priority">加载资源的优先级。</param>
             /// <param name="loadAssetCallbacks">加载资源回调函数集。</param>
             /// <param name="userData">用户自定义数据。</param>
-            public void LoadAsset(string assetName, Type assetType, int priority, LoadAssetCallbacks loadAssetCallbacks, object userData)
+            public void LoadAsset(string assetName, Type assetType, int priority, LoadAssetCallbacks loadAssetCallbacks,
+                object userData)
             {
                 ResourceInfo resourceInfo = null;
                 string[] dependencyAssetNames = null;
@@ -312,7 +246,10 @@ namespace GameFramework.Resource
                     string errorMessage = Utility.Text.Format("Can not load asset '{0}'.", assetName);
                     if (loadAssetCallbacks.LoadAssetFailureCallback != null)
                     {
-                        loadAssetCallbacks.LoadAssetFailureCallback(assetName, resourceInfo != null && !resourceInfo.Ready ? LoadResourceStatus.NotReady : LoadResourceStatus.NotExist, errorMessage, userData);
+                        loadAssetCallbacks.LoadAssetFailureCallback(assetName,
+                            resourceInfo != null && !resourceInfo.Ready
+                                ? LoadResourceStatus.NotReady
+                                : LoadResourceStatus.NotExist, errorMessage, userData);
                         return;
                     }
 
@@ -321,25 +258,31 @@ namespace GameFramework.Resource
 
                 if (resourceInfo.IsLoadFromBinary)
                 {
-                    string errorMessage = Utility.Text.Format("Can not load asset '{0}' which is a binary asset.", assetName);
+                    string errorMessage =
+                        Utility.Text.Format("Can not load asset '{0}' which is a binary asset.", assetName);
                     if (loadAssetCallbacks.LoadAssetFailureCallback != null)
                     {
-                        loadAssetCallbacks.LoadAssetFailureCallback(assetName, LoadResourceStatus.TypeError, errorMessage, userData);
+                        loadAssetCallbacks.LoadAssetFailureCallback(assetName, LoadResourceStatus.TypeError,
+                            errorMessage, userData);
                         return;
                     }
 
                     throw new GameFrameworkException(errorMessage);
                 }
 
-                LoadAssetTask mainTask = LoadAssetTask.Create(assetName, assetType, priority, resourceInfo, dependencyAssetNames, loadAssetCallbacks, userData);
+                LoadAssetTask mainTask = LoadAssetTask.Create(assetName, assetType, priority, resourceInfo,
+                    dependencyAssetNames, loadAssetCallbacks, userData);
                 foreach (string dependencyAssetName in dependencyAssetNames)
                 {
                     if (!LoadDependencyAsset(dependencyAssetName, priority, mainTask, userData))
                     {
-                        string errorMessage = Utility.Text.Format("Can not load dependency asset '{0}' when load asset '{1}'.", dependencyAssetName, assetName);
+                        string errorMessage = Utility.Text.Format(
+                            "Can not load dependency asset '{0}' when load asset '{1}'.", dependencyAssetName,
+                            assetName);
                         if (loadAssetCallbacks.LoadAssetFailureCallback != null)
                         {
-                            loadAssetCallbacks.LoadAssetFailureCallback(assetName, LoadResourceStatus.DependencyError, errorMessage, userData);
+                            loadAssetCallbacks.LoadAssetFailureCallback(assetName, LoadResourceStatus.DependencyError,
+                                errorMessage, userData);
                             return;
                         }
 
@@ -370,7 +313,8 @@ namespace GameFramework.Resource
             /// <param name="priority">加载场景资源的优先级。</param>
             /// <param name="loadSceneCallbacks">加载场景回调函数集。</param>
             /// <param name="userData">用户自定义数据。</param>
-            public void LoadScene(string sceneAssetName, int priority, LoadSceneCallbacks loadSceneCallbacks, object userData)
+            public void LoadScene(string sceneAssetName, int priority, LoadSceneCallbacks loadSceneCallbacks,
+                object userData)
             {
                 ResourceInfo resourceInfo = null;
                 string[] dependencyAssetNames = null;
@@ -379,7 +323,10 @@ namespace GameFramework.Resource
                     string errorMessage = Utility.Text.Format("Can not load scene '{0}'.", sceneAssetName);
                     if (loadSceneCallbacks.LoadSceneFailureCallback != null)
                     {
-                        loadSceneCallbacks.LoadSceneFailureCallback(sceneAssetName, resourceInfo != null && !resourceInfo.Ready ? LoadResourceStatus.NotReady : LoadResourceStatus.NotExist, errorMessage, userData);
+                        loadSceneCallbacks.LoadSceneFailureCallback(sceneAssetName,
+                            resourceInfo != null && !resourceInfo.Ready
+                                ? LoadResourceStatus.NotReady
+                                : LoadResourceStatus.NotExist, errorMessage, userData);
                         return;
                     }
 
@@ -388,25 +335,31 @@ namespace GameFramework.Resource
 
                 if (resourceInfo.IsLoadFromBinary)
                 {
-                    string errorMessage = Utility.Text.Format("Can not load scene asset '{0}' which is a binary asset.", sceneAssetName);
+                    string errorMessage = Utility.Text.Format("Can not load scene asset '{0}' which is a binary asset.",
+                        sceneAssetName);
                     if (loadSceneCallbacks.LoadSceneFailureCallback != null)
                     {
-                        loadSceneCallbacks.LoadSceneFailureCallback(sceneAssetName, LoadResourceStatus.TypeError, errorMessage, userData);
+                        loadSceneCallbacks.LoadSceneFailureCallback(sceneAssetName, LoadResourceStatus.TypeError,
+                            errorMessage, userData);
                         return;
                     }
 
                     throw new GameFrameworkException(errorMessage);
                 }
 
-                LoadSceneTask mainTask = LoadSceneTask.Create(sceneAssetName, priority, resourceInfo, dependencyAssetNames, loadSceneCallbacks, userData);
+                LoadSceneTask mainTask = LoadSceneTask.Create(sceneAssetName, priority, resourceInfo,
+                    dependencyAssetNames, loadSceneCallbacks, userData);
                 foreach (string dependencyAssetName in dependencyAssetNames)
                 {
                     if (!LoadDependencyAsset(dependencyAssetName, priority, mainTask, userData))
                     {
-                        string errorMessage = Utility.Text.Format("Can not load dependency asset '{0}' when load scene '{1}'.", dependencyAssetName, sceneAssetName);
+                        string errorMessage = Utility.Text.Format(
+                            "Can not load dependency asset '{0}' when load scene '{1}'.", dependencyAssetName,
+                            sceneAssetName);
                         if (loadSceneCallbacks.LoadSceneFailureCallback != null)
                         {
-                            loadSceneCallbacks.LoadSceneFailureCallback(sceneAssetName, LoadResourceStatus.DependencyError, errorMessage, userData);
+                            loadSceneCallbacks.LoadSceneFailureCallback(sceneAssetName,
+                                LoadResourceStatus.DependencyError, errorMessage, userData);
                             return;
                         }
 
@@ -443,7 +396,8 @@ namespace GameFramework.Resource
                 }
                 else
                 {
-                    throw new GameFrameworkException(Utility.Text.Format("Can not find asset of scene '{0}'.", sceneAssetName));
+                    throw new GameFrameworkException(Utility.Text.Format("Can not find asset of scene '{0}'.",
+                        sceneAssetName));
                 }
 
                 m_ResourceManager.m_ResourceHelper.UnloadScene(sceneAssetName, unloadSceneCallbacks, userData);
@@ -478,7 +432,10 @@ namespace GameFramework.Resource
                     return null;
                 }
 
-                return Utility.Path.GetRegularPath(Path.Combine(resourceInfo.StorageInReadOnly ? m_ResourceManager.m_ReadOnlyPath : m_ResourceManager.m_ReadWritePath, resourceInfo.ResourceName.FullName));
+                return Utility.Path.GetRegularPath(Path.Combine(
+                    resourceInfo.StorageInReadOnly
+                        ? m_ResourceManager.m_ReadOnlyPath
+                        : m_ResourceManager.m_ReadWritePath, resourceInfo.ResourceName.FullName));
             }
 
             /// <summary>
@@ -490,7 +447,8 @@ namespace GameFramework.Resource
             /// <param name="relativePath">二进制资源或存储二进制资源的文件系统，相对于只读区或者读写区的相对路径。</param>
             /// <param name="fileName">若二进制资源存储在文件系统中，则指示二进制资源在文件系统中的名称，否则此参数返回空。</param>
             /// <returns>是否获取二进制资源的实际路径成功。</returns>
-            public bool GetBinaryPath(string binaryAssetName, out bool storageInReadOnly, out bool storageInFileSystem, out string relativePath, out string fileName)
+            public bool GetBinaryPath(string binaryAssetName, out bool storageInReadOnly, out bool storageInFileSystem,
+                out string relativePath, out string fileName)
             {
                 storageInReadOnly = false;
                 storageInFileSystem = false;
@@ -565,10 +523,12 @@ namespace GameFramework.Resource
                 ResourceInfo resourceInfo = GetResourceInfo(binaryAssetName);
                 if (resourceInfo == null)
                 {
-                    string errorMessage = Utility.Text.Format("Can not load binary '{0}' which is not exist.", binaryAssetName);
+                    string errorMessage =
+                        Utility.Text.Format("Can not load binary '{0}' which is not exist.", binaryAssetName);
                     if (loadBinaryCallbacks.LoadBinaryFailureCallback != null)
                     {
-                        loadBinaryCallbacks.LoadBinaryFailureCallback(binaryAssetName, LoadResourceStatus.NotExist, errorMessage, userData);
+                        loadBinaryCallbacks.LoadBinaryFailureCallback(binaryAssetName, LoadResourceStatus.NotExist,
+                            errorMessage, userData);
                         return;
                     }
 
@@ -577,10 +537,12 @@ namespace GameFramework.Resource
 
                 if (!resourceInfo.Ready)
                 {
-                    string errorMessage = Utility.Text.Format("Can not load binary '{0}' which is not ready.", binaryAssetName);
+                    string errorMessage =
+                        Utility.Text.Format("Can not load binary '{0}' which is not ready.", binaryAssetName);
                     if (loadBinaryCallbacks.LoadBinaryFailureCallback != null)
                     {
-                        loadBinaryCallbacks.LoadBinaryFailureCallback(binaryAssetName, LoadResourceStatus.NotReady, errorMessage, userData);
+                        loadBinaryCallbacks.LoadBinaryFailureCallback(binaryAssetName, LoadResourceStatus.NotReady,
+                            errorMessage, userData);
                         return;
                     }
 
@@ -589,10 +551,12 @@ namespace GameFramework.Resource
 
                 if (!resourceInfo.IsLoadFromBinary)
                 {
-                    string errorMessage = Utility.Text.Format("Can not load binary '{0}' which is not a binary asset.", binaryAssetName);
+                    string errorMessage = Utility.Text.Format("Can not load binary '{0}' which is not a binary asset.",
+                        binaryAssetName);
                     if (loadBinaryCallbacks.LoadBinaryFailureCallback != null)
                     {
-                        loadBinaryCallbacks.LoadBinaryFailureCallback(binaryAssetName, LoadResourceStatus.TypeError, errorMessage, userData);
+                        loadBinaryCallbacks.LoadBinaryFailureCallback(binaryAssetName, LoadResourceStatus.TypeError,
+                            errorMessage, userData);
                         return;
                     }
 
@@ -601,12 +565,17 @@ namespace GameFramework.Resource
 
                 if (resourceInfo.UseFileSystem)
                 {
-                    loadBinaryCallbacks.LoadBinarySuccessCallback(binaryAssetName, LoadBinaryFromFileSystem(binaryAssetName), 0f, userData);
+                    loadBinaryCallbacks.LoadBinarySuccessCallback(binaryAssetName,
+                        LoadBinaryFromFileSystem(binaryAssetName), 0f, userData);
                 }
                 else
                 {
-                    string path = Utility.Path.GetRemotePath(Path.Combine(resourceInfo.StorageInReadOnly ? m_ResourceManager.m_ReadOnlyPath : m_ResourceManager.m_ReadWritePath, resourceInfo.ResourceName.FullName));
-                    m_ResourceManager.m_ResourceHelper.LoadBytes(path, m_LoadBytesCallbacks, LoadBinaryInfo.Create(binaryAssetName, resourceInfo, loadBinaryCallbacks, userData));
+                    string path = Utility.Path.GetRemotePath(Path.Combine(
+                        resourceInfo.StorageInReadOnly
+                            ? m_ResourceManager.m_ReadOnlyPath
+                            : m_ResourceManager.m_ReadWritePath, resourceInfo.ResourceName.FullName));
+                    m_ResourceManager.m_ResourceHelper.LoadBytes(path, m_LoadBytesCallbacks,
+                        LoadBinaryInfo.Create(binaryAssetName, resourceInfo, loadBinaryCallbacks, userData));
                 }
             }
 
@@ -620,35 +589,45 @@ namespace GameFramework.Resource
                 ResourceInfo resourceInfo = GetResourceInfo(binaryAssetName);
                 if (resourceInfo == null)
                 {
-                    throw new GameFrameworkException(Utility.Text.Format("Can not load binary '{0}' from file system which is not exist.", binaryAssetName));
+                    throw new GameFrameworkException(Utility.Text.Format(
+                        "Can not load binary '{0}' from file system which is not exist.", binaryAssetName));
                 }
 
                 if (!resourceInfo.Ready)
                 {
-                    throw new GameFrameworkException(Utility.Text.Format("Can not load binary '{0}' from file system which is not ready.", binaryAssetName));
+                    throw new GameFrameworkException(Utility.Text.Format(
+                        "Can not load binary '{0}' from file system which is not ready.", binaryAssetName));
                 }
 
                 if (!resourceInfo.IsLoadFromBinary)
                 {
-                    throw new GameFrameworkException(Utility.Text.Format("Can not load binary '{0}' from file system which is not a binary asset.", binaryAssetName));
+                    throw new GameFrameworkException(Utility.Text.Format(
+                        "Can not load binary '{0}' from file system which is not a binary asset.", binaryAssetName));
                 }
 
                 if (!resourceInfo.UseFileSystem)
                 {
-                    throw new GameFrameworkException(Utility.Text.Format("Can not load binary '{0}' from file system which is not use file system.", binaryAssetName));
+                    throw new GameFrameworkException(Utility.Text.Format(
+                        "Can not load binary '{0}' from file system which is not use file system.", binaryAssetName));
                 }
 
-                IFileSystem fileSystem = m_ResourceManager.GetFileSystem(resourceInfo.FileSystemName, resourceInfo.StorageInReadOnly);
+                IFileSystem fileSystem =
+                    m_ResourceManager.GetFileSystem(resourceInfo.FileSystemName, resourceInfo.StorageInReadOnly);
                 byte[] bytes = fileSystem.ReadFile(resourceInfo.ResourceName.FullName);
                 if (bytes == null)
                 {
                     return null;
                 }
 
-                if (resourceInfo.LoadType == LoadType.LoadFromBinaryAndQuickDecrypt || resourceInfo.LoadType == LoadType.LoadFromBinaryAndDecrypt)
+                if (resourceInfo.LoadType == LoadType.LoadFromBinaryAndQuickDecrypt ||
+                    resourceInfo.LoadType == LoadType.LoadFromBinaryAndDecrypt)
                 {
-                    DecryptResourceCallback decryptResourceCallback = m_ResourceManager.m_DecryptResourceCallback ?? DefaultDecryptResourceCallback;
-                    decryptResourceCallback(bytes, 0, bytes.Length, resourceInfo.ResourceName.Name, resourceInfo.ResourceName.Variant, resourceInfo.ResourceName.Extension, resourceInfo.StorageInReadOnly, resourceInfo.FileSystemName, (byte)resourceInfo.LoadType, resourceInfo.Length, resourceInfo.HashCode);
+                    DecryptResourceCallback decryptResourceCallback =
+                        m_ResourceManager.m_DecryptResourceCallback ?? DefaultDecryptResourceCallback;
+                    decryptResourceCallback(bytes, 0, bytes.Length, resourceInfo.ResourceName.Name,
+                        resourceInfo.ResourceName.Variant, resourceInfo.ResourceName.Extension,
+                        resourceInfo.StorageInReadOnly, resourceInfo.FileSystemName, (byte)resourceInfo.LoadType,
+                        resourceInfo.Length, resourceInfo.HashCode);
                 }
 
                 return bytes;
@@ -667,30 +646,40 @@ namespace GameFramework.Resource
                 ResourceInfo resourceInfo = GetResourceInfo(binaryAssetName);
                 if (resourceInfo == null)
                 {
-                    throw new GameFrameworkException(Utility.Text.Format("Can not load binary '{0}' from file system which is not exist.", binaryAssetName));
+                    throw new GameFrameworkException(Utility.Text.Format(
+                        "Can not load binary '{0}' from file system which is not exist.", binaryAssetName));
                 }
 
                 if (!resourceInfo.Ready)
                 {
-                    throw new GameFrameworkException(Utility.Text.Format("Can not load binary '{0}' from file system which is not ready.", binaryAssetName));
+                    throw new GameFrameworkException(Utility.Text.Format(
+                        "Can not load binary '{0}' from file system which is not ready.", binaryAssetName));
                 }
 
                 if (!resourceInfo.IsLoadFromBinary)
                 {
-                    throw new GameFrameworkException(Utility.Text.Format("Can not load binary '{0}' from file system which is not a binary asset.", binaryAssetName));
+                    throw new GameFrameworkException(Utility.Text.Format(
+                        "Can not load binary '{0}' from file system which is not a binary asset.", binaryAssetName));
                 }
 
                 if (!resourceInfo.UseFileSystem)
                 {
-                    throw new GameFrameworkException(Utility.Text.Format("Can not load binary '{0}' from file system which is not use file system.", binaryAssetName));
+                    throw new GameFrameworkException(Utility.Text.Format(
+                        "Can not load binary '{0}' from file system which is not use file system.", binaryAssetName));
                 }
 
-                IFileSystem fileSystem = m_ResourceManager.GetFileSystem(resourceInfo.FileSystemName, resourceInfo.StorageInReadOnly);
+                IFileSystem fileSystem =
+                    m_ResourceManager.GetFileSystem(resourceInfo.FileSystemName, resourceInfo.StorageInReadOnly);
                 int bytesRead = fileSystem.ReadFile(resourceInfo.ResourceName.FullName, buffer, startIndex, length);
-                if (resourceInfo.LoadType == LoadType.LoadFromBinaryAndQuickDecrypt || resourceInfo.LoadType == LoadType.LoadFromBinaryAndDecrypt)
+                if (resourceInfo.LoadType == LoadType.LoadFromBinaryAndQuickDecrypt ||
+                    resourceInfo.LoadType == LoadType.LoadFromBinaryAndDecrypt)
                 {
-                    DecryptResourceCallback decryptResourceCallback = m_ResourceManager.m_DecryptResourceCallback ?? DefaultDecryptResourceCallback;
-                    decryptResourceCallback(buffer, startIndex, bytesRead, resourceInfo.ResourceName.Name, resourceInfo.ResourceName.Variant, resourceInfo.ResourceName.Extension, resourceInfo.StorageInReadOnly, resourceInfo.FileSystemName, (byte)resourceInfo.LoadType, resourceInfo.Length, resourceInfo.HashCode);
+                    DecryptResourceCallback decryptResourceCallback =
+                        m_ResourceManager.m_DecryptResourceCallback ?? DefaultDecryptResourceCallback;
+                    decryptResourceCallback(buffer, startIndex, bytesRead, resourceInfo.ResourceName.Name,
+                        resourceInfo.ResourceName.Variant, resourceInfo.ResourceName.Extension,
+                        resourceInfo.StorageInReadOnly, resourceInfo.FileSystemName, (byte)resourceInfo.LoadType,
+                        resourceInfo.Length, resourceInfo.HashCode);
                 }
 
                 return bytesRead;
@@ -708,35 +697,45 @@ namespace GameFramework.Resource
                 ResourceInfo resourceInfo = GetResourceInfo(binaryAssetName);
                 if (resourceInfo == null)
                 {
-                    throw new GameFrameworkException(Utility.Text.Format("Can not load binary '{0}' from file system which is not exist.", binaryAssetName));
+                    throw new GameFrameworkException(Utility.Text.Format(
+                        "Can not load binary '{0}' from file system which is not exist.", binaryAssetName));
                 }
 
                 if (!resourceInfo.Ready)
                 {
-                    throw new GameFrameworkException(Utility.Text.Format("Can not load binary '{0}' from file system which is not ready.", binaryAssetName));
+                    throw new GameFrameworkException(Utility.Text.Format(
+                        "Can not load binary '{0}' from file system which is not ready.", binaryAssetName));
                 }
 
                 if (!resourceInfo.IsLoadFromBinary)
                 {
-                    throw new GameFrameworkException(Utility.Text.Format("Can not load binary '{0}' from file system which is not a binary asset.", binaryAssetName));
+                    throw new GameFrameworkException(Utility.Text.Format(
+                        "Can not load binary '{0}' from file system which is not a binary asset.", binaryAssetName));
                 }
 
                 if (!resourceInfo.UseFileSystem)
                 {
-                    throw new GameFrameworkException(Utility.Text.Format("Can not load binary '{0}' from file system which is not use file system.", binaryAssetName));
+                    throw new GameFrameworkException(Utility.Text.Format(
+                        "Can not load binary '{0}' from file system which is not use file system.", binaryAssetName));
                 }
 
-                IFileSystem fileSystem = m_ResourceManager.GetFileSystem(resourceInfo.FileSystemName, resourceInfo.StorageInReadOnly);
+                IFileSystem fileSystem =
+                    m_ResourceManager.GetFileSystem(resourceInfo.FileSystemName, resourceInfo.StorageInReadOnly);
                 byte[] bytes = fileSystem.ReadFileSegment(resourceInfo.ResourceName.FullName, offset, length);
                 if (bytes == null)
                 {
                     return null;
                 }
 
-                if (resourceInfo.LoadType == LoadType.LoadFromBinaryAndQuickDecrypt || resourceInfo.LoadType == LoadType.LoadFromBinaryAndDecrypt)
+                if (resourceInfo.LoadType == LoadType.LoadFromBinaryAndQuickDecrypt ||
+                    resourceInfo.LoadType == LoadType.LoadFromBinaryAndDecrypt)
                 {
-                    DecryptResourceCallback decryptResourceCallback = m_ResourceManager.m_DecryptResourceCallback ?? DefaultDecryptResourceCallback;
-                    decryptResourceCallback(bytes, 0, bytes.Length, resourceInfo.ResourceName.Name, resourceInfo.ResourceName.Variant, resourceInfo.ResourceName.Extension, resourceInfo.StorageInReadOnly, resourceInfo.FileSystemName, (byte)resourceInfo.LoadType, resourceInfo.Length, resourceInfo.HashCode);
+                    DecryptResourceCallback decryptResourceCallback =
+                        m_ResourceManager.m_DecryptResourceCallback ?? DefaultDecryptResourceCallback;
+                    decryptResourceCallback(bytes, 0, bytes.Length, resourceInfo.ResourceName.Name,
+                        resourceInfo.ResourceName.Variant, resourceInfo.ResourceName.Extension,
+                        resourceInfo.StorageInReadOnly, resourceInfo.FileSystemName, (byte)resourceInfo.LoadType,
+                        resourceInfo.Length, resourceInfo.HashCode);
                 }
 
                 return bytes;
@@ -751,35 +750,47 @@ namespace GameFramework.Resource
             /// <param name="startIndex">存储加载二进制资源片段内容的二进制流的起始位置。</param>
             /// <param name="length">要加载片段的长度。</param>
             /// <returns>实际加载了多少字节。</returns>
-            public int LoadBinarySegmentFromFileSystem(string binaryAssetName, int offset, byte[] buffer, int startIndex, int length)
+            public int LoadBinarySegmentFromFileSystem(string binaryAssetName, int offset, byte[] buffer,
+                int startIndex, int length)
             {
                 ResourceInfo resourceInfo = GetResourceInfo(binaryAssetName);
                 if (resourceInfo == null)
                 {
-                    throw new GameFrameworkException(Utility.Text.Format("Can not load binary '{0}' from file system which is not exist.", binaryAssetName));
+                    throw new GameFrameworkException(Utility.Text.Format(
+                        "Can not load binary '{0}' from file system which is not exist.", binaryAssetName));
                 }
 
                 if (!resourceInfo.Ready)
                 {
-                    throw new GameFrameworkException(Utility.Text.Format("Can not load binary '{0}' from file system which is not ready.", binaryAssetName));
+                    throw new GameFrameworkException(Utility.Text.Format(
+                        "Can not load binary '{0}' from file system which is not ready.", binaryAssetName));
                 }
 
                 if (!resourceInfo.IsLoadFromBinary)
                 {
-                    throw new GameFrameworkException(Utility.Text.Format("Can not load binary '{0}' from file system which is not a binary asset.", binaryAssetName));
+                    throw new GameFrameworkException(Utility.Text.Format(
+                        "Can not load binary '{0}' from file system which is not a binary asset.", binaryAssetName));
                 }
 
                 if (!resourceInfo.UseFileSystem)
                 {
-                    throw new GameFrameworkException(Utility.Text.Format("Can not load binary '{0}' from file system which is not use file system.", binaryAssetName));
+                    throw new GameFrameworkException(Utility.Text.Format(
+                        "Can not load binary '{0}' from file system which is not use file system.", binaryAssetName));
                 }
 
-                IFileSystem fileSystem = m_ResourceManager.GetFileSystem(resourceInfo.FileSystemName, resourceInfo.StorageInReadOnly);
-                int bytesRead = fileSystem.ReadFileSegment(resourceInfo.ResourceName.FullName, offset, buffer, startIndex, length);
-                if (resourceInfo.LoadType == LoadType.LoadFromBinaryAndQuickDecrypt || resourceInfo.LoadType == LoadType.LoadFromBinaryAndDecrypt)
+                IFileSystem fileSystem =
+                    m_ResourceManager.GetFileSystem(resourceInfo.FileSystemName, resourceInfo.StorageInReadOnly);
+                int bytesRead = fileSystem.ReadFileSegment(resourceInfo.ResourceName.FullName, offset, buffer,
+                    startIndex, length);
+                if (resourceInfo.LoadType == LoadType.LoadFromBinaryAndQuickDecrypt ||
+                    resourceInfo.LoadType == LoadType.LoadFromBinaryAndDecrypt)
                 {
-                    DecryptResourceCallback decryptResourceCallback = m_ResourceManager.m_DecryptResourceCallback ?? DefaultDecryptResourceCallback;
-                    decryptResourceCallback(buffer, startIndex, bytesRead, resourceInfo.ResourceName.Name, resourceInfo.ResourceName.Variant, resourceInfo.ResourceName.Extension, resourceInfo.StorageInReadOnly, resourceInfo.FileSystemName, (byte)resourceInfo.LoadType, resourceInfo.Length, resourceInfo.HashCode);
+                    DecryptResourceCallback decryptResourceCallback =
+                        m_ResourceManager.m_DecryptResourceCallback ?? DefaultDecryptResourceCallback;
+                    decryptResourceCallback(buffer, startIndex, bytesRead, resourceInfo.ResourceName.Name,
+                        resourceInfo.ResourceName.Variant, resourceInfo.ResourceName.Extension,
+                        resourceInfo.StorageInReadOnly, resourceInfo.FileSystemName, (byte)resourceInfo.LoadType,
+                        resourceInfo.Length, resourceInfo.HashCode);
                 }
 
                 return bytesRead;
@@ -803,7 +814,8 @@ namespace GameFramework.Resource
                 m_TaskPool.GetAllTaskInfos(results);
             }
 
-            private bool LoadDependencyAsset(string assetName, int priority, LoadResourceTaskBase mainTask, object userData)
+            private bool LoadDependencyAsset(string assetName, int priority, LoadResourceTaskBase mainTask,
+                object userData)
             {
                 if (mainTask == null)
                 {
@@ -822,7 +834,8 @@ namespace GameFramework.Resource
                     return false;
                 }
 
-                LoadDependencyAssetTask dependencyTask = LoadDependencyAssetTask.Create(assetName, priority, resourceInfo, dependencyAssetNames, mainTask, userData);
+                LoadDependencyAssetTask dependencyTask = LoadDependencyAssetTask.Create(assetName, priority,
+                    resourceInfo, dependencyAssetNames, mainTask, userData);
                 foreach (string dependencyAssetName in dependencyAssetNames)
                 {
                     if (!LoadDependencyAsset(dependencyAssetName, priority, dependencyTask, userData))
@@ -879,10 +892,14 @@ namespace GameFramework.Resource
                 }
 
                 dependencyAssetNames = assetInfo.GetDependencyAssetNames();
-                return m_ResourceManager.m_ResourceMode == ResourceMode.UpdatableWhilePlaying ? true : resourceInfo.Ready;
+                return m_ResourceManager.m_ResourceMode == ResourceMode.UpdatableWhilePlaying
+                    ? true
+                    : resourceInfo.Ready;
             }
 
-            private void DefaultDecryptResourceCallback(byte[] bytes, int startIndex, int count, string name, string variant, string extension, bool storageInReadOnly, string fileSystem, byte loadType, int length, int hashCode)
+            private void DefaultDecryptResourceCallback(byte[] bytes, int startIndex, int count, string name,
+                string variant, string extension, bool storageInReadOnly, string fileSystem, byte loadType, int length,
+                int hashCode)
             {
                 Utility.Converter.GetBytes(hashCode, m_CachedHashBytes);
                 switch ((LoadType)loadType)
@@ -913,13 +930,19 @@ namespace GameFramework.Resource
                 }
 
                 ResourceInfo resourceInfo = loadBinaryInfo.ResourceInfo;
-                if (resourceInfo.LoadType == LoadType.LoadFromBinaryAndQuickDecrypt || resourceInfo.LoadType == LoadType.LoadFromBinaryAndDecrypt)
+                if (resourceInfo.LoadType == LoadType.LoadFromBinaryAndQuickDecrypt ||
+                    resourceInfo.LoadType == LoadType.LoadFromBinaryAndDecrypt)
                 {
-                    DecryptResourceCallback decryptResourceCallback = m_ResourceManager.m_DecryptResourceCallback ?? DefaultDecryptResourceCallback;
-                    decryptResourceCallback(bytes, 0, bytes.Length, resourceInfo.ResourceName.Name, resourceInfo.ResourceName.Variant, resourceInfo.ResourceName.Extension, resourceInfo.StorageInReadOnly, resourceInfo.FileSystemName, (byte)resourceInfo.LoadType, resourceInfo.Length, resourceInfo.HashCode);
+                    DecryptResourceCallback decryptResourceCallback =
+                        m_ResourceManager.m_DecryptResourceCallback ?? DefaultDecryptResourceCallback;
+                    decryptResourceCallback(bytes, 0, bytes.Length, resourceInfo.ResourceName.Name,
+                        resourceInfo.ResourceName.Variant, resourceInfo.ResourceName.Extension,
+                        resourceInfo.StorageInReadOnly, resourceInfo.FileSystemName, (byte)resourceInfo.LoadType,
+                        resourceInfo.Length, resourceInfo.HashCode);
                 }
 
-                loadBinaryInfo.LoadBinaryCallbacks.LoadBinarySuccessCallback(loadBinaryInfo.BinaryAssetName, bytes, duration, loadBinaryInfo.UserData);
+                loadBinaryInfo.LoadBinaryCallbacks.LoadBinarySuccessCallback(loadBinaryInfo.BinaryAssetName, bytes,
+                    duration, loadBinaryInfo.UserData);
                 ReferencePool.Release(loadBinaryInfo);
             }
 
@@ -933,7 +956,8 @@ namespace GameFramework.Resource
 
                 if (loadBinaryInfo.LoadBinaryCallbacks.LoadBinaryFailureCallback != null)
                 {
-                    loadBinaryInfo.LoadBinaryCallbacks.LoadBinaryFailureCallback(loadBinaryInfo.BinaryAssetName, LoadResourceStatus.AssetError, errorMessage, loadBinaryInfo.UserData);
+                    loadBinaryInfo.LoadBinaryCallbacks.LoadBinaryFailureCallback(loadBinaryInfo.BinaryAssetName,
+                        LoadResourceStatus.AssetError, errorMessage, loadBinaryInfo.UserData);
                 }
 
                 ReferencePool.Release(loadBinaryInfo);

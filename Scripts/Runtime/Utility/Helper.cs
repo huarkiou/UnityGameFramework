@@ -5,8 +5,10 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
+using System;
 using GameFramework;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace UnityGameFramework.Runtime
 {
@@ -40,7 +42,7 @@ namespace UnityGameFramework.Runtime
             T helper = null;
             if (!string.IsNullOrEmpty(helperTypeName))
             {
-                System.Type helperType = Utility.Assembly.GetType(helperTypeName);
+                Type helperType = Utility.Assembly.GetType(helperTypeName);
                 if (helperType == null)
                 {
                     Log.Warning("Can not find helper type '{0}'.", helperTypeName);

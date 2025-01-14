@@ -5,11 +5,11 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameFramework.Download;
-using GameFramework.FileSystem;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using GameFramework.Download;
+using GameFramework.FileSystem;
 
 namespace GameFramework.Resource
 {
@@ -66,7 +66,8 @@ namespace GameFramework.Resource
                 m_UpdateWaitingInfo = new List<UpdateInfo>();
                 m_UpdateWaitingInfoWhilePlaying = new HashSet<UpdateInfo>();
                 m_UpdateCandidateInfo = new Dictionary<ResourceName, UpdateInfo>();
-                m_CachedFileSystemsForGenerateReadWriteVersionList = new SortedDictionary<string, List<int>>(StringComparer.Ordinal);
+                m_CachedFileSystemsForGenerateReadWriteVersionList =
+                    new SortedDictionary<string, List<int>>(StringComparer.Ordinal);
                 m_CachedResourceNames = new List<ResourceName>();
                 m_CachedHashBytes = new byte[CachedHashBytesLength];
                 m_CachedBytes = new byte[CachedBytesLength];
@@ -79,8 +80,11 @@ namespace GameFramework.Resource
                 m_CurrentGenerateReadWriteVersionListLength = 0;
                 m_UpdateRetryCount = 3;
                 m_FailureFlag = false;
-                m_ReadWriteVersionListFileName = Utility.Path.GetRegularPath(Path.Combine(m_ResourceManager.m_ReadWritePath, LocalVersionListFileName));
-                m_ReadWriteVersionListTempFileName = Utility.Text.Format("{0}.{1}", m_ReadWriteVersionListFileName, TempExtension);
+                m_ReadWriteVersionListFileName =
+                    Utility.Path.GetRegularPath(Path.Combine(m_ResourceManager.m_ReadWritePath,
+                        LocalVersionListFileName));
+                m_ReadWriteVersionListTempFileName =
+                    Utility.Text.Format("{0}.{1}", m_ReadWriteVersionListFileName, TempExtension);
 
                 ResourceApplyStart = null;
                 ResourceApplySuccess = null;
@@ -99,96 +103,48 @@ namespace GameFramework.Resource
             /// </summary>
             public int GenerateReadWriteVersionListLength
             {
-                get
-                {
-                    return m_GenerateReadWriteVersionListLength;
-                }
-                set
-                {
-                    m_GenerateReadWriteVersionListLength = value;
-                }
+                get => m_GenerateReadWriteVersionListLength;
+                set => m_GenerateReadWriteVersionListLength = value;
             }
 
             /// <summary>
             /// 获取正在应用的资源包路径。
             /// </summary>
-            public string ApplyingResourcePackPath
-            {
-                get
-                {
-                    return m_ApplyingResourcePackPath;
-                }
-            }
+            public string ApplyingResourcePackPath => m_ApplyingResourcePackPath;
 
             /// <summary>
             /// 获取等待应用资源数量。
             /// </summary>
-            public int ApplyWaitingCount
-            {
-                get
-                {
-                    return m_ApplyWaitingInfo.Count;
-                }
-            }
+            public int ApplyWaitingCount => m_ApplyWaitingInfo.Count;
 
             /// <summary>
             /// 获取或设置资源更新重试次数。
             /// </summary>
             public int UpdateRetryCount
             {
-                get
-                {
-                    return m_UpdateRetryCount;
-                }
-                set
-                {
-                    m_UpdateRetryCount = value;
-                }
+                get => m_UpdateRetryCount;
+                set => m_UpdateRetryCount = value;
             }
 
             /// <summary>
             /// 获取正在更新的资源组。
             /// </summary>
-            public IResourceGroup UpdatingResourceGroup
-            {
-                get
-                {
-                    return m_UpdatingResourceGroup;
-                }
-            }
+            public IResourceGroup UpdatingResourceGroup => m_UpdatingResourceGroup;
 
             /// <summary>
             /// 获取等待更新资源数量。
             /// </summary>
-            public int UpdateWaitingCount
-            {
-                get
-                {
-                    return m_UpdateWaitingInfo.Count;
-                }
-            }
+            public int UpdateWaitingCount => m_UpdateWaitingInfo.Count;
 
             /// <summary>
             /// 获取使用时下载的等待更新资源数量。
             /// </summary>
-            public int UpdateWaitingWhilePlayingCount
-            {
-                get
-                {
-                    return m_UpdateWaitingInfoWhilePlaying.Count;
-                }
-            }
+            public int UpdateWaitingWhilePlayingCount => m_UpdateWaitingInfoWhilePlaying.Count;
 
             /// <summary>
             /// 获取候选更新资源数量。
             /// </summary>
-            public int UpdateCandidateCount
-            {
-                get
-                {
-                    return m_UpdateCandidateInfo.Count;
-                }
-            }
+            public int UpdateCandidateCount => m_UpdateCandidateInfo.Count;
 
             /// <summary>
             /// 资源更新器轮询。
@@ -291,9 +247,12 @@ namespace GameFramework.Resource
             /// <param name="compressedLength">压缩后大小。</param>
             /// <param name="compressedHashCode">压缩后哈希值。</param>
             /// <param name="resourcePath">资源路径。</param>
-            public void AddResourceUpdate(ResourceName resourceName, string fileSystemName, LoadType loadType, int length, int hashCode, int compressedLength, int compressedHashCode, string resourcePath)
+            public void AddResourceUpdate(ResourceName resourceName, string fileSystemName, LoadType loadType,
+                int length, int hashCode, int compressedLength, int compressedHashCode, string resourcePath)
             {
-                m_UpdateCandidateInfo.Add(resourceName, new UpdateInfo(resourceName, fileSystemName, loadType, length, hashCode, compressedLength, compressedHashCode, resourcePath));
+                m_UpdateCandidateInfo.Add(resourceName,
+                    new UpdateInfo(resourceName, fileSystemName, loadType, length, hashCode, compressedLength,
+                        compressedHashCode, resourcePath));
             }
 
             /// <summary>
@@ -322,12 +281,14 @@ namespace GameFramework.Resource
 
                 if (m_ApplyingResourcePackStream != null)
                 {
-                    throw new GameFrameworkException(Utility.Text.Format("There is already a resource pack '{0}' being applied.", m_ApplyingResourcePackPath));
+                    throw new GameFrameworkException(Utility.Text.Format(
+                        "There is already a resource pack '{0}' being applied.", m_ApplyingResourcePackPath));
                 }
 
                 if (m_UpdatingResourceGroup != null)
                 {
-                    throw new GameFrameworkException(Utility.Text.Format("There is already a resource group '{0}' being updated.", m_UpdatingResourceGroup.Name));
+                    throw new GameFrameworkException(Utility.Text.Format(
+                        "There is already a resource group '{0}' being updated.", m_UpdatingResourceGroup.Name));
                 }
 
                 if (m_UpdateWaitingInfoWhilePlaying.Count > 0)
@@ -364,17 +325,21 @@ namespace GameFramework.Resource
                     ResourcePackVersionList.Resource[] resources = versionList.GetResources();
                     foreach (ResourcePackVersionList.Resource resource in resources)
                     {
-                        ResourceName resourceName = new ResourceName(resource.Name, resource.Variant, resource.Extension);
+                        ResourceName resourceName =
+                            new ResourceName(resource.Name, resource.Variant, resource.Extension);
                         UpdateInfo updateInfo = null;
                         if (!m_UpdateCandidateInfo.TryGetValue(resourceName, out updateInfo))
                         {
                             continue;
                         }
 
-                        if (updateInfo.LoadType == (LoadType)resource.LoadType && updateInfo.Length == resource.Length && updateInfo.HashCode == resource.HashCode)
+                        if (updateInfo.LoadType == (LoadType)resource.LoadType &&
+                            updateInfo.Length == resource.Length && updateInfo.HashCode == resource.HashCode)
                         {
                             totalLength += resource.Length;
-                            m_ApplyWaitingInfo.Enqueue(new ApplyInfo(resourceName, updateInfo.FileSystemName, (LoadType)resource.LoadType, resource.Offset, resource.Length, resource.HashCode, resource.CompressedLength, resource.CompressedHashCode, updateInfo.ResourcePath));
+                            m_ApplyWaitingInfo.Enqueue(new ApplyInfo(resourceName, updateInfo.FileSystemName,
+                                (LoadType)resource.LoadType, resource.Offset, resource.Length, resource.HashCode,
+                                resource.CompressedLength, resource.CompressedHashCode, updateInfo.ResourcePath));
                         }
                     }
 
@@ -391,7 +356,9 @@ namespace GameFramework.Resource
                         m_ApplyingResourcePackStream = null;
                     }
 
-                    throw new GameFrameworkException(Utility.Text.Format("Apply resources '{0}' with exception '{1}'.", resourcePackPath, exception), exception);
+                    throw new GameFrameworkException(
+                        Utility.Text.Format("Apply resources '{0}' with exception '{1}'.", resourcePackPath, exception),
+                        exception);
                 }
             }
 
@@ -413,12 +380,14 @@ namespace GameFramework.Resource
 
                 if (m_ApplyingResourcePackStream != null)
                 {
-                    throw new GameFrameworkException(Utility.Text.Format("There is already a resource pack '{0}' being applied.", m_ApplyingResourcePackPath));
+                    throw new GameFrameworkException(Utility.Text.Format(
+                        "There is already a resource pack '{0}' being applied.", m_ApplyingResourcePackPath));
                 }
 
                 if (m_UpdatingResourceGroup != null)
                 {
-                    throw new GameFrameworkException(Utility.Text.Format("There is already a resource group '{0}' being updated.", m_UpdatingResourceGroup.Name));
+                    throw new GameFrameworkException(Utility.Text.Format(
+                        "There is already a resource group '{0}' being updated.", m_UpdatingResourceGroup.Name));
                 }
 
                 if (string.IsNullOrEmpty(resourceGroup.Name))
@@ -466,7 +435,8 @@ namespace GameFramework.Resource
 
                 if (m_ApplyingResourcePackStream != null)
                 {
-                    throw new GameFrameworkException(Utility.Text.Format("There is already a resource pack '{0}' being applied.", m_ApplyingResourcePackPath));
+                    throw new GameFrameworkException(Utility.Text.Format(
+                        "There is already a resource pack '{0}' being applied.", m_ApplyingResourcePackPath));
                 }
 
                 if (m_UpdatingResourceGroup == null)
@@ -496,11 +466,13 @@ namespace GameFramework.Resource
 
                 if (m_ApplyingResourcePackStream != null)
                 {
-                    throw new GameFrameworkException(Utility.Text.Format("There is already a resource pack '{0}' being applied.", m_ApplyingResourcePackPath));
+                    throw new GameFrameworkException(Utility.Text.Format(
+                        "There is already a resource pack '{0}' being applied.", m_ApplyingResourcePackPath));
                 }
 
                 UpdateInfo updateInfo = null;
-                if (m_UpdateCandidateInfo.TryGetValue(resourceName, out updateInfo) && m_UpdateWaitingInfoWhilePlaying.Add(updateInfo))
+                if (m_UpdateCandidateInfo.TryGetValue(resourceName, out updateInfo) &&
+                    m_UpdateWaitingInfoWhilePlaying.Add(updateInfo))
                 {
                     DownloadResource(updateInfo);
                 }
@@ -511,7 +483,8 @@ namespace GameFramework.Resource
                 long position = m_ApplyingResourcePackStream.Position;
                 try
                 {
-                    bool compressed = applyInfo.Length != applyInfo.CompressedLength || applyInfo.HashCode != applyInfo.CompressedHashCode;
+                    bool compressed = applyInfo.Length != applyInfo.CompressedLength ||
+                                      applyInfo.HashCode != applyInfo.CompressedHashCode;
 
                     int bytesRead = 0;
                     int bytesLeft = applyInfo.CompressedLength;
@@ -522,9 +495,11 @@ namespace GameFramework.Resource
                     }
 
                     m_ApplyingResourcePackStream.Position += applyInfo.Offset;
-                    using (FileStream fileStream = new FileStream(applyInfo.ResourcePath, FileMode.Create, FileAccess.ReadWrite))
+                    using (FileStream fileStream =
+                           new FileStream(applyInfo.ResourcePath, FileMode.Create, FileAccess.ReadWrite))
                     {
-                        while ((bytesRead = m_ApplyingResourcePackStream.Read(m_CachedBytes, 0, bytesLeft < CachedBytesLength ? bytesLeft : CachedBytesLength)) > 0)
+                        while ((bytesRead = m_ApplyingResourcePackStream.Read(m_CachedBytes, 0,
+                                   bytesLeft < CachedBytesLength ? bytesLeft : CachedBytesLength)) > 0)
                         {
                             bytesLeft -= bytesRead;
                             fileStream.Write(m_CachedBytes, 0, bytesRead);
@@ -538,8 +513,11 @@ namespace GameFramework.Resource
                             {
                                 if (ResourceApplyFailure != null)
                                 {
-                                    string errorMessage = Utility.Text.Format("Resource compressed hash code error, need '{0}', applied '{1}'.", applyInfo.CompressedHashCode, hashCode);
-                                    ResourceApplyFailure(applyInfo.ResourceName, m_ApplyingResourcePackPath, errorMessage);
+                                    string errorMessage = Utility.Text.Format(
+                                        "Resource compressed hash code error, need '{0}', applied '{1}'.",
+                                        applyInfo.CompressedHashCode, hashCode);
+                                    ResourceApplyFailure(applyInfo.ResourceName, m_ApplyingResourcePackPath,
+                                        errorMessage);
                                 }
 
                                 m_FailureFlag = true;
@@ -552,8 +530,10 @@ namespace GameFramework.Resource
                             {
                                 if (ResourceApplyFailure != null)
                                 {
-                                    string errorMessage = Utility.Text.Format("Unable to decompress resource '{0}'.", applyInfo.ResourcePath);
-                                    ResourceApplyFailure(applyInfo.ResourceName, m_ApplyingResourcePackPath, errorMessage);
+                                    string errorMessage = Utility.Text.Format("Unable to decompress resource '{0}'.",
+                                        applyInfo.ResourcePath);
+                                    ResourceApplyFailure(applyInfo.ResourceName, m_ApplyingResourcePackPath,
+                                        errorMessage);
                                 }
 
                                 m_FailureFlag = true;
@@ -562,23 +542,30 @@ namespace GameFramework.Resource
 
                             fileStream.Position = 0L;
                             fileStream.SetLength(0L);
-                            fileStream.Write(m_ResourceManager.m_CachedStream.GetBuffer(), 0, (int)m_ResourceManager.m_CachedStream.Length);
+                            fileStream.Write(m_ResourceManager.m_CachedStream.GetBuffer(), 0,
+                                (int)m_ResourceManager.m_CachedStream.Length);
                         }
                         else
                         {
                             int hashCode = 0;
                             fileStream.Position = 0L;
-                            if (applyInfo.LoadType == LoadType.LoadFromMemoryAndQuickDecrypt || applyInfo.LoadType == LoadType.LoadFromMemoryAndDecrypt
-                                || applyInfo.LoadType == LoadType.LoadFromBinaryAndQuickDecrypt || applyInfo.LoadType == LoadType.LoadFromBinaryAndDecrypt)
+                            if (applyInfo.LoadType == LoadType.LoadFromMemoryAndQuickDecrypt ||
+                                applyInfo.LoadType == LoadType.LoadFromMemoryAndDecrypt
+                                || applyInfo.LoadType == LoadType.LoadFromBinaryAndQuickDecrypt ||
+                                applyInfo.LoadType == LoadType.LoadFromBinaryAndDecrypt)
                             {
                                 Utility.Converter.GetBytes(applyInfo.HashCode, m_CachedHashBytes);
-                                if (applyInfo.LoadType == LoadType.LoadFromMemoryAndQuickDecrypt || applyInfo.LoadType == LoadType.LoadFromBinaryAndQuickDecrypt)
+                                if (applyInfo.LoadType == LoadType.LoadFromMemoryAndQuickDecrypt ||
+                                    applyInfo.LoadType == LoadType.LoadFromBinaryAndQuickDecrypt)
                                 {
-                                    hashCode = Utility.Verifier.GetCrc32(fileStream, m_CachedHashBytes, Utility.Encryption.QuickEncryptLength);
+                                    hashCode = Utility.Verifier.GetCrc32(fileStream, m_CachedHashBytes,
+                                        Utility.Encryption.QuickEncryptLength);
                                 }
-                                else if (applyInfo.LoadType == LoadType.LoadFromMemoryAndDecrypt || applyInfo.LoadType == LoadType.LoadFromBinaryAndDecrypt)
+                                else if (applyInfo.LoadType == LoadType.LoadFromMemoryAndDecrypt ||
+                                         applyInfo.LoadType == LoadType.LoadFromBinaryAndDecrypt)
                                 {
-                                    hashCode = Utility.Verifier.GetCrc32(fileStream, m_CachedHashBytes, applyInfo.Length);
+                                    hashCode = Utility.Verifier.GetCrc32(fileStream, m_CachedHashBytes,
+                                        applyInfo.Length);
                                 }
 
                                 Array.Clear(m_CachedHashBytes, 0, CachedHashBytesLength);
@@ -592,8 +579,11 @@ namespace GameFramework.Resource
                             {
                                 if (ResourceApplyFailure != null)
                                 {
-                                    string errorMessage = Utility.Text.Format("Resource hash code error, need '{0}', applied '{1}'.", applyInfo.HashCode, hashCode);
-                                    ResourceApplyFailure(applyInfo.ResourceName, m_ApplyingResourcePackPath, errorMessage);
+                                    string errorMessage = Utility.Text.Format(
+                                        "Resource hash code error, need '{0}', applied '{1}'.", applyInfo.HashCode,
+                                        hashCode);
+                                    ResourceApplyFailure(applyInfo.ResourceName, m_ApplyingResourcePackPath,
+                                        errorMessage);
                                 }
 
                                 m_FailureFlag = true;
@@ -615,7 +605,9 @@ namespace GameFramework.Resource
                         {
                             if (ResourceApplyFailure != null)
                             {
-                                string errorMessage = Utility.Text.Format("Unable to write resource '{0}' to file system '{1}'.", applyInfo.ResourcePath, applyInfo.FileSystemName);
+                                string errorMessage = Utility.Text.Format(
+                                    "Unable to write resource '{0}' to file system '{1}'.", applyInfo.ResourcePath,
+                                    applyInfo.FileSystemName);
                                 ResourceApplyFailure(applyInfo.ResourceName, m_ApplyingResourcePackPath, errorMessage);
                             }
 
@@ -632,14 +624,18 @@ namespace GameFramework.Resource
 
                     m_UpdateCandidateInfo.Remove(applyInfo.ResourceName);
                     m_ResourceManager.m_ResourceInfos[applyInfo.ResourceName].MarkReady();
-                    m_ResourceManager.m_ReadWriteResourceInfos.Add(applyInfo.ResourceName, new ReadWriteResourceInfo(applyInfo.FileSystemName, applyInfo.LoadType, applyInfo.Length, applyInfo.HashCode));
+                    m_ResourceManager.m_ReadWriteResourceInfos.Add(applyInfo.ResourceName,
+                        new ReadWriteResourceInfo(applyInfo.FileSystemName, applyInfo.LoadType, applyInfo.Length,
+                            applyInfo.HashCode));
                     if (ResourceApplySuccess != null)
                     {
-                        ResourceApplySuccess(applyInfo.ResourceName, applyInfo.ResourcePath, m_ApplyingResourcePackPath, applyInfo.Length, applyInfo.CompressedLength);
+                        ResourceApplySuccess(applyInfo.ResourceName, applyInfo.ResourcePath, m_ApplyingResourcePackPath,
+                            applyInfo.Length, applyInfo.CompressedLength);
                     }
 
                     m_CurrentGenerateReadWriteVersionListLength += applyInfo.CompressedLength;
-                    if (m_ApplyWaitingInfo.Count <= 0 || m_CurrentGenerateReadWriteVersionListLength >= m_GenerateReadWriteVersionListLength)
+                    if (m_ApplyWaitingInfo.Count <= 0 || m_CurrentGenerateReadWriteVersionListLength >=
+                        m_GenerateReadWriteVersionListLength)
                     {
                         GenerateReadWriteVersionList();
                         return true;
@@ -671,8 +667,14 @@ namespace GameFramework.Resource
                 }
 
                 updateInfo.Downloading = true;
-                string resourceFullNameWithCrc32 = updateInfo.ResourceName.Variant != null ? Utility.Text.Format("{0}.{1}.{2:x8}.{3}", updateInfo.ResourceName.Name, updateInfo.ResourceName.Variant, updateInfo.HashCode, DefaultExtension) : Utility.Text.Format("{0}.{1:x8}.{2}", updateInfo.ResourceName.Name, updateInfo.HashCode, DefaultExtension);
-                m_DownloadManager.AddDownload(updateInfo.ResourcePath, Utility.Path.GetRemotePath(Path.Combine(m_ResourceManager.m_UpdatePrefixUri, resourceFullNameWithCrc32)), updateInfo);
+                string resourceFullNameWithCrc32 = updateInfo.ResourceName.Variant != null
+                    ? Utility.Text.Format("{0}.{1}.{2:x8}.{3}", updateInfo.ResourceName.Name,
+                        updateInfo.ResourceName.Variant, updateInfo.HashCode, DefaultExtension)
+                    : Utility.Text.Format("{0}.{1:x8}.{2}", updateInfo.ResourceName.Name, updateInfo.HashCode,
+                        DefaultExtension);
+                m_DownloadManager.AddDownload(updateInfo.ResourcePath,
+                    Utility.Path.GetRemotePath(Path.Combine(m_ResourceManager.m_UpdatePrefixUri,
+                        resourceFullNameWithCrc32)), updateInfo);
                 return true;
             }
 
@@ -682,22 +684,29 @@ namespace GameFramework.Resource
                 try
                 {
                     fileStream = new FileStream(m_ReadWriteVersionListTempFileName, FileMode.Create, FileAccess.Write);
-                    LocalVersionList.Resource[] resources = m_ResourceManager.m_ReadWriteResourceInfos.Count > 0 ? new LocalVersionList.Resource[m_ResourceManager.m_ReadWriteResourceInfos.Count] : null;
+                    LocalVersionList.Resource[] resources = m_ResourceManager.m_ReadWriteResourceInfos.Count > 0
+                        ? new LocalVersionList.Resource[m_ResourceManager.m_ReadWriteResourceInfos.Count]
+                        : null;
                     if (resources != null)
                     {
                         int index = 0;
-                        foreach (KeyValuePair<ResourceName, ReadWriteResourceInfo> i in m_ResourceManager.m_ReadWriteResourceInfos)
+                        foreach (KeyValuePair<ResourceName, ReadWriteResourceInfo> i in m_ResourceManager
+                                     .m_ReadWriteResourceInfos)
                         {
                             ResourceName resourceName = i.Key;
                             ReadWriteResourceInfo resourceInfo = i.Value;
-                            resources[index] = new LocalVersionList.Resource(resourceName.Name, resourceName.Variant, resourceName.Extension, (byte)resourceInfo.LoadType, resourceInfo.Length, resourceInfo.HashCode);
+                            resources[index] = new LocalVersionList.Resource(resourceName.Name, resourceName.Variant,
+                                resourceName.Extension, (byte)resourceInfo.LoadType, resourceInfo.Length,
+                                resourceInfo.HashCode);
                             if (resourceInfo.UseFileSystem)
                             {
                                 List<int> resourceIndexes = null;
-                                if (!m_CachedFileSystemsForGenerateReadWriteVersionList.TryGetValue(resourceInfo.FileSystemName, out resourceIndexes))
+                                if (!m_CachedFileSystemsForGenerateReadWriteVersionList.TryGetValue(
+                                        resourceInfo.FileSystemName, out resourceIndexes))
                                 {
                                     resourceIndexes = new List<int>();
-                                    m_CachedFileSystemsForGenerateReadWriteVersionList.Add(resourceInfo.FileSystemName, resourceIndexes);
+                                    m_CachedFileSystemsForGenerateReadWriteVersionList.Add(resourceInfo.FileSystemName,
+                                        resourceIndexes);
                                 }
 
                                 resourceIndexes.Add(index);
@@ -707,11 +716,15 @@ namespace GameFramework.Resource
                         }
                     }
 
-                    LocalVersionList.FileSystem[] fileSystems = m_CachedFileSystemsForGenerateReadWriteVersionList.Count > 0 ? new LocalVersionList.FileSystem[m_CachedFileSystemsForGenerateReadWriteVersionList.Count] : null;
+                    LocalVersionList.FileSystem[] fileSystems =
+                        m_CachedFileSystemsForGenerateReadWriteVersionList.Count > 0
+                            ? new LocalVersionList.FileSystem[m_CachedFileSystemsForGenerateReadWriteVersionList.Count]
+                            : null;
                     if (fileSystems != null)
                     {
                         int index = 0;
-                        foreach (KeyValuePair<string, List<int>> i in m_CachedFileSystemsForGenerateReadWriteVersionList)
+                        foreach (KeyValuePair<string, List<int>> i in
+                                 m_CachedFileSystemsForGenerateReadWriteVersionList)
                         {
                             fileSystems[index++] = new LocalVersionList.FileSystem(i.Key, i.Value.ToArray());
                             i.Value.Clear();
@@ -743,7 +756,8 @@ namespace GameFramework.Resource
                         File.Delete(m_ReadWriteVersionListTempFileName);
                     }
 
-                    throw new GameFrameworkException(Utility.Text.Format("Generate read-write version list exception '{0}'.", exception), exception);
+                    throw new GameFrameworkException(
+                        Utility.Text.Format("Generate read-write version list exception '{0}'.", exception), exception);
                 }
 
                 if (File.Exists(m_ReadWriteVersionListFileName))
@@ -775,7 +789,8 @@ namespace GameFramework.Resource
 
                 if (ResourceUpdateStart != null)
                 {
-                    ResourceUpdateStart(updateInfo.ResourceName, e.DownloadPath, e.DownloadUri, (int)e.CurrentLength, updateInfo.CompressedLength, updateInfo.RetryCount);
+                    ResourceUpdateStart(updateInfo.ResourceName, e.DownloadPath, e.DownloadUri, (int)e.CurrentLength,
+                        updateInfo.CompressedLength, updateInfo.RetryCount);
                 }
             }
 
@@ -801,8 +816,13 @@ namespace GameFramework.Resource
                         File.Delete(downloadFile);
                     }
 
-                    string errorMessage = Utility.Text.Format("When download update, downloaded length is larger than compressed length, need '{0}', downloaded '{1}'.", updateInfo.CompressedLength, e.CurrentLength);
-                    DownloadFailureEventArgs downloadFailureEventArgs = DownloadFailureEventArgs.Create(e.SerialId, e.DownloadPath, e.DownloadUri, errorMessage, e.UserData);
+                    string errorMessage =
+                        Utility.Text.Format(
+                            "When download update, downloaded length is larger than compressed length, need '{0}', downloaded '{1}'.",
+                            updateInfo.CompressedLength, e.CurrentLength);
+                    DownloadFailureEventArgs downloadFailureEventArgs =
+                        DownloadFailureEventArgs.Create(e.SerialId, e.DownloadPath, e.DownloadUri, errorMessage,
+                            e.UserData);
                     OnDownloadFailure(this, downloadFailureEventArgs);
                     ReferencePool.Release(downloadFailureEventArgs);
                     return;
@@ -810,7 +830,8 @@ namespace GameFramework.Resource
 
                 if (ResourceUpdateChanged != null)
                 {
-                    ResourceUpdateChanged(updateInfo.ResourceName, e.DownloadPath, e.DownloadUri, (int)e.CurrentLength, updateInfo.CompressedLength);
+                    ResourceUpdateChanged(updateInfo.ResourceName, e.DownloadPath, e.DownloadUri, (int)e.CurrentLength,
+                        updateInfo.CompressedLength);
                 }
             }
 
@@ -826,14 +847,19 @@ namespace GameFramework.Resource
                 {
                     using (FileStream fileStream = new FileStream(e.DownloadPath, FileMode.Open, FileAccess.ReadWrite))
                     {
-                        bool compressed = updateInfo.Length != updateInfo.CompressedLength || updateInfo.HashCode != updateInfo.CompressedHashCode;
+                        bool compressed = updateInfo.Length != updateInfo.CompressedLength ||
+                                          updateInfo.HashCode != updateInfo.CompressedHashCode;
 
                         int length = (int)fileStream.Length;
                         if (length != updateInfo.CompressedLength)
                         {
                             fileStream.Close();
-                            string errorMessage = Utility.Text.Format("Resource compressed length error, need '{0}', downloaded '{1}'.", updateInfo.CompressedLength, length);
-                            DownloadFailureEventArgs downloadFailureEventArgs = DownloadFailureEventArgs.Create(e.SerialId, e.DownloadPath, e.DownloadUri, errorMessage, e.UserData);
+                            string errorMessage = Utility.Text.Format(
+                                "Resource compressed length error, need '{0}', downloaded '{1}'.",
+                                updateInfo.CompressedLength, length);
+                            DownloadFailureEventArgs downloadFailureEventArgs =
+                                DownloadFailureEventArgs.Create(e.SerialId, e.DownloadPath, e.DownloadUri, errorMessage,
+                                    e.UserData);
                             OnDownloadFailure(this, downloadFailureEventArgs);
                             ReferencePool.Release(downloadFailureEventArgs);
                             return;
@@ -846,8 +872,12 @@ namespace GameFramework.Resource
                             if (hashCode != updateInfo.CompressedHashCode)
                             {
                                 fileStream.Close();
-                                string errorMessage = Utility.Text.Format("Resource compressed hash code error, need '{0}', downloaded '{1}'.", updateInfo.CompressedHashCode, hashCode);
-                                DownloadFailureEventArgs downloadFailureEventArgs = DownloadFailureEventArgs.Create(e.SerialId, e.DownloadPath, e.DownloadUri, errorMessage, e.UserData);
+                                string errorMessage = Utility.Text.Format(
+                                    "Resource compressed hash code error, need '{0}', downloaded '{1}'.",
+                                    updateInfo.CompressedHashCode, hashCode);
+                                DownloadFailureEventArgs downloadFailureEventArgs =
+                                    DownloadFailureEventArgs.Create(e.SerialId, e.DownloadPath, e.DownloadUri,
+                                        errorMessage, e.UserData);
                                 OnDownloadFailure(this, downloadFailureEventArgs);
                                 ReferencePool.Release(downloadFailureEventArgs);
                                 return;
@@ -858,8 +888,11 @@ namespace GameFramework.Resource
                             if (!Utility.Compression.Decompress(fileStream, m_ResourceManager.m_CachedStream))
                             {
                                 fileStream.Close();
-                                string errorMessage = Utility.Text.Format("Unable to decompress resource '{0}'.", e.DownloadPath);
-                                DownloadFailureEventArgs downloadFailureEventArgs = DownloadFailureEventArgs.Create(e.SerialId, e.DownloadPath, e.DownloadUri, errorMessage, e.UserData);
+                                string errorMessage = Utility.Text.Format("Unable to decompress resource '{0}'.",
+                                    e.DownloadPath);
+                                DownloadFailureEventArgs downloadFailureEventArgs =
+                                    DownloadFailureEventArgs.Create(e.SerialId, e.DownloadPath, e.DownloadUri,
+                                        errorMessage, e.UserData);
                                 OnDownloadFailure(this, downloadFailureEventArgs);
                                 ReferencePool.Release(downloadFailureEventArgs);
                                 return;
@@ -869,8 +902,12 @@ namespace GameFramework.Resource
                             if (uncompressedLength != updateInfo.Length)
                             {
                                 fileStream.Close();
-                                string errorMessage = Utility.Text.Format("Resource length error, need '{0}', downloaded '{1}'.", updateInfo.Length, uncompressedLength);
-                                DownloadFailureEventArgs downloadFailureEventArgs = DownloadFailureEventArgs.Create(e.SerialId, e.DownloadPath, e.DownloadUri, errorMessage, e.UserData);
+                                string errorMessage = Utility.Text.Format(
+                                    "Resource length error, need '{0}', downloaded '{1}'.", updateInfo.Length,
+                                    uncompressedLength);
+                                DownloadFailureEventArgs downloadFailureEventArgs =
+                                    DownloadFailureEventArgs.Create(e.SerialId, e.DownloadPath, e.DownloadUri,
+                                        errorMessage, e.UserData);
                                 OnDownloadFailure(this, downloadFailureEventArgs);
                                 ReferencePool.Release(downloadFailureEventArgs);
                                 return;
@@ -884,15 +921,20 @@ namespace GameFramework.Resource
                         {
                             int hashCode = 0;
                             fileStream.Position = 0L;
-                            if (updateInfo.LoadType == LoadType.LoadFromMemoryAndQuickDecrypt || updateInfo.LoadType == LoadType.LoadFromMemoryAndDecrypt
-                                || updateInfo.LoadType == LoadType.LoadFromBinaryAndQuickDecrypt || updateInfo.LoadType == LoadType.LoadFromBinaryAndDecrypt)
+                            if (updateInfo.LoadType == LoadType.LoadFromMemoryAndQuickDecrypt ||
+                                updateInfo.LoadType == LoadType.LoadFromMemoryAndDecrypt
+                                || updateInfo.LoadType == LoadType.LoadFromBinaryAndQuickDecrypt ||
+                                updateInfo.LoadType == LoadType.LoadFromBinaryAndDecrypt)
                             {
                                 Utility.Converter.GetBytes(updateInfo.HashCode, m_CachedHashBytes);
-                                if (updateInfo.LoadType == LoadType.LoadFromMemoryAndQuickDecrypt || updateInfo.LoadType == LoadType.LoadFromBinaryAndQuickDecrypt)
+                                if (updateInfo.LoadType == LoadType.LoadFromMemoryAndQuickDecrypt ||
+                                    updateInfo.LoadType == LoadType.LoadFromBinaryAndQuickDecrypt)
                                 {
-                                    hashCode = Utility.Verifier.GetCrc32(fileStream, m_CachedHashBytes, Utility.Encryption.QuickEncryptLength);
+                                    hashCode = Utility.Verifier.GetCrc32(fileStream, m_CachedHashBytes,
+                                        Utility.Encryption.QuickEncryptLength);
                                 }
-                                else if (updateInfo.LoadType == LoadType.LoadFromMemoryAndDecrypt || updateInfo.LoadType == LoadType.LoadFromBinaryAndDecrypt)
+                                else if (updateInfo.LoadType == LoadType.LoadFromMemoryAndDecrypt ||
+                                         updateInfo.LoadType == LoadType.LoadFromBinaryAndDecrypt)
                                 {
                                     hashCode = Utility.Verifier.GetCrc32(fileStream, m_CachedHashBytes, length);
                                 }
@@ -907,8 +949,12 @@ namespace GameFramework.Resource
                             if (hashCode != updateInfo.HashCode)
                             {
                                 fileStream.Close();
-                                string errorMessage = Utility.Text.Format("Resource hash code error, need '{0}', downloaded '{1}'.", updateInfo.HashCode, hashCode);
-                                DownloadFailureEventArgs downloadFailureEventArgs = DownloadFailureEventArgs.Create(e.SerialId, e.DownloadPath, e.DownloadUri, errorMessage, e.UserData);
+                                string errorMessage = Utility.Text.Format(
+                                    "Resource hash code error, need '{0}', downloaded '{1}'.", updateInfo.HashCode,
+                                    hashCode);
+                                DownloadFailureEventArgs downloadFailureEventArgs =
+                                    DownloadFailureEventArgs.Create(e.SerialId, e.DownloadPath, e.DownloadUri,
+                                        errorMessage, e.UserData);
                                 OnDownloadFailure(this, downloadFailureEventArgs);
                                 ReferencePool.Release(downloadFailureEventArgs);
                                 return;
@@ -927,8 +973,11 @@ namespace GameFramework.Resource
 
                         if (!retVal)
                         {
-                            string errorMessage = Utility.Text.Format("Write resource to file system '{0}' error.", fileSystem.FullPath);
-                            DownloadFailureEventArgs downloadFailureEventArgs = DownloadFailureEventArgs.Create(e.SerialId, e.DownloadPath, e.DownloadUri, errorMessage, e.UserData);
+                            string errorMessage = Utility.Text.Format("Write resource to file system '{0}' error.",
+                                fileSystem.FullPath);
+                            DownloadFailureEventArgs downloadFailureEventArgs =
+                                DownloadFailureEventArgs.Create(e.SerialId, e.DownloadPath, e.DownloadUri, errorMessage,
+                                    e.UserData);
                             OnDownloadFailure(this, downloadFailureEventArgs);
                             ReferencePool.Release(downloadFailureEventArgs);
                             return;
@@ -939,14 +988,19 @@ namespace GameFramework.Resource
                     m_UpdateWaitingInfo.Remove(updateInfo);
                     m_UpdateWaitingInfoWhilePlaying.Remove(updateInfo);
                     m_ResourceManager.m_ResourceInfos[updateInfo.ResourceName].MarkReady();
-                    m_ResourceManager.m_ReadWriteResourceInfos.Add(updateInfo.ResourceName, new ReadWriteResourceInfo(updateInfo.FileSystemName, updateInfo.LoadType, updateInfo.Length, updateInfo.HashCode));
+                    m_ResourceManager.m_ReadWriteResourceInfos.Add(updateInfo.ResourceName,
+                        new ReadWriteResourceInfo(updateInfo.FileSystemName, updateInfo.LoadType, updateInfo.Length,
+                            updateInfo.HashCode));
                     if (ResourceUpdateSuccess != null)
                     {
-                        ResourceUpdateSuccess(updateInfo.ResourceName, e.DownloadPath, e.DownloadUri, updateInfo.Length, updateInfo.CompressedLength);
+                        ResourceUpdateSuccess(updateInfo.ResourceName, e.DownloadPath, e.DownloadUri, updateInfo.Length,
+                            updateInfo.CompressedLength);
                     }
 
                     m_CurrentGenerateReadWriteVersionListLength += updateInfo.CompressedLength;
-                    if (m_UpdateCandidateInfo.Count <= 0 || m_UpdateWaitingInfo.Count + m_UpdateWaitingInfoWhilePlaying.Count <= 0 || m_CurrentGenerateReadWriteVersionListLength >= m_GenerateReadWriteVersionListLength)
+                    if (m_UpdateCandidateInfo.Count <= 0 ||
+                        m_UpdateWaitingInfo.Count + m_UpdateWaitingInfoWhilePlaying.Count <= 0 ||
+                        m_CurrentGenerateReadWriteVersionListLength >= m_GenerateReadWriteVersionListLength)
                     {
                         GenerateReadWriteVersionList();
                     }
@@ -968,8 +1022,11 @@ namespace GameFramework.Resource
                 }
                 catch (Exception exception)
                 {
-                    string errorMessage = Utility.Text.Format("Update resource '{0}' with error message '{1}'.", e.DownloadPath, exception);
-                    DownloadFailureEventArgs downloadFailureEventArgs = DownloadFailureEventArgs.Create(e.SerialId, e.DownloadPath, e.DownloadUri, errorMessage, e.UserData);
+                    string errorMessage = Utility.Text.Format("Update resource '{0}' with error message '{1}'.",
+                        e.DownloadPath, exception);
+                    DownloadFailureEventArgs downloadFailureEventArgs =
+                        DownloadFailureEventArgs.Create(e.SerialId, e.DownloadPath, e.DownloadUri, errorMessage,
+                            e.UserData);
                     OnDownloadFailure(this, downloadFailureEventArgs);
                     ReferencePool.Release(downloadFailureEventArgs);
                 }
@@ -990,7 +1047,8 @@ namespace GameFramework.Resource
 
                 if (ResourceUpdateFailure != null)
                 {
-                    ResourceUpdateFailure(updateInfo.ResourceName, e.DownloadUri, updateInfo.RetryCount, m_UpdateRetryCount, e.ErrorMessage);
+                    ResourceUpdateFailure(updateInfo.ResourceName, e.DownloadUri, updateInfo.RetryCount,
+                        m_UpdateRetryCount, e.ErrorMessage);
                 }
 
                 if (updateInfo.RetryCount < m_UpdateRetryCount)

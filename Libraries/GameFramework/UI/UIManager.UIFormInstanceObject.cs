@@ -25,7 +25,8 @@ namespace GameFramework.UI
                 m_UIFormHelper = null;
             }
 
-            public static UIFormInstanceObject Create(string name, object uiFormAsset, object uiFormInstance, IUIFormHelper uiFormHelper)
+            public static UIFormInstanceObject Create(string name, object uiFormAsset, object uiFormInstance,
+                IUIFormHelper uiFormHelper)
             {
                 if (uiFormAsset == null)
                 {

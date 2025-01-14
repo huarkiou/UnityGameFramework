@@ -28,19 +28,12 @@ namespace GameFramework.FileSystem
         /// <summary>
         /// 获取或设置文件系统流位置。
         /// </summary>
-        protected internal abstract long Position
-        {
-            get;
-            set;
-        }
+        protected internal abstract long Position { get; set; }
 
         /// <summary>
         /// 获取文件系统流长度。
         /// </summary>
-        protected internal abstract long Length
-        {
-            get;
-        }
+        protected internal abstract long Length { get; }
 
         /// <summary>
         /// 设置文件系统流长度。
@@ -80,7 +73,8 @@ namespace GameFramework.FileSystem
         {
             int bytesRead = 0;
             int bytesLeft = length;
-            while ((bytesRead = Read(s_CachedBytes, 0, bytesLeft < CachedBytesLength ? bytesLeft : CachedBytesLength)) > 0)
+            while ((bytesRead = Read(s_CachedBytes, 0, bytesLeft < CachedBytesLength ? bytesLeft : CachedBytesLength)) >
+                   0)
             {
                 bytesLeft -= bytesRead;
                 stream.Write(s_CachedBytes, 0, bytesRead);
@@ -113,7 +107,8 @@ namespace GameFramework.FileSystem
         {
             int bytesRead = 0;
             int bytesLeft = length;
-            while ((bytesRead = stream.Read(s_CachedBytes, 0, bytesLeft < CachedBytesLength ? bytesLeft : CachedBytesLength)) > 0)
+            while ((bytesRead = stream.Read(s_CachedBytes, 0,
+                       bytesLeft < CachedBytesLength ? bytesLeft : CachedBytesLength)) > 0)
             {
                 bytesLeft -= bytesRead;
                 Write(s_CachedBytes, 0, bytesRead);

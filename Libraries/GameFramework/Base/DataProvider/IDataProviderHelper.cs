@@ -32,7 +32,8 @@ namespace GameFramework
         /// <param name="length">内容二进制流的长度。</param>
         /// <param name="userData">用户自定义数据。</param>
         /// <returns>是否读取数据成功。</returns>
-        bool ReadData(T dataProviderOwner, string dataAssetName, byte[] dataBytes, int startIndex, int length, object userData);
+        bool ReadData(T dataProviderOwner, string dataAssetName, byte[] dataBytes, int startIndex, int length,
+            object userData);
 
         /// <summary>
         /// 解析内容。

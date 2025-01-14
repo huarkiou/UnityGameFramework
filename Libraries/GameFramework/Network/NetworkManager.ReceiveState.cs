@@ -26,21 +26,9 @@ namespace GameFramework.Network
                 m_Disposed = false;
             }
 
-            public MemoryStream Stream
-            {
-                get
-                {
-                    return m_Stream;
-                }
-            }
+            public MemoryStream Stream => m_Stream;
 
-            public IPacketHeader PacketHeader
-            {
-                get
-                {
-                    return m_PacketHeader;
-                }
-            }
+            public IPacketHeader PacketHeader => m_PacketHeader;
 
             public void PrepareForPacketHeader(int packetHeaderLength)
             {

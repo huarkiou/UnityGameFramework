@@ -19,7 +19,8 @@ namespace GameFramework.Resource
         [StructLayout(LayoutKind.Auto)]
         private struct ResourceName : IComparable, IComparable<ResourceName>, IEquatable<ResourceName>
         {
-            private static readonly Dictionary<ResourceName, string> s_ResourceFullNames = new Dictionary<ResourceName, string>();
+            private static readonly Dictionary<ResourceName, string> s_ResourceFullNames =
+                new Dictionary<ResourceName, string>();
 
             private readonly string m_Name;
             private readonly string m_Variant;
@@ -51,35 +52,17 @@ namespace GameFramework.Resource
             /// <summary>
             /// 获取资源名称。
             /// </summary>
-            public string Name
-            {
-                get
-                {
-                    return m_Name;
-                }
-            }
+            public string Name => m_Name;
 
             /// <summary>
             /// 获取变体名称。
             /// </summary>
-            public string Variant
-            {
-                get
-                {
-                    return m_Variant;
-                }
-            }
+            public string Variant => m_Variant;
 
             /// <summary>
             /// 获取扩展名称。
             /// </summary>
-            public string Extension
-            {
-                get
-                {
-                    return m_Extension;
-                }
-            }
+            public string Extension => m_Extension;
 
             public string FullName
             {
@@ -91,7 +74,9 @@ namespace GameFramework.Resource
                         return fullName;
                     }
 
-                    fullName = m_Variant != null ? Utility.Text.Format("{0}.{1}.{2}", m_Name, m_Variant, m_Extension) : Utility.Text.Format("{0}.{1}", m_Name, m_Extension);
+                    fullName = m_Variant != null
+                        ? Utility.Text.Format("{0}.{1}.{2}", m_Name, m_Variant, m_Extension)
+                        : Utility.Text.Format("{0}.{1}", m_Name, m_Extension);
                     s_ResourceFullNames.Add(this, fullName);
                     return fullName;
                 }
@@ -119,7 +104,9 @@ namespace GameFramework.Resource
 
             public bool Equals(ResourceName value)
             {
-                return string.Equals(m_Name, value.m_Name, StringComparison.Ordinal) && string.Equals(m_Variant, value.m_Variant, StringComparison.Ordinal) && string.Equals(m_Extension, value.m_Extension, StringComparison.Ordinal);
+                return string.Equals(m_Name, value.m_Name, StringComparison.Ordinal) &&
+                       string.Equals(m_Variant, value.m_Variant, StringComparison.Ordinal) &&
+                       string.Equals(m_Extension, value.m_Extension, StringComparison.Ordinal);
             }
 
             public static bool operator ==(ResourceName a, ResourceName b)

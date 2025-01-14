@@ -5,10 +5,10 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameFramework;
-using GameFramework.Fsm;
 using System;
 using System.Collections.Generic;
+using GameFramework;
+using GameFramework.Fsm;
 using UnityEngine;
 
 namespace UnityGameFramework.Runtime
@@ -25,13 +25,7 @@ namespace UnityGameFramework.Runtime
         /// <summary>
         /// 获取有限状态机数量。
         /// </summary>
-        public int Count
-        {
-            get
-            {
-                return m_FsmManager.Count;
-            }
-        }
+        public int Count => m_FsmManager.Count;
 
         /// <summary>
         /// 游戏框架组件初始化。

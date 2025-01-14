@@ -5,8 +5,8 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameFramework.ObjectPool;
 using System.Collections.Generic;
+using GameFramework.ObjectPool;
 
 namespace GameFramework.Resource
 {
@@ -42,7 +42,8 @@ namespace GameFramework.Resource
                     }
                 }
 
-                public static AssetObject Create(string name, object target, List<object> dependencyAssets, object resource, IResourceHelper resourceHelper, ResourceLoader resourceLoader)
+                public static AssetObject Create(string name, object target, List<object> dependencyAssets,
+                    object resource, IResourceHelper resourceHelper, ResourceLoader resourceLoader)
                 {
                     if (dependencyAssets == null)
                     {
@@ -110,21 +111,26 @@ namespace GameFramework.Resource
                     if (!isShutdown)
                     {
                         int targetReferenceCount = 0;
-                        if (m_ResourceLoader.m_AssetDependencyCount.TryGetValue(Target, out targetReferenceCount) && targetReferenceCount > 0)
+                        if (m_ResourceLoader.m_AssetDependencyCount.TryGetValue(Target, out targetReferenceCount) &&
+                            targetReferenceCount > 0)
                         {
-                            throw new GameFrameworkException(Utility.Text.Format("Asset target '{0}' reference count is '{1}' larger than 0.", Name, targetReferenceCount));
+                            throw new GameFrameworkException(Utility.Text.Format(
+                                "Asset target '{0}' reference count is '{1}' larger than 0.", Name,
+                                targetReferenceCount));
                         }
 
                         foreach (object dependencyAsset in m_DependencyAssets)
                         {
                             int referenceCount = 0;
-                            if (m_ResourceLoader.m_AssetDependencyCount.TryGetValue(dependencyAsset, out referenceCount))
+                            if (m_ResourceLoader.m_AssetDependencyCount.TryGetValue(dependencyAsset,
+                                    out referenceCount))
                             {
                                 m_ResourceLoader.m_AssetDependencyCount[dependencyAsset] = referenceCount - 1;
                             }
                             else
                             {
-                                throw new GameFrameworkException(Utility.Text.Format("Asset target '{0}' dependency asset reference count is invalid.", Name));
+                                throw new GameFrameworkException(Utility.Text.Format(
+                                    "Asset target '{0}' dependency asset reference count is invalid.", Name));
                             }
                         }
 

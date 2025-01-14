@@ -33,40 +33,22 @@ namespace UnityGameFramework.Runtime
         /// <summary>
         /// 获取资源应用开始事件编号。
         /// </summary>
-        public override int Id
-        {
-            get
-            {
-                return EventId;
-            }
-        }
+        public override int Id => EventId;
 
         /// <summary>
         /// 获取资源包路径。
         /// </summary>
-        public string ResourcePackPath
-        {
-            get;
-            private set;
-        }
+        public string ResourcePackPath { get; private set; }
 
         /// <summary>
         /// 获取要应用资源的数量。
         /// </summary>
-        public int Count
-        {
-            get;
-            private set;
-        }
+        public int Count { get; private set; }
 
         /// <summary>
         /// 获取要应用资源的总大小。
         /// </summary>
-        public long TotalLength
-        {
-            get;
-            private set;
-        }
+        public long TotalLength { get; private set; }
 
         /// <summary>
         /// 创建资源应用开始事件。
@@ -75,7 +57,8 @@ namespace UnityGameFramework.Runtime
         /// <returns>创建的资源应用开始事件。</returns>
         public static ResourceApplyStartEventArgs Create(GameFramework.Resource.ResourceApplyStartEventArgs e)
         {
-            ResourceApplyStartEventArgs resourceApplyStartEventArgs = ReferencePool.Acquire<ResourceApplyStartEventArgs>();
+            ResourceApplyStartEventArgs resourceApplyStartEventArgs =
+                ReferencePool.Acquire<ResourceApplyStartEventArgs>();
             resourceApplyStartEventArgs.ResourcePackPath = e.ResourcePackPath;
             resourceApplyStartEventArgs.Count = e.Count;
             resourceApplyStartEventArgs.TotalLength = e.TotalLength;

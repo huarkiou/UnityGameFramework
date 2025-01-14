@@ -5,9 +5,9 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
+using System;
 using GameFramework;
 using GameFramework.Entity;
-using System;
 using UnityEngine;
 
 namespace UnityGameFramework.Runtime
@@ -25,57 +25,27 @@ namespace UnityGameFramework.Runtime
         /// <summary>
         /// 获取实体编号。
         /// </summary>
-        public int Id
-        {
-            get
-            {
-                return m_Id;
-            }
-        }
+        public int Id => m_Id;
 
         /// <summary>
         /// 获取实体资源名称。
         /// </summary>
-        public string EntityAssetName
-        {
-            get
-            {
-                return m_EntityAssetName;
-            }
-        }
+        public string EntityAssetName => m_EntityAssetName;
 
         /// <summary>
         /// 获取实体实例。
         /// </summary>
-        public object Handle
-        {
-            get
-            {
-                return gameObject;
-            }
-        }
+        public object Handle => gameObject;
 
         /// <summary>
         /// 获取实体所属的实体组。
         /// </summary>
-        public IEntityGroup EntityGroup
-        {
-            get
-            {
-                return m_EntityGroup;
-            }
-        }
+        public IEntityGroup EntityGroup => m_EntityGroup;
 
         /// <summary>
         /// 获取实体逻辑。
         /// </summary>
-        public EntityLogic Logic
-        {
-            get
-            {
-                return m_EntityLogic;
-            }
-        }
+        public EntityLogic Logic => m_EntityLogic;
 
         /// <summary>
         /// 实体初始化。
@@ -85,7 +55,8 @@ namespace UnityGameFramework.Runtime
         /// <param name="entityGroup">实体所属的实体组。</param>
         /// <param name="isNewInstance">是否是新实例。</param>
         /// <param name="userData">用户自定义数据。</param>
-        public void OnInit(int entityId, string entityAssetName, IEntityGroup entityGroup, bool isNewInstance, object userData)
+        public void OnInit(int entityId, string entityAssetName, IEntityGroup entityGroup, bool isNewInstance,
+            object userData)
         {
             m_Id = entityId;
             m_EntityAssetName = entityAssetName;
@@ -198,7 +169,8 @@ namespace UnityGameFramework.Runtime
             AttachEntityInfo attachEntityInfo = (AttachEntityInfo)userData;
             try
             {
-                m_EntityLogic.OnAttached(((Entity)childEntity).Logic, attachEntityInfo.ParentTransform, attachEntityInfo.UserData);
+                m_EntityLogic.OnAttached(((Entity)childEntity).Logic, attachEntityInfo.ParentTransform,
+                    attachEntityInfo.UserData);
             }
             catch (Exception exception)
             {
@@ -233,7 +205,8 @@ namespace UnityGameFramework.Runtime
             AttachEntityInfo attachEntityInfo = (AttachEntityInfo)userData;
             try
             {
-                m_EntityLogic.OnAttachTo(((Entity)parentEntity).Logic, attachEntityInfo.ParentTransform, attachEntityInfo.UserData);
+                m_EntityLogic.OnAttachTo(((Entity)parentEntity).Logic, attachEntityInfo.ParentTransform,
+                    attachEntityInfo.UserData);
             }
             catch (Exception exception)
             {

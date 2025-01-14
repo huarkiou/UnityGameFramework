@@ -5,9 +5,9 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameFramework.Resource;
 using System;
 using System.Collections.Generic;
+using GameFramework.Resource;
 
 namespace GameFramework.Config
 {
@@ -33,38 +33,20 @@ namespace GameFramework.Config
         /// <summary>
         /// 获取全局配置项数量。
         /// </summary>
-        public int Count
-        {
-            get
-            {
-                return m_ConfigDatas.Count;
-            }
-        }
+        public int Count => m_ConfigDatas.Count;
 
         /// <summary>
         /// 获取缓冲二进制流的大小。
         /// </summary>
-        public int CachedBytesSize
-        {
-            get
-            {
-                return DataProvider<IConfigManager>.CachedBytesSize;
-            }
-        }
+        public int CachedBytesSize => DataProvider<IConfigManager>.CachedBytesSize;
 
         /// <summary>
         /// 读取全局配置成功事件。
         /// </summary>
         public event EventHandler<ReadDataSuccessEventArgs> ReadDataSuccess
         {
-            add
-            {
-                m_DataProvider.ReadDataSuccess += value;
-            }
-            remove
-            {
-                m_DataProvider.ReadDataSuccess -= value;
-            }
+            add => m_DataProvider.ReadDataSuccess += value;
+            remove => m_DataProvider.ReadDataSuccess -= value;
         }
 
         /// <summary>
@@ -72,14 +54,8 @@ namespace GameFramework.Config
         /// </summary>
         public event EventHandler<ReadDataFailureEventArgs> ReadDataFailure
         {
-            add
-            {
-                m_DataProvider.ReadDataFailure += value;
-            }
-            remove
-            {
-                m_DataProvider.ReadDataFailure -= value;
-            }
+            add => m_DataProvider.ReadDataFailure += value;
+            remove => m_DataProvider.ReadDataFailure -= value;
         }
 
         /// <summary>
@@ -87,14 +63,8 @@ namespace GameFramework.Config
         /// </summary>
         public event EventHandler<ReadDataUpdateEventArgs> ReadDataUpdate
         {
-            add
-            {
-                m_DataProvider.ReadDataUpdate += value;
-            }
-            remove
-            {
-                m_DataProvider.ReadDataUpdate -= value;
-            }
+            add => m_DataProvider.ReadDataUpdate += value;
+            remove => m_DataProvider.ReadDataUpdate -= value;
         }
 
         /// <summary>
@@ -102,14 +72,8 @@ namespace GameFramework.Config
         /// </summary>
         public event EventHandler<ReadDataDependencyAssetEventArgs> ReadDataDependencyAsset
         {
-            add
-            {
-                m_DataProvider.ReadDataDependencyAsset += value;
-            }
-            remove
-            {
-                m_DataProvider.ReadDataDependencyAsset -= value;
-            }
+            add => m_DataProvider.ReadDataDependencyAsset += value;
+            remove => m_DataProvider.ReadDataDependencyAsset -= value;
         }
 
         /// <summary>

@@ -50,45 +50,21 @@ namespace GameFramework.FileSystem
         /// <summary>
         /// 获取文件信息是否有效。
         /// </summary>
-        public bool IsValid
-        {
-            get
-            {
-                return !string.IsNullOrEmpty(m_Name) && m_Offset >= 0L && m_Length >= 0;
-            }
-        }
+        public bool IsValid => !string.IsNullOrEmpty(m_Name) && m_Offset >= 0L && m_Length >= 0;
 
         /// <summary>
         /// 获取文件名称。
         /// </summary>
-        public string Name
-        {
-            get
-            {
-                return m_Name;
-            }
-        }
+        public string Name => m_Name;
 
         /// <summary>
         /// 获取文件偏移。
         /// </summary>
-        public long Offset
-        {
-            get
-            {
-                return m_Offset;
-            }
-        }
+        public long Offset => m_Offset;
 
         /// <summary>
         /// 获取文件长度。
         /// </summary>
-        public int Length
-        {
-            get
-            {
-                return m_Length;
-            }
-        }
+        public int Length => m_Length;
     }
 }

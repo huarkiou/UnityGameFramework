@@ -5,10 +5,10 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameFramework;
-using GameFramework.Debugger;
 using System;
 using System.Collections.Generic;
+using GameFramework;
+using GameFramework.Debugger;
 using UnityEngine;
 
 namespace UnityGameFramework.Runtime
@@ -66,154 +66,70 @@ namespace UnityGameFramework.Runtime
 
             public bool LockScroll
             {
-                get
-                {
-                    return m_LockScroll;
-                }
-                set
-                {
-                    m_LockScroll = value;
-                }
+                get => m_LockScroll;
+                set => m_LockScroll = value;
             }
 
             public int MaxLine
             {
-                get
-                {
-                    return m_MaxLine;
-                }
-                set
-                {
-                    m_MaxLine = value;
-                }
+                get => m_MaxLine;
+                set => m_MaxLine = value;
             }
 
             public bool InfoFilter
             {
-                get
-                {
-                    return m_InfoFilter;
-                }
-                set
-                {
-                    m_InfoFilter = value;
-                }
+                get => m_InfoFilter;
+                set => m_InfoFilter = value;
             }
 
             public bool WarningFilter
             {
-                get
-                {
-                    return m_WarningFilter;
-                }
-                set
-                {
-                    m_WarningFilter = value;
-                }
+                get => m_WarningFilter;
+                set => m_WarningFilter = value;
             }
 
             public bool ErrorFilter
             {
-                get
-                {
-                    return m_ErrorFilter;
-                }
-                set
-                {
-                    m_ErrorFilter = value;
-                }
+                get => m_ErrorFilter;
+                set => m_ErrorFilter = value;
             }
 
             public bool FatalFilter
             {
-                get
-                {
-                    return m_FatalFilter;
-                }
-                set
-                {
-                    m_FatalFilter = value;
-                }
+                get => m_FatalFilter;
+                set => m_FatalFilter = value;
             }
 
-            public int InfoCount
-            {
-                get
-                {
-                    return m_InfoCount;
-                }
-            }
+            public int InfoCount => m_InfoCount;
 
-            public int WarningCount
-            {
-                get
-                {
-                    return m_WarningCount;
-                }
-            }
+            public int WarningCount => m_WarningCount;
 
-            public int ErrorCount
-            {
-                get
-                {
-                    return m_ErrorCount;
-                }
-            }
+            public int ErrorCount => m_ErrorCount;
 
-            public int FatalCount
-            {
-                get
-                {
-                    return m_FatalCount;
-                }
-            }
+            public int FatalCount => m_FatalCount;
 
             public Color32 InfoColor
             {
-                get
-                {
-                    return m_InfoColor;
-                }
-                set
-                {
-                    m_InfoColor = value;
-                }
+                get => m_InfoColor;
+                set => m_InfoColor = value;
             }
 
             public Color32 WarningColor
             {
-                get
-                {
-                    return m_WarningColor;
-                }
-                set
-                {
-                    m_WarningColor = value;
-                }
+                get => m_WarningColor;
+                set => m_WarningColor = value;
             }
 
             public Color32 ErrorColor
             {
-                get
-                {
-                    return m_ErrorColor;
-                }
-                set
-                {
-                    m_ErrorColor = value;
-                }
+                get => m_ErrorColor;
+                set => m_ErrorColor = value;
             }
 
             public Color32 FatalColor
             {
-                get
-                {
-                    return m_FatalColor;
-                }
-                set
-                {
-                    m_FatalColor = value;
-                }
+                get => m_FatalColor;
+                set => m_FatalColor = value;
             }
 
             public void Initialize(params object[] args)
@@ -228,7 +144,8 @@ namespace UnityGameFramework.Runtime
                 Application.logMessageReceived += OnLogMessageReceived;
                 m_LockScroll = m_LastLockScroll = m_SettingComponent.GetBool("Debugger.Console.LockScroll", true);
                 m_InfoFilter = m_LastInfoFilter = m_SettingComponent.GetBool("Debugger.Console.InfoFilter", true);
-                m_WarningFilter = m_LastWarningFilter = m_SettingComponent.GetBool("Debugger.Console.WarningFilter", true);
+                m_WarningFilter = m_LastWarningFilter =
+                    m_SettingComponent.GetBool("Debugger.Console.WarningFilter", true);
                 m_ErrorFilter = m_LastErrorFilter = m_SettingComponent.GetBool("Debugger.Console.ErrorFilter", true);
                 m_FatalFilter = m_LastFatalFilter = m_SettingComponent.GetBool("Debugger.Console.FatalFilter", true);
             }
@@ -290,12 +207,17 @@ namespace UnityGameFramework.Runtime
                     {
                         Clear();
                     }
+
                     m_LockScroll = GUILayout.Toggle(m_LockScroll, "Lock Scroll", GUILayout.Width(90f));
                     GUILayout.FlexibleSpace();
-                    m_InfoFilter = GUILayout.Toggle(m_InfoFilter, Utility.Text.Format("Info ({0})", m_InfoCount), GUILayout.Width(90f));
-                    m_WarningFilter = GUILayout.Toggle(m_WarningFilter, Utility.Text.Format("Warning ({0})", m_WarningCount), GUILayout.Width(90f));
-                    m_ErrorFilter = GUILayout.Toggle(m_ErrorFilter, Utility.Text.Format("Error ({0})", m_ErrorCount), GUILayout.Width(90f));
-                    m_FatalFilter = GUILayout.Toggle(m_FatalFilter, Utility.Text.Format("Fatal ({0})", m_FatalCount), GUILayout.Width(90f));
+                    m_InfoFilter = GUILayout.Toggle(m_InfoFilter, Utility.Text.Format("Info ({0})", m_InfoCount),
+                        GUILayout.Width(90f));
+                    m_WarningFilter = GUILayout.Toggle(m_WarningFilter,
+                        Utility.Text.Format("Warning ({0})", m_WarningCount), GUILayout.Width(90f));
+                    m_ErrorFilter = GUILayout.Toggle(m_ErrorFilter, Utility.Text.Format("Error ({0})", m_ErrorCount),
+                        GUILayout.Width(90f));
+                    m_FatalFilter = GUILayout.Toggle(m_FatalFilter, Utility.Text.Format("Fatal ({0})", m_FatalCount),
+                        GUILayout.Width(90f));
                 }
                 GUILayout.EndHorizontal();
 
@@ -318,6 +240,7 @@ namespace UnityGameFramework.Runtime
                                     {
                                         continue;
                                     }
+
                                     break;
 
                                 case LogType.Warning:
@@ -325,6 +248,7 @@ namespace UnityGameFramework.Runtime
                                     {
                                         continue;
                                     }
+
                                     break;
 
                                 case LogType.Error:
@@ -332,6 +256,7 @@ namespace UnityGameFramework.Runtime
                                     {
                                         continue;
                                     }
+
                                     break;
 
                                 case LogType.Exception:
@@ -339,8 +264,10 @@ namespace UnityGameFramework.Runtime
                                     {
                                         continue;
                                     }
+
                                     break;
                             }
+
                             if (GUILayout.Toggle(m_SelectedNode == logNode, GetLogString(logNode)))
                             {
                                 selected = true;
@@ -351,6 +278,7 @@ namespace UnityGameFramework.Runtime
                                 }
                             }
                         }
+
                         if (!selected)
                         {
                             m_SelectedNode = null;
@@ -367,9 +295,13 @@ namespace UnityGameFramework.Runtime
                         if (m_SelectedNode != null)
                         {
                             Color32 color = GetLogStringColor(m_SelectedNode.LogType);
-                            if (GUILayout.Button(Utility.Text.Format("<color=#{0:x2}{1:x2}{2:x2}{3:x2}><b>{4}</b></color>{6}{6}{5}", color.r, color.g, color.b, color.a, m_SelectedNode.LogMessage, m_SelectedNode.StackTrack, Environment.NewLine), "label"))
+                            if (GUILayout.Button(
+                                    Utility.Text.Format("<color=#{0:x2}{1:x2}{2:x2}{3:x2}><b>{4}</b></color>{6}{6}{5}",
+                                        color.r, color.g, color.b, color.a, m_SelectedNode.LogMessage,
+                                        m_SelectedNode.StackTrack, Environment.NewLine), "label"))
                             {
-                                CopyToClipboard(Utility.Text.Format("{0}{2}{2}{1}", m_SelectedNode.LogMessage, m_SelectedNode.StackTrack, Environment.NewLine));
+                                CopyToClipboard(Utility.Text.Format("{0}{2}{2}{1}", m_SelectedNode.LogMessage,
+                                    m_SelectedNode.StackTrack, Environment.NewLine));
                             }
                         }
                     }
@@ -477,7 +409,9 @@ namespace UnityGameFramework.Runtime
             private string GetLogString(LogNode logNode)
             {
                 Color32 color = GetLogStringColor(logNode.LogType);
-                return Utility.Text.Format("<color=#{0:x2}{1:x2}{2:x2}{3:x2}>[{4:HH:mm:ss.fff}][{5}] {6}</color>", color.r, color.g, color.b, color.a, logNode.LogTime.ToLocalTime(), logNode.LogFrameCount, logNode.LogMessage);
+                return Utility.Text.Format("<color=#{0:x2}{1:x2}{2:x2}{3:x2}>[{4:HH:mm:ss.fff}][{5}] {6}</color>",
+                    color.r, color.g, color.b, color.a, logNode.LogTime.ToLocalTime(), logNode.LogFrameCount,
+                    logNode.LogMessage);
             }
 
             internal Color32 GetLogStringColor(LogType logType)

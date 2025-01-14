@@ -33,31 +33,17 @@ namespace UnityGameFramework.Runtime
         /// <summary>
         /// 获取激活场景被改变事件编号。
         /// </summary>
-        public override int Id
-        {
-            get
-            {
-                return EventId;
-            }
-        }
+        public override int Id => EventId;
 
         /// <summary>
         /// 获取上一个被激活的场景。
         /// </summary>
-        public Scene LastActiveScene
-        {
-            get;
-            private set;
-        }
+        public Scene LastActiveScene { get; private set; }
 
         /// <summary>
         /// 获取被激活的场景。
         /// </summary>
-        public Scene ActiveScene
-        {
-            get;
-            private set;
-        }
+        public Scene ActiveScene { get; private set; }
 
         /// <summary>
         /// 创建激活场景被改变事件。
@@ -67,7 +53,8 @@ namespace UnityGameFramework.Runtime
         /// <returns>创建的激活场景被改变事件。</returns>
         public static ActiveSceneChangedEventArgs Create(Scene lastActiveScene, Scene activeScene)
         {
-            ActiveSceneChangedEventArgs activeSceneChangedEventArgs = ReferencePool.Acquire<ActiveSceneChangedEventArgs>();
+            ActiveSceneChangedEventArgs activeSceneChangedEventArgs =
+                ReferencePool.Acquire<ActiveSceneChangedEventArgs>();
             activeSceneChangedEventArgs.LastActiveScene = lastActiveScene;
             activeSceneChangedEventArgs.ActiveScene = activeScene;
             return activeSceneChangedEventArgs;

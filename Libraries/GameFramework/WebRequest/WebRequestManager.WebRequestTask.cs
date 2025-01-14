@@ -34,48 +34,24 @@ namespace GameFramework.WebRequest
             /// </summary>
             public WebRequestTaskStatus Status
             {
-                get
-                {
-                    return m_Status;
-                }
-                set
-                {
-                    m_Status = value;
-                }
+                get => m_Status;
+                set => m_Status = value;
             }
 
             /// <summary>
             /// 获取要发送的远程地址。
             /// </summary>
-            public string WebRequestUri
-            {
-                get
-                {
-                    return m_WebRequestUri;
-                }
-            }
+            public string WebRequestUri => m_WebRequestUri;
 
             /// <summary>
             /// 获取 Web 请求超时时长，以秒为单位。
             /// </summary>
-            public float Timeout
-            {
-                get
-                {
-                    return m_Timeout;
-                }
-            }
+            public float Timeout => m_Timeout;
 
             /// <summary>
             /// 获取 Web 请求任务的描述。
             /// </summary>
-            public override string Description
-            {
-                get
-                {
-                    return m_WebRequestUri;
-                }
-            }
+            public override string Description => m_WebRequestUri;
 
             /// <summary>
             /// 创建 Web 请求任务。
@@ -87,7 +63,8 @@ namespace GameFramework.WebRequest
             /// <param name="timeout">下载超时时长，以秒为单位。</param>
             /// <param name="userData">用户自定义数据。</param>
             /// <returns>创建的 Web 请求任务。</returns>
-            public static WebRequestTask Create(string webRequestUri, byte[] postData, string tag, int priority, float timeout, object userData)
+            public static WebRequestTask Create(string webRequestUri, byte[] postData, string tag, int priority,
+                float timeout, object userData)
             {
                 WebRequestTask webRequestTask = ReferencePool.Acquire<WebRequestTask>();
                 webRequestTask.Initialize(++s_Serial, tag, priority, userData);

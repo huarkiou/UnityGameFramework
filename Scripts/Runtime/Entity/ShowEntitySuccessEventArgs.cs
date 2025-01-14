@@ -5,9 +5,9 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
+using System;
 using GameFramework;
 using GameFramework.Event;
-using System;
 
 namespace UnityGameFramework.Runtime
 {
@@ -35,49 +35,27 @@ namespace UnityGameFramework.Runtime
         /// <summary>
         /// 获取显示实体成功事件编号。
         /// </summary>
-        public override int Id
-        {
-            get
-            {
-                return EventId;
-            }
-        }
+        public override int Id => EventId;
 
         /// <summary>
         /// 获取实体逻辑类型。
         /// </summary>
-        public Type EntityLogicType
-        {
-            get;
-            private set;
-        }
+        public Type EntityLogicType { get; private set; }
 
         /// <summary>
         /// 获取显示成功的实体。
         /// </summary>
-        public Entity Entity
-        {
-            get;
-            private set;
-        }
+        public Entity Entity { get; private set; }
 
         /// <summary>
         /// 获取加载持续时间。
         /// </summary>
-        public float Duration
-        {
-            get;
-            private set;
-        }
+        public float Duration { get; private set; }
 
         /// <summary>
         /// 获取用户自定义数据。
         /// </summary>
-        public object UserData
-        {
-            get;
-            private set;
-        }
+        public object UserData { get; private set; }
 
         /// <summary>
         /// 创建显示实体成功事件。

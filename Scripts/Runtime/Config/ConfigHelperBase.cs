@@ -24,7 +24,8 @@ namespace UnityGameFramework.Runtime
         /// <param name="configAsset">全局配置资源。</param>
         /// <param name="userData">用户自定义数据。</param>
         /// <returns>是否读取全局配置成功。</returns>
-        public abstract bool ReadData(IConfigManager configManager, string configAssetName, object configAsset, object userData);
+        public abstract bool ReadData(IConfigManager configManager, string configAssetName, object configAsset,
+            object userData);
 
         /// <summary>
         /// 读取全局配置。
@@ -36,7 +37,8 @@ namespace UnityGameFramework.Runtime
         /// <param name="length">全局配置二进制流的长度。</param>
         /// <param name="userData">用户自定义数据。</param>
         /// <returns>是否读取全局配置成功。</returns>
-        public abstract bool ReadData(IConfigManager configManager, string configAssetName, byte[] configBytes, int startIndex, int length, object userData);
+        public abstract bool ReadData(IConfigManager configManager, string configAssetName, byte[] configBytes,
+            int startIndex, int length, object userData);
 
         /// <summary>
         /// 解析全局配置。
@@ -56,7 +58,8 @@ namespace UnityGameFramework.Runtime
         /// <param name="length">全局配置二进制流的长度。</param>
         /// <param name="userData">用户自定义数据。</param>
         /// <returns>是否解析全局配置成功。</returns>
-        public abstract bool ParseData(IConfigManager configManager, byte[] configBytes, int startIndex, int length, object userData);
+        public abstract bool ParseData(IConfigManager configManager, byte[] configBytes, int startIndex, int length,
+            object userData);
 
         /// <summary>
         /// 释放全局配置资源。

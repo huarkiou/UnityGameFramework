@@ -22,26 +22,14 @@ namespace GameFramework.Network
 
             public float HeartBeatElapseSeconds
             {
-                get
-                {
-                    return m_HeartBeatElapseSeconds;
-                }
-                set
-                {
-                    m_HeartBeatElapseSeconds = value;
-                }
+                get => m_HeartBeatElapseSeconds;
+                set => m_HeartBeatElapseSeconds = value;
             }
 
             public int MissHeartBeatCount
             {
-                get
-                {
-                    return m_MissHeartBeatCount;
-                }
-                set
-                {
-                    m_MissHeartBeatCount = value;
-                }
+                get => m_MissHeartBeatCount;
+                set => m_MissHeartBeatCount = value;
             }
 
             public void Reset(bool resetHeartBeatElapseSeconds)

@@ -33,40 +33,22 @@ namespace UnityGameFramework.Runtime
         /// <summary>
         /// 获取加载全局配置成功事件编号。
         /// </summary>
-        public override int Id
-        {
-            get
-            {
-                return EventId;
-            }
-        }
+        public override int Id => EventId;
 
         /// <summary>
         /// 获取全局配置资源名称。
         /// </summary>
-        public string ConfigAssetName
-        {
-            get;
-            private set;
-        }
+        public string ConfigAssetName { get; private set; }
 
         /// <summary>
         /// 获取加载持续时间。
         /// </summary>
-        public float Duration
-        {
-            get;
-            private set;
-        }
+        public float Duration { get; private set; }
 
         /// <summary>
         /// 获取用户自定义数据。
         /// </summary>
-        public object UserData
-        {
-            get;
-            private set;
-        }
+        public object UserData { get; private set; }
 
         /// <summary>
         /// 创建加载全局配置成功事件。

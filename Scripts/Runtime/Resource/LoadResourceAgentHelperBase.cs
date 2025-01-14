@@ -5,9 +5,9 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
+using System;
 using GameFramework.FileSystem;
 using GameFramework.Resource;
-using System;
 using UnityEngine;
 
 namespace UnityGameFramework.Runtime
@@ -25,22 +25,26 @@ namespace UnityGameFramework.Runtime
         /// <summary>
         /// 加载资源代理辅助器异步读取资源文件完成事件。
         /// </summary>
-        public abstract event EventHandler<LoadResourceAgentHelperReadFileCompleteEventArgs> LoadResourceAgentHelperReadFileComplete;
+        public abstract event EventHandler<LoadResourceAgentHelperReadFileCompleteEventArgs>
+            LoadResourceAgentHelperReadFileComplete;
 
         /// <summary>
         /// 加载资源代理辅助器异步读取资源二进制流完成事件。
         /// </summary>
-        public abstract event EventHandler<LoadResourceAgentHelperReadBytesCompleteEventArgs> LoadResourceAgentHelperReadBytesComplete;
+        public abstract event EventHandler<LoadResourceAgentHelperReadBytesCompleteEventArgs>
+            LoadResourceAgentHelperReadBytesComplete;
 
         /// <summary>
         /// 加载资源代理辅助器异步将资源二进制流转换为加载对象完成事件。
         /// </summary>
-        public abstract event EventHandler<LoadResourceAgentHelperParseBytesCompleteEventArgs> LoadResourceAgentHelperParseBytesComplete;
+        public abstract event EventHandler<LoadResourceAgentHelperParseBytesCompleteEventArgs>
+            LoadResourceAgentHelperParseBytesComplete;
 
         /// <summary>
         /// 加载资源代理辅助器异步加载资源完成事件。
         /// </summary>
-        public abstract event EventHandler<LoadResourceAgentHelperLoadCompleteEventArgs> LoadResourceAgentHelperLoadComplete;
+        public abstract event EventHandler<LoadResourceAgentHelperLoadCompleteEventArgs>
+            LoadResourceAgentHelperLoadComplete;
 
         /// <summary>
         /// 加载资源代理辅助器错误事件。

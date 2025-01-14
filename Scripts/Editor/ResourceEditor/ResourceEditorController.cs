@@ -5,11 +5,11 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameFramework;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Xml;
+using GameFramework;
 using UnityEditor;
 using UnityEngine;
 
@@ -34,9 +34,11 @@ namespace UnityGameFramework.Editor.ResourceTools
 
         public ResourceEditorController()
         {
-            m_ConfigurationPath = Type.GetConfigurationPath<ResourceEditorConfigPathAttribute>() ?? Utility.Path.GetRegularPath(Path.Combine(Application.dataPath, "GameFramework/Configs/ResourceEditor.xml"));
+            m_ConfigurationPath = Type.GetConfigurationPath<ResourceEditorConfigPathAttribute>() ??
+                                  Utility.Path.GetRegularPath(Path.Combine(Application.dataPath,
+                                      "GameFramework/Configs/ResourceEditor.xml"));
             m_ResourceCollection = new ResourceCollection();
-            m_ResourceCollection.OnLoadingResource += delegate (int index, int count)
+            m_ResourceCollection.OnLoadingResource += delegate(int index, int count)
             {
                 if (OnLoadingResource != null)
                 {
@@ -44,7 +46,7 @@ namespace UnityGameFramework.Editor.ResourceTools
                 }
             };
 
-            m_ResourceCollection.OnLoadingAsset += delegate (int index, int count)
+            m_ResourceCollection.OnLoadingAsset += delegate(int index, int count)
             {
                 if (OnLoadingAsset != null)
                 {
@@ -52,7 +54,7 @@ namespace UnityGameFramework.Editor.ResourceTools
                 }
             };
 
-            m_ResourceCollection.OnLoadCompleted += delegate ()
+            m_ResourceCollection.OnLoadCompleted += delegate()
             {
                 if (OnLoadCompleted != null)
                 {
@@ -74,36 +76,15 @@ namespace UnityGameFramework.Editor.ResourceTools
             SourceAssetRootPath = DefaultSourceAssetRootPath;
         }
 
-        public int ResourceCount
-        {
-            get
-            {
-                return m_ResourceCollection.ResourceCount;
-            }
-        }
+        public int ResourceCount => m_ResourceCollection.ResourceCount;
 
-        public int AssetCount
-        {
-            get
-            {
-                return m_ResourceCollection.AssetCount;
-            }
-        }
+        public int AssetCount => m_ResourceCollection.AssetCount;
 
-        public SourceFolder SourceAssetRoot
-        {
-            get
-            {
-                return m_SourceAssetRoot;
-            }
-        }
+        public SourceFolder SourceAssetRoot => m_SourceAssetRoot;
 
         public string SourceAssetRootPath
         {
-            get
-            {
-                return m_SourceAssetRootPath;
-            }
+            get => m_SourceAssetRootPath;
             set
             {
                 if (m_SourceAssetRootPath == value)
@@ -119,10 +100,7 @@ namespace UnityGameFramework.Editor.ResourceTools
 
         public string SourceAssetUnionTypeFilter
         {
-            get
-            {
-                return m_SourceAssetUnionTypeFilter;
-            }
+            get => m_SourceAssetUnionTypeFilter;
             set
             {
                 if (m_SourceAssetUnionTypeFilter == value)
@@ -136,10 +114,7 @@ namespace UnityGameFramework.Editor.ResourceTools
 
         public string SourceAssetUnionLabelFilter
         {
-            get
-            {
-                return m_SourceAssetUnionLabelFilter;
-            }
+            get => m_SourceAssetUnionLabelFilter;
             set
             {
                 if (m_SourceAssetUnionLabelFilter == value)
@@ -153,10 +128,7 @@ namespace UnityGameFramework.Editor.ResourceTools
 
         public string SourceAssetExceptTypeFilter
         {
-            get
-            {
-                return m_SourceAssetExceptTypeFilter;
-            }
+            get => m_SourceAssetExceptTypeFilter;
             set
             {
                 if (m_SourceAssetExceptTypeFilter == value)
@@ -170,10 +142,7 @@ namespace UnityGameFramework.Editor.ResourceTools
 
         public string SourceAssetExceptLabelFilter
         {
-            get
-            {
-                return m_SourceAssetExceptLabelFilter;
-            }
+            get => m_SourceAssetExceptLabelFilter;
             set
             {
                 if (m_SourceAssetExceptLabelFilter == value)
@@ -187,10 +156,7 @@ namespace UnityGameFramework.Editor.ResourceTools
 
         public AssetSorterType AssetSorter
         {
-            get
-            {
-                return m_AssetSorter;
-            }
+            get => m_AssetSorter;
             set
             {
                 if (m_AssetSorter == value)
@@ -252,8 +218,10 @@ namespace UnityGameFramework.Editor.ResourceTools
                                     continue;
                                 }
 
-                                m_SourceAssetSearchRelativePaths.Add(xmlNodeInner.Attributes.GetNamedItem("RelativePath").Value);
+                                m_SourceAssetSearchRelativePaths.Add(xmlNodeInner.Attributes
+                                    .GetNamedItem("RelativePath").Value);
                             }
+
                             break;
 
                         case "SourceAssetUnionTypeFilter":
@@ -430,7 +398,8 @@ namespace UnityGameFramework.Editor.ResourceTools
         public int RemoveUnusedResources()
         {
             List<Resource> resources = new List<Resource>(m_ResourceCollection.GetResources());
-            List<Resource> removeResources = resources.FindAll(resource => GetAssets(resource.Name, resource.Variant).Length <= 0);
+            List<Resource> removeResources =
+                resources.FindAll(resource => GetAssets(resource.Name, resource.Variant).Length <= 0);
             foreach (Resource removeResource in removeResources)
             {
                 m_ResourceCollection.RemoveResource(removeResource.Name, removeResource.Variant);
@@ -588,7 +557,9 @@ namespace UnityGameFramework.Editor.ResourceTools
             {
                 foreach (string sourceAssetSearchRelativePath in m_SourceAssetSearchRelativePaths)
                 {
-                    m_SourceAssetSearchPaths.Add(Utility.Path.GetRegularPath(Path.Combine(m_SourceAssetRootPath, sourceAssetSearchRelativePath)));
+                    m_SourceAssetSearchPaths.Add(
+                        Utility.Path.GetRegularPath(Path.Combine(m_SourceAssetRootPath,
+                            sourceAssetSearchRelativePath)));
                 }
             }
             else

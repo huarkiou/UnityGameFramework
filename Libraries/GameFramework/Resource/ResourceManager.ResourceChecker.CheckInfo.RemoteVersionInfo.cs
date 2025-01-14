@@ -29,7 +29,8 @@ namespace GameFramework.Resource
                     private readonly int m_CompressedLength;
                     private readonly int m_CompressedHashCode;
 
-                    public RemoteVersionInfo(string fileSystemName, LoadType loadType, int length, int hashCode, int compressedLength, int compressedHashCode)
+                    public RemoteVersionInfo(string fileSystemName, LoadType loadType, int length, int hashCode,
+                        int compressedLength, int compressedHashCode)
                     {
                         m_Exist = true;
                         m_FileSystemName = fileSystemName;
@@ -40,69 +41,21 @@ namespace GameFramework.Resource
                         m_CompressedHashCode = compressedHashCode;
                     }
 
-                    public bool Exist
-                    {
-                        get
-                        {
-                            return m_Exist;
-                        }
-                    }
+                    public bool Exist => m_Exist;
 
-                    public bool UseFileSystem
-                    {
-                        get
-                        {
-                            return !string.IsNullOrEmpty(m_FileSystemName);
-                        }
-                    }
+                    public bool UseFileSystem => !string.IsNullOrEmpty(m_FileSystemName);
 
-                    public string FileSystemName
-                    {
-                        get
-                        {
-                            return m_FileSystemName;
-                        }
-                    }
+                    public string FileSystemName => m_FileSystemName;
 
-                    public LoadType LoadType
-                    {
-                        get
-                        {
-                            return m_LoadType;
-                        }
-                    }
+                    public LoadType LoadType => m_LoadType;
 
-                    public int Length
-                    {
-                        get
-                        {
-                            return m_Length;
-                        }
-                    }
+                    public int Length => m_Length;
 
-                    public int HashCode
-                    {
-                        get
-                        {
-                            return m_HashCode;
-                        }
-                    }
+                    public int HashCode => m_HashCode;
 
-                    public int CompressedLength
-                    {
-                        get
-                        {
-                            return m_CompressedLength;
-                        }
-                    }
+                    public int CompressedLength => m_CompressedLength;
 
-                    public int CompressedHashCode
-                    {
-                        get
-                        {
-                            return m_CompressedHashCode;
-                        }
-                    }
+                    public int CompressedHashCode => m_CompressedHashCode;
                 }
             }
         }

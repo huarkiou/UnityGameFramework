@@ -5,9 +5,9 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
+using System;
 using GameFramework;
 using GameFramework.Event;
-using System;
 using UnityEngine;
 
 namespace UnityGameFramework.Runtime
@@ -24,24 +24,12 @@ namespace UnityGameFramework.Runtime
         /// <summary>
         /// 获取事件处理函数的数量。
         /// </summary>
-        public int EventHandlerCount
-        {
-            get
-            {
-                return m_EventManager.EventHandlerCount;
-            }
-        }
+        public int EventHandlerCount => m_EventManager.EventHandlerCount;
 
         /// <summary>
         /// 获取事件数量。
         /// </summary>
-        public int EventCount
-        {
-            get
-            {
-                return m_EventManager.EventCount;
-            }
-        }
+        public int EventCount => m_EventManager.EventCount;
 
         /// <summary>
         /// 游戏框架组件初始化。

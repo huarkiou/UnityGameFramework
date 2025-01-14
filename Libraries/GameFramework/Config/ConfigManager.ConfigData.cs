@@ -27,37 +27,13 @@ namespace GameFramework.Config
                 m_StringValue = stringValue;
             }
 
-            public bool BoolValue
-            {
-                get
-                {
-                    return m_BoolValue;
-                }
-            }
+            public bool BoolValue => m_BoolValue;
 
-            public int IntValue
-            {
-                get
-                {
-                    return m_IntValue;
-                }
-            }
+            public int IntValue => m_IntValue;
 
-            public float FloatValue
-            {
-                get
-                {
-                    return m_FloatValue;
-                }
-            }
+            public float FloatValue => m_FloatValue;
 
-            public string StringValue
-            {
-                get
-                {
-                    return m_StringValue;
-                }
-            }
+            public string StringValue => m_StringValue;
         }
     }
 }

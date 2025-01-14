@@ -33,40 +33,22 @@ namespace UnityGameFramework.Runtime
         /// <summary>
         /// 获取加载数据表成功事件编号。
         /// </summary>
-        public override int Id
-        {
-            get
-            {
-                return EventId;
-            }
-        }
+        public override int Id => EventId;
 
         /// <summary>
         /// 获取数据表资源名称。
         /// </summary>
-        public string DataTableAssetName
-        {
-            get;
-            private set;
-        }
+        public string DataTableAssetName { get; private set; }
 
         /// <summary>
         /// 获取加载持续时间。
         /// </summary>
-        public float Duration
-        {
-            get;
-            private set;
-        }
+        public float Duration { get; private set; }
 
         /// <summary>
         /// 获取用户自定义数据。
         /// </summary>
-        public object UserData
-        {
-            get;
-            private set;
-        }
+        public object UserData { get; private set; }
 
         /// <summary>
         /// 创建加载数据表成功事件。
@@ -75,7 +57,8 @@ namespace UnityGameFramework.Runtime
         /// <returns>创建的加载数据表成功事件。</returns>
         public static LoadDataTableSuccessEventArgs Create(ReadDataSuccessEventArgs e)
         {
-            LoadDataTableSuccessEventArgs loadDataTableSuccessEventArgs = ReferencePool.Acquire<LoadDataTableSuccessEventArgs>();
+            LoadDataTableSuccessEventArgs loadDataTableSuccessEventArgs =
+                ReferencePool.Acquire<LoadDataTableSuccessEventArgs>();
             loadDataTableSuccessEventArgs.DataTableAssetName = e.DataAssetName;
             loadDataTableSuccessEventArgs.Duration = e.Duration;
             loadDataTableSuccessEventArgs.UserData = e.UserData;

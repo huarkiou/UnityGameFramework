@@ -25,29 +25,17 @@ namespace GameFramework.Resource
         /// <summary>
         /// 获取资源包路径。
         /// </summary>
-        public string ResourcePackPath
-        {
-            get;
-            private set;
-        }
+        public string ResourcePackPath { get; private set; }
 
         /// <summary>
         /// 获取要应用资源的数量。
         /// </summary>
-        public int Count
-        {
-            get;
-            private set;
-        }
+        public int Count { get; private set; }
 
         /// <summary>
         /// 获取要应用资源的总大小。
         /// </summary>
-        public long TotalLength
-        {
-            get;
-            private set;
-        }
+        public long TotalLength { get; private set; }
 
         /// <summary>
         /// 创建资源应用开始事件。
@@ -58,7 +46,8 @@ namespace GameFramework.Resource
         /// <returns>创建的资源应用开始事件。</returns>
         public static ResourceApplyStartEventArgs Create(string resourcePackPath, int count, long totalLength)
         {
-            ResourceApplyStartEventArgs resourceApplyStartEventArgs = ReferencePool.Acquire<ResourceApplyStartEventArgs>();
+            ResourceApplyStartEventArgs resourceApplyStartEventArgs =
+                ReferencePool.Acquire<ResourceApplyStartEventArgs>();
             resourceApplyStartEventArgs.ResourcePackPath = resourcePackPath;
             resourceApplyStartEventArgs.Count = count;
             resourceApplyStartEventArgs.TotalLength = totalLength;

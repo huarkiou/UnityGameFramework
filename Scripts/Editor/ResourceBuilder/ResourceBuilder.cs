@@ -5,9 +5,9 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameFramework;
 using System;
 using System.IO;
+using GameFramework;
 using UnityEditor;
 using UnityEngine;
 
@@ -181,7 +181,8 @@ namespace UnityGameFramework.Editor.ResourceTools
                     EditorGUILayout.BeginHorizontal();
                     {
                         EditorGUILayout.LabelField("AssetBundle Compression", GUILayout.Width(160f));
-                        m_Controller.AssetBundleCompression = (AssetBundleCompressionType)EditorGUILayout.EnumPopup(m_Controller.AssetBundleCompression);
+                        m_Controller.AssetBundleCompression =
+                            (AssetBundleCompressionType)EditorGUILayout.EnumPopup(m_Controller.AssetBundleCompression);
                     }
                     EditorGUILayout.EndHorizontal();
                     EditorGUILayout.BeginHorizontal();
@@ -192,7 +193,8 @@ namespace UnityGameFramework.Editor.ResourceTools
                         if (selectedIndex != m_CompressionHelperTypeNameIndex)
                         {
                             m_CompressionHelperTypeNameIndex = selectedIndex;
-                            m_Controller.CompressionHelperTypeName = selectedIndex <= 0 ? string.Empty : names[selectedIndex];
+                            m_Controller.CompressionHelperTypeName =
+                                selectedIndex <= 0 ? string.Empty : names[selectedIndex];
                             if (m_Controller.RefreshCompressionHelper())
                             {
                                 Debug.Log("Set compression helper success.");
@@ -207,7 +209,9 @@ namespace UnityGameFramework.Editor.ResourceTools
                     EditorGUILayout.BeginHorizontal();
                     {
                         EditorGUILayout.LabelField("Additional Compression", GUILayout.Width(160f));
-                        m_Controller.AdditionalCompressionSelected = EditorGUILayout.ToggleLeft("Additional Compression for Output Full Resources with Compression Helper", m_Controller.AdditionalCompressionSelected);
+                        m_Controller.AdditionalCompressionSelected = EditorGUILayout.ToggleLeft(
+                            "Additional Compression for Output Full Resources with Compression Helper",
+                            m_Controller.AdditionalCompressionSelected);
                     }
                     EditorGUILayout.EndHorizontal();
                 }
@@ -219,7 +223,8 @@ namespace UnityGameFramework.Editor.ResourceTools
                     EditorGUILayout.BeginHorizontal();
                     {
                         EditorGUILayout.LabelField("Force Rebuild AssetBundle", GUILayout.Width(160f));
-                        m_Controller.ForceRebuildAssetBundleSelected = EditorGUILayout.Toggle(m_Controller.ForceRebuildAssetBundleSelected);
+                        m_Controller.ForceRebuildAssetBundleSelected =
+                            EditorGUILayout.Toggle(m_Controller.ForceRebuildAssetBundleSelected);
                     }
                     EditorGUILayout.EndHorizontal();
                     EditorGUILayout.BeginHorizontal();
@@ -230,7 +235,8 @@ namespace UnityGameFramework.Editor.ResourceTools
                         if (selectedIndex != m_BuildEventHandlerTypeNameIndex)
                         {
                             m_BuildEventHandlerTypeNameIndex = selectedIndex;
-                            m_Controller.BuildEventHandlerTypeName = selectedIndex <= 0 ? string.Empty : names[selectedIndex];
+                            m_Controller.BuildEventHandlerTypeName =
+                                selectedIndex <= 0 ? string.Empty : names[selectedIndex];
                             if (m_Controller.RefreshBuildEventHandler())
                             {
                                 Debug.Log("Set build event handler success.");
@@ -245,13 +251,15 @@ namespace UnityGameFramework.Editor.ResourceTools
                     EditorGUILayout.BeginHorizontal();
                     {
                         EditorGUILayout.LabelField("Internal Resource Version", GUILayout.Width(160f));
-                        m_Controller.InternalResourceVersion = EditorGUILayout.IntField(m_Controller.InternalResourceVersion);
+                        m_Controller.InternalResourceVersion =
+                            EditorGUILayout.IntField(m_Controller.InternalResourceVersion);
                     }
                     EditorGUILayout.EndHorizontal();
                     EditorGUILayout.BeginHorizontal();
                     {
                         EditorGUILayout.LabelField("Resource Version", GUILayout.Width(160f));
-                        GUILayout.Label(Utility.Text.Format("{0} ({1})", m_Controller.ApplicableGameVersion, m_Controller.InternalResourceVersion));
+                        GUILayout.Label(Utility.Text.Format("{0} ({1})", m_Controller.ApplicableGameVersion,
+                            m_Controller.InternalResourceVersion));
                     }
                     EditorGUILayout.EndHorizontal();
                     EditorGUILayout.BeginHorizontal();
@@ -276,7 +284,8 @@ namespace UnityGameFramework.Editor.ResourceTools
                         EditorGUILayout.LabelField("Output Package Path", GUILayout.Width(160f));
                         GUILayout.Label(m_Controller.OutputPackagePath);
                         EditorGUI.EndDisabledGroup();
-                        m_Controller.OutputPackageSelected = EditorGUILayout.ToggleLeft("Generate", m_Controller.OutputPackageSelected, GUILayout.Width(70f));
+                        m_Controller.OutputPackageSelected = EditorGUILayout.ToggleLeft("Generate",
+                            m_Controller.OutputPackageSelected, GUILayout.Width(70f));
                     }
                     EditorGUILayout.EndHorizontal();
                     EditorGUILayout.BeginHorizontal();
@@ -285,7 +294,8 @@ namespace UnityGameFramework.Editor.ResourceTools
                         EditorGUILayout.LabelField("Output Full Path", GUILayout.Width(160f));
                         GUILayout.Label(m_Controller.OutputFullPath);
                         EditorGUI.EndDisabledGroup();
-                        m_Controller.OutputFullSelected = EditorGUILayout.ToggleLeft("Generate", m_Controller.OutputFullSelected, GUILayout.Width(70f));
+                        m_Controller.OutputFullSelected = EditorGUILayout.ToggleLeft("Generate",
+                            m_Controller.OutputFullSelected, GUILayout.Width(70f));
                     }
                     EditorGUILayout.EndHorizontal();
                     EditorGUILayout.BeginHorizontal();
@@ -294,7 +304,8 @@ namespace UnityGameFramework.Editor.ResourceTools
                         EditorGUILayout.LabelField("Output Packed Path", GUILayout.Width(160f));
                         GUILayout.Label(m_Controller.OutputPackedPath);
                         EditorGUI.EndDisabledGroup();
-                        m_Controller.OutputPackedSelected = EditorGUILayout.ToggleLeft("Generate", m_Controller.OutputPackedSelected, GUILayout.Width(70f));
+                        m_Controller.OutputPackedSelected = EditorGUILayout.ToggleLeft("Generate",
+                            m_Controller.OutputPackedSelected, GUILayout.Width(70f));
                     }
                     EditorGUILayout.EndHorizontal();
                     EditorGUILayout.BeginHorizontal();
@@ -312,7 +323,9 @@ namespace UnityGameFramework.Editor.ResourceTools
                 GUILayout.Space(2f);
                 EditorGUILayout.BeginHorizontal();
                 {
-                    EditorGUI.BeginDisabledGroup(m_Controller.Platforms == Platform.Undefined || string.IsNullOrEmpty(m_Controller.CompressionHelperTypeName) || !m_Controller.IsValidOutputDirectory);
+                    EditorGUI.BeginDisabledGroup(m_Controller.Platforms == Platform.Undefined ||
+                                                 string.IsNullOrEmpty(m_Controller.CompressionHelperTypeName) ||
+                                                 !m_Controller.IsValidOutputDirectory);
                     {
                         if (GUILayout.Button("Start Build Resources"))
                         {
@@ -332,7 +345,8 @@ namespace UnityGameFramework.Editor.ResourceTools
 
         private void BrowseOutputDirectory()
         {
-            string directory = EditorUtility.OpenFolderPanel("Select Output Directory", m_Controller.OutputDirectory, string.Empty);
+            string directory =
+                EditorUtility.OpenFolderPanel("Select Output Directory", m_Controller.OutputDirectory, string.Empty);
             if (!string.IsNullOrEmpty(directory))
             {
                 m_Controller.OutputDirectory = directory;
@@ -442,17 +456,20 @@ namespace UnityGameFramework.Editor.ResourceTools
 
         private void DrawPlatform(Platform platform, string platformName)
         {
-            m_Controller.SelectPlatform(platform, EditorGUILayout.ToggleLeft(platformName, m_Controller.IsPlatformSelected(platform)));
+            m_Controller.SelectPlatform(platform,
+                EditorGUILayout.ToggleLeft(platformName, m_Controller.IsPlatformSelected(platform)));
         }
 
         private void OnLoadingResource(int index, int count)
         {
-            EditorUtility.DisplayProgressBar("Loading Resources", Utility.Text.Format("Loading resources, {0}/{1} loaded.", index, count), (float)index / count);
+            EditorUtility.DisplayProgressBar("Loading Resources",
+                Utility.Text.Format("Loading resources, {0}/{1} loaded.", index, count), (float)index / count);
         }
 
         private void OnLoadingAsset(int index, int count)
         {
-            EditorUtility.DisplayProgressBar("Loading Assets", Utility.Text.Format("Loading assets, {0}/{1} loaded.", index, count), (float)index / count);
+            EditorUtility.DisplayProgressBar("Loading Assets",
+                Utility.Text.Format("Loading assets, {0}/{1} loaded.", index, count), (float)index / count);
         }
 
         private void OnLoadCompleted()
@@ -462,7 +479,8 @@ namespace UnityGameFramework.Editor.ResourceTools
 
         private void OnAnalyzingAsset(int index, int count)
         {
-            EditorUtility.DisplayProgressBar("Analyzing Assets", Utility.Text.Format("Analyzing assets, {0}/{1} analyzed.", index, count), (float)index / count);
+            EditorUtility.DisplayProgressBar("Analyzing Assets",
+                Utility.Text.Format("Analyzing assets, {0}/{1} analyzed.", index, count), (float)index / count);
         }
 
         private void OnAnalyzeCompleted()
@@ -472,7 +490,8 @@ namespace UnityGameFramework.Editor.ResourceTools
 
         private bool OnProcessingAssetBundle(string assetBundleName, float progress)
         {
-            if (EditorUtility.DisplayCancelableProgressBar("Processing AssetBundle", Utility.Text.Format("Processing '{0}'...", assetBundleName), progress))
+            if (EditorUtility.DisplayCancelableProgressBar("Processing AssetBundle",
+                    Utility.Text.Format("Processing '{0}'...", assetBundleName), progress))
             {
                 EditorUtility.ClearProgressBar();
                 return true;
@@ -486,7 +505,8 @@ namespace UnityGameFramework.Editor.ResourceTools
 
         private bool OnProcessingBinary(string binaryName, float progress)
         {
-            if (EditorUtility.DisplayCancelableProgressBar("Processing Binary", Utility.Text.Format("Processing '{0}'...", binaryName), progress))
+            if (EditorUtility.DisplayCancelableProgressBar("Processing Binary",
+                    Utility.Text.Format("Processing '{0}'...", binaryName), progress))
             {
                 EditorUtility.ClearProgressBar();
                 return true;

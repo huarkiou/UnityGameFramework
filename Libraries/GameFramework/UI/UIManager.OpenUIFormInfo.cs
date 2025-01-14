@@ -24,37 +24,13 @@ namespace GameFramework.UI
                 m_UserData = null;
             }
 
-            public int SerialId
-            {
-                get
-                {
-                    return m_SerialId;
-                }
-            }
+            public int SerialId => m_SerialId;
 
-            public UIGroup UIGroup
-            {
-                get
-                {
-                    return m_UIGroup;
-                }
-            }
+            public UIGroup UIGroup => m_UIGroup;
 
-            public bool PauseCoveredUIForm
-            {
-                get
-                {
-                    return m_PauseCoveredUIForm;
-                }
-            }
+            public bool PauseCoveredUIForm => m_PauseCoveredUIForm;
 
-            public object UserData
-            {
-                get
-                {
-                    return m_UserData;
-                }
-            }
+            public object UserData => m_UserData;
 
             public static OpenUIFormInfo Create(int serialId, UIGroup uiGroup, bool pauseCoveredUIForm, object userData)
             {

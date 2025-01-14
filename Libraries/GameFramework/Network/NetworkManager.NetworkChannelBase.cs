@@ -78,24 +78,12 @@ namespace GameFramework.Network
             /// <summary>
             /// 获取网络频道名称。
             /// </summary>
-            public string Name
-            {
-                get
-                {
-                    return m_Name;
-                }
-            }
+            public string Name => m_Name;
 
             /// <summary>
             /// 获取网络频道所使用的 Socket。
             /// </summary>
-            public Socket Socket
-            {
-                get
-                {
-                    return m_Socket;
-                }
-            }
+            public Socket Socket => m_Socket;
 
             /// <summary>
             /// 获取是否已连接。
@@ -116,117 +104,60 @@ namespace GameFramework.Network
             /// <summary>
             /// 获取网络服务类型。
             /// </summary>
-            public abstract ServiceType ServiceType
-            {
-                get;
-            }
+            public abstract ServiceType ServiceType { get; }
 
             /// <summary>
             /// 获取网络地址类型。
             /// </summary>
-            public AddressFamily AddressFamily
-            {
-                get
-                {
-                    return m_AddressFamily;
-                }
-            }
+            public AddressFamily AddressFamily => m_AddressFamily;
 
             /// <summary>
             /// 获取要发送的消息包数量。
             /// </summary>
-            public int SendPacketCount
-            {
-                get
-                {
-                    return m_SendPacketPool.Count;
-                }
-            }
+            public int SendPacketCount => m_SendPacketPool.Count;
 
             /// <summary>
             /// 获取累计发送的消息包数量。
             /// </summary>
-            public int SentPacketCount
-            {
-                get
-                {
-                    return m_SentPacketCount;
-                }
-            }
+            public int SentPacketCount => m_SentPacketCount;
 
             /// <summary>
             /// 获取已接收未处理的消息包数量。
             /// </summary>
-            public int ReceivePacketCount
-            {
-                get
-                {
-                    return m_ReceivePacketPool.EventCount;
-                }
-            }
+            public int ReceivePacketCount => m_ReceivePacketPool.EventCount;
 
             /// <summary>
             /// 获取累计已接收的消息包数量。
             /// </summary>
-            public int ReceivedPacketCount
-            {
-                get
-                {
-                    return m_ReceivedPacketCount;
-                }
-            }
+            public int ReceivedPacketCount => m_ReceivedPacketCount;
 
             /// <summary>
             /// 获取或设置当收到消息包时是否重置心跳流逝时间。
             /// </summary>
             public bool ResetHeartBeatElapseSecondsWhenReceivePacket
             {
-                get
-                {
-                    return m_ResetHeartBeatElapseSecondsWhenReceivePacket;
-                }
-                set
-                {
-                    m_ResetHeartBeatElapseSecondsWhenReceivePacket = value;
-                }
+                get => m_ResetHeartBeatElapseSecondsWhenReceivePacket;
+                set => m_ResetHeartBeatElapseSecondsWhenReceivePacket = value;
             }
 
             /// <summary>
             /// 获取丢失心跳的次数。
             /// </summary>
-            public int MissHeartBeatCount
-            {
-                get
-                {
-                    return m_HeartBeatState.MissHeartBeatCount;
-                }
-            }
+            public int MissHeartBeatCount => m_HeartBeatState.MissHeartBeatCount;
 
             /// <summary>
             /// 获取或设置心跳间隔时长，以秒为单位。
             /// </summary>
             public float HeartBeatInterval
             {
-                get
-                {
-                    return m_HeartBeatInterval;
-                }
-                set
-                {
-                    m_HeartBeatInterval = value;
-                }
+                get => m_HeartBeatInterval;
+                set => m_HeartBeatInterval = value;
             }
 
             /// <summary>
             /// 获取心跳等待时长，以秒为单位。
             /// </summary>
-            public float HeartBeatElapseSeconds
-            {
-                get
-                {
-                    return m_HeartBeatState.HeartBeatElapseSeconds;
-                }
-            }
+            public float HeartBeatElapseSeconds => m_HeartBeatState.HeartBeatElapseSeconds;
 
             /// <summary>
             /// 网络频道轮询。
@@ -348,10 +279,12 @@ namespace GameFramework.Network
                         break;
 
                     default:
-                        string errorMessage = Utility.Text.Format("Not supported address family '{0}'.", ipAddress.AddressFamily);
+                        string errorMessage = Utility.Text.Format("Not supported address family '{0}'.",
+                            ipAddress.AddressFamily);
                         if (NetworkChannelError != null)
                         {
-                            NetworkChannelError(this, NetworkErrorCode.AddressFamilyError, SocketError.Success, errorMessage);
+                            NetworkChannelError(this, NetworkErrorCode.AddressFamilyError, SocketError.Success,
+                                errorMessage);
                             return;
                         }
 
@@ -516,7 +449,9 @@ namespace GameFramework.Network
                         if (NetworkChannelError != null)
                         {
                             SocketException socketException = exception as SocketException;
-                            NetworkChannelError(this, NetworkErrorCode.SerializeError, socketException != null ? socketException.SocketErrorCode : SocketError.Success, exception.ToString());
+                            NetworkChannelError(this, NetworkErrorCode.SerializeError,
+                                socketException != null ? socketException.SocketErrorCode : SocketError.Success,
+                                exception.ToString());
                             return false;
                         }
 
@@ -528,7 +463,8 @@ namespace GameFramework.Network
                         string errorMessage = "Serialized packet failure.";
                         if (NetworkChannelError != null)
                         {
-                            NetworkChannelError(this, NetworkErrorCode.SerializeError, SocketError.Success, errorMessage);
+                            NetworkChannelError(this, NetworkErrorCode.SerializeError, SocketError.Success,
+                                errorMessage);
                             return false;
                         }
 
@@ -549,7 +485,8 @@ namespace GameFramework.Network
                 try
                 {
                     object customErrorData = null;
-                    IPacketHeader packetHeader = m_NetworkChannelHelper.DeserializePacketHeader(m_ReceiveState.Stream, out customErrorData);
+                    IPacketHeader packetHeader =
+                        m_NetworkChannelHelper.DeserializePacketHeader(m_ReceiveState.Stream, out customErrorData);
 
                     if (customErrorData != null && NetworkChannelCustomError != null)
                     {
@@ -561,7 +498,8 @@ namespace GameFramework.Network
                         string errorMessage = "Packet header is invalid.";
                         if (NetworkChannelError != null)
                         {
-                            NetworkChannelError(this, NetworkErrorCode.DeserializePacketHeaderError, SocketError.Success, errorMessage);
+                            NetworkChannelError(this, NetworkErrorCode.DeserializePacketHeaderError,
+                                SocketError.Success, errorMessage);
                             return false;
                         }
 
@@ -582,7 +520,9 @@ namespace GameFramework.Network
                     if (NetworkChannelError != null)
                     {
                         SocketException socketException = exception as SocketException;
-                        NetworkChannelError(this, NetworkErrorCode.DeserializePacketHeaderError, socketException != null ? socketException.SocketErrorCode : SocketError.Success, exception.ToString());
+                        NetworkChannelError(this, NetworkErrorCode.DeserializePacketHeaderError,
+                            socketException != null ? socketException.SocketErrorCode : SocketError.Success,
+                            exception.ToString());
                         return false;
                     }
 
@@ -602,7 +542,8 @@ namespace GameFramework.Network
                 try
                 {
                     object customErrorData = null;
-                    Packet packet = m_NetworkChannelHelper.DeserializePacket(m_ReceiveState.PacketHeader, m_ReceiveState.Stream, out customErrorData);
+                    Packet packet = m_NetworkChannelHelper.DeserializePacket(m_ReceiveState.PacketHeader,
+                        m_ReceiveState.Stream, out customErrorData);
 
                     if (customErrorData != null && NetworkChannelCustomError != null)
                     {
@@ -622,7 +563,9 @@ namespace GameFramework.Network
                     if (NetworkChannelError != null)
                     {
                         SocketException socketException = exception as SocketException;
-                        NetworkChannelError(this, NetworkErrorCode.DeserializePacketError, socketException != null ? socketException.SocketErrorCode : SocketError.Success, exception.ToString());
+                        NetworkChannelError(this, NetworkErrorCode.DeserializePacketError,
+                            socketException != null ? socketException.SocketErrorCode : SocketError.Success,
+                            exception.ToString());
                         return false;
                     }
 

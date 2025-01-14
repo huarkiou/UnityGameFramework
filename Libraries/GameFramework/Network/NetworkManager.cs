@@ -40,27 +40,15 @@ namespace GameFramework.Network
         /// <summary>
         /// 获取网络频道数量。
         /// </summary>
-        public int NetworkChannelCount
-        {
-            get
-            {
-                return m_NetworkChannels.Count;
-            }
-        }
+        public int NetworkChannelCount => m_NetworkChannels.Count;
 
         /// <summary>
         /// 网络连接成功事件。
         /// </summary>
         public event EventHandler<NetworkConnectedEventArgs> NetworkConnected
         {
-            add
-            {
-                m_NetworkConnectedEventHandler += value;
-            }
-            remove
-            {
-                m_NetworkConnectedEventHandler -= value;
-            }
+            add => m_NetworkConnectedEventHandler += value;
+            remove => m_NetworkConnectedEventHandler -= value;
         }
 
         /// <summary>
@@ -68,14 +56,8 @@ namespace GameFramework.Network
         /// </summary>
         public event EventHandler<NetworkClosedEventArgs> NetworkClosed
         {
-            add
-            {
-                m_NetworkClosedEventHandler += value;
-            }
-            remove
-            {
-                m_NetworkClosedEventHandler -= value;
-            }
+            add => m_NetworkClosedEventHandler += value;
+            remove => m_NetworkClosedEventHandler -= value;
         }
 
         /// <summary>
@@ -83,14 +65,8 @@ namespace GameFramework.Network
         /// </summary>
         public event EventHandler<NetworkMissHeartBeatEventArgs> NetworkMissHeartBeat
         {
-            add
-            {
-                m_NetworkMissHeartBeatEventHandler += value;
-            }
-            remove
-            {
-                m_NetworkMissHeartBeatEventHandler -= value;
-            }
+            add => m_NetworkMissHeartBeatEventHandler += value;
+            remove => m_NetworkMissHeartBeatEventHandler -= value;
         }
 
         /// <summary>
@@ -98,14 +74,8 @@ namespace GameFramework.Network
         /// </summary>
         public event EventHandler<NetworkErrorEventArgs> NetworkError
         {
-            add
-            {
-                m_NetworkErrorEventHandler += value;
-            }
-            remove
-            {
-                m_NetworkErrorEventHandler -= value;
-            }
+            add => m_NetworkErrorEventHandler += value;
+            remove => m_NetworkErrorEventHandler -= value;
         }
 
         /// <summary>
@@ -113,14 +83,8 @@ namespace GameFramework.Network
         /// </summary>
         public event EventHandler<NetworkCustomErrorEventArgs> NetworkCustomError
         {
-            add
-            {
-                m_NetworkCustomErrorEventHandler += value;
-            }
-            remove
-            {
-                m_NetworkCustomErrorEventHandler -= value;
-            }
+            add => m_NetworkCustomErrorEventHandler += value;
+            remove => m_NetworkCustomErrorEventHandler -= value;
         }
 
         /// <summary>
@@ -222,7 +186,8 @@ namespace GameFramework.Network
         /// <param name="serviceType">网络服务类型。</param>
         /// <param name="networkChannelHelper">网络频道辅助器。</param>
         /// <returns>要创建的网络频道。</returns>
-        public INetworkChannel CreateNetworkChannel(string name, ServiceType serviceType, INetworkChannelHelper networkChannelHelper)
+        public INetworkChannel CreateNetworkChannel(string name, ServiceType serviceType,
+            INetworkChannelHelper networkChannelHelper)
         {
             if (networkChannelHelper == null)
             {
@@ -236,7 +201,8 @@ namespace GameFramework.Network
 
             if (HasNetworkChannel(name))
             {
-                throw new GameFrameworkException(Utility.Text.Format("Already exist network channel '{0}'.", name ?? string.Empty));
+                throw new GameFrameworkException(Utility.Text.Format("Already exist network channel '{0}'.",
+                    name ?? string.Empty));
             }
 
             NetworkChannelBase networkChannel = null;
@@ -251,7 +217,8 @@ namespace GameFramework.Network
                     break;
 
                 default:
-                    throw new GameFrameworkException(Utility.Text.Format("Not supported service type '{0}'.", serviceType));
+                    throw new GameFrameworkException(Utility.Text.Format("Not supported service type '{0}'.",
+                        serviceType));
             }
 
             networkChannel.NetworkChannelConnected += OnNetworkChannelConnected;
@@ -291,7 +258,8 @@ namespace GameFramework.Network
             {
                 lock (m_NetworkConnectedEventHandler)
                 {
-                    NetworkConnectedEventArgs networkConnectedEventArgs = NetworkConnectedEventArgs.Create(networkChannel, userData);
+                    NetworkConnectedEventArgs networkConnectedEventArgs =
+                        NetworkConnectedEventArgs.Create(networkChannel, userData);
                     m_NetworkConnectedEventHandler(this, networkConnectedEventArgs);
                     ReferencePool.Release(networkConnectedEventArgs);
                 }
@@ -317,20 +285,23 @@ namespace GameFramework.Network
             {
                 lock (m_NetworkMissHeartBeatEventHandler)
                 {
-                    NetworkMissHeartBeatEventArgs networkMissHeartBeatEventArgs = NetworkMissHeartBeatEventArgs.Create(networkChannel, missHeartBeatCount);
+                    NetworkMissHeartBeatEventArgs networkMissHeartBeatEventArgs =
+                        NetworkMissHeartBeatEventArgs.Create(networkChannel, missHeartBeatCount);
                     m_NetworkMissHeartBeatEventHandler(this, networkMissHeartBeatEventArgs);
                     ReferencePool.Release(networkMissHeartBeatEventArgs);
                 }
             }
         }
 
-        private void OnNetworkChannelError(NetworkChannelBase networkChannel, NetworkErrorCode errorCode, SocketError socketErrorCode, string errorMessage)
+        private void OnNetworkChannelError(NetworkChannelBase networkChannel, NetworkErrorCode errorCode,
+            SocketError socketErrorCode, string errorMessage)
         {
             if (m_NetworkErrorEventHandler != null)
             {
                 lock (m_NetworkErrorEventHandler)
                 {
-                    NetworkErrorEventArgs networkErrorEventArgs = NetworkErrorEventArgs.Create(networkChannel, errorCode, socketErrorCode, errorMessage);
+                    NetworkErrorEventArgs networkErrorEventArgs =
+                        NetworkErrorEventArgs.Create(networkChannel, errorCode, socketErrorCode, errorMessage);
                     m_NetworkErrorEventHandler(this, networkErrorEventArgs);
                     ReferencePool.Release(networkErrorEventArgs);
                 }
@@ -343,7 +314,8 @@ namespace GameFramework.Network
             {
                 lock (m_NetworkCustomErrorEventHandler)
                 {
-                    NetworkCustomErrorEventArgs networkCustomErrorEventArgs = NetworkCustomErrorEventArgs.Create(networkChannel, customErrorData);
+                    NetworkCustomErrorEventArgs networkCustomErrorEventArgs =
+                        NetworkCustomErrorEventArgs.Create(networkChannel, customErrorData);
                     m_NetworkCustomErrorEventHandler(this, networkCustomErrorEventArgs);
                     ReferencePool.Release(networkCustomErrorEventArgs);
                 }

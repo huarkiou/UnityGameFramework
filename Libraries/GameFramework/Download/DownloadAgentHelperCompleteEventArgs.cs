@@ -23,11 +23,7 @@ namespace GameFramework.Download
         /// <summary>
         /// 获取下载的数据大小。
         /// </summary>
-        public long Length
-        {
-            get;
-            private set;
-        }
+        public long Length { get; private set; }
 
         /// <summary>
         /// 创建下载代理辅助器完成事件。
@@ -41,7 +37,8 @@ namespace GameFramework.Download
                 throw new GameFrameworkException("Length is invalid.");
             }
 
-            DownloadAgentHelperCompleteEventArgs downloadAgentHelperCompleteEventArgs = ReferencePool.Acquire<DownloadAgentHelperCompleteEventArgs>();
+            DownloadAgentHelperCompleteEventArgs downloadAgentHelperCompleteEventArgs =
+                ReferencePool.Acquire<DownloadAgentHelperCompleteEventArgs>();
             downloadAgentHelperCompleteEventArgs.Length = length;
             return downloadAgentHelperCompleteEventArgs;
         }

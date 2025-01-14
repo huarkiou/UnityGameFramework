@@ -5,8 +5,8 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameFramework;
 using System.Collections.Generic;
+using GameFramework;
 using UnityEditor;
 using UnityEngine;
 
@@ -30,33 +30,15 @@ namespace UnityGameFramework.Editor.ResourceTools
                 Folder = folder;
             }
 
-            public string Name
-            {
-                get;
-                private set;
-            }
+            public string Name { get; private set; }
 
-            public ResourceFolder Folder
-            {
-                get;
-                private set;
-            }
+            public ResourceFolder Folder { get; private set; }
 
-            public string FromRootPath
-            {
-                get
-                {
-                    return Folder == null ? string.Empty : (Folder.Folder == null ? Name : Utility.Text.Format("{0}/{1}", Folder.FromRootPath, Name));
-                }
-            }
+            public string FromRootPath => Folder == null
+                ? string.Empty
+                : (Folder.Folder == null ? Name : Utility.Text.Format("{0}/{1}", Folder.FromRootPath, Name));
 
-            public int Depth
-            {
-                get
-                {
-                    return Folder != null ? Folder.Depth + 1 : 0;
-                }
-            }
+            public int Depth => Folder != null ? Folder.Depth + 1 : 0;
 
             public static Texture Icon
             {

@@ -5,8 +5,9 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using GameFramework;
 using System.Diagnostics;
+using System.IO;
+using GameFramework;
 using UnityEditor;
 using UnityEngine;
 
@@ -61,7 +62,7 @@ namespace UnityGameFramework.Editor
         [MenuItem("Game Framework/Open Folder/Console Log Path", false, 14)]
         public static void OpenFolderConsoleLogPath()
         {
-            Execute(System.IO.Path.GetDirectoryName(Application.consoleLogPath));
+            Execute(Path.GetDirectoryName(Application.consoleLogPath));
         }
 
 #endif
@@ -84,7 +85,8 @@ namespace UnityGameFramework.Editor
                     break;
 
                 default:
-                    throw new GameFrameworkException(Utility.Text.Format("Not support open folder on '{0}' platform.", Application.platform));
+                    throw new GameFrameworkException(Utility.Text.Format("Not support open folder on '{0}' platform.",
+                        Application.platform));
             }
         }
     }

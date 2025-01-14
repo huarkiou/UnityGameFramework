@@ -17,10 +17,7 @@ namespace GameFramework.FileSystem
         /// <summary>
         /// 获取文件系统数量。
         /// </summary>
-        int Count
-        {
-            get;
-        }
+        int Count { get; }
 
         /// <summary>
         /// 设置文件系统辅助器。

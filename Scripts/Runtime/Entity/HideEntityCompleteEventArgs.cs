@@ -35,49 +35,27 @@ namespace UnityGameFramework.Runtime
         /// <summary>
         /// 获取隐藏实体完成事件编号。
         /// </summary>
-        public override int Id
-        {
-            get
-            {
-                return EventId;
-            }
-        }
+        public override int Id => EventId;
 
         /// <summary>
         /// 获取实体编号。
         /// </summary>
-        public int EntityId
-        {
-            get;
-            private set;
-        }
+        public int EntityId { get; private set; }
 
         /// <summary>
         /// 获取实体资源名称。
         /// </summary>
-        public string EntityAssetName
-        {
-            get;
-            private set;
-        }
+        public string EntityAssetName { get; private set; }
 
         /// <summary>
         /// 获取实体所属的实体组。
         /// </summary>
-        public IEntityGroup EntityGroup
-        {
-            get;
-            private set;
-        }
+        public IEntityGroup EntityGroup { get; private set; }
 
         /// <summary>
         /// 获取用户自定义数据。
         /// </summary>
-        public object UserData
-        {
-            get;
-            private set;
-        }
+        public object UserData { get; private set; }
 
         /// <summary>
         /// 创建隐藏实体完成事件。
@@ -86,7 +64,8 @@ namespace UnityGameFramework.Runtime
         /// <returns>创建的隐藏实体完成事件。</returns>
         public static HideEntityCompleteEventArgs Create(GameFramework.Entity.HideEntityCompleteEventArgs e)
         {
-            HideEntityCompleteEventArgs hideEntityCompleteEventArgs = ReferencePool.Acquire<HideEntityCompleteEventArgs>();
+            HideEntityCompleteEventArgs hideEntityCompleteEventArgs =
+                ReferencePool.Acquire<HideEntityCompleteEventArgs>();
             hideEntityCompleteEventArgs.EntityId = e.EntityId;
             hideEntityCompleteEventArgs.EntityAssetName = e.EntityAssetName;
             hideEntityCompleteEventArgs.EntityGroup = e.EntityGroup;

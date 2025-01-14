@@ -36,9 +36,12 @@ namespace UnityGameFramework.Editor
 
             if (EditorApplication.isPlaying && IsPrefabInHierarchy(t.gameObject))
             {
-                EditorGUILayout.LabelField("Loaded Scene Asset Names", GetSceneNameString(t.GetLoadedSceneAssetNames()));
-                EditorGUILayout.LabelField("Loading Scene Asset Names", GetSceneNameString(t.GetLoadingSceneAssetNames()));
-                EditorGUILayout.LabelField("Unloading Scene Asset Names", GetSceneNameString(t.GetUnloadingSceneAssetNames()));
+                EditorGUILayout.LabelField("Loaded Scene Asset Names",
+                    GetSceneNameString(t.GetLoadedSceneAssetNames()));
+                EditorGUILayout.LabelField("Loading Scene Asset Names",
+                    GetSceneNameString(t.GetLoadingSceneAssetNames()));
+                EditorGUILayout.LabelField("Unloading Scene Asset Names",
+                    GetSceneNameString(t.GetUnloadingSceneAssetNames()));
                 EditorGUILayout.ObjectField("Main Camera", t.MainCamera, typeof(Camera), true);
 
                 Repaint();
@@ -48,7 +51,8 @@ namespace UnityGameFramework.Editor
         private void OnEnable()
         {
             m_EnableLoadSceneUpdateEvent = serializedObject.FindProperty("m_EnableLoadSceneUpdateEvent");
-            m_EnableLoadSceneDependencyAssetEvent = serializedObject.FindProperty("m_EnableLoadSceneDependencyAssetEvent");
+            m_EnableLoadSceneDependencyAssetEvent =
+                serializedObject.FindProperty("m_EnableLoadSceneDependencyAssetEvent");
         }
 
         private string GetSceneNameString(string[] sceneAssetNames)

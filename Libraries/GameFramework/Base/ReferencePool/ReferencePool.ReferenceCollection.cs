@@ -33,61 +33,19 @@ namespace GameFramework
                 m_RemoveReferenceCount = 0;
             }
 
-            public Type ReferenceType
-            {
-                get
-                {
-                    return m_ReferenceType;
-                }
-            }
+            public Type ReferenceType => m_ReferenceType;
 
-            public int UnusedReferenceCount
-            {
-                get
-                {
-                    return m_References.Count;
-                }
-            }
+            public int UnusedReferenceCount => m_References.Count;
 
-            public int UsingReferenceCount
-            {
-                get
-                {
-                    return m_UsingReferenceCount;
-                }
-            }
+            public int UsingReferenceCount => m_UsingReferenceCount;
 
-            public int AcquireReferenceCount
-            {
-                get
-                {
-                    return m_AcquireReferenceCount;
-                }
-            }
+            public int AcquireReferenceCount => m_AcquireReferenceCount;
 
-            public int ReleaseReferenceCount
-            {
-                get
-                {
-                    return m_ReleaseReferenceCount;
-                }
-            }
+            public int ReleaseReferenceCount => m_ReleaseReferenceCount;
 
-            public int AddReferenceCount
-            {
-                get
-                {
-                    return m_AddReferenceCount;
-                }
-            }
+            public int AddReferenceCount => m_AddReferenceCount;
 
-            public int RemoveReferenceCount
-            {
-                get
-                {
-                    return m_RemoveReferenceCount;
-                }
-            }
+            public int RemoveReferenceCount => m_RemoveReferenceCount;
 
             public T Acquire<T>() where T : class, IReference, new()
             {

@@ -23,13 +23,7 @@ namespace UnityGameFramework.Runtime
         /// <summary>
         /// 获取根数据结点。
         /// </summary>
-        public IDataNode Root
-        {
-            get
-            {
-                return m_DataNodeManager.Root;
-            }
-        }
+        public IDataNode Root => m_DataNodeManager.Root;
 
         /// <summary>
         /// 游戏框架组件初始化。

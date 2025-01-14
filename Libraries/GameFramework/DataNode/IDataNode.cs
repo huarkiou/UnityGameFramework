@@ -17,34 +17,22 @@ namespace GameFramework.DataNode
         /// <summary>
         /// 获取数据结点的名称。
         /// </summary>
-        string Name
-        {
-            get;
-        }
+        string Name { get; }
 
         /// <summary>
         /// 获取数据结点的完整名称。
         /// </summary>
-        string FullName
-        {
-            get;
-        }
+        string FullName { get; }
 
         /// <summary>
         /// 获取父数据结点。
         /// </summary>
-        IDataNode Parent
-        {
-            get;
-        }
+        IDataNode Parent { get; }
 
         /// <summary>
         /// 获取子数据结点的数量。
         /// </summary>
-        int ChildCount
-        {
-            get;
-        }
+        int ChildCount { get; }
 
         /// <summary>
         /// 根据类型获取数据结点的数据。
